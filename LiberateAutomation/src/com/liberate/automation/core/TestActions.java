@@ -17,10 +17,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions
 {
-	public String classVersion = "0.0.2"; 
+	public String classVersion = "0.0.3"; 
 	
 	Boolean retry = false;
 	int retryCount = 3;
+	int executionCount = 0;
 	
 	WebDriver driver = new ChromeDriver();
 	
@@ -263,10 +264,19 @@ public class TestActions
 	 */
 	private boolean handleException(Exception e)
 	{
-		String errorMethod = (e.getCause().getStackTrace()[0].getMethodName()); 
+		//This code block checks how many times the step is executed. If > retryCount, it will exit stopping execution of step.
+		executionCount = executionCount + 1;
+		if (executionCount > retryCount)
+		{
+			executionCount = 0;
+			return false;
+		}
 		
+		//This snippet will get the Method name where the exception occurred.
+		String errorMethod = (e.getCause().getStackTrace()[0].getMethodName()); 		
 		System.out.println(errorMethod); 
 		
+		//This code block with get the type of exception occurred and Handle it.
 		if(e instanceof StaleElementReferenceException)
 		{
 			waitFor(1);
@@ -275,6 +285,11 @@ public class TestActions
 		else if (e instanceof TimeoutException)
 		{
 			return false;
+		}
+		else if (e instanceof WebDriverException)
+		{
+			waitFor(1);
+			return true;
 		}
 		else
 		{
