@@ -3,10 +3,11 @@ package com.liberate.automation.core;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions
 {
-	public String classVersion = "0.0.1"; 
+	public String classVersion = "0.0.2"; 
 	
 	Boolean retry = false;
 	int retryCount = 3;
@@ -262,13 +263,23 @@ public class TestActions
 	 */
 	private boolean handleException(Exception e)
 	{
-		Throwable rootCause = e;
-		rootCause = rootCause.getCause();
-		
-		String errorMethod = (rootCause.getStackTrace()[0].getMethodName()); 
+		String errorMethod = (e.getCause().getStackTrace()[0].getMethodName()); 
 		
 		System.out.println(errorMethod); 
 		
-		throw new NotImplementedException("Method not Implemented");
+		if(e instanceof StaleElementReferenceException)
+		{
+			waitFor(1);
+			return true;
+		}
+		else if (e instanceof TimeoutException)
+		{
+			return false;
+		}
+		else
+		{
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 }
