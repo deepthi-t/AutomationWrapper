@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions
 {
+	public String classVersion = "0.0.1"; 
+	
 	Boolean retry = false;
 	int retryCount = 3;
 	
@@ -245,6 +247,10 @@ public class TestActions
 		catch (WebDriverException e)
 		{
 			e.printStackTrace();
+			retry = handleException(e);
+			if(retry)
+				getScreenShot();
+			else return null;
 		}
 		return screenshot;
 	}
@@ -256,6 +262,13 @@ public class TestActions
 	 */
 	private boolean handleException(Exception e)
 	{
+		Throwable rootCause = e;
+		rootCause = rootCause.getCause();
+		
+		String errorMethod = (rootCause.getStackTrace()[0].getMethodName()); 
+		
+		System.out.println(errorMethod); 
+		
 		throw new NotImplementedException("Method not Implemented");
 	}
 }
