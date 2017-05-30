@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions
 {
-	public String classVersion = "0.0.4"; 
+	public String classVersion = "0.0.5"; 
 	
 	Boolean retry = false;
 	int retryCount = 3;
