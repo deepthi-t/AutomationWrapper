@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions
 {
-	public String classVersion = "0.0.3"; 
+	public String classVersion = "0.0.4"; 
 	
 	Boolean retry = false;
 	int retryCount = 3;
@@ -239,7 +239,7 @@ public class TestActions
 	/***
 	 * Method that can be called to get the selected value from a Drop-down.
 	 * @param locator The locator from which the selected value should be retrieved.
-	 * @return
+	 * @return Returns the selected option as String. Returns '' if the nothing is selected or failed to get the value from the locator.
 	 */
 	public String getSelectedOption(By locator)
 	{
