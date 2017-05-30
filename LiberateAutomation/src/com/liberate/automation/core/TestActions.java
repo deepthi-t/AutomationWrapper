@@ -223,7 +223,8 @@ public class TestActions
 		try 
 		{
 			count = driver.findElements(locator).size();
-		} catch (Exception e) 
+		}
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 			retry = handleException(e);
@@ -234,7 +235,33 @@ public class TestActions
 		
 		return count;
 	}
-
+	
+	/***
+	 * Method that can be called to get the selected value from a Drop-down.
+	 * @param locator The locator from which the selected value should be retrieved.
+	 * @return
+	 */
+	public String getSelectedOption(By locator)
+	{
+		String option = "";
+		
+		try 
+		{
+			Select select = new Select(driver.findElement(locator));
+			option = select.getFirstSelectedOption().getText();
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			retry = handleException(e);
+			if(retry)
+				getSelectedOption(locator);
+			else return "";
+		}
+		
+		return option;
+	}
+	
 	/***
 	 * Method that can be called to take Screenshot of the current page, where the driver is in.
 	 * @return Returns the screenshot as a file, and 'null' if not able to take screenshot.
