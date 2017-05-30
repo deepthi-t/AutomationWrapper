@@ -92,6 +92,7 @@ public class TestActions
 	{
 		try
 		{
+			driver.findElement(locator).clear();
 			driver.findElement(locator).sendKeys(data);
 		}
 		catch (Exception e)
@@ -100,6 +101,29 @@ public class TestActions
 			retry = handleException(e);
 			if(retry)
 				sendDataTo(locator,data);
+			else return false;
+		}
+		
+		return true;
+	}
+	
+	/***
+	 * Method that can be called to clear any Input field which is currently available in the WebPade.
+	 * @param locator Identifies the element that needs to be cleared
+	 * @return Returns true, if able to clear the Field, or else will return false.
+	 */
+	public Boolean clearField(By locator)
+	{
+		try
+		{
+			driver.findElement(locator).clear();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			retry = handleException(e);
+			if(retry)
+				clearField(locator);
 			else return false;
 		}
 		
