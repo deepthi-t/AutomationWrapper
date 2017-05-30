@@ -45,11 +45,19 @@ public class ManageSwitchRequest {
 	// Page Elements : Command Buttons
 	By SearchButton = By.xpath("//input[@value='Search']");
 	By ResetButon = By.xpath("//input[@value='Reset']");
-
+	
+	/***
+	 * Default constructor that takes TestAction object as argument.
+	 * @param action The TestAction class object, which will be used to run test steps
+	 */
 	public ManageSwitchRequest(TestActions action) {
 		this.action = action;
 	}
-
+	
+	/***
+	 * The method that is called to navigate to Manage Switch Request screen
+	 * @return Returns true if able to navigate, else will return false.
+	 */
 	public boolean navigate() {
 		boolean passed = false;
 
@@ -61,7 +69,11 @@ public class ManageSwitchRequest {
 
 		return passed;
 	}
-
+	
+	/***
+	 * Method that is called to select Monitor New Switch Requests Functionality
+	 * @return True, if able to select; false if not able to select.
+	 */
 	public boolean select_MonitorNewSwitchRequests() {
 		boolean passed = false;
 
@@ -70,7 +82,11 @@ public class ManageSwitchRequest {
 
 		return passed;
 	}
-
+	
+	/***
+	 * Method that is called to select Failure Queries Functionality
+	 * @return True, if able to select; false if not able to select.
+	 */
 	public boolean select_FailureQueries() {
 		boolean passed = false;
 
@@ -79,7 +95,11 @@ public class ManageSwitchRequest {
 
 		return passed;
 	}
-
+	
+	/***
+	 * Method that is called to select Query by Acct, Service Order, Service or Command Functionality
+	 * @return True, if able to select; false if not able to select.
+	 */
 	public boolean select_QuerybyAcctServiceOrderServiceCommand() {
 		boolean passed = false;
 
@@ -88,7 +108,11 @@ public class ManageSwitchRequest {
 
 		return passed;
 	}
-
+	
+	/***
+	 * Method that is called to select General Query on New Requests Functionality
+	 * @return True, if able to select; false if not able to select.
+	 */
 	public boolean select_GeneralQueryOnNewRequests() {
 		boolean passed = false;
 
@@ -98,6 +122,10 @@ public class ManageSwitchRequest {
 		return passed;
 	}
 
+	/***
+	 * Method that is called to select Generate Switch Request Functionality
+	 * @return True, if able to select; false if not able to select.
+	 */
 	public boolean select_GenerateSwitchRequest() {
 		boolean passed = false;
 
@@ -106,7 +134,13 @@ public class ManageSwitchRequest {
 
 		return passed;
 	}
-
+	
+	/***
+	 * Method that is called to test Monitor New Switch Requests Functionality
+	 * @param employeeID The employee ID that needs to be selected
+	 * @param updatedWithinLast Update Within Last filter in hours:minutes format. '00:00'
+	 * @return
+	 */
 	public boolean MonitorNewSwitchRequests_Search(String employeeID, String updatedWithinLast) {
 		boolean passed = false;
 
