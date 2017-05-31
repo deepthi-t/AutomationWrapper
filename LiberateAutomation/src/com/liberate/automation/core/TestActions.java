@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.0.8";
+	public String classVersion = "0.1.0";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -134,8 +134,8 @@ public class TestActions {
 				Thread.sleep(200);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			handleException(e);
 		}
 
 		return true;
