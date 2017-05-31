@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.1.0";
+	public String classVersion = "0.1.1";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -125,13 +125,15 @@ public class TestActions {
 	public Boolean sendDateTo(By locator, String date) {
 		if (date.equals(""))
 			return true;
-
+		
+		clearField(locator);
+		
 		try {
 			char[] dateChars = date.toCharArray();
 
 			for (int i = 0; i < date.length(); i++) {
-				driver.findElement(locator).sendKeys(Character.toString(dateChars[0]));
-				Thread.sleep(200);
+				driver.findElement(locator).sendKeys(Character.toString(dateChars[i]));
+				Thread.sleep(100);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -398,8 +400,8 @@ public class TestActions {
 		}
 
 		// This snippet will get the Method name where the exception occurred.
-		String errorMethod = (e.getCause().getStackTrace()[0].getMethodName());
-		System.out.println(errorMethod);
+		//String errorMethod = (e.getCause().getStackTrace()[0].getMethodName());
+		//System.out.println(errorMethod);
 
 		// This code block with get the type of exception occurred and Handle
 		// it.
