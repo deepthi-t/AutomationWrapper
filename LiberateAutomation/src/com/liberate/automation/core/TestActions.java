@@ -17,13 +17,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions
 {
-	public String classVersion = "0.0.5"; 
+	public String classVersion = "0.0.6"; 
 	
 	Boolean retry = false;
 	int retryCount = 3;
 	int executionCount = 0;
 	
-	WebDriver driver = new ChromeDriver();
+	WebDriver driver = null;
 	
 	Select select = null;
 	
@@ -90,6 +90,8 @@ public class TestActions
 	 */
 	public Boolean sendDataTo(By locator, String data)
 	{
+		System.out.println(getXpath(locator));
+		
 		try
 		{
 			driver.findElement(locator).clear();
@@ -162,6 +164,9 @@ public class TestActions
 	 */
 	public Boolean SelectBy(By locator, String visibleText)
 	{
+		if(visibleText.equals(""))
+			return true;
+		
 		try 
 		{
 			select = new Select(driver.findElement(locator));
@@ -211,6 +216,19 @@ public class TestActions
 		}
 		
 		return true;
+	}
+	
+	public By waitForAny(By[] locators)
+	{
+		//TODO Complete this function
+		String waitElements = getXpath(locators[0]);
+		
+		for(int i = 0; i<locators.length; i++)
+		{
+			waitElements = waitElements + getXpath(locators[0]);
+		}
+		
+		return null;
 	}
 	
 	/**
@@ -307,7 +325,22 @@ public class TestActions
 		}
 		return screenshot;
 	}
-		
+	
+	public String getTestStatus(Boolean passed)
+	{
+		return ((passed)? "Passed" : "Failed");
+	}
+	
+	/***
+	 * Method called to get the xpath from By class object
+	 * @param locator The locator from which xpath needs to be retrieved.
+	 * @return The xpath locator as string. Returns "" if nothing found.
+	 */
+	private String getXpath(By locator)
+	{
+		return locator.toString().replace("By.xpath:", "").trim();
+	}
+	
 	/***
 	 * Method that is called to process and exception and take appropriate action.
 	 * @param e The exception object that is passed, for processing.
