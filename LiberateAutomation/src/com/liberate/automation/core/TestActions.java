@@ -90,7 +90,8 @@ public class TestActions
 	 */
 	public Boolean sendDataTo(By locator, String data)
 	{
-		System.out.println(getXpath(locator));
+		if (data.equals(""))
+			return true;
 		
 		try
 		{
