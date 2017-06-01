@@ -11,7 +11,7 @@ public class Main {
 		TestActions action = new TestActions();
 		action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
 		
-		SwitchRequest.generatQueryOnSwitchRequest(action);
+		SwitchRequest.queryByCustomerDetails(action);
 	}
 
 }

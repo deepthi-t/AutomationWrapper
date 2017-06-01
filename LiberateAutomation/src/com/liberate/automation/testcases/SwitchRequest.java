@@ -40,7 +40,7 @@ public class SwitchRequest {
 		login.login("libadmin", "Ic3cr34m!");
 		msr.navigate();
 		msr.select_QuerybyAcctServiceOrderServiceCommand();
-		msr.QueryByCustomerDetails("", "", "ZF00162", "");
+		msr.QueryByCustomerDetails("260002430000", "", "", "");
 		
 		return true;
 	}

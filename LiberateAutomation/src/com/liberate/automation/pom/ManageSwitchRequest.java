@@ -83,7 +83,9 @@ public class ManageSwitchRequest {
 		passed = action.clickOn(LiberateCommon.Orders.SwitchRequests);
 		passed = action.waitFor(LeftLink.SwitchRequests.ManageSwitchRequest, 4, true);
 		passed = action.clickOn(LeftLink.SwitchRequests.ManageSwitchRequest);
-
+		
+		action.getScreenShot(this.getClass().getName());
+		
 		return passed;
 	}
 
@@ -97,7 +99,9 @@ public class ManageSwitchRequest {
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
 		passed = action.SelectBy(QuerySwitchRequestDropdown, "Monitor New Switch Requests");
-
+		
+		action.getScreenShot(this.getClass().getName());
+		
 		return passed;
 	}
 
@@ -111,6 +115,8 @@ public class ManageSwitchRequest {
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
 		passed = action.SelectBy(QuerySwitchRequestDropdown, "Failure Queries");
+		
+		action.getScreenShot(this.getClass().getName());
 
 		return passed;
 	}
@@ -126,6 +132,8 @@ public class ManageSwitchRequest {
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
 		passed = action.SelectBy(QuerySwitchRequestDropdown, "Query by Acct, Service Order, Service or Command");
+		
+		action.getScreenShot(this.getClass().getName());
 
 		return passed;
 	}
@@ -140,6 +148,8 @@ public class ManageSwitchRequest {
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
 		passed = action.SelectBy(QuerySwitchRequestDropdown, "General Query on New Requests");
+		
+		action.getScreenShot(this.getClass().getName());
 
 		return passed;
 	}
@@ -154,6 +164,8 @@ public class ManageSwitchRequest {
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
 		passed = action.SelectBy(QuerySwitchRequestDropdown, "Generate Switch Request");
+		
+		action.getScreenShot(this.getClass().getName());
 
 		return passed;
 	}
@@ -186,6 +198,8 @@ public class ManageSwitchRequest {
 		passed = action.sendDataTo(UpdatedWithinLast_Input, updatedWithinLast);
 		passed = action.clickOn(SearchButton);
 
+		action.getScreenShot(this.getClass().getName());
+		
 		passed = verifyResults();
 
 		return passed;
@@ -226,8 +240,10 @@ public class ManageSwitchRequest {
 
 		passed = action.clickOn(SearchButton);
 
+		action.getScreenShot(this.getClass().getName());
+		
 		passed = verifyResults();
-
+		
 		return passed;
 	}
 
@@ -278,6 +294,8 @@ public class ManageSwitchRequest {
 
 		passed = action.clickOn(SearchButton);
 
+		action.getScreenShot(this.getClass().getName());
+		
 		passed = verifyResults();
 
 		return passed;
@@ -312,7 +330,9 @@ public class ManageSwitchRequest {
 		passed = action.SelectBy(Status_DropDown, Status);
 
 		passed = FailureQueries(SwitchID, Region, TargetExchangeID, DepartmentCode, StartDate, EndDate);
-		
+				
+		action.getScreenShot(this.getClass().getName());
+
 		passed = verifyResults();
 		
 		return passed;
@@ -334,6 +354,9 @@ public class ManageSwitchRequest {
 		System.out.println("Number of switch requests :" + countOfResults);
 
 		System.out.print(action.getTestStatus(passed));
+		
+		action.getScreenShot(this.getClass().getName());
+
 		return passed;
 	}
 }

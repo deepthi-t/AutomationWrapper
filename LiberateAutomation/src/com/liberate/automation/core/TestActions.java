@@ -3,6 +3,7 @@ package com.liberate.automation.core;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -22,6 +23,8 @@ public class TestActions {
 	int retryCount = 3;
 	int executionCount = 0;
 
+	int screenshotCount = 0;
+
 	WebDriver driver = null;
 
 	Select select = null;
@@ -31,6 +34,8 @@ public class TestActions {
 	 * inside class
 	 */
 	public TestActions() {
+		screenshotCount = 0;
+
 		System.setProperty("webdriver.chrome.driver", "Resources\\chromedriver.exe");
 		this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
@@ -125,9 +130,9 @@ public class TestActions {
 	public Boolean sendDateTo(By locator, String date) {
 		if (date.equals(""))
 			return true;
-		
+
 		clearField(locator);
-		
+
 		try {
 			char[] dateChars = date.toCharArray();
 
@@ -351,15 +356,18 @@ public class TestActions {
 	 * @return Returns the screenshot as a file, and 'null' if not able to take
 	 *         screenshot.
 	 */
-	public File getScreenShot() {
+	public File getScreenShot(String filename) {
+		screenshotCount = screenshotCount + 1;
+
 		File screenshot = null;
 		try {
 			screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		} catch (WebDriverException e) {
+			FileUtils.copyFile(screenshot, new File(filename + "_" + screenshotCount + ".png"));
+		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
-				getScreenShot();
+				getScreenShot(filename);
 			else
 				return null;
 		}
@@ -400,8 +408,9 @@ public class TestActions {
 		}
 
 		// This snippet will get the Method name where the exception occurred.
-		//String errorMethod = (e.getCause().getStackTrace()[0].getMethodName());
-		//System.out.println(errorMethod);
+		// String errorMethod =
+		// (e.getCause().getStackTrace()[0].getMethodName());
+		// System.out.println(errorMethod);
 
 		// This code block with get the type of exception occurred and Handle
 		// it.
