@@ -388,7 +388,23 @@ public class TestActions {
 	private String getXpath(By locator) {
 		return locator.toString().replace("By.xpath:", "").trim();
 	}
-
+	
+	/***
+	 * Method called to close current tab.
+	 */
+	public void closeTab()
+	{
+		driver.close();
+	}
+	
+	/***
+	 * Method called to quit current session.
+	 */
+	public void quit()
+	{
+		driver.quit();
+	}
+	
 	/***
 	 * Method that is called to process and exception and take appropriate
 	 * action.
