@@ -362,7 +362,7 @@ public class TestActions {
 		File screenshot = null;
 		try {
 			screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(screenshot, new File(filename + "_" + screenshotCount + ".png"));
+			FileUtils.copyFile(screenshot, new File("Screenshots//" + filename + "_" + screenshotCount + ".png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
