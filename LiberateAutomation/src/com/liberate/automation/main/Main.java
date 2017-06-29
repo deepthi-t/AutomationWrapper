@@ -1,16 +1,11 @@
 package com.liberate.automation.main;
 
-import com.liberate.automation.core.TestActions;
+import test.goIbibo;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		TestActions action = new TestActions();
-		
-		action.closeTab();
-		action.quit();
+		goIbibo.login();
 	}
-
 }

@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.1.1";
+	public String classVersion = "0.2.0";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -348,6 +348,43 @@ public class TestActions {
 
 		return option;
 	}
+	
+	/***
+	 * Method that can be called to switch to another frame in a web page.
+	 * @param locator The unique locator of the frame where the driver should switch to.
+	 * @return returns True, if able to switch else false.
+	 */
+	public Boolean switchToFrame(By locator) {
+		try {
+			driver.switchTo().frame(driver.findElement(locator));
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				switchToFrame(locator);
+			else
+				return false;
+		}
+		return true;
+	}
+
+	/***
+	 * Method that is called to switch to default frame in the page.
+	 * @return returns True, if able to switch else false.
+	 */
+	public Boolean switchBacktoMain() {
+		try {
+			driver.switchTo().defaultContent();
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				switchBacktoMain();
+			else
+				return false;
+		}
+		return true;
+	}
 
 	/***
 	 * Method that can be called to take Screenshot of the current page, where
@@ -388,23 +425,21 @@ public class TestActions {
 	private String getXpath(By locator) {
 		return locator.toString().replace("By.xpath:", "").trim();
 	}
-	
+
 	/***
 	 * Method called to close current tab.
 	 */
-	public void closeTab()
-	{
+	public void closeTab() {
 		driver.close();
 	}
-	
+
 	/***
 	 * Method called to quit current session.
 	 */
-	public void quit()
-	{
+	public void quit() {
 		driver.quit();
 	}
-	
+
 	/***
 	 * Method that is called to process and exception and take appropriate
 	 * action.
