@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,11 +14,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.2.0";
+	public String classVersion = "0.3.0";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -348,10 +351,13 @@ public class TestActions {
 
 		return option;
 	}
-	
+
 	/***
 	 * Method that can be called to switch to another frame in a web page.
-	 * @param locator The unique locator of the frame where the driver should switch to.
+	 * 
+	 * @param locator
+	 *            The unique locator of the frame where the driver should switch
+	 *            to.
 	 * @return returns True, if able to switch else false.
 	 */
 	public Boolean switchToFrame(By locator) {
@@ -370,6 +376,7 @@ public class TestActions {
 
 	/***
 	 * Method that is called to switch to default frame in the page.
+	 * 
 	 * @return returns True, if able to switch else false.
 	 */
 	public Boolean switchBacktoMain() {
@@ -477,5 +484,38 @@ public class TestActions {
 			System.out.println(e.getMessage());
 			return false;
 		}
+	}
+
+	public void foo(int i) {
+
+	}
+
+	/**
+	 * Method that can be called to wait till an element is available or not
+	 * available in page.
+	 * 
+	 * @param locator
+	 *            The locator of the element.
+	 * @param timeout
+	 *            The max wait time.
+	 * @param pooling
+	 *            The pooling time, will check on every interval based on
+	 *            pooling.
+	 * @param visilbility
+	 *            Indicator check whether to wait till element is available or
+	 *            not available. True - Wait till available, False - Wait till
+	 *            element not available.
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	public void waitByPolling(By locator, int timeout, int pooling, boolean visilbility) {
+		@SuppressWarnings("rawtypes")
+		Wait wait = new FluentWait(driver).withTimeout(timeout, TimeUnit.SECONDS)
+				.pollingEvery(pooling, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+		if (visilbility)
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+		else
+			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
 	}
 }
