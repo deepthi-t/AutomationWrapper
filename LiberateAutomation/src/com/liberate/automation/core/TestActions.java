@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,11 +14,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.1.1";
+	public String classVersion = "0.3.0";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -350,6 +353,47 @@ public class TestActions {
 	}
 
 	/***
+	 * Method that can be called to switch to another frame in a web page.
+	 * 
+	 * @param locator
+	 *            The unique locator of the frame where the driver should switch
+	 *            to.
+	 * @return returns True, if able to switch else false.
+	 */
+	public Boolean switchToFrame(By locator) {
+		try {
+			driver.switchTo().frame(driver.findElement(locator));
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				switchToFrame(locator);
+			else
+				return false;
+		}
+		return true;
+	}
+
+	/***
+	 * Method that is called to switch to default frame in the page.
+	 * 
+	 * @return returns True, if able to switch else false.
+	 */
+	public Boolean switchBacktoMain() {
+		try {
+			driver.switchTo().defaultContent();
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				switchBacktoMain();
+			else
+				return false;
+		}
+		return true;
+	}
+
+	/***
 	 * Method that can be called to take Screenshot of the current page, where
 	 * the driver is in.
 	 * 
@@ -362,7 +406,7 @@ public class TestActions {
 		File screenshot = null;
 		try {
 			screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(screenshot, new File(filename + "_" + screenshotCount + ".png"));
+			FileUtils.copyFile(screenshot, new File("Screenshots//" + filename + "_" + screenshotCount + ".png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -388,23 +432,21 @@ public class TestActions {
 	private String getXpath(By locator) {
 		return locator.toString().replace("By.xpath:", "").trim();
 	}
-	
+
 	/***
 	 * Method called to close current tab.
 	 */
-	public void closeTab()
-	{
+	public void closeTab() {
 		driver.close();
 	}
-	
+
 	/***
 	 * Method called to quit current session.
 	 */
-	public void quit()
-	{
+	public void quit() {
 		driver.quit();
 	}
-	
+
 	/***
 	 * Method that is called to process and exception and take appropriate
 	 * action.
@@ -442,5 +484,38 @@ public class TestActions {
 			System.out.println(e.getMessage());
 			return false;
 		}
+	}
+
+	public void foo(int i) {
+
+	}
+
+	/**
+	 * Method that can be called to wait till an element is available or not
+	 * available in page.
+	 * 
+	 * @param locator
+	 *            The locator of the element.
+	 * @param timeout
+	 *            The max wait time.
+	 * @param pooling
+	 *            The pooling time, will check on every interval based on
+	 *            pooling.
+	 * @param visilbility
+	 *            Indicator check whether to wait till element is available or
+	 *            not available. True - Wait till available, False - Wait till
+	 *            element not available.
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	public void waitByPolling(By locator, int timeout, int pooling, boolean visilbility) {
+		@SuppressWarnings("rawtypes")
+		Wait wait = new FluentWait(driver).withTimeout(timeout, TimeUnit.SECONDS)
+				.pollingEvery(pooling, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+		if (visilbility)
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+		else
+			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
 	}
 }
