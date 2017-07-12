@@ -221,8 +221,8 @@ public class ManageSwitchRequest {
 		passed = action.SelectBy(TargetExchangeID_DropDown, TargetExchangeID);
 		passed = action.SelectBy(DepartmentCode_DropDown, DepartmentCode);
 
-		passed = action.sendDateTo(StartDate_Input, StartDate);
-		passed = action.sendDateTo(EndDate_Input, EndDate);
+		passed = action.typeDataTo(StartDate_Input, StartDate);
+		passed = action.typeDataTo(EndDate_Input, EndDate);
 
 		passed = action.clickOn(SearchButton);
 

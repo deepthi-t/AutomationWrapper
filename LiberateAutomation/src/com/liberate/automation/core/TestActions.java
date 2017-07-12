@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.3.0";
+	public String classVersion = "0.3.1";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -120,8 +120,8 @@ public class TestActions {
 	}
 
 	/***
-	 * Method that can be called to send Data to a date field. Different from
-	 * sendDataTo as the field is validated on keypress and slow to accept
+	 * Method that can be called to send Data to a field. Used to send
+	 * Data to a field which is validated on keypress and slow to accept
 	 * input.
 	 * 
 	 * @param locator
@@ -130,7 +130,7 @@ public class TestActions {
 	 *            Date in format 'DD/MM/YYYY hh:mm'
 	 * @return
 	 */
-	public Boolean sendDateTo(By locator, String date) {
+	public Boolean typeDataTo(By locator, String date) {
 		if (date.equals(""))
 			return true;
 
