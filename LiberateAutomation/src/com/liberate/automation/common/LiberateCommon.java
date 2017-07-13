@@ -101,4 +101,45 @@ public class LiberateCommon
 		public static final By PaymentReferenceData = getSecondLevelLocator("Payment Reference Data");
 		public static final By PaymentsReports = getSecondLevelLocator("Payments Reports");
 	}
+
+	public static class CreditControl
+	{
+		public static final By CreditControl = getSecondLevelLocator("Credit Control");
+		public static final By DebtCollection = getSecondLevelLocator("Debt Collection");
+		public static final By CreditControlReferenceData = getSecondLevelLocator("Credit Control Reference Data");
+		public static final By DepositMaintenance = getSecondLevelLocator("Deposit Maintenance");
+		public static final By CreditControlReports = getSecondLevelLocator("Credit Control Reports");
+	}
+
+	public static class DirectoryEnquiries
+	{
+		public static final By DirectorySearch = getSecondLevelLocator("Directory Search");
+		public static final By DirectoryMaintenance = getSecondLevelLocator("Directory Maintenance");
+		public static final By DirectoryReports = getSecondLevelLocator("Directory Reports");
+	}
+
+	public static class ProductsPricing
+	{
+		public static final By Products = getSecondLevelLocator("Productsv");
+		public static final By PricingPlans = getSecondLevelLocator("Pricing Plans");
+		public static final By Prices = getSecondLevelLocator("Prices");
+		public static final By PricingReferenceData = getSecondLevelLocator("Pricing Reference Data");
+		public static final By EventRating = getSecondLevelLocator("Event Rating");
+		public static final By SpecialNumberSetup = getSecondLevelLocator("Special Number Set-up");
+		public static final By Comverse = getSecondLevelLocator("Comverse");
+		public static final By Meters = getSecondLevelLocator("Meters");
+		public static final By IAA = getSecondLevelLocator("IAA");
+		public static final By ProductandPricingReports = getSecondLevelLocator("Product and Pricing Reports");
+		public static final By IAAReports = getSecondLevelLocator("IAA Reports");
+		public static final By Ericsson = getSecondLevelLocator("Ericsson");
+	}
+
+	public static class Admin
+	{
+		public static By EmployeeAdministration = getSecondLevelLocator("Employee Administration");
+		public static By BUSetUp = getSecondLevelLocator("BU Set-Up");
+		public static By Otherdatasetup = getSecondLevelLocator("Other data set-up");
+		public static By WithdrawnItems = getSecondLevelLocator("Withdrawn Items");
+		
+	}
 }
