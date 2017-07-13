@@ -92,4 +92,13 @@ public class LiberateCommon
 		public static final By FinancialReferenceData = getSecondLevelLocator("Financial Reference Data");
 		public static final By BillingReports = getSecondLevelLocator("Billing Reports");
 	}
+
+	public static class Payments
+	{
+		public static final By Payments = getSecondLevelLocator("Payments");
+		public static final By POS = getSecondLevelLocator("POS");
+		public static final By PaymentsAdmin = getSecondLevelLocator("Payments Admin");
+		public static final By PaymentReferenceData = getSecondLevelLocator("Payment Reference Data");
+		public static final By PaymentsReports = getSecondLevelLocator("Payments Reports");
+	}
 }
