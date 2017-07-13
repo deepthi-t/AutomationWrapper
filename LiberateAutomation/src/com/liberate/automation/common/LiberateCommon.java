@@ -26,6 +26,17 @@ public class LiberateCommon
 		public static final By Reports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Reports']");
 	}
 	
+	public static class CustomerCare
+	{
+		public static final By Search = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Search')]]");
+		public static final By ServiceProvisioning = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Service Provisioning')]]");
+		public static final By MaintainQuery = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Maintain Query']");
+		public static final By AdditionalCustomerInformation = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Additional Customer Information']");
+		public static final By CustomerCareAdmin = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Customer Care Admin']");
+		public static final By CustomerCareReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Customer Care Reports']");
+		public static final By LIMELITE = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='LIME LITE']");
+	}
+	
 	public static class Orders
 	{
 		public static final By BrowseSO = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Browse SO']");
