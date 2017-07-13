@@ -49,4 +49,13 @@ public class LiberateCommon
 		public static final By OrderReferenceData = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Orders Reference Data')]]");
 		public static final By OrderReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Orders Reports')]]");
 	}
+
+	public static class Inventory
+	{
+		public static final By SimManagement = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='SIM Management']");
+		public static final By ManageMACInventory = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Manage MAC Inventory']");
+		public static final By ManageSmartCardInventory = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Manage Smart Card Inventory']");
+		public static final By SIMReferenceData = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='SIM Ref Data']");
+		public static final By InventoryReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Inventory Reports']");
+	}
 }
