@@ -4,6 +4,11 @@ import org.openqa.selenium.By;
 
 public class LiberateCommon
 {
+	private static By getSecondLevelLocator(String menuName)
+	{
+		return By.xpath("(//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'"+menuName+"')]])[1]");
+	}
+	
 	public static class LevelOne
 	{
 		public static final By Home = By.xpath("//div[@class='headermenu_row']/descendant::*[text()='Home']");
@@ -57,5 +62,34 @@ public class LiberateCommon
 		public static final By ManageSmartCardInventory = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Manage Smart Card Inventory']");
 		public static final By SIMReferenceData = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='SIM Ref Data']");
 		public static final By InventoryReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Inventory Reports']");
+	}
+
+	public static class Faults
+	{
+		public static final By Faults = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Faults']");
+		public static final By FaultsReferenceData = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Faults Reference Data']");
+		public static final By FaultsReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Faults Reports']");
+	}
+	
+	public static class Networks
+	{
+		public static final By NetworkEnquiries = getSecondLevelLocator("Network Enquiries");
+		public static final By NetworkMaintenance = getSecondLevelLocator("Network Maintenance");
+		public static final By ExchangeMaintenance = getSecondLevelLocator("Exchange Maintenance");
+		public static final By LineEquipmentMaintenance = getSecondLevelLocator("Line Equipment Maintenance");
+		public static final By NumberManagement = getSecondLevelLocator("Number Management");
+		public static final By NetworkReferenceData = getSecondLevelLocator("Network Reference Data");
+		public static final By NetworkReports = getSecondLevelLocator("Network Reports");
+	}
+
+	public static class BillingEventProcessing
+	{
+		public static final By EventProcessing = getSecondLevelLocator("Event Processing(D176)");
+		public static final By EnterBillCharges = getSecondLevelLocator("Enter Bill Charges");
+		public static final By Billing = getSecondLevelLocator("Billing");
+		public static final By SuspenseManagement = getSecondLevelLocator("Suspense Management");
+		public static final By BillingReferenceData = getSecondLevelLocator("Billing Reference Data");
+		public static final By FinancialReferenceData = getSecondLevelLocator("Financial Reference Data");
+		public static final By BillingReports = getSecondLevelLocator("Billing Reports");
 	}
 }
