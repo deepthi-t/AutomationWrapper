@@ -29,6 +29,13 @@ public class LiberateCommon
 	public static class Orders
 	{
 		public static final By BrowseSO = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Browse SO']");
+		public static final By ManageServiceOrder = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Manage Service Order']");
+		public static final By WaitlistEnquiry = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Waitlist Enquiry')]]");
+		public static final By WorkAssignmentManagement = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Work Assignment Management')]]");
+		public static final By ServiceOrderApproval = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Service Order Approval')]]");
 		public static final By SwitchRequests = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Switch Requests']");
+		public static final By RouteMaintenance = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Route Maintenance')]]");
+		public static final By OrderReferenceData = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Orders Reference Data')]]");
+		public static final By OrderReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Orders Reports')]]");
 	}
 }
