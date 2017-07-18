@@ -37,9 +37,9 @@ public class SwitchRequest {
 		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
 		assertEquals(msr.navigate(),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
-		assertEquals(msr.select_MonitorNewSwitchRequests(),true);
+		assertEquals(msr.selectMonitorNewSwitchRequests(),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
-		assertEquals(msr.MonitorNewSwitchRequests_Search("99999", "23:30"),true);
+		assertEquals(msr.monitorNewSwitchRequests_Search("99999", "23:30"),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
 		assertEquals(msr.verifyResults(),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
@@ -54,9 +54,9 @@ public class SwitchRequest {
 		action.getScreenShot("FailureQueries");
 		assertEquals(msr.navigate(),true);
 		action.getScreenShot("FailureQueries");
-		assertEquals(msr.select_FailureQueries(),true);
+		assertEquals(msr.selectFailureQueries(),true);
 		action.getScreenShot("FailureQueries");
-		assertEquals(msr.FailureQueries("FLOW-FLOW TV Gateway Interface", "CAY-Cayman Islands Region", "FLOW-FLOW", "",
+		assertEquals(msr.failureQueries("FLOW-FLOW TV Gateway Interface", "CAY-Cayman Islands Region", "FLOW-FLOW", "",
 				"31/05/2015 03:15", "31/05/2017 03:15"),true);
 		action.getScreenShot("FailureQueries");
 		assertEquals(msr.verifyResults(),true);
@@ -74,9 +74,9 @@ public class SwitchRequest {
 		action.getScreenShot("queryByCustomerDetails_AccountNumber");
 		assertEquals(msr.navigate(),true);
 		action.getScreenShot("queryByCustomerDetails_AccountNumber");
-		assertEquals(msr.select_QuerybyAcctServiceOrderServiceCommand(),true);
+		assertEquals(msr.selectQuerybyAcctServiceOrderServiceCommand(),true);
 		action.getScreenShot("queryByCustomerDetails_AccountNumber");
-		assertEquals(msr.QueryByCustomerDetails("260002430000", "", "", ""),true);
+		assertEquals(msr.queryByCustomerDetails("260002430000", "", "", ""),true);
 		action.getScreenShot("queryByCustomerDetails_AccountNumber");
 		assertEquals(msr.verifyResults(),true);
 		action.getScreenShot("queryByCustomerDetails_AccountNumber");
@@ -92,9 +92,9 @@ public class SwitchRequest {
 		action.getScreenShot("MonitorNewSwitchRequest");
 		assertEquals(msr.navigate(),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
-		assertEquals(msr.select_GeneralQueryOnNewRequests(),true);
+		assertEquals(msr.selectGeneralQueryOnNewRequests(),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
-		assertEquals(msr.GeneralQUery("C-Complete", "FLOW-FLOW TV Gateway Interface", "CAY-Cayman Islands Region", "FLOW-FLOW", "",
+		assertEquals(msr.generalQUery("C-Complete", "FLOW-FLOW TV Gateway Interface", "CAY-Cayman Islands Region", "FLOW-FLOW", "",
 				"31/05/2015 03:15", "31/05/2017 03:15"),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
 		assertEquals(msr.verifyResults(),true);

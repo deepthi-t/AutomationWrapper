@@ -92,11 +92,11 @@ public class ManageSwitchRequest {
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean select_MonitorNewSwitchRequests() {
+	public boolean selectMonitorNewSwitchRequests() {
 		boolean passed = false;
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
-		passed = action.SelectBy(QuerySwitchRequestDropdown, "Monitor New Switch Requests");
+		passed = action.selectBy(QuerySwitchRequestDropdown, "Monitor New Switch Requests");
 
 		return passed;
 	}
@@ -106,11 +106,11 @@ public class ManageSwitchRequest {
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean select_FailureQueries() {
+	public boolean selectFailureQueries() {
 		boolean passed = false;
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
-		passed = action.SelectBy(QuerySwitchRequestDropdown, "Failure Queries");
+		passed = action.selectBy(QuerySwitchRequestDropdown, "Failure Queries");
 
 		return passed;
 	}
@@ -121,11 +121,11 @@ public class ManageSwitchRequest {
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean select_QuerybyAcctServiceOrderServiceCommand() {
+	public boolean selectQuerybyAcctServiceOrderServiceCommand() {
 		boolean passed = false;
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
-		passed = action.SelectBy(QuerySwitchRequestDropdown, "Query by Acct, Service Order, Service or Command");
+		passed = action.selectBy(QuerySwitchRequestDropdown, "Query by Acct, Service Order, Service or Command");
 
 		return passed;
 	}
@@ -135,11 +135,11 @@ public class ManageSwitchRequest {
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean select_GeneralQueryOnNewRequests() {
+	public boolean selectGeneralQueryOnNewRequests() {
 		boolean passed = false;
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
-		passed = action.SelectBy(QuerySwitchRequestDropdown, "General Query on New Requests");
+		passed = action.selectBy(QuerySwitchRequestDropdown, "General Query on New Requests");
 
 		return passed;
 	}
@@ -149,11 +149,11 @@ public class ManageSwitchRequest {
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean select_GenerateSwitchRequest() {
+	public boolean selectGenerateSwitchRequest() {
 		boolean passed = false;
 
 		passed = action.waitFor(QuerySwitchRequestDropdown, 4, true);
-		passed = action.SelectBy(QuerySwitchRequestDropdown, "Generate Switch Request");
+		passed = action.selectBy(QuerySwitchRequestDropdown, "Generate Switch Request");
 
 		return passed;
 	}
@@ -167,7 +167,7 @@ public class ManageSwitchRequest {
 	 *            Update Within Last filter in hours:minutes format. '00:00'
 	 * @return True if the test step passed. Else will return false.
 	 */
-	public boolean MonitorNewSwitchRequests_Search(String employeeID, String updatedWithinLast) {
+	public boolean monitorNewSwitchRequests_Search(String employeeID, String updatedWithinLast) {
 		boolean passed = false;
 
 		passed = action.waitFor(MonitorNewSwitchRequests_ColumnHeader, 4, true);
@@ -177,11 +177,11 @@ public class ManageSwitchRequest {
 			passed = action.sendDataTo(EmployeeNameID_Input, employeeID);
 			passed = action.clickOn(EmployeeNameID_SearchButton);
 			passed = action.waitFor(2);
-			passed = action.SelectBy(EmployeeNameID_DropDown, 1);
+			passed = action.selectBy(EmployeeNameID_DropDown, 1);
 		}
 
 		if (!monitorSwitchReq_Status.equals(""))
-			passed = action.SelectBy(Status_DropDown, monitorSwitchReq_Status);
+			passed = action.selectBy(Status_DropDown, monitorSwitchReq_Status);
 
 		passed = action.sendDataTo(UpdatedWithinLast_Input, updatedWithinLast);
 		passed = action.clickOn(SearchButton);
@@ -210,16 +210,16 @@ public class ManageSwitchRequest {
 	 *            hh:mm" format. For example:'31/05/2017 03:15'
 	 * @return True if the test step passed. Else will return false.
 	 */
-	public boolean FailureQueries(String switchID, String Region, String TargetExchangeID, String DepartmentCode,
+	public boolean failureQueries(String switchID, String Region, String TargetExchangeID, String DepartmentCode,
 			String StartDate, String EndDate) {
 		boolean passed = false;
 
 		passed = action.waitFor(FailureQueries_ColumnHeader, 4, true);
 		passed = action.waitFor(SwitchID_DropDown, 3, true);
-		passed = action.SelectBy(SwitchID_DropDown, switchID);
-		passed = action.SelectBy(Region_DropDown, "");
-		passed = action.SelectBy(TargetExchangeID_DropDown, TargetExchangeID);
-		passed = action.SelectBy(DepartmentCode_DropDown, DepartmentCode);
+		passed = action.selectBy(SwitchID_DropDown, switchID);
+		passed = action.selectBy(Region_DropDown, "");
+		passed = action.selectBy(TargetExchangeID_DropDown, TargetExchangeID);
+		passed = action.selectBy(DepartmentCode_DropDown, DepartmentCode);
 
 		passed = action.typeDataTo(StartDate_Input, StartDate);
 		passed = action.typeDataTo(EndDate_Input, EndDate);
@@ -246,7 +246,7 @@ public class ManageSwitchRequest {
 	 *            Command Number than needs to be searched with.
 	 * @return True if the test step passed. Else will return false.
 	 */
-	public boolean QueryByCustomerDetails(String AccountNumber, String ServiceNumber, String ServiceOrderNumber,
+	public boolean queryByCustomerDetails(String AccountNumber, String ServiceNumber, String ServiceOrderNumber,
 			String CommandNumber) {
 		boolean passed = false;
 
@@ -302,14 +302,14 @@ public class ManageSwitchRequest {
 	 *            hh:mm" format. For example:'31/05/2017 03:15'
 	 * @return True if the test step passed. Else will return false.
 	 */
-	public boolean GeneralQUery(String Status, String SwitchID, String Region, String TargetExchangeID,
+	public boolean generalQUery(String Status, String SwitchID, String Region, String TargetExchangeID,
 			String DepartmentCode, String StartDate, String EndDate) {
 		boolean passed = false;
 
 		passed = action.waitFor(Status_DropDown, 3, true);
-		passed = action.SelectBy(Status_DropDown, Status);
+		passed = action.selectBy(Status_DropDown, Status);
 
-		passed = FailureQueries(SwitchID, Region, TargetExchangeID, DepartmentCode, StartDate, EndDate);
+		passed = failureQueries(SwitchID, Region, TargetExchangeID, DepartmentCode, StartDate, EndDate);
 
 		return passed;
 	}
