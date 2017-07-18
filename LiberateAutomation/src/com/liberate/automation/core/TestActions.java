@@ -186,7 +186,7 @@ public class TestActions {
 	 * @return Returns true, if able to select the provided index from the
 	 *         provided element in WebPage
 	 */
-	public Boolean SelectBy(By locator, int index) {
+	public Boolean selectBy(By locator, int index) {
 		try {
 			select = new Select(driver.findElement(locator));
 			select.selectByIndex(index);
@@ -194,7 +194,7 @@ public class TestActions {
 			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
-				SelectBy(locator, index);
+				selectBy(locator, index);
 			else
 				return false;
 		}
@@ -212,7 +212,7 @@ public class TestActions {
 	 * @return Returns true, if able to select the provided Text from the
 	 *         provided element in WebPage
 	 */
-	public Boolean SelectBy(By locator, String visibleText) {
+	public Boolean selectBy(By locator, String visibleText) {
 		if (visibleText.equals(""))
 			return true;
 
@@ -223,7 +223,7 @@ public class TestActions {
 			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
-				SelectBy(locator, visibleText);
+				selectBy(locator, visibleText);
 			else
 				return false;
 		}
@@ -484,10 +484,6 @@ public class TestActions {
 			System.out.println(e.getMessage());
 			return false;
 		}
-	}
-
-	public void foo(int i) {
-
 	}
 
 	/**
