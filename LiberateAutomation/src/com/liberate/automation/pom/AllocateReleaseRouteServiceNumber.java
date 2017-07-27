@@ -2,7 +2,7 @@ package com.liberate.automation.pom;
 
 import org.openqa.selenium.By;
 
-public class Allocate_Release_Route_Service_Number {
+public class AllocateReleaseRouteServiceNumber {
 	//main heading
 	By OrdersHeading = By.xpath("//*[text ( ) = 'Orders']");
 	//sub heading
