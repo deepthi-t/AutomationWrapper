@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.3.1";
+	public String classVersion = "0.4.0";
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -350,6 +350,28 @@ public class TestActions {
 		}
 
 		return option;
+	}
+	
+	/***
+	 * Method called to get text from page based on locator 
+	 * @param locator The locator from which the text should be taken.
+	 * @return Returns the text
+	 */
+	public String getTextFromPage(By locator) {
+		String text = "";
+
+		try {
+			text = driver.findElement(locator).getText();
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				getTextFromPage(locator);
+			else
+				return "";
+		}
+
+		return text;
 	}
 
 	/***
