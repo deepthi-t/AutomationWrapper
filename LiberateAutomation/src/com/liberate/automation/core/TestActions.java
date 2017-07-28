@@ -501,6 +501,7 @@ public class TestActions {
 			return false;
 		} else if (e instanceof WebDriverException) {
 			waitFor(1);
+			clickOn(By.xpath("//input[@value='OK']"));
 			return true;
 		} else {
 			System.out.println(e.getMessage());
