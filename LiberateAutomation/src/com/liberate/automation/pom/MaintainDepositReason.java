@@ -76,7 +76,8 @@ public class MaintainDepositReason
 		passed = action.clickOn(LiberateCommon.LevelOne.CreditControl);
 		passed = action.waitFor(LiberateCommon.CreditControl.DepositMaintenance, 4, true);
 		passed = action.clickOn(LiberateCommon.CreditControl.DepositMaintenance);
-		passed = action.clickOn(LeftLink.SwitchRequests.ManageSwitchRequest);
+		passed = action.waitFor(LeftLink.DepositMaintenance.MaintainDepositReason, 4, true);
+		passed = action.clickOn(LeftLink.DepositMaintenance.MaintainDepositReason);
 
 		return passed;
 	}

@@ -607,7 +607,7 @@ public class LeftLink {
 		public static final By MaintainBadDebtProvisionRules = getLeftLink("Maintain Bad Debt Provision Rules");
 	}
 
-	public static class Maintenance {
+	public static class DepositMaintenance {
 		public static final By MaintainDepositInformation = getLeftLink("Maintain Deposit Information");
 		public static final By MaintainDepositInterestRates = getLeftLink("Maintain Deposit Interest Rates");
 		public static final By MaintainDepositReason = getLeftLink("Maintain Deposit Reason");
