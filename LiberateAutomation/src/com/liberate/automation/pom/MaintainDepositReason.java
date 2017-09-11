@@ -89,10 +89,10 @@ public class MaintainDepositReason
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean NewButtonMaintainDR() {
+	public boolean clickNewButton() {
 		boolean passed = false;
 
-		passed = action.waitFor(Acceptbutton, 4, true);
+		passed = action.waitFor(NewButton, 4, true);
 		passed = action.clickOn(NewButton);
 
 		return passed;
@@ -104,7 +104,7 @@ public class MaintainDepositReason
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean MaintainDepositReasonNew(String DepositReasonCode, String Description, String InterestToBeCreditedToCustomersBill,
+	public boolean maintainDepositReason_CreateNew(String DepositReasonCode, String Description, String InterestToBeCreditedToCustomersBill,
 	String NoofMonthsOverWhichDepositIsRefunded) {
 		boolean passed = false;
 		
@@ -131,7 +131,7 @@ public class MaintainDepositReason
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean AcceptButton() {
+	public boolean acceptButton() {
 		boolean passed = false;
 		
 		passed = action.waitFor(Acceptbutton, 4, true);
@@ -146,7 +146,7 @@ public class MaintainDepositReason
 	 * 
 	 * @return True, if able to select; false if not able to select.
 	 */
-	public boolean CancelButton() {
+	public boolean cancelButton() {
 		boolean passed = false;
 		
 		passed = action.waitFor(CancelButton, 4, true);
