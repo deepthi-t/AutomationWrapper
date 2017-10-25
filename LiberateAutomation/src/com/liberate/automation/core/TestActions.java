@@ -121,7 +121,7 @@ public class TestActions {
 
 	/***
 	 * Method that can be called to send Data to a field. Used to send
-	 * Data to a field which is validated on keypress and slow to accept
+	 * Data to a field which is validated on key-press and slow to accept
 	 * input.
 	 * 
 	 * @param locator
