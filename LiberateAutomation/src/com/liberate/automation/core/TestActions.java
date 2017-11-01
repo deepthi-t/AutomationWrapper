@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -532,5 +533,11 @@ public class TestActions {
 			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
 		else
 			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
+	}
+		
+	public void scroll(int scrollamount)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0, "+ scrollamount +")", "");
 	}
 }
