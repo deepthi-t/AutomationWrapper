@@ -2,7 +2,6 @@ package com.liberate.automation.pom;
 
 import org.openqa.selenium.By;
 
-
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
