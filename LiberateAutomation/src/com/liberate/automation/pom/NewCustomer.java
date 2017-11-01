@@ -57,6 +57,8 @@ public class NewCustomer
 	By LocalAccountType_Select = By.xpath("//*[text()='Local Account Type:']/following::select[1]");
 	
 	//CustomerDetails - Billing Address
+	By AddressType_DropDown = By.xpath("//*[text()='Address Type:']/following::select[1]");
+	
 	
 	
 	public void fillResidentialCustomerDetails()
