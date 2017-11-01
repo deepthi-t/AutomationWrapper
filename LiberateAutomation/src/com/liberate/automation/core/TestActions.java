@@ -466,6 +466,49 @@ public class TestActions {
 		driver.quit();
 	}
 
+	/**
+	 * Method that can be called to wait till an element is available or not
+	 * available in page.
+	 * 
+	 * @param locator
+	 *            The locator of the element.
+	 * @param timeout
+	 *            The max wait time.
+	 * @param pooling
+	 *            The pooling time, will check on every interval based on pooling.
+	 * @param visilbility
+	 *            Indicator check whether to wait till element is available or not
+	 *            available. True - Wait till available, False - Wait till element
+	 *            not available.
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	public void waitByPolling(By locator, int timeout, int pooling, boolean visilbility) {
+		@SuppressWarnings("rawtypes")
+		Wait wait = new FluentWait(driver).withTimeout(timeout, TimeUnit.SECONDS)
+				.pollingEvery(pooling, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+		if (visilbility)
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+		else
+			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
+	}
+	
+	/***
+	 * This Method scrolls the Web document by the specified number of pixels.
+	 * @param verticalScrollAmount
+	 * 
+	 * How many pixels to scroll by, along the x-axis (horizontal). Positive values will scroll to the right, while negative values will scroll to the left
+	 * 
+	 * @param horizontalScrollAmount
+	 * 
+	 * How many pixels to scroll by, along the y-axis (vertical). Positive values will scroll down, while negative values scroll up
+	 */
+	public void scroll(int verticalScrollAmount, int horizontalScrollAmount) {
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("window.scrollBy(" + verticalScrollAmount + ", " + verticalScrollAmount + ")", "");
+	}
+
 	/***
 	 * Method that is called to process and exception and take appropriate action.
 	 * 
@@ -505,39 +548,5 @@ public class TestActions {
 			System.out.println(e.getMessage());
 			return false;
 		}
-	}
-
-	/**
-	 * Method that can be called to wait till an element is available or not
-	 * available in page.
-	 * 
-	 * @param locator
-	 *            The locator of the element.
-	 * @param timeout
-	 *            The max wait time.
-	 * @param pooling
-	 *            The pooling time, will check on every interval based on pooling.
-	 * @param visilbility
-	 *            Indicator check whether to wait till element is available or not
-	 *            available. True - Wait till available, False - Wait till element
-	 *            not available.
-	 * 
-	 */
-	@SuppressWarnings("unchecked")
-	public void waitByPolling(By locator, int timeout, int pooling, boolean visilbility) {
-		@SuppressWarnings("rawtypes")
-		Wait wait = new FluentWait(driver).withTimeout(timeout, TimeUnit.SECONDS)
-				.pollingEvery(pooling, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-
-		if (visilbility)
-			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
-		else
-			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
-	}
-		
-	public void scroll(int scrollamount)
-	{
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("window.scrollBy(0, "+ scrollamount +")", "");
 	}
 }
