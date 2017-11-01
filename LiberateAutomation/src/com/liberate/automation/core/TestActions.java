@@ -33,8 +33,8 @@ public class TestActions {
 	Select select = null;
 
 	/**
-	 * Default constructor, which will also create and instance of WebDriver
-	 * inside class
+	 * Default constructor, which will also create and instance of WebDriver inside
+	 * class
 	 */
 	public TestActions() {
 		screenshotCount = 0;
@@ -72,8 +72,7 @@ public class TestActions {
 	 * 
 	 * @param locator
 	 *            Identifies the element which needs to be clicked.
-	 * @return Return true, if able to click on the element, else will return
-	 *         false.
+	 * @return Return true, if able to click on the element, else will return false.
 	 */
 	public Boolean clickOn(By locator) {
 		try {
@@ -97,8 +96,8 @@ public class TestActions {
 	 *            Identifies the element which the data needs to be sent.
 	 * @param data
 	 *            Data than needs to be sent
-	 * @return Return true, if able to sent data to the provided field, else
-	 *         will return false.
+	 * @return Return true, if able to sent data to the provided field, else will
+	 *         return false.
 	 */
 	public Boolean sendDataTo(By locator, String data) {
 		if (data.equals(""))
@@ -120,9 +119,8 @@ public class TestActions {
 	}
 
 	/***
-	 * Method that can be called to send Data to a field. Used to send
-	 * Data to a field which is validated on key-press and slow to accept
-	 * input.
+	 * Method that can be called to send Data to a field. Used to send Data to a
+	 * field which is validated on key-press and slow to accept input.
 	 * 
 	 * @param locator
 	 *            Identifies the element which the data needs to be sent.
@@ -157,8 +155,7 @@ public class TestActions {
 	 * 
 	 * @param locator
 	 *            Identifies the element that needs to be cleared
-	 * @return Returns true, if able to clear the Field, or else will return
-	 *         false.
+	 * @return Returns true, if able to clear the Field, or else will return false.
 	 */
 	public Boolean clearField(By locator) {
 		try {
@@ -176,15 +173,15 @@ public class TestActions {
 	}
 
 	/**
-	 * Method that can be called to select a value from a DropDown based on
-	 * index value provided.
+	 * Method that can be called to select a value from a DropDown based on index
+	 * value provided.
 	 * 
 	 * @param locator
 	 *            Identifies the drop down element.
 	 * @param index
 	 *            The index of the value that needs to be selected.
-	 * @return Returns true, if able to select the provided index from the
-	 *         provided element in WebPage
+	 * @return Returns true, if able to select the provided index from the provided
+	 *         element in WebPage
 	 */
 	public Boolean selectBy(By locator, int index) {
 		try {
@@ -202,15 +199,15 @@ public class TestActions {
 	}
 
 	/**
-	 * Method that can be called to select a value from a DropDown based on the
-	 * text available in the drop down.
+	 * Method that can be called to select a value from a DropDown based on the text
+	 * available in the drop down.
 	 * 
 	 * @param locator
 	 *            Identifies the drop down element.
 	 * @param index
 	 *            The Text of the value that needs to be selected.
-	 * @return Returns true, if able to select the provided Text from the
-	 *         provided element in WebPage
+	 * @return Returns true, if able to select the provided Text from the provided
+	 *         element in WebPage
 	 */
 	public Boolean selectBy(By locator, String visibleText) {
 		if (visibleText.equals(""))
@@ -236,16 +233,15 @@ public class TestActions {
 	 * available based of parameter 'visibility'.
 	 * 
 	 * @param locator
-	 *            The visibility of element that needs to be considered for
-	 *            waiting.
+	 *            The visibility of element that needs to be considered for waiting.
 	 * @param seconds
 	 *            Maximum time in seconds, waited for before throwing timeout
 	 *            exception.
 	 * @param visibility
-	 *            True : Wait till element is available, False : Wait till
-	 *            element is not available.
-	 * @return Returns true, when able to wait for element visibility
-	 *         successfully, false if exception is thrown.
+	 *            True : Wait till element is available, False : Wait till element
+	 *            is not available.
+	 * @return Returns true, when able to wait for element visibility successfully,
+	 *         false if exception is thrown.
 	 */
 	public Boolean waitFor(By locator, int seconds, Boolean visibility) {
 		WebDriverWait wait = new WebDriverWait(driver, seconds);
@@ -301,8 +297,7 @@ public class TestActions {
 	}
 
 	/**
-	 * Method that can be called to get the count of passed Element in the
-	 * WebPage.
+	 * Method that can be called to get the count of passed Element in the WebPage.
 	 * 
 	 * @param locator
 	 *            The element that needs to be counted.
@@ -331,8 +326,8 @@ public class TestActions {
 	 * 
 	 * @param locator
 	 *            The locator from which the selected value should be retrieved.
-	 * @return Returns the selected option as String. Returns '' if the nothing
-	 *         is selected or failed to get the value from the locator.
+	 * @return Returns the selected option as String. Returns '' if the nothing is
+	 *         selected or failed to get the value from the locator.
 	 */
 	public String getSelectedOption(By locator) {
 		String option = "";
@@ -351,10 +346,12 @@ public class TestActions {
 
 		return option;
 	}
-	
+
 	/***
-	 * Method called to get text from page based on locator 
-	 * @param locator The locator from which the text should be taken.
+	 * Method called to get text from page based on locator
+	 * 
+	 * @param locator
+	 *            The locator from which the text should be taken.
 	 * @return Returns the text
 	 */
 	public String getTextFromPage(By locator) {
@@ -378,8 +375,7 @@ public class TestActions {
 	 * Method that can be called to switch to another frame in a web page.
 	 * 
 	 * @param locator
-	 *            The unique locator of the frame where the driver should switch
-	 *            to.
+	 *            The unique locator of the frame where the driver should switch to.
 	 * @return returns True, if able to switch else false.
 	 */
 	public Boolean switchToFrame(By locator) {
@@ -416,8 +412,8 @@ public class TestActions {
 	}
 
 	/***
-	 * Method that can be called to take Screenshot of the current page, where
-	 * the driver is in.
+	 * Method that can be called to take Screenshot of the current page, where the
+	 * driver is in.
 	 * 
 	 * @return Returns the screenshot as a file, and 'null' if not able to take
 	 *         screenshot.
@@ -470,13 +466,12 @@ public class TestActions {
 	}
 
 	/***
-	 * Method that is called to process and exception and take appropriate
-	 * action.
+	 * Method that is called to process and exception and take appropriate action.
 	 * 
 	 * @param e
 	 *            The exception object that is passed, for processing.
-	 * @return Returns true, if the step can be retried. Else will return false,
-	 *         can can stop execution.
+	 * @return Returns true, if the step can be retried. Else will return false, can
+	 *         can stop execution.
 	 */
 	private boolean handleException(Exception e) {
 		// This code block checks how many times the step is executed. If >
@@ -501,7 +496,9 @@ public class TestActions {
 			return false;
 		} else if (e instanceof WebDriverException) {
 			waitFor(1);
-			clickOn(By.xpath("//input[@value='OK']"));
+			if (countOf(By.xpath("//input[@value='OK']")) > 0) {
+				clickOn(By.xpath("//input[@value='OK']"));
+			}
 			return true;
 		} else {
 			System.out.println(e.getMessage());
@@ -518,12 +515,11 @@ public class TestActions {
 	 * @param timeout
 	 *            The max wait time.
 	 * @param pooling
-	 *            The pooling time, will check on every interval based on
-	 *            pooling.
+	 *            The pooling time, will check on every interval based on pooling.
 	 * @param visilbility
-	 *            Indicator check whether to wait till element is available or
-	 *            not available. True - Wait till available, False - Wait till
-	 *            element not available.
+	 *            Indicator check whether to wait till element is available or not
+	 *            available. True - Wait till available, False - Wait till element
+	 *            not available.
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
