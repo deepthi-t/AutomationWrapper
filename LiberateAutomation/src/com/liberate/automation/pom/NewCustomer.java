@@ -28,6 +28,9 @@ public class NewCustomer
 	By CustomerType_DropDown = By.xpath("//*[text()='Customer Type:']/./following::select[1]");
 	By ServiceType_DropDown = By.xpath("//*[text()='Service Type:']/./following::select[1]");
 	By ProductCode_Input = By.xpath("//*[text()='Product Code:']/./following::input[1]");
+	By ServiceTypeBoth_CheckBox = By.xpath("//*[text()='Both']//preceding::input[1]");
+	By ServiceTypePrepaid_CheckBox = By.xpath("//*[text()='PrePaid']//preceding::input[1]"); 
+	By ServiceTypePostPaid_CheckBox = By.xpath("//*[text()='PostPaid']//preceding::input[1]");
 	By SericePackage_DropDown = By.xpath("//*[text()='Service Package:']/./following::select[1]");
 	
 	By Reset_Button = By.xpath("//input[@value='Reset']");
@@ -90,6 +93,11 @@ public class NewCustomer
 	By MobileNumber2_Input = By.xpath("(//*[text()='Mobile Number 1']/following::input)[2]");
 	By MobileNumber2_CheckBox = By.xpath("(//*[text()='Mobile Number 1']/following::input[@class='iceSelBoolChkbx'])[2]");
 	By ContactAccept_Button = By.xpath("//input[@value='Accept']");
+	
+	public void fillApplicationDetails()
+	{
+		
+	}
 	
 	public void fillResidentialCustomerDetails()
 	{
