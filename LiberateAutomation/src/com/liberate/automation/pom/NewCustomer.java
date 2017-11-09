@@ -12,7 +12,11 @@ public class NewCustomer
 	{
 		this.action = action;
 	}
-	
+	//Common
+	By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
+	By Next_Button = By.xpath("(//input[@value='Next>>'])[2]");
+	By ContactConfirm_Button = By.xpath("(//input[@value='Confirm'])[2]");
+
 	//Application Form
 	By ApplicationDetails_ColumnHeader = By.xpath("//div[@class='icePnlClpsblHdr singletabcollapsiblepanelHdr']/descendant::*[text()='Application Details']");
 	By ServicePackageDetails_ColumnHeader = By.xpath("//div[@class='icePnlClpsblHdr singletabcollapsiblepanelHdr']/descendant::*[text()='Service Package Details (Optional)']");
@@ -27,7 +31,6 @@ public class NewCustomer
 	By SericePackage_DropDown = By.xpath("//*[text()='Service Package:']/./following::select[1]");
 	
 	By Reset_Button = By.xpath("//input[@value='Reset']");
-	By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
 	
 	//CustomerDetails - Customer Information
 	By Salutation_Dropdown = By.xpath("//*[text()='Salutation:']/following::select[1]");
@@ -76,12 +79,29 @@ public class NewCustomer
 	By CustomerID_DropDown = By.xpath("//*[text()='ID:']/following::select[1]");
 	By CustomerID_Input = By.xpath("(//*[text()='ID:']/following::input)[1]"); //Wait till enabled
 	
+	
+	//Contact Information
+	By ContactName_Input = By.xpath("(//*[text()='Contact Name:']/following::input)[1]");
+	//Use same Address Type
+	By ContactHomeNumber_input = By.xpath("(//*[text()='Home Number']/following::input)[1]");
+	By ContactHomeNumber_CheckBox = By.xpath("(//*[text()='Mobile Number 2']/following::input[@class='iceSelBoolChkbx'])[1]");
+	By MobileNumber1_Input = By.xpath("(//*[text()='Mobile Number 1']/following::input)[1]");
+	By MobileNumber1_CheckBox = By.xpath("(//*[text()='Mobile Number 1']/following::input[@class='iceSelBoolChkbx'])[1]");
+	By MobileNumber2_Input = By.xpath("(//*[text()='Mobile Number 1']/following::input)[2]");
+	By MobileNumber2_CheckBox = By.xpath("(//*[text()='Mobile Number 1']/following::input[@class='iceSelBoolChkbx'])[2]");
+	By ContactAccept_Button = By.xpath("//input[@value='Accept']");
+	
 	public void fillResidentialCustomerDetails()
 	{
 		
 	}
 	
 	public void fillBusinessCustomerDetails()
+	{
+		
+	}
+	
+	public void fillStandardAddress()
 	{
 		
 	}
