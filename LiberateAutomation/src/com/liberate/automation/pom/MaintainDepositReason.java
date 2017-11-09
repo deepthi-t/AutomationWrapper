@@ -126,17 +126,29 @@ public class MaintainDepositReason
 		
 		passed = action.waitFor(DeposiReasonCodePanelHead, 4, true);
 		passed = action.sendDataTo(DepositReasonCode_inputField, DepositReasonCode);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.sendDataTo(Description_inputField, Description);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(RefundDeposit_radioButtonYes);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(AccrueInterestOnDeposit_radioButtonYes);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(AutomaticallyRefundtoWorkingAccounts_Yes);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.sendDataTo(InteresttobeCreditedtoCustomersBill, InterestToBeCreditedToCustomersBill);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(InterestisCompound_Yes);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.sendDataTo(NoofMonthsOverWhichDepositisRefunded, NoofMonthsOverWhichDepositIsRefunded);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(PayInitialPartPeriodInterest_No);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(UsageAdvance_No);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(AutomaticallyRefundtoCeasedAccounts_No);
+		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(RefundMethod_Adjustment);
+		passed = action.waitFor(Acceptbutton, 4, true);
 				
 		return passed;
 	}
