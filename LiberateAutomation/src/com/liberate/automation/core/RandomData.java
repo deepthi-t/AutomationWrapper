@@ -1,4 +1,4 @@
-package com.liberate.automation.data;
+package com.liberate.automation.core;
 
 import java.security.SecureRandom;
 import java.util.Locale;
