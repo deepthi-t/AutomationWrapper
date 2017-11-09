@@ -57,9 +57,24 @@ public class NewCustomer
 	By LocalAccountType_Select = By.xpath("//*[text()='Local Account Type:']/following::select[1]");
 	
 	//CustomerDetails - Billing Address
-	By AddressType_DropDown = By.xpath("//*[text()='Address Type:']/following::select[1]");
+	By AddressType_DropDown = By.xpath("//*[text()='Address Type:']/following::select[1]");//TODO only available for type 'A'
+	By AddressType_Input = By.xpath("(//*[text()='Billing Address']/following::input[contains(@class,'MandatoryTextBox')])"); //TODO count number of mandatory fields and fill all by adding '[<number>]'
+	//TODO Fill Address Details
 	
+	//Customer Classification
+	By Company_DropDown = By.xpath("//*[text()='Company:']/following::select[1]");
+	//**CustomerType_DropDown already declared 
+	By MarketingCategory_DropDown = By.xpath("//*[text()='Marketing Category:']/following::select[1]");
+	By Region_DropDown = By.xpath("//*[text()='Region:']/following::select[1]");
+	By AccountType_DropDown = By.xpath("//*[text()='Account Type:']/following::select[1]");
+	By BillStatusArea_DropDown = By.xpath("//*[text()='Bill Stats Area:']/following::select[1]");
+	By BillStatusArea_SearchBox = By.xpath("//*[text()='Bill Stats Area:']/following::input[1]");
+	By BillStatusArea_SearchButton = By.xpath("//*[text()='Bill Stats Area:']/following::input[2]");
 	
+	//Customer ID
+	By CustomerIDReset_Button = By.xpath("//div[@class='icePnlClpsblCnt singletabcollapsiblepanelCnt']/descendant::input[@value='Reset']");
+	By CustomerID_DropDown = By.xpath("//*[text()='ID:']/following::select[1]");
+	By CustomerID_Input = By.xpath("(//*[text()='ID:']/following::input)[1]"); //Wait till enabled
 	
 	public void fillResidentialCustomerDetails()
 	{
