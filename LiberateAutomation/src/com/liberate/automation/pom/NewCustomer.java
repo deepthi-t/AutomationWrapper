@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
+import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
 
 public class NewCustomer 
@@ -174,7 +175,25 @@ public class NewCustomer
 	
 	public boolean fillResidentialCustomerDetails()
 	{
+		RandomData random = new RandomData();
+		
 		boolean passed = false;
+		
+		passed = action.waitFor(Salutation_Dropdown, 4, true);
+		passed = action.selectBy(Salutation_Dropdown, 2);
+		
+		passed = action.sendDataTo(SurName_Input, random.nextString());
+		passed = action.sendDataTo(FirstName_Input, random.nextString());
+		passed = action.sendDataTo(MiddleName_Input, random.nextString());
+		passed = action.typeDataTo(DOB_Date, "01/01/1991");
+		passed = action.waitFor(2);
+		
+		passed = action.clickOn(GenderMale_Radio);
+		passed = action.selectBy(Nationality_DropDown, 2);
+		passed = action.clickOn(EmailNotificationNo_Radio);
+		
+		action.sendDataTo(PrimaryEmailAddress_Input,random.nextString().substring(10)+"@cwc.com");
+		action.clickOn(CreateiserviceAccountNo_Radio);
 		
 		return passed;
 	}
