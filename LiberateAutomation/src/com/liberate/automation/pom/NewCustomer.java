@@ -1,7 +1,10 @@
 package com.liberate.automation.pom;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 
+import com.liberate.automation.common.LeftLink;
+import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
 public class NewCustomer 
@@ -23,6 +26,8 @@ public class NewCustomer
 	
 	By ApplicationForm_DropDown = By.xpath("//*[text()='Application Form:']/following::select[1]");
 	By ApplicationDate_Input = By.xpath("//*[text()='Application Date:']/following::input[1]");
+	
+	By ShorCutPopupOK_Button = By.xpath("//input[@value='OK']");
 	
 	//Application Form - ServicePackage Details
 	By CustomerType_DropDown = By.xpath("//*[text()='Customer Type:']/./following::select[1]");
@@ -94,23 +99,95 @@ public class NewCustomer
 	By MobileNumber2_CheckBox = By.xpath("(//*[text()='Mobile Number 1']/following::input[@class='iceSelBoolChkbx'])[2]");
 	By ContactAccept_Button = By.xpath("//input[@value='Accept']");
 	
-	public void fillApplicationDetails()
+	/***
+	 * The method to navigate to New Customer screen
+	 * 
+	 * @return Returns true if able to navigate, else will return false.
+	 */
+	public boolean navigate()
 	{
+		boolean passed = false;
 		
+		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare,4,true);
+		passed = action.clickOn(LiberateCommon.LevelOne.CustomerCare);
+		
+		passed = action.waitFor(LiberateCommon.CustomerCare.ServiceProvisioning,4,true);
+		passed = action.clickOn(LiberateCommon.CustomerCare.ServiceProvisioning);
+		
+		passed = action.waitFor(LeftLink.ServiceProvisioning.NewCustomer,4,true);
+		passed = action.clickOn(LeftLink.ServiceProvisioning.NewCustomer);
+		
+		return passed;
 	}
 	
-	public void fillResidentialCustomerDetails()
+	public boolean fillApplicationDetails(String ApplicationForm)
 	{
+		boolean passed = false;
 		
+		passed = action.waitFor(ApplicationDetails_ColumnHeader, 4, true);
+		
+		if(action.countOf(ShorCutPopupOK_Button)>0)
+		{
+			action.clickOn(ShorCutPopupOK_Button);
+			action.waitFor(ShorCutPopupOK_Button, 2, false);
+		}
+		
+		passed = action.waitFor(ApplicationForm_DropDown, 2, true);
+		passed = action.selectBy(ApplicationForm_DropDown, ApplicationForm);
+		
+		passed = action.waitFor(2);
+		
+		passed = action.clickOn(Proceed_Button);
+		
+		return passed;
 	}
 	
-	public void fillBusinessCustomerDetails()
+	public boolean fillApplicationDetails(String ApplicationForm, String CustomerType, String ServiceType, String ServicePackage)
 	{
+		boolean passed = false;
 		
+		passed = action.waitFor(ApplicationDetails_ColumnHeader, 4, true);
+		
+		if(action.countOf(ShorCutPopupOK_Button)>0)
+		{
+			action.clickOn(ShorCutPopupOK_Button);
+			action.waitFor(ShorCutPopupOK_Button, 2, false);
+		}
+		
+		passed = action.waitFor(ApplicationForm_DropDown, 2, true);
+		passed = action.selectBy(ApplicationForm_DropDown, ApplicationForm);
+		
+		passed = action.waitFor(2);
+		
+		passed = action.selectBy(CustomerType_DropDown, CustomerType);
+		passed = action.waitFor(2);
+		passed = action.selectBy(ServiceType_DropDown, ServiceType);
+		passed = action.waitFor(2);
+		passed = action.selectBy(SericePackage_DropDown, ServicePackage);
+		passed = action.waitFor(2);
+
+		passed = action.clickOn(Proceed_Button);
+		
+		return passed;
 	}
 	
-	public void fillStandardAddress()
+	
+	public boolean fillResidentialCustomerDetails()
 	{
+		boolean passed = false;
 		
+		return passed;
+	}
+	
+	public boolean fillBusinessCustomerDetails()
+	{
+		throw new NotImplementedException("This method is not Implemented Yet");
+	}
+	
+	public boolean fillStandardAddress()
+	{
+		boolean passed = false;
+		
+		return passed;
 	}
 }
