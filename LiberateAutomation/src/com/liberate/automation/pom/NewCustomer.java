@@ -3,6 +3,7 @@ package com.liberate.automation.pom;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 
+import com.liberate.automation.common.CommonData;
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
@@ -70,7 +71,8 @@ public class NewCustomer
 	
 	//CustomerDetails - Billing Address
 	By AddressType_DropDown = By.xpath("//*[text()='Address Type:']/following::select[1]");//TODO only available for type 'A'
-	By AddressType_Input = By.xpath("(//*[text()='Billing Address']/following::input[contains(@class,'MandatoryTextBox')])"); //TODO count number of mandatory fields and fill all by adding '[<number>]'
+	//By AddressType_Input = By.xpath("(//*[text()='Billing Address']/following::input[contains(@class,'MandatoryTextBox')])"); //TODO count number of mandatory fields and fill all by adding '[<number>]'
+	By StandardAddressTown_Input = By.xpath("//*[text()='town:']/following::input[1]");
 	//TODO Fill Address Details
 	
 	//Customer Classification
@@ -204,6 +206,19 @@ public class NewCustomer
 	}
 	
 	public boolean fillStandardAddress()
+	{
+		RandomData random = new RandomData();
+		
+		boolean passed = false;
+		
+		passed = action.selectBy(AddressType_DropDown, CommonData.AddressType.StandardAddress);
+		passed = action.waitFor(StandardAddressTown_Input, 3, true);
+		passed = action.sendDataTo(StandardAddressTown_Input, random.nextString());
+		
+		return passed;
+	}
+	
+	public boolean fillCustomerClassification()
 	{
 		boolean passed = false;
 		
