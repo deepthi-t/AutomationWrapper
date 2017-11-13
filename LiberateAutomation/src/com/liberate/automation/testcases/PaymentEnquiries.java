@@ -24,7 +24,7 @@ public class PaymentEnquiries
 		action.getScreenShot("PaymentEnquiries");
 		assertEquals(pe.navigate(),true);
 		action.getScreenShot("PaymentEnquiries");
-		assertEquals(pe.paymentEnquiryWithAccountNumber("940003940100"),true);
+		assertEquals(pe.paymentEnquiryWithAccountNumber("270004460000"),true);
 		action.getScreenShot("PaymentEnquiries");	
 	}
 	
@@ -38,7 +38,7 @@ public class PaymentEnquiries
 		action.getScreenShot("PaymentEnquiries");
 		assertEquals(pe.navigate(),true);
 		action.getScreenShot("PaymentEnquiries");
-		assertEquals(pe.paymentEnquiryWithPaymentNo("9319463"),true);
+		assertEquals(pe.paymentEnquiryWithPaymentNo("9320150"),true);
 		action.getScreenShot("PaymentEnquiries");	
 	}
 	
@@ -66,7 +66,7 @@ public class PaymentEnquiries
 		action.getScreenShot("PaymentEnquiries");
 		assertEquals(pe.navigate(),true);
 		action.getScreenShot("PaymentEnquiries");
-		assertEquals(pe.paymentEnquiryWithAccountNumber("940003940100"),true);
+		assertEquals(pe.paymentEnquiryWithPaymentNo("9320150"),true);
 		action.getScreenShot("PaymentEnquiries");	
 		assertEquals(pe.clickOnAccountDetails_CommandButton(),true);
 		action.getScreenShot("AccountDetails_payment");
