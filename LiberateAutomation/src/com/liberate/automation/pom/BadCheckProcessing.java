@@ -63,7 +63,7 @@ public class BadCheckProcessing {
 
 	By Check_Details_Letter_Dropdown = By.xpath("//*[@id ='badChequeProcessing:ChequeDetails3:0:letter']");
 
-	By Check_Details_Accept_Button = By.xpath("//input[@value = 'Accept'])[1]");
+	By Check_Details_Accept_Button = By.xpath("(//input[@value = 'Accept'])[1]");
 
 	By Check_Details_Cancel_Button = By.xpath("//input[@value = 'Cancel'])[1]");
 
