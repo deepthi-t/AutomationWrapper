@@ -2,32 +2,22 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.Test;
+
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.BadCheckProcessing;
-import com.liberate.automation.pom.Login;
 
 public class BadCheckProcessing_tc {
 
-	TestActions action = null;
-
-	public BadCheckProcessing_tc(TestActions action) {
-		// TODO Auto-generated constructor stub
-		this.action = action;
-	}
-
-	public void navigateToURL() {
-		action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
-	}
-
+	static TestActions action = CommonLogin.action;
+	
+	@Test
 	public void NewBadCheckProcessing() {
 		BadCheckProcessing bcp = new BadCheckProcessing(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
-		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.PaymentNumber(" 9318230"), true);
+		assertEquals(bcp.PaymentNumber("9318230"), true);
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.Search(), true);
 		action.getScreenShot("BadCheckProcessing");
@@ -41,7 +31,7 @@ public class BadCheckProcessing_tc {
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.CurrentCreditAcceptButton(), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.PaymentItemAcceptButton(),true);
+		assertEquals(bcp.PaymentItemAcceptButton(), true);
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.CheckDetailsDropdown("3"), true);
 		action.getScreenShot("BadCheckProcessing");
@@ -51,27 +41,21 @@ public class BadCheckProcessing_tc {
 
 	public void NewBadCheckProcessingReset() {
 		BadCheckProcessing bcp = new BadCheckProcessing(action);
-		Login login = new Login(action);
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
+
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.PaymentNumber("9318234"), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Reset(),true);
+		assertEquals(bcp.Reset(), true);
 		action.getScreenShot("BadCheckProcessing");
-		
-		
-}
-	
-	
+
+	}
+
 	public void NewBadCheckProcessingCancel() {
-	
+
 		BadCheckProcessing bcp = new BadCheckProcessing(action);
-		Login login = new Login(action);
-		
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
-		action.getScreenShot("BadCheckProcessing");
+
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.PaymentNumber("9318234"), true);
@@ -86,7 +70,7 @@ public class BadCheckProcessing_tc {
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.CurrentCreditApportionData("10"), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CurrentCreditCancelButton(),true);
+		assertEquals(bcp.CurrentCreditCancelButton(), true);
 		action.getScreenShot("BadCheckProcessing");
 	}
 }

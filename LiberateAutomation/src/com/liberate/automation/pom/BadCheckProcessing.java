@@ -48,38 +48,30 @@ public class BadCheckProcessing {
 	// Current_Credit_Cancel_Button
 
 	By Current_Credit_Cancel_Button = By.xpath("//input[@value = 'Cancel'])[1]");
-	
-	
-	
-	// plant_item_Apportion 
-	
+
+	// plant_item_Apportion
+
 	By Payment_Item_Apportion = By.xpath("//*[@id = 'badChequeProcessing:paymentChequeDetails:0:j_idt330']");
-	
+
 	// Payment_Item_Accept_button
-	
+
 	By Payment_Item_Accept_button = By.xpath("(//input[@value = 'Accept'])[2]");
-	
-	
+
 	// Payment_Item_Cancel_Button
 
 	By Payment_Item_Cancel_Button = By.xpath("//input[@value = 'Cancel'])[2]");
-	
-	
+
 	By Check_Details_Letter_Dropdown = By.xpath("//*[@id ='badChequeProcessing:ChequeDetails3:0:letter']");
-	
-	By Check_Details_Accept_Button   = By.xpath("//input[@value = 'Accept'])[1]");
-	
-	By Check_Details_Cancel_Button   = By.xpath("//input[@value = 'Cancel'])[1]");
-	
-	
-	
+
+	By Check_Details_Accept_Button = By.xpath("//input[@value = 'Accept'])[1]");
+
+	By Check_Details_Cancel_Button = By.xpath("//input[@value = 'Cancel'])[1]");
 
 	/***
 	 * Default constructor that takes TestAction object as argument.
 	 * 
 	 * @param action
-	 *            The TestAction class object, which will be used to run test
-	 *            steps
+	 *            The TestAction class object, which will be used to run test steps
 	 */
 	public BadCheckProcessing(TestActions action) {
 		this.action = action;
@@ -112,46 +104,45 @@ public class BadCheckProcessing {
 	public boolean PaymentNumber(String PaymentNumber) {
 		boolean passed = false;
 
-		passed = action.sendDataTo(Payment_number, PaymentNumber);
 		passed = action.waitFor(Payment_number, 4, true);
+		passed = action.sendDataTo(Payment_number, PaymentNumber);
 
 		return passed;
 
 	}
 
 	/***
-	 * The method to search the Entered the payment number in Bad Check
-	 * Processing screen
+	 * The method to search the Entered the payment number in Bad Check Processing
+	 * screen
 	 * 
 	 * @return Returns true if able to Search, else will return false.
 	 */
 	public boolean Search() {
 		boolean passed = false;
 
-		passed = action.clickOn(Search_button);
 		passed = action.waitFor(Search_button, 4, true);
+		passed = action.clickOn(Search_button);
 
 		return passed;
 	}
 
 	/***
-	 * The method to Reset the Entered the payment number in Bad Check
-	 * Processing screen
+	 * The method to Reset the Entered the payment number in Bad Check Processing
+	 * screen
 	 * 
 	 * @return Returns true if able to Reset, else will return false.
 	 */
 	public boolean Reset() {
 		boolean passed = false;
 
-		passed = action.clickOn(Reset_button);
 		passed = action.waitFor(Reset_button, 4, true);
+		passed = action.clickOn(Reset_button);
 
 		return passed;
 	}
 
 	/***
-	 * The method to Click on Check Details Button in Bad Check Processing
-	 * screen
+	 * The method to Click on Check Details Button in Bad Check Processing screen
 	 * 
 	 * @return Returns true if able to Reset, else will return false.
 	 */
@@ -161,7 +152,7 @@ public class BadCheckProcessing {
 
 		passed = action.waitFor(Check_details_button, 4, true);
 		passed = action.clickOn(Check_details_button);
-		
+
 		return passed;
 	}
 
@@ -173,10 +164,9 @@ public class BadCheckProcessing {
 
 	public boolean Checkcardinput(String CheckCardInput) {
 		boolean passed = false;
-		
+
 		passed = action.waitFor(Check_card_input, 2, true);
 		passed = action.sendDataTo(Check_card_input, CheckCardInput);
-	
 
 		return passed;
 	}
@@ -191,29 +181,30 @@ public class BadCheckProcessing {
 		boolean passed = false;
 
 		passed = action.selectBy(Reason_Drop_Down, Integer.parseInt(ReasonDropDown));
-		
 
 		return passed;
 	}
 
-		/***
-		 * The method to Enter the Apportion of current credit in Bad Check Processing screen
-		 * 
-		 * @return Returns true if able to Enter, else will return false.
-		 */
+	/***
+	 * The method to Enter the Apportion of current credit in Bad Check Processing
+	 * screen
+	 * 
+	 * @return Returns true if able to Enter, else will return false.
+	 */
 
 	public boolean CurrentCreditApportionData(String CurrentCreditApportion) {
 		boolean passed = false;
 
+		passed = action.waitFor(Current_Credit_Apportion, 4, true);
 		passed = action.sendDataTo(Current_Credit_Apportion, CurrentCreditApportion);
-		
 
 		return passed;
 
 	}
 
 	/***
-	 * The method to Select the Accept button of current credit in Bad Check Processing screen
+	 * The method to Select the Accept button of current credit in Bad Check
+	 * Processing screen
 	 * 
 	 * @return Returns true if able to Enter, else will return false.
 	 */
@@ -229,95 +220,98 @@ public class BadCheckProcessing {
 	}
 
 	/***
-	 * The method to Select the Cancel button of current credit in Bad Check Processing screen
+	 * The method to Select the Cancel button of current credit in Bad Check
+	 * Processing screen
 	 * 
 	 * @return Returns true if able to Enter, else will return false.
 	 */
 
 	public boolean CurrentCreditCancelButton() {
 		boolean passed = false;
-		passed = action.clickOn(Current_Credit_Cancel_Button);
+
 		passed = action.waitFor(Check_details_button, 4, true);
+		passed = action.clickOn(Current_Credit_Cancel_Button);
 
 		return passed;
 
 	}
 
 	/***
-	 * The method to Enter the Apportion of payment item in Bad Check Processing screen
+	 * The method to Enter the Apportion of payment item in Bad Check Processing
+	 * screen
 	 * 
 	 * @return Returns true if able to Enter, else will return false.
 	 */
 
-public boolean paymentitemApportion(String paymentitemApportion) {
-	boolean passed = false;
+	public boolean paymentitemApportion(String paymentitemApportion) {
+		boolean passed = false;
 
-	passed = action.sendDataTo(Payment_Item_Apportion, paymentitemApportion);
-	
-
-	return passed;
-
-}
-	
-/***
- * The method to Select the Accept button of Payment item in Bad Check Processing screen
- * 
- * @return Returns true if able to Enter, else will return false.
- */
-
-public boolean PaymentItemAcceptButton() {
-	boolean passed = false;
-
-	passed = action.clickOn(Payment_Item_Accept_button);
-	passed = action.waitFor(Check_details_button, 4, true);
-
-	return passed;
-
-}
-
-/***
- * The method to Select the Cancel button of Payment item in Bad Check Processing screen
- * 
- * @return Returns true if able to Enter, else will return false.
- */
-
-public boolean PaymentItemCancelButton() {
-	boolean passed = false;
-	passed = action.clickOn(Payment_Item_Cancel_Button);
-	passed = action.waitFor(Check_details_button, 4, true);
-
-	return passed;
-
-}
-
-public boolean CheckDetailsDropdown(String CheckDetailsAcceptButton) {
-         boolean passed = false;
-
-         passed = action.waitFor(Check_details_button, 4, true);
-         passed = action.selectBy(Check_Details_Letter_Dropdown, "04-RTD item letter (INSTRUCTION CANCELLED)");
+		passed = action.waitFor(Payment_Item_Apportion, 4, true);
+		passed = action.sendDataTo(Payment_Item_Apportion, paymentitemApportion);
 
 		return passed;
-}
 
-public boolean CheckDetailsAccept(){
-	boolean passed = false;
-	
-	passed = action.clickOn(Check_Details_Accept_Button);
-	passed = action.waitFor(Check_details_button, 4, true);
+	}
 
-	
-	
-	return passed;
-}
-public boolean CheckDetailsCancel(){
-	boolean passed = false;
-	
-	passed = action.clickOn(Check_Details_Cancel_Button);
-	passed = action.waitFor(Check_details_button, 4, true);
+	/***
+	 * The method to Select the Accept button of Payment item in Bad Check
+	 * Processing screen
+	 * 
+	 * @return Returns true if able to Enter, else will return false.
+	 */
 
-	
-	
-	return passed;
-}
+	public boolean PaymentItemAcceptButton() {
+		boolean passed = false;
+
+		passed = action.waitFor(Payment_Item_Accept_button, 4, true);
+		passed = action.clickOn(Payment_Item_Accept_button);
+
+		return passed;
+
+	}
+
+	/***
+	 * The method to Select the Cancel button of Payment item in Bad Check
+	 * Processing screen
+	 * 
+	 * @return Returns true if able to Enter, else will return false.
+	 */
+
+	public boolean PaymentItemCancelButton() {
+		boolean passed = false;
+
+		passed = action.waitFor(Payment_Item_Cancel_Button, 4, true);
+		passed = action.clickOn(Payment_Item_Cancel_Button);
+
+		return passed;
+
+	}
+
+	public boolean CheckDetailsDropdown(String CheckDetailsAcceptButton) {
+		boolean passed = false;
+
+		passed = action.waitFor(Check_Details_Letter_Dropdown, 4, true);
+		passed = action.selectBy(Check_Details_Letter_Dropdown, "04-RTD item letter (INSTRUCTION CANCELLED)");
+
+		return passed;
+	}
+
+	public boolean CheckDetailsAccept() {
+		boolean passed = false;
+
+		passed = action.waitFor(Check_Details_Accept_Button, 4, true);
+		passed = action.clickOn(Check_Details_Accept_Button);
+
+		return passed;
+	}
+
+	public boolean CheckDetailsCancel() {
+		boolean passed = false;
+
+		passed = action.waitFor(Check_Details_Cancel_Button, 4, true);
+		passed = action.clickOn(Check_Details_Cancel_Button);
+
+		return passed;
+	}
 
 }

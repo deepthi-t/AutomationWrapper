@@ -7,7 +7,7 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
 public class VoidPayment {
-	
+
 	TestActions action = null;
 
 	// Enter payment number, search and reset button
@@ -37,22 +37,16 @@ public class VoidPayment {
 
 	By Cancel_button = By.xpath("//*[@value = 'Cancel']");
 
-	
-	
-	
-	
 	/***
 	 * Default constructor that takes TestAction object as argument.
 	 * 
 	 * @param action
-	 *            The TestAction class object, which will be used to run test
-	 *            steps
+	 *            The TestAction class object, which will be used to run test steps
 	 */
 	public VoidPayment(TestActions action) {
 		this.action = action;
 	}
-	
-	
+
 	/***
 	 * The method to navigate to Void Payment screen
 	 * 
@@ -60,110 +54,104 @@ public class VoidPayment {
 	 */
 	public boolean navigate() {
 		boolean passed = false;
-		
-		
+
 		passed = action.waitFor(LiberateCommon.LevelOne.Orders, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.Payments);
 		passed = action.waitFor(LiberateCommon.Payments.PaymentsAdmin, 4, true);
 		passed = action.clickOn(LiberateCommon.Payments.PaymentsAdmin);
 		passed = action.waitFor(LeftLink.PaymentsAdmin.VoidPayment, 4, true);
 		passed = action.clickOn(LeftLink.PaymentsAdmin.VoidPayment);
-		
+
 		return passed;
 	}
 
-	
 	/***
 	 * The method to Enter the payment number in Void Payment screen
 	 * 
 	 * @return Returns true if able to Enter, else will return false.
-	*/
-	
-	
-	
+	 */
+
 	public boolean PaymentNumber(String PaymentNumber) {
 		boolean passed = false;
-		
+
+		passed = action.waitFor(Payment_number_input, 4, true);
 		passed = action.sendDataTo(Payment_number_input, PaymentNumber);
-		
-		
+
 		return passed;
-		
+
 	}
 
 	/***
 	 * The method to search the Entered the payment number in Void Payment screen
 	 * 
 	 * @return Returns true if able to Search, else will return false.
-	*/
+	 */
 	public boolean Search() {
 		boolean passed = false;
-		
-	     passed = action.clickOn(Search_button);
-		 passed = action.waitFor(Search_button, 4, true);
-		
+
+		passed = action.waitFor(Search_button, 4, true);
+		passed = action.clickOn(Search_button);
+
 		return passed;
 	}
-	    
-	
+
 	/***
 	 * The method to Reset the Entered the payment number in Void Payment screen
 	 * 
 	 * @return Returns true if able to Reset, else will return false.
-	*/
+	 */
 	public boolean Reset() {
 		boolean passed = false;
-		
-		passed = action.clickOn(Reset_button);
+
 		passed = action.waitFor(Reset_button, 4, true);
-		
+		passed = action.clickOn(Reset_button);
+
 		return passed;
 	}
-	
+
 	/***
 	 * The method to Select the void reason in void payment screen
 	 * 
 	 * @return Returns true if able to Select, else will return false.
-	*/
-	
-	public boolean EnterVoidReason(String EnterVoidReason ) {
+	 */
+
+	public boolean EnterVoidReason(String EnterVoidReason) {
 		boolean passed = false;
-		
-		passed = action.selectBy(Enter_void_reason,  Integer.parseInt(EnterVoidReason));
-		
-		
-		
+
+		passed = action.waitFor(Enter_void_reason, 4, true);
+		passed = action.selectBy(Enter_void_reason, Integer.parseInt(EnterVoidReason));
+
 		return passed;
 	}
-	
+
 	/***
 	 * The method to Accept the void reason in void payment screen
 	 * 
 	 * @return Returns true if able to Accept, else will return false.
-	*/
-	
+	 */
+
 	public boolean Accept() {
 		boolean passed = false;
-		
-		passed = action.clickOn(accept_button);
+
 		passed = action.waitFor(accept_button, 4, true);
-		
-		
+		passed = action.clickOn(accept_button);
+
 		return passed;
 	}
-	
+
 	/***
 	 * The method to Cancel the void reason in void payment screen
 	 * 
 	 * @return Returns true if able to Cancel, else will return false.
-	*/
-	
+	 */
+
 	public boolean Cancel() {
 		boolean passed = false;
-	passed = action.clickOn(Cancel_button);
-	passed = action.waitFor(Cancel_button, 4, true);
-	
-	return passed;
+
+		passed = action.waitFor(Cancel_button, 4, true);
+		passed = action.clickOn(Cancel_button);
+
+		return passed;
 	}
-	
+
 }
