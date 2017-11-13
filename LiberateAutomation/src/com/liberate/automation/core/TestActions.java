@@ -265,6 +265,34 @@ public class TestActions {
 		return true;
 	}
 
+	/***
+	 * Method called to wait till an element is clickable.
+	 * 
+	 * @param locator
+	 *            The locator which needs to be considered for waiting.
+	 * @param seconds
+	 *            Max time to wait in seconds.
+	 * @return Return true, if element is clickable in the given time. Else will
+	 *         return false.
+	 */
+	public Boolean waitForClickable(By locator, int seconds) {
+		WebDriverWait wait = new WebDriverWait(driver, seconds);
+
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(locator));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				waitForClickable(locator, seconds);
+			else
+				return false;
+		}
+
+		return true;
+	}
+
 	public By waitForAny(By[] locators) {
 		// TODO Complete this function
 		String waitElements = getXpath(locators[0]);
@@ -510,7 +538,7 @@ public class TestActions {
 	 */
 	public void scroll(int horizontalScrollAmount, int verticalScrollAmount) {
 		try {
-			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript("window.scrollBy(" + horizontalScrollAmount + ", " + verticalScrollAmount + ");");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
