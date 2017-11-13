@@ -8,8 +8,6 @@ import com.liberate.automation.core.TestActions;
 
 public class VoidPayment {
 	
-	private static final String Search = null;
-
 	TestActions action = null;
 
 	// Enter payment number, search and reset button
@@ -87,7 +85,7 @@ public class VoidPayment {
 		boolean passed = false;
 		
 		passed = action.sendDataTo(Payment_number_input, PaymentNumber);
-		passed = action.waitFor(Payment_number_input, 4, true);	
+		
 		
 		return passed;
 		
@@ -131,8 +129,8 @@ public class VoidPayment {
 	public boolean EnterVoidReason(String EnterVoidReason ) {
 		boolean passed = false;
 		
-		passed = action.selectBy(Enter_void_reason, EnterVoidReason);
-		passed = action.waitFor(Search_button, 4, true);
+		passed = action.selectBy(Enter_void_reason,  Integer.parseInt(EnterVoidReason));
+		
 		
 		
 		return passed;
