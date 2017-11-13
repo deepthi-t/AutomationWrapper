@@ -57,9 +57,7 @@ public class PaymentEnquiries
 		assertEquals(pe.navigate(),true);
 		action.getScreenShot("PaymentEnquiries");
 		assertEquals(pe.paymentEnquiryWithPaymentNo("9320150"),true);
+		assertEquals(pe.paymentEnquiryWithAccountNumber("940003940100"),true);
 		action.getScreenShot("PaymentEnquiries");	
-		assertEquals(pe.clickOnAccountDetails_CommandButton(),true);
-		action.getScreenShot("AccountDetails_payment");
 	}
-	
 }

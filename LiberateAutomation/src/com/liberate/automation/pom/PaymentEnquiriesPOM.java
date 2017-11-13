@@ -138,8 +138,7 @@ public class PaymentEnquiriesPOM
 			passed = action.waitFor(BackButton, 4, true);
 			passed = action.clickOn(PaymetDetails_Column_getAccountDetailsCommandButton);
 			passed = action.waitFor(AccountDetails_CommandButton, 4, true);
-			passed = action.waitForClickable(AccountDetails_CommandButton, 4);
-			passed = action.clickOn(AccountDetails_CommandButton);
+			passed = action.waitForClickable(AccountDetails_CommandButton, 4);			passed = action.clickOn(AccountDetails_CommandButton);
 			passed = action.waitFor(BackButton, 4, true);
 			
 		return passed;	
