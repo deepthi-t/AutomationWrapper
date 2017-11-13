@@ -9,7 +9,7 @@ import com.liberate.automation.pom.MaintainDepositReason;
 
 
 
-public class DepositReason_TestCases {
+public class DepositReason {
 	
 	static TestActions action = new TestActions();
 	
