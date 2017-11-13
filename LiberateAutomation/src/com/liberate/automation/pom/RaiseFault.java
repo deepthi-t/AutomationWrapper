@@ -2,8 +2,13 @@ package com.liberate.automation.pom;
 
 import org.openqa.selenium.By;
 
+import com.liberate.automation.common.LeftLink;
+import com.liberate.automation.common.LiberateCommon;
+import com.liberate.automation.core.TestActions;
+
 public class RaiseFault 
 {
+	TestActions RaiseFaultAction = null;
 	//RaiseFault National Fault Telephone Elements
 	By RaiseFault_PanelHeader = By.xpath("//td[@class='blackBold']//*[text()='Raise Fault']");
 	By NationalFault_RadioButton = By.xpath("(//*[text()='National']/preceding::input)[last()]");
@@ -61,4 +66,111 @@ public class RaiseFault
 	By Addnotes_Input = By.xpath("(//*[text()='Add Notes:']/following::textarea)[1]");
 	By Accept_Button = By.xpath("//input[@value='Accept']");
 	By Cancel_Button = By.xpath("//input[@value='Cancel']");
+	
+	//Identifying the Fault number
+	By RaisedFault_Number = By.xpath("//*[text()='Fault Number:']/following::text()[1]");
+
+public RaiseFault(TestActions action)
+	{
+		this.RaiseFaultAction = action;
+	}
+
+/* Navigating to Raise fault Lefts screen */
+
+public boolean navigate() 
+	{
+		boolean passed = false;
+	
+		passed = RaiseFaultAction.waitFor(LiberateCommon.LevelOne.Faults, 4, true);
+		passed = RaiseFaultAction.clickOn(LiberateCommon.LevelOne.Faults);
+		passed = RaiseFaultAction.waitFor(LiberateCommon.Faults.Faults, 4, true);
+		passed = RaiseFaultAction.clickOn(LiberateCommon.Faults.Faults);
+		passed = RaiseFaultAction.waitFor(LeftLink.Faults.RaiseFault, 4, true);
+		passed = RaiseFaultAction.clickOn(LeftLink.Faults.RaiseFault);
+
+	return passed;
+	}
+
+/* Enter service number to raise fault on Raise fault screen */
+
+public boolean enterServiceNumber(String ServiceNumberValue) 
+	{
+		boolean passed = false;
+	
+		passed = RaiseFaultAction.waitFor(ServiceNumber_Input, 4, true);
+		passed = RaiseFaultAction.sendDataTo(ServiceNumber_Input, ServiceNumberValue);
+	
+		return passed;
+	}
+
+//Click on Raise Fault button to raise a fault
+public boolean clickonRaiseFaultbutton() 
+	{
+		boolean passed = false;
+
+		passed = RaiseFaultAction.waitFor(RaiseFault_Button, 4, true);
+		passed = RaiseFaultAction.clickOn(RaiseFault_Button	);
+
+		return passed;
+	}
+
+//Click on Reset button after providing ServiceNumber to raise a fault
+public boolean clickonResetbutton() 
+	{
+		boolean passed = false;
+
+		passed = RaiseFaultAction.waitFor(RaiseFaultReset_Button, 4, true);
+		passed = RaiseFaultAction.clickOn(RaiseFaultReset_Button);
+
+		return passed;
+	}
+
+//Enter data in fields for raising a new fault on new fault panel
+public boolean enterDataInFieldsToRaiseFault() 
+	{
+		boolean passed = false;
+	
+		passed = RaiseFaultAction.waitFor(Symptom_DropDown, 4, true);
+		passed = RaiseFaultAction.selectBy(Symptom_DropDown, "01-TP No Dial Tone");
+		passed = RaiseFaultAction.waitFor(Department_Dropdown, 4, true);
+		passed = RaiseFaultAction.selectBy(Department_Dropdown, "FLT-B-Business Faults");
+		passed = RaiseFaultAction.waitFor(Diagnosis_DropDown, 4, true);
+		passed = RaiseFaultAction.selectBy(Diagnosis_DropDown, "1-TP Needs dropwire replaced");
+		passed = RaiseFaultAction.waitFor(Site_Dropdown, 4, true);
+		passed = RaiseFaultAction.selectBy(Site_Dropdown, "Faults");
+		
+		return passed;
+	}
+
+//Click on Raise Fault button to raise a fault
+public boolean clickonAccepttbutton() 
+	{
+		boolean passed = false;
+
+		passed = RaiseFaultAction.waitFor(Accept_Button, 4, true);
+		passed = RaiseFaultAction.clickOn(Accept_Button);
+
+		return passed;
+	}
+
+//Click on Cancel button after providing details to raise a fault
+public boolean clickonCanceltbutton() 
+	{
+		boolean passed = false;
+
+		passed = RaiseFaultAction.waitFor(Cancel_Button, 4, true);
+		passed = RaiseFaultAction.clickOn(Cancel_Button);
+
+		return passed;
+	}
+// Print the raised fault number
+public boolean raisedFaultNumber() 
+{
+	boolean passed = false;
+
+	passed = RaiseFaultAction.waitFor(RaisedFault_Number, 4, true);
+	System.out.println(RaisedFault_Number);
+
+	return passed;
+}
 }
