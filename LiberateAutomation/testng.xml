@@ -2,9 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="LiberateAutomation">
-  <test name="SwitchRequestEnquiry">
-    <classes>
-       <class name="com.liberate.automation.testcases.SwitchRequest" />
-    </classes>
-  </test>
- </suite>
+	<test name="SwitchRequestEnquiry">
+		<classes>
+			<class name="com.liberate.automation.testcases.CommonLogin" />
+			<class name="com.liberate.automation.testcases.DepositReason" />
+		</classes>
+	</test>
+</suite>

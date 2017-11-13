@@ -2,8 +2,6 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
@@ -12,29 +10,13 @@ import com.liberate.automation.pom.ManageSwitchRequest;
 
 public class SwitchRequest {
 	
-	static TestActions action = new TestActions();
-	
-	@BeforeSuite
-	public static void navigateToURL()
-	{
-		action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
-	}
-	
-	@AfterSuite
-	public static void endTesting()
-	{
-		action.closeTab();
-		action.quit();
-		action = null;
-	}
+	static TestActions action = CommonLogin.action;
 	
 	@Test(enabled = false)
 	public static void MonitorNewSwitchRequest() {
 
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
-		Login login = new Login(action);
 		
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
 		assertEquals(msr.navigate(),true);
 		action.getScreenShot("MonitorNewSwitchRequest");
 		assertEquals(msr.selectMonitorNewSwitchRequests(),true);

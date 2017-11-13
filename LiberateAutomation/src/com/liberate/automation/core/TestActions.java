@@ -493,20 +493,29 @@ public class TestActions {
 		else
 			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
 	}
-	
+
 	/***
 	 * This Method scrolls the Web document by the specified number of pixels.
+	 * 
 	 * @param verticalScrollAmount
 	 * 
-	 * How many pixels to scroll by, along the x-axis (horizontal). Positive values will scroll to the right, while negative values will scroll to the left
+	 *            How many pixels to scroll by, along the x-axis (horizontal).
+	 *            Positive values will scroll to the right, while negative values
+	 *            will scroll to the left
 	 * 
 	 * @param horizontalScrollAmount
 	 * 
-	 * How many pixels to scroll by, along the y-axis (vertical). Positive values will scroll down, while negative values scroll up
+	 *            How many pixels to scroll by, along the y-axis (vertical).
+	 *            Positive values will scroll down, while negative values scroll up
 	 */
-	public void scroll(int verticalScrollAmount, int horizontalScrollAmount) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(" + verticalScrollAmount + ", " + verticalScrollAmount + ")", "");
+	public void scroll(int horizontalScrollAmount, int verticalScrollAmount) {
+		try {
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("window.scrollBy(" + horizontalScrollAmount + ", " + verticalScrollAmount + ");");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/***
