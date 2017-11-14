@@ -525,13 +525,13 @@ public class TestActions {
 	/***
 	 * This Method scrolls the Web document by the specified number of pixels.
 	 * 
-	 * @param verticalScrollAmount
+	 * @param horizontalScrollAmount
 	 * 
 	 *            How many pixels to scroll by, along the x-axis (horizontal).
 	 *            Positive values will scroll to the right, while negative values
 	 *            will scroll to the left
 	 * 
-	 * @param horizontalScrollAmount
+	 * @param verticalScrollAmount
 	 * 
 	 *            How many pixels to scroll by, along the y-axis (vertical).
 	 *            Positive values will scroll down, while negative values scroll up
@@ -544,6 +544,23 @@ public class TestActions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/***
+	 * Simple method that can be called to scroll Up
+	 */
+	public void scrollUp()
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,-2000)", "");
+	}
+	/***
+	 * Simple method that can be called to scroll Down
+	 */
+	public void scrollDown()
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,2000)", "");
 	}
 
 	/***
