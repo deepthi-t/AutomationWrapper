@@ -148,5 +148,23 @@ public class ManageFaultTestCases
 		assertEquals(mf.clickonPrintFaultDocketAcceptbutton(),true);
 		action.getScreenShot("manageFault");
 	}
+	public void recordFaultActivity_ManageFault() 
+	{
+		ManageFault mf = new ManageFault(action);
+
+		assertEquals(mf.navigate(),true);
+		action.getScreenShot("manageFault");
+		
+		action.getScreenShot("manageFault");
+		assertEquals(mf.clickonSearchbutton(),true);
+		action.getScreenShot("manageFault");
+		
+		assertEquals(mf.clickonRecordFaultTestactionbutton(),true);
+		action.getScreenShot("manageFault");
+		assertEquals(mf.recordFaultActivitySelectActivityIDActivityNotes(),true);
+		action.getScreenShot("manageFault");
+		assertEquals(mf.recordFaultActivityRaiseActivityAceeptbutton(),true);
+		action.getScreenShot("manageFault");
+	}
 }
 
