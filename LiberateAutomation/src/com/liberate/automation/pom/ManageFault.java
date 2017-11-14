@@ -94,10 +94,10 @@ public class ManageFault
 		By RecordFaultActivities_PanelHeader = By.xpath("//*[text()='Record Fault Activities']");
 		By RecordFaultActivitiesRecordActivity_Button = By.xpath("//input[@value='Record Activity']");
 		By RecordFaultActivitiesCancel_Button = By.xpath("//input[@value='Cancel']");
-		By RecordFaultActivitiesActivityID_Dropdown = By.xpath("");
-		By RecordFaultActivitiesActivityNotes_Input = By.xpath("");
+		By RecordFaultActivitiesActivityID_Dropdown = By.xpath("(//*[text()[contains(.,'Activity Id:')]]/following::select)[1]");
+		By RecordFaultActivitiesActivityNotes_Input = By.xpath("(//*[text()='Activity Notes:']/following::textarea)[1]");
 		By RecordFaultActivitiesActivityAccept_Button = By.xpath("//input[@value='Accept']");
-		By RecordFaultActivitiesActivityCancel_Button = By.xpath("");
+		By RecordFaultActivitiesActivityCancel_Button = By.xpath("//input[@value='Accept']/following::input[@value='Cancel']");
 				
 		public ManageFault(TestActions action)
 		{
@@ -556,7 +556,38 @@ public class ManageFault
 
 			return passed;
 		}
+		/* Record Fault Activity selection of Activity ID and Activity Notes */
+		public boolean recordFaultActivitySelectActivityIDActivityNotes() 
+		{
+			boolean passed = false;
+			
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityID_Dropdown, 4, true);
+			passed = ManageFaultAction.selectBy(RecordFaultActivitiesActivityID_Dropdown, "Call Customer Care");
+				
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityNotes_Input, 4, true);
+			passed = ManageFaultAction.sendDataTo(RecordFaultActivitiesActivityNotes_Input, "Test");
+			return passed;
+		}
 		
-		
+		/* Record Fault Activity Accept of Raising activity*/
+		public boolean recordFaultActivityRaiseActivityAceeptbutton() 
+		{
+			boolean passed = false;
+				
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityAccept_Button, 4, true);
+			passed = ManageFaultAction.clickOn(RecordFaultActivitiesActivityAccept_Button);
+
+			return passed;
+		}
+		/* Record Fault Activity Cancel of Raising activity*/
+		public boolean recordFaultActivityRaiseActivityCancelbutton() 
+		{
+			boolean passed = false;
+								
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityCancel_Button, 4, true);
+			passed = ManageFaultAction.clickOn(RecordFaultActivitiesActivityCancel_Button);
+
+			return passed;
+		}
 		//---------------------------------------------------------------
 }
