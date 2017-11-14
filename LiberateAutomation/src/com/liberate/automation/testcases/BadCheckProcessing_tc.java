@@ -12,65 +12,18 @@ public class BadCheckProcessing_tc {
 	static TestActions action = CommonLogin.action;
 	
 	@Test
-	public void NewBadCheckProcessing() {
+	public void doBadCheckProcessing() {
 		BadCheckProcessing bcp = new BadCheckProcessing(action);
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.PaymentNumber("9318230"), true);
+		assertEquals(bcp.SearchWithPaymentNumber("9264886"), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Search(), true);
+		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Checkdetailsbutton(), true);
+		assertEquals(bcp.provideChequeCardDetails(), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Checkcardinput("53453453453453453453"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.ReasonDropDown("3"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CurrentCreditApportionData("20"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CurrentCreditAcceptButton(), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.PaymentItemAcceptButton(), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CheckDetailsDropdown("3"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CheckDetailsAccept(), true);
-		action.getScreenShot("BadCheckProcessing");
-	}
-
-	public void NewBadCheckProcessingReset() {
-		BadCheckProcessing bcp = new BadCheckProcessing(action);
-
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.navigate(), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.PaymentNumber("9318234"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Reset(), true);
-		action.getScreenShot("BadCheckProcessing");
-
-	}
-
-	public void NewBadCheckProcessingCancel() {
-
-		BadCheckProcessing bcp = new BadCheckProcessing(action);
-
-		assertEquals(bcp.navigate(), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.PaymentNumber("9318234"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Search(), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Checkdetailsbutton(), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.Checkcardinput("53453453453453453453"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.ReasonDropDown("3-REFER TO PAYER"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CurrentCreditApportionData("10"), true);
-		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.CurrentCreditCancelButton(), true);
+		assertEquals(bcp.acceptBadChequeProcessing(), true);
 		action.getScreenShot("BadCheckProcessing");
 	}
 }

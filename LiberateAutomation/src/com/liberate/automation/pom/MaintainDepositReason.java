@@ -95,7 +95,8 @@ public class MaintainDepositReason
 	public boolean navigate() {
 		boolean passed = false;
 		
-		action.scroll(0, -2000);
+		action.scrollUp();
+		action.waitFor(1);
 		
 		passed = action.waitFor(LiberateCommon.LevelOne.Orders, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.CreditControl);
@@ -133,7 +134,8 @@ public class MaintainDepositReason
 		boolean passed = false;
 
 		passed = action.waitFor(DeposiReasonCodePanelHead, 4, true);
-		action.scroll(0, 2000);
+		action.scrollDown();
+		
 		passed = action.sendDataTo(DepositReasonCode_inputField, DepositReasonCode);
 		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.sendDataTo(Description_inputField, Description);
@@ -158,7 +160,10 @@ public class MaintainDepositReason
 		passed = action.waitFor(Acceptbutton, 4, true);
 		passed = action.clickOn(RefundMethod_Adjustment);
 		passed = action.waitFor(Acceptbutton, 4, true);
-
+		
+		action.scrollUp();
+		action.waitFor(1);
+		
 		return passed;
 	}
 
@@ -201,7 +206,8 @@ public class MaintainDepositReason
 		boolean passed = false;
 
 		passed = action.waitFor(Description_inputField, 4, true);
-		action.scroll(0, 2000);
+		action.scrollDown();
+
 		passed = action.sendDataTo(Description_inputField, Description);
 		passed = action.clickOn(RefundDeposit_radioButtonYes);
 		passed = action.clickOn(AccrueInterestOnDeposit_radioButtonYes);
@@ -213,7 +219,10 @@ public class MaintainDepositReason
 		passed = action.clickOn(UsageAdvance_No);
 		passed = action.clickOn(AutomaticallyRefundtoCeasedAccounts_No);
 		passed = action.clickOn(RefundMethod_Adjustment);
-
+		
+		action.scrollUp();
+		action.waitFor(1);
+		
 		return passed;
 	}
 

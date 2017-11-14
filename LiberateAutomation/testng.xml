@@ -5,7 +5,7 @@
 	<test name="SwitchRequestEnquiry">
 		<classes>
 			<class name="com.liberate.automation.testcases.CommonLogin" />
-			<class name="com.liberate.automation.testcases.RaiseFaultTestCases" />
+			<class name="com.liberate.automation.testcases.BadCheckProcessing_tc" />
 		</classes>
 	</test>
 </suite>
