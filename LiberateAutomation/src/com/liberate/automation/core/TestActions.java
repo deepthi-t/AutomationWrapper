@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -21,8 +22,9 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
-	public String classVersion = "0.4.0";
-
+	
+	public String classVersion = "0.5.0";
+	
 	Boolean retry = false;
 	int retryCount = 3;
 	int executionCount = 0;
@@ -55,6 +57,7 @@ public class TestActions {
 	 */
 	public Boolean gotoURL(String URL) {
 		try {
+			log("Navigating to '"+URL+"'");
 			driver.navigate().to(URL);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,6 +80,7 @@ public class TestActions {
 	 */
 	public Boolean clickOn(By locator) {
 		try {
+			log("Clicking on element '"+locator.toString()+"'");
 			driver.findElement(locator).click();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,6 +109,7 @@ public class TestActions {
 			return true;
 
 		try {
+			log("Sending data '"+data+"' to field '"+locator.toString()+"'");
 			driver.findElement(locator).clear();
 			driver.findElement(locator).sendKeys(data);
 		} catch (Exception e) {
@@ -125,20 +130,21 @@ public class TestActions {
 	 * 
 	 * @param locator
 	 *            Identifies the element which the data needs to be sent.
-	 * @param date
-	 *            Date in format 'DD/MM/YYYY hh:mm'
+	 * @param data
+	 *            If Date then should be in format 'DD/MM/YYYY hh:mm'
 	 * @return
 	 */
-	public Boolean typeDataTo(By locator, String date) {
-		if (date.equals(""))
+	public Boolean typeDataTo(By locator, String data) {
+		if (data.equals(""))
 			return true;
 
 		clearField(locator);
 
 		try {
-			char[] dateChars = date.toCharArray();
-
-			for (int i = 0; i < date.length(); i++) {
+			char[] dateChars = data.toCharArray();
+			log("Typing in data '"+data+"' to '"+locator.toString()+"'");
+			
+			for (int i = 0; i < data.length(); i++) {
 				driver.findElement(locator).sendKeys(Character.toString(dateChars[i]));
 				Thread.sleep(100);
 			}
@@ -160,6 +166,7 @@ public class TestActions {
 	 */
 	public Boolean clearField(By locator) {
 		try {
+			log("Clearing field '"+locator.toString()+"'");
 			driver.findElement(locator).clear();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -186,6 +193,7 @@ public class TestActions {
 	 */
 	public Boolean selectBy(By locator, int index) {
 		try {
+			log("Selecting index '"+index+"' from '"+locator.toString()+"'");
 			select = new Select(driver.findElement(locator));
 			select.selectByIndex(index);
 		} catch (Exception e) {
@@ -215,6 +223,7 @@ public class TestActions {
 			return true;
 
 		try {
+			log("Selecting value '"+visibleText+"' from '"+locator.toString()+"'");
 			select = new Select(driver.findElement(locator));
 			select.selectByVisibleText(visibleText);
 		} catch (Exception e) {
@@ -249,8 +258,10 @@ public class TestActions {
 
 		try {
 			if (visibility) {
+				log("Waiting '"+seconds+"' seconds for '"+locator.toString()+"' to appear");
 				wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 			} else {
+				log("Waiting '"+seconds+"' seconds for '"+locator.toString()+"' to disappear");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 			}
 		} catch (Exception e) {
@@ -279,8 +290,8 @@ public class TestActions {
 		WebDriverWait wait = new WebDriverWait(driver, seconds);
 
 		try {
+			log("Waiting '"+seconds+"' seconds for '"+locator.toString()+"' to be clickable");
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -300,8 +311,7 @@ public class TestActions {
 		for (int i = 0; i < locators.length; i++) {
 			waitElements = waitElements + getXpath(locators[0]);
 		}
-
-		return null;
+		throw new NotImplementedException("This methos is not yet implemented");
 	}
 
 	/**
@@ -313,6 +323,7 @@ public class TestActions {
 	 */
 	public Boolean waitFor(int seconds) {
 		try {
+			log("Waiting for '"+seconds+"' seconds");
 			Thread.sleep(seconds * 1000);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -337,7 +348,9 @@ public class TestActions {
 		int count = 0;
 
 		try {
+			log("Counting the occurence of element '"+locator.toString()+"'");
 			count = driver.findElements(locator).size();
+			log("Count is : " + count);
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -362,8 +375,10 @@ public class TestActions {
 		String option = "";
 
 		try {
+			log("Getting selected value from '"+locator.toString()+"'");
 			Select select = new Select(driver.findElement(locator));
 			option = select.getFirstSelectedOption().getText();
+			log("Selected value is : " + option );
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -387,7 +402,9 @@ public class TestActions {
 		String text = "";
 
 		try {
+			log("Getting text from '"+locator.toString()+"'");
 			text = driver.findElement(locator).getText();
+			log("Text is : " + text );
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -409,6 +426,7 @@ public class TestActions {
 	 */
 	public Boolean switchToFrame(By locator) {
 		try {
+			log("Switching to fram '"+locator.toString()+"'");
 			driver.switchTo().frame(driver.findElement(locator));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -551,6 +569,7 @@ public class TestActions {
 	 */
 	public void scrollUp()
 	{
+		log("Scrolling up");
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("window.scrollBy(0,-2000)", "");
 	}
@@ -559,6 +578,7 @@ public class TestActions {
 	 */
 	public void scrollDown()
 	{
+		log("Scrolling down");
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("window.scrollBy(0,2000)", "");
 	}
@@ -603,5 +623,10 @@ public class TestActions {
 			System.out.println(e.getMessage());
 			return false;
 		}
+	}
+	
+	private void log(String message)
+	{
+		System.out.println(message);
 	}
 }
