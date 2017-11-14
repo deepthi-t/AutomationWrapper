@@ -6,7 +6,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class PaymentEnquiries 
+public class PaymentEnquiriesPOM 
 {
 	TestActions action = null;
 			
@@ -45,7 +45,7 @@ public class PaymentEnquiries
 	*            steps
 	*/
 
-	public PaymentEnquiries(TestActions action) 
+	public PaymentEnquiriesPOM(TestActions action) 
 	{
 		this.action = action;
 	}
@@ -60,7 +60,7 @@ public class PaymentEnquiries
 	{
 		boolean passed = false;
 
-			passed = action.waitFor(LiberateCommon.LevelOne.Payments, 4, true);
+			passed = action.waitFor(LiberateCommon.LevelOne.Admin, 4, true);
 			passed = action.clickOn(LiberateCommon.LevelOne.Payments);
 			passed = action.waitFor(LiberateCommon.Payments.Payments, 4, true);
 			passed = action.clickOn(LiberateCommon.Payments.Payments);
@@ -138,7 +138,7 @@ public class PaymentEnquiries
 			passed = action.waitFor(BackButton, 4, true);
 			passed = action.clickOn(PaymetDetails_Column_getAccountDetailsCommandButton);
 			passed = action.waitFor(AccountDetails_CommandButton, 4, true);
-			passed = action.clickOn(AccountDetails_CommandButton);
+			passed = action.waitForClickable(AccountDetails_CommandButton, 4);			passed = action.clickOn(AccountDetails_CommandButton);
 			passed = action.waitFor(BackButton, 4, true);
 			
 		return passed;	
