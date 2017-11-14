@@ -131,13 +131,24 @@ public boolean enterDataInFieldsToRaiseFault()
 		boolean passed = false;
 	
 		passed = RaiseFaultAction.waitFor(Symptom_DropDown, 4, true);
-		passed = RaiseFaultAction.selectBy(Symptom_DropDown, "01-TP No Dial Tone");
-		passed = RaiseFaultAction.waitFor(Department_Dropdown, 4, true);
-		passed = RaiseFaultAction.selectBy(Department_Dropdown, "FLT-B-Business Faults");
+//		passed = RaiseFaultAction.selectBy(Symptom_DropDown, "01-TP No Dial Tone");
+		RaiseFaultAction.waitFor(1);
+		passed = RaiseFaultAction.selectBy(Symptom_DropDown, 2);
+
 		passed = RaiseFaultAction.waitFor(Diagnosis_DropDown, 4, true);
-		passed = RaiseFaultAction.selectBy(Diagnosis_DropDown, "1-TP Needs dropwire replaced");
+//		passed = RaiseFaultAction.selectBy(Diagnosis_DropDown, "1-TP Needs dropwire replaced");
+		passed = RaiseFaultAction.selectBy(Diagnosis_DropDown, 2);
+		RaiseFaultAction.waitFor(1);
+
 		passed = RaiseFaultAction.waitFor(Site_Dropdown, 4, true);
-		passed = RaiseFaultAction.selectBy(Site_Dropdown, "Faults");
+//		passed = RaiseFaultAction.selectBy(Site_Dropdown, "Faults");
+		passed = RaiseFaultAction.selectBy(Site_Dropdown, 1);
+		RaiseFaultAction.waitFor(1);
+		
+		passed = RaiseFaultAction.waitFor(Department_Dropdown, 4, true);
+//		passed = RaiseFaultAction.selectBy(Department_Dropdown, "FLT-B-Business Faults");
+		passed = RaiseFaultAction.selectBy(Department_Dropdown, 2);
+		RaiseFaultAction.waitFor(1);
 		
 		return passed;
 	}
@@ -146,10 +157,15 @@ public boolean enterDataInFieldsToRaiseFault()
 public boolean clickonAccepttbutton() 
 	{
 		boolean passed = false;
-
+		
+		RaiseFaultAction.scroll(0, 2000);
+		RaiseFaultAction.waitFor(1);
 		passed = RaiseFaultAction.waitFor(Accept_Button, 4, true);
 		passed = RaiseFaultAction.clickOn(Accept_Button);
-
+		
+		RaiseFaultAction.waitFor(1);
+		RaiseFaultAction.scroll(0, -2000);
+		
 		return passed;
 	}
 

@@ -19,7 +19,7 @@ public class RaiseFaultTestCases
 		assertEquals(rf.navigate(),true);
 		action.getScreenShot("raiseNewFault");
 		
-		assertEquals(rf.enterServiceNumber("154180"),true);
+		assertEquals(rf.enterServiceNumber("9291838"),true);
 		action.getScreenShot("raiseNewFault");
 		assertEquals(rf.clickonRaiseFaultbutton(),true);
 		action.getScreenShot("raiseNewFault");
