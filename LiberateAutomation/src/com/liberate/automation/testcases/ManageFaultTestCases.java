@@ -2,31 +2,24 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.Test;
+
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.Login;
 import com.liberate.automation.pom.ManageFault;
 
 public class ManageFaultTestCases 
 {
-	static TestActions action = new TestActions();
+	static TestActions action = CommonLogin.action;	
 	
-	public void navigateToURL()
-	{
-		action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
-	}
-	
-
+	@Test
 	public void addNotes_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
-		assertEquals(mf.enterFaultNumber(""),true);
+		assertEquals(mf.enterFaultNumber("B00020B"),true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSearchbutton(),true);
 		action.getScreenShot("manageFault");
@@ -44,10 +37,7 @@ public class ManageFaultTestCases
 	public void assignFault_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
@@ -67,10 +57,7 @@ public class ManageFaultTestCases
 	public void signoff_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
@@ -90,10 +77,7 @@ public class ManageFaultTestCases
 	public void suspendRelease_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
@@ -112,10 +96,7 @@ public class ManageFaultTestCases
 	public void upgradeFaultPriority_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
@@ -134,10 +115,7 @@ public class ManageFaultTestCases
 	public void recordFaultTest_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
@@ -156,10 +134,7 @@ public class ManageFaultTestCases
 	public void printFaultDocket_ManageFault() 
 	{
 		ManageFault mf = new ManageFault(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"),true);
-		action.getScreenShot("manageFault");
 		assertEquals(mf.navigate(),true);
 		action.getScreenShot("manageFault");
 		
