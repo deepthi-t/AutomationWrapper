@@ -313,7 +313,7 @@ public class TestActions {
 	 */
 	public Boolean waitFor(int seconds) {
 		try {
-			driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+			Thread.sleep(seconds * 1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -579,6 +579,7 @@ public class TestActions {
 			waitFor(1);
 			if (countOf(By.xpath("//input[@value='OK']")) > 0) {
 				clickOn(By.xpath("//input[@value='OK']"));
+				waitFor(By.xpath("//input[@value='OK']"), 2, false);
 			}
 			return true;
 		} else {
