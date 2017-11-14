@@ -25,9 +25,16 @@ public class PaymentEnquiries
 		String acctnum = action.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]"));
 		action.getScreenShot("PaymentEnquiries");
 		System.out.println("Searched Account number is"+" "+acctnum);
-		
+		if(acctnum.equals("270004470000"))
+		{
+			System.out.println("Test passed");
+		}
+		else
+		{
+			System.out.println("Test failed");
+		}
 	}
-	
+/*	
 	@Test
 	public void paymentEnquiry_SearchWithPaymentNumber()
 	{
@@ -70,5 +77,6 @@ public class PaymentEnquiries
 		String customerdetail = action.getTextFromPage(By.xpath("//*[text()='Account Payment Details']"));
 		action.getScreenShot("PaymentEnquiries");
 		System.out.println(acctDetailsPanelName+" "+customerdetail);
-	}
+		
+	}*/
 }
