@@ -32,6 +32,7 @@ public class ManageFaultTestCases
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonAddNotesApplybutton(),true);
 		action.getScreenShot("manageFault");
+
 	}
 	
 	public void assignFault_ManageFault() 
@@ -71,6 +72,8 @@ public class ManageFaultTestCases
 		assertEquals(mf.selectSignoffDropDowns(),true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSignOffApplybutton(),true);
+		action.getScreenShot("manageFault");
+		assertEquals(mf.statusOfFaultNumber(),true);
 		action.getScreenShot("manageFault");
 	}
 	

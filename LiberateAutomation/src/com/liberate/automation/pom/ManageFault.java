@@ -42,6 +42,9 @@ public class ManageFault
 		By FaultNotes_PanelHeader = By.xpath("//*[text()='Fault Notes']");
 		By AddNotes_Button = By.xpath("//input[@value='Add Notes']");
 		By CancelNotes_Button = By.xpath("//input[@value='Cancel']");
+		//xpath for validation if notes has been added or not
+		By NotesDetails_PanelHeader = By.xpath("//*[text()='Notes Details']");
+		By IdentifyAddNotes_LineCount = By.xpath("//*[@id='manageFault:notesDetailsTable']");
 		
 		//Add notes to fault through Maintain Fault Notes
 		By Addnotes_Input = By.xpath("(//*[text()='Add Notes']/following::textarea)[1]");
@@ -53,6 +56,9 @@ public class ManageFault
 		By AssignFaultDepartment_DropDown = By.xpath("(//*[text()[contains(.,'Assign Fault')]]//following::select)[1]");
 		By AssignFaultAssign_Button = By.xpath("//input[@value='Assign']");
 		By AssignFaultCancel_Button = By.xpath("//input[@value='Cancel']");
+		//xpath for validation if department is assigned or not
+		By AssignmentDetails_PanelHeader = By.xpath("//*[text()='Assignments Details']");
+		By IdentifyAssignmentDetails_LineCount = By.xpath("//*[@id='manageFault:assignmentsTable']");
 		
 		//Signoff a fault
 		By Signoff_PanelHeader = By.xpath("//*[text()='Sign Off']");
@@ -64,6 +70,9 @@ public class ManageFault
 		By SignoffApply_Button = By.xpath("//input[@value='Apply']");
 		By SignoffClear_Button = By.xpath("//input[@value='Clear']");
 		By SignoffCancel_Button = By.xpath("//input[@value='Cancel']");
+		//xpath for validation if fault is signed off or not
+		By FaultInfo_PanelHeader = By.xpath("//*[text()='Fault Info']");
+		By IdentifyFaultStatus_Text = By.xpath("(//*[text()='Status']/following::text())[3]");
 		
 		//Suspend/release a fault
 		By SuspendRelease_PanelHeader = By.xpath("//*[text()='Suspend/Release']");
@@ -226,6 +235,15 @@ public class ManageFault
 
 			return passed;
 		}
+	//Validate if notes has been added or not
+		public int countofAddNotes() 
+		{
+			int passed = 0;
+						
+			passed = ManageFaultAction.countOf(IdentifyAddNotes_LineCount);
+			
+			return passed;
+		}
 	//---------------------------------------------------
 		
 	
@@ -331,6 +349,18 @@ public class ManageFault
 			passed = ManageFaultAction.waitFor(SignoffCancel_Button, 4, true);
 			passed = ManageFaultAction.clickOn(SignoffCancel_Button);
 
+			return passed;
+		}
+		//Validate status of fualt number
+		public String statusOfFaultNumber() 
+		{
+			String passed = null;
+
+			passed = ManageFaultAction.getTextFromPage(IdentifyFaultStatus_Text);
+			if (passed.equals("Cleared"))
+			System.out.println(IdentifyFaultStatus_Text);
+			else
+			System.out.println("Fault not cleared exit");
 			return passed;
 		}
 		//------------------------------------------	
