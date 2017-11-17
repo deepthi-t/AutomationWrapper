@@ -238,11 +238,11 @@ public class ManageFault
 	//Validate if notes has been added or not
 		public int rowCountofAddNotes() 
 		{
-			int passed = 0;
+			int count = 0;
 						
-			passed = ManageFaultAction.countOf(IdentifyAddNotes_LineCount);
+			count = ManageFaultAction.countOf(IdentifyAddNotes_LineCount);
 			
-			return passed;
+			return count;
 		}
 	//---------------------------------------------------
 		
@@ -370,10 +370,6 @@ public class ManageFault
 			String status = null;
 
 			status = ManageFaultAction.getTextFromPage(IdentifyFaultStatus_Text);
-//			if (passed.equals("Cleared"))
-//			System.out.println(IdentifyFaultStatus_Text);
-//			else
-//			System.out.println("Fault not cleared exit");
 			return status;
 		}
 		//------------------------------------------	
