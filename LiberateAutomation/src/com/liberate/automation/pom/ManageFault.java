@@ -236,7 +236,7 @@ public class ManageFault
 			return passed;
 		}
 	//Validate if notes has been added or not
-		public int countofAddNotes() 
+		public int rowCountofAddNotes() 
 		{
 			int passed = 0;
 						
@@ -289,6 +289,15 @@ public class ManageFault
 
 			return passed;
 		}
+		//Validate if department has been assigned or not
+		public int rowcountofAssignFault() 
+		{
+			int passed = 0;
+								
+			passed = ManageFaultAction.countOf(IdentifyAssignmentDetails_LineCount);
+					
+			return passed;
+		}
 		//---------------------------------------------------
 		
 	
@@ -321,7 +330,11 @@ public class ManageFault
 				
 			return passed;
 		}
-		//* Sign off fault Apply button
+
+		/***
+		 * 
+		 * @return
+		 */
 		public boolean clickonSignOffApplybutton() 
 		{
 			boolean passed = false;
@@ -354,14 +367,14 @@ public class ManageFault
 		//Validate status of fualt number
 		public String statusOfFaultNumber() 
 		{
-			String passed = null;
+			String status = null;
 
-			passed = ManageFaultAction.getTextFromPage(IdentifyFaultStatus_Text);
-			if (passed.equals("Cleared"))
-			System.out.println(IdentifyFaultStatus_Text);
-			else
-			System.out.println("Fault not cleared exit");
-			return passed;
+			status = ManageFaultAction.getTextFromPage(IdentifyFaultStatus_Text);
+//			if (passed.equals("Cleared"))
+//			System.out.println(IdentifyFaultStatus_Text);
+//			else
+//			System.out.println("Fault not cleared exit");
+			return status;
 		}
 		//------------------------------------------	
 		

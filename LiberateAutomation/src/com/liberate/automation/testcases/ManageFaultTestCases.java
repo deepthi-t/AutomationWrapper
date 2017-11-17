@@ -73,7 +73,7 @@ public class ManageFaultTestCases
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSignOffApplybutton(),true);
 		action.getScreenShot("manageFault");
-		assertEquals(mf.statusOfFaultNumber(),true);
+		assertEquals(mf.statusOfFaultNumber(),"Cleared");
 		action.getScreenShot("manageFault");
 	}
 	
