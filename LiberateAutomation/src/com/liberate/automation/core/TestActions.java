@@ -494,7 +494,7 @@ public class TestActions {
 	 *            The locator from which xpath needs to be retrieved.
 	 * @return The xpath locator as string. Returns "" if nothing found.
 	 */
-	private String getXpath(By locator) {
+	public String getXpath(By locator) {
 		return locator.toString().replace("By.xpath:", "").trim();
 	}
 
