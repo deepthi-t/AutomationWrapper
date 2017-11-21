@@ -123,7 +123,7 @@ public class MSOEnquiry
 		{
 			//Checking if action date is blank. If Date is blank, then Service order belongs to that department.
 			String actionDate = action.getTextFromPage(By.xpath((action.getXpath(Circulation_Row)+"["+(i+1)+"]"+"/descendant::td[3]"))).trim();
-			if(!actionDate.equals(""))
+			if(actionDate.equals(""))
 			{
 				//Getting the department name (cell value) where the action date is blank.
 				CurrentDepartments.add(action.getTextFromPage(By.xpath((action.getXpath(Circulation_Row)+"["+(i+1)+"]"+"/descendant::td[1]"))).trim());
