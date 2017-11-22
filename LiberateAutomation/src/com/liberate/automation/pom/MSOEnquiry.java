@@ -13,6 +13,10 @@ public class MSOEnquiry
 {
 	TestActions action = null;
 	
+	public String ServiceOrderNumber = "";
+	public String ServiceNumber = "";
+	public String AccountNumber = "";
+	
 	public MSOEnquiry(TestActions action)
 	{
 		this.action = action;
@@ -37,15 +41,15 @@ public class MSOEnquiry
 	By DepartmentCirculation_Tab = By.xpath("(//td[text()='Department Circulation'])[1]");
 	/***
 	 * Can Be used to get the count of row of Department Circulation. Can Append '[<i>count</i>]' for a particular row.
-	 * After 'count' append 
-	 * <br>'/descendant::td[1]' for Department
-	 * <br>'/descendant::td[2]' for From Date
-	 * <br>'/descendant::td[3]' for To Date
-	 * <br>'/descendant::td[4]' for Status
-	 * <br>'/descendant::td[5]' for Created By
-	 * <br>'/descendant::td[6]' for Actioned By
-	 * <br>'/descendant::td[7]' for Signed Off By
-	 * <br>'/descendant::td[8]' for Status Reason
+	 * After '<i>count</i>' append 
+	 * <br>'<i>/descendant::td[1]</i>' for Department
+	 * <br>'<i>/descendant::td[2]</i>' for From Date
+	 * <br>'<i>/descendant::td[3]</i>' for To Date
+	 * <br>'<i>/descendant::td[4]</i>' for Status
+	 * <br>'<i>/descendant::td[5]</i>' for Created By
+	 * <br>'<i>/descendant::td[6]</i>' for Actioned By
+	 * <br>'<i>/descendant::td[7]</i>' for Signed Off By
+	 * <br>'<i>/descendant::td[8]</i>' for Status Reason
 	 */
 	By Circulation_Row = By.xpath("//tr[contains(@id,'serviceOrderEnquiryForm:serviceOrderEnquiryTabs:')]");	
 	
@@ -68,8 +72,15 @@ public class MSOEnquiry
 		return passed;
 	}
 	
+	/***
+	 * Method the search for a service order in Enquiry screen.
+	 * @param serviceOrderNumber The Service Order Number to be searched for.
+	 * @return True : If able to search. <br>False : If search for service order is failed.
+	 */
 	public boolean searchServiceOrder(String serviceOrderNumber)
 	{
+		this.ServiceOrderNumber = serviceOrderNumber;
+		
 		boolean passed = false;
 		
 		passed = action.waitFor(ServiceOrder_Input,4,true);
@@ -80,25 +91,40 @@ public class MSOEnquiry
 		return passed;
 	}
 	
+	/***
+	 * Method to verify Service Order Details screen.
+	 * @param serviceOrderNumber The service Order to be searched for.
+	 * @return
+	 */
 	public boolean verifyServiceOrderDetails(String serviceOrderNumber)
 	{
+		this.ServiceOrderNumber = serviceOrderNumber;
+
 		boolean passed = false;
 		
 		passed = action.waitFor(ServiceOrderDetails_PanelHeader,4,true);
-		passed = action.getTextFromPage(ServiceNumber_Value).trim().equals(serviceOrderNumber)?true:false;
+		passed = action.getTextFromPage(ServiceOrderNumber_Value).trim().equals(serviceOrderNumber)?true:false;
 		
 		if(!passed)
 		{
 			return passed;
 		}
 		
-		System.out.println("Service Order Number : " + action.getTextFromPage(ServiceOrderNumber_Value));
-		System.out.println("Service Number : " + action.getTextFromPage(ServiceNumber_Value));
-		System.out.println("Account Number : " + action.getTextFromPage(AccountNumber_Value));
+		this.ServiceOrderNumber = action.getTextFromPage(ServiceOrderNumber_Value);
+		this.ServiceNumber = action.getTextFromPage(ServiceNumber_Value);
+		this.AccountNumber = action.getTextFromPage(AccountNumber_Value);
+		
+		System.out.println("Service Order Number : " + ServiceOrderNumber);
+		System.out.println("Service Number : " + ServiceNumber);
+		System.out.println("Account Number : " + AccountNumber);
 		
 		return passed;
 	}
 	
+	/***
+	 * The method used to navigate to department circulation.
+	 * @return
+	 */
 	public boolean verifyDepartmentCirculation()
 	{
 		boolean passed = false;
