@@ -53,6 +53,10 @@ public class MSOEnquiry
 	 */
 	By Circulation_Row = By.xpath("//tr[contains(@id,'serviceOrderEnquiryForm:serviceOrderEnquiryTabs:')]");	
 	
+	//Special Instructions
+	By SpecialInstructions_Tab =  By.xpath("(//td[text()='Special Instructions'])[1]");
+	By SpecialInstructions_PanelHeader = By.xpath("(//*[text()='Special Instructions'])[2]");
+	
 	/***
 	 * Method called to navigate to manage Service Order Enquiry
 	 * @return	True  : If able to Navigate.
@@ -61,6 +65,9 @@ public class MSOEnquiry
 	public boolean navigate()
 	{
 		boolean passed = false;
+		
+		action.scrollUp();
+		action.waitFor(1);
 		
 		passed = action.waitFor(LiberateCommon.LevelOne.Orders, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.Orders);
@@ -158,4 +165,18 @@ public class MSOEnquiry
 				
 		return CurrentDepartments;
 	}
+	
+	public boolean verifySepcialInstructions(String SpecialInstruction)
+	{
+		boolean passed = false;
+		
+		passed = action.clickOn(SpecialInstructions_Tab);
+		
+		passed = action.waitFor(SpecialInstructions_PanelHeader, 4, true);
+		
+		passed = action.countOf(By.xpath("//*[text()='"+SpecialInstruction+"']"))>0;
+		
+		return passed;
+	}
+	
 }
