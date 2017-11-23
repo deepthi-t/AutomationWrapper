@@ -1,6 +1,7 @@
 package com.liberate.automation.core;
 
 import java.io.File;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -14,6 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -21,9 +23,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+
 public class TestActions {
 	
-	public String classVersion = "0.5.0";
+	public String classVersion = "0.6.0";
 	
 	Boolean retry = false;
 	int retryCount = 3;
@@ -237,7 +241,45 @@ public class TestActions {
 
 		return true;
 	}
-
+	
+	/***
+	 * Method that can be called to select a value from a DropDown based on the partial text passed 
+	 * @param locator Identifies the drop down element.
+	 * @param partialText The partial Text of the value that needs to be selected
+	 * @return Returns true, if able to select the provided Text from the provided element in WebPage
+	 */
+	public boolean selectByPartialText(By locator, String partialText)
+	{
+		String xpath = getXpath(locator);
+		String fullText = "";
+		xpath = xpath + "/descendant::option";
+		
+		List<WebElement> options = driver.findElements(By.xpath("selectByPartialText"));
+		
+		for (WebElement option : options) {
+		    if (option.getText().contains(partialText)) {
+		    	fullText = option.getText();
+		        break;
+		    }
+		}
+		
+		return selectBy(locator, fullText);
+	}
+	
+	/***
+	 * Method to get the selected value from The Drop-down.
+	 * @param locator The locator of drop down from which the selected value should be returned.
+	 * @return The selected value as String.
+	 */
+	public String getSelectedValue(By dropdown)
+	{
+		String xpath = getXpath(dropdown);
+		xpath = xpath + "/descendant::option[@selected='selected']";
+		
+		return getTextFromPage(By.xpath(xpath));
+	}
+	
+	
 	/**
 	 * Method that can be called to wait until an element is available on not
 	 * available based of parameter 'visibility'.
