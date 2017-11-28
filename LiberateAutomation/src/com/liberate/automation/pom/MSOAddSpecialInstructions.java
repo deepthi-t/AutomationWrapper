@@ -14,11 +14,6 @@ public class MSOAddSpecialInstructions
 	public String ServiceNumber = "";
 	public String SpecialInstruction = "";
 	
-	public MSOAddSpecialInstructions(TestActions action)
-	{
-		this.action = action;
-	}
-	
 	By ServiceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
 	By Search_Button = By.xpath("//input[@value='Search']");
 	By Reset_Button = By.xpath("//input[@value='Reset']");
@@ -34,6 +29,11 @@ public class MSOAddSpecialInstructions
 	By Cancel_Button = By.xpath("//input[@value='Cancel']");
 	
 	By OK_Button = By.xpath("//input[@value='OK']");
+	
+	public MSOAddSpecialInstructions(TestActions action)
+	{
+		this.action = action;
+	}
 	
 	public boolean navigate()
 	{
