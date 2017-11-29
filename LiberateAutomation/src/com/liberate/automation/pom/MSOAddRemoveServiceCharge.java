@@ -10,9 +10,9 @@ import com.liberate.automation.core.TestActions;
 public class MSOAddRemoveServiceCharge {
 	TestActions action = null;
 
-	String ServiceOrderNumber = "";
-	String ServiceCharge = "";
-	int initialSCcount = 0;
+	public String ServiceOrderNumber = "";
+	public String ServiceCharge = "";
+	public int initialSCcount = 0;
 	
 	By Department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
 	By DepartmentDisabled_Select = By.xpath("//*[text()='Department:']/following::select[@disabled=\"disabled\"]");
@@ -149,6 +149,8 @@ public class MSOAddRemoveServiceCharge {
 		
 		this.initialSCcount = action.countOf(ServiceCharge_Row);
 		
+		action.scrollUp();
+
 		passed = action.waitFor(New_ActionButton, 4, true);
 		passed = action.clickOn(New_ActionButton);
 		
@@ -172,6 +174,8 @@ public class MSOAddRemoveServiceCharge {
 		boolean passed = false;
 		
 		this.initialSCcount = action.countOf(ServiceCharge_Row);
+		
+		action.scrollUp();
 		
 		passed = action.waitFor(Delete_ActionButton, 4, true);
 		passed = action.clickOn(Delete_ActionButton);
