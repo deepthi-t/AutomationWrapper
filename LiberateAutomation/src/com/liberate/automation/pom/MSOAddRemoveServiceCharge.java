@@ -12,6 +12,7 @@ public class MSOAddRemoveServiceCharge {
 
 	String ServiceOrderNumber = "";
 	String ServiceCharge = "";
+	int initialSCcount = 0;
 	
 	By Department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
 	By DepartmentDisabled_Select = By.xpath("//*[text()='Department:']/following::select[@disabled=\"disabled\"]");
@@ -146,7 +147,7 @@ public class MSOAddRemoveServiceCharge {
 	{
 		boolean passed = false;
 		
-		int initialSCcount = action.countOf(ServiceCharge_Row);
+		this.initialSCcount = action.countOf(ServiceCharge_Row);
 		
 		passed = action.waitFor(New_ActionButton, 4, true);
 		passed = action.clickOn(New_ActionButton);
@@ -156,14 +157,31 @@ public class MSOAddRemoveServiceCharge {
 		
 		passed = action.waitFor(2);
 		
-		this.ServiceCharge = action.getSelectedOption(ServiceCharge_Select);
+		this.ServiceCharge = action.getSelectedOption(ServiceCharge_Select).replace("-", "");
 		
 		passed = action.clickOn(Accept_Button);
 		passed = action.waitFor(ServiceChargeCreateSuccessMessage, 4, true);
 		passed = action.clickOn(MessageOK_Button);
 		passed = action.waitFor(MessageOK_Button, 3, false);
+				
+		return passed;
+	}
+	
+	public boolean deleteServiceCharge()
+	{
+		boolean passed = false;
 		
-		passed = action.countOf(ServiceCharge_Row)==initialSCcount+1;
+		this.initialSCcount = action.countOf(ServiceCharge_Row);
+		
+		passed = action.waitFor(Delete_ActionButton, 4, true);
+		passed = action.clickOn(Delete_ActionButton);
+		
+		passed = action.waitFor(DeleteYes_Button,4,true);
+		passed = action.clickOn(DeleteYes_Button);
+		
+		passed = action.waitFor(DeleteSuccessMessage, 4, true);
+		passed = action.clickOn(MessageOK_Button);
+		passed = action.waitFor(MessageOK_Button, 3, false);
 		
 		return passed;
 	}
@@ -171,6 +189,17 @@ public class MSOAddRemoveServiceCharge {
 	public boolean verifyServiceCharge(String sc, boolean scExist)
 	{
 		boolean passed = false;
+		
+		if(!scExist)
+		{
+			passed = action.countOf(ServiceCharge_Row)==this.initialSCcount-1;
+			passed = action.countOf(By.xpath("/*[text()='"+this.ServiceCharge+"']"))==0;
+		}
+		else
+		{
+			passed = action.countOf(ServiceCharge_Row)==initialSCcount+1;
+			passed = action.countOf(By.xpath("/*[text()='"+this.ServiceCharge+"']"))!=0;
+		}
 		
 		return passed;
 	}
