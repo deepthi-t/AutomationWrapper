@@ -20,6 +20,7 @@ public class MSOAddRemoveServiceCharge {
 	By ServiceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
 	By Search_Button = By.xpath("//input[@value='Search']");
 	By Reset_Button = By.xpath("//input[@value='Reset']");
+	By OK_Button = By.xpath("//input[@value='OK']");
 
 	By ServiceOrderList_PanelHeader = By.xpath("//*[text()='Service Order List']");
 
@@ -205,6 +206,16 @@ public class MSOAddRemoveServiceCharge {
 			passed = action.countOf(By.xpath("/*[text()='"+this.ServiceCharge+"']"))!=0;
 		}
 		
+		return passed;
+	}
+	
+	public boolean clickOnOKpopup()
+	{
+		boolean passed = false;
+		
+		passed = action.waitFor(OK_Button,4,true);
+		passed = action.clickOn(OK_Button);
+
 		return passed;
 	}
 }
