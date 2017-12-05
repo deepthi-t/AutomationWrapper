@@ -254,7 +254,7 @@ public class TestActions {
 		String fullText = "";
 		xpath = xpath + "/descendant::option";
 		
-		List<WebElement> options = driver.findElements(By.xpath("selectByPartialText"));
+		List<WebElement> options = driver.findElements(By.xpath(xpath));
 		
 		for (WebElement option : options) {
 		    if (option.getText().contains(partialText)) {
