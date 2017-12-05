@@ -109,27 +109,7 @@ public class MSOAddRemoveServiceCharge {
 		
 		boolean passed = false;
 
-		passed = action.waitFor(DepartmentDisabled_Select,4,true);
-		String department = action.getSelectedOption(Department_Select);
-		
-		if(Department.trim().equals(""))
-		{
-			//DO Nothing
-		}
-		else if(!department.contains(Department))
-		{
-			passed = action.clickOn(DepartmentChange_Button);
-			passed = action.waitFor(DepartmentDisabled_Select, 4, false);
-			
-			passed = action.selectByPartialText(Department_Select, Department);
-			passed = action.waitFor(DepartmentDisabled_Select, 4, true);
-			
-			passed = action.waitFor(1);
-		}
-		
-		passed = action.sendDataTo(ServiceOrder_Input, this.ServiceOrderNumber);
-		passed = action.waitFor(1);
-		passed = action.clickOn(Search_Button);
+		passed = CommonPanel.SearchServiceOrder(action, Department, this.ServiceOrderNumber);
 		
 		return passed;
 	}
@@ -213,8 +193,7 @@ public class MSOAddRemoveServiceCharge {
 	{
 		boolean passed = false;
 		
-		passed = action.waitFor(OK_Button,4,true);
-		passed = action.clickOn(OK_Button);
+		passed = CommonPanel.clickOnOKpopup(action);
 
 		return passed;
 	}

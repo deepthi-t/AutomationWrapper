@@ -2,6 +2,7 @@ package com.liberate.automation.pom;
 
 import org.openqa.selenium.By;
 
+import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
@@ -94,8 +95,7 @@ public class MSOAddSpecialInstructions
 	{
 		boolean passed = false;
 		
-		passed = action.waitFor(OK_Button,4,true);
-		passed = action.clickOn(OK_Button);
+		passed = CommonPanel.clickOnOKpopup(action);
 
 		return passed;
 	}
