@@ -13,13 +13,20 @@ public class CommonPanel
 		 * 
 		 * <br>Append '/descendant::td[1]' after adding count, for Service Order
 		 * <br>Append '/descendant::td[2]' after adding count, for Customer Name
-		 * <br>Append '/descendant::td[1]' after adding count, for SO Priority
-		 * <br>Append '/descendant::td[1]' after adding count, for Exchange
-		 * <br>Append '/descendant::td[1]' after adding count, for Status
+		 * <br>Append '/descendant::td[3]' after adding count, for SO Priority
+		 * <br>Append '/descendant::td[4]' after adding count, for Exchange
+		 * <br>Append '/descendant::td[5]' after adding count, for Status
 		 */
 		public static By ServiceOrderList_Row = By.xpath("//*[text()[contains(.,'Service Order List')]]/following::div[1]/descendant::tbody[1]/descendant::tr");
 	}
 	
+	/***
+	 * Method to search with Service Order Number
+	 * @param action The action class that needs to be passed.
+	 * @param department The department to be selected while searching.
+	 * @param ServiceOrderNumber The Service Order Number to be searched for.
+	 * @return True is able to search. Else will return false.
+	 */
 	public static boolean SearchServiceOrder(TestActions action, String department, String ServiceOrderNumber)
 	{
 		boolean passed = false;
@@ -50,6 +57,11 @@ public class CommonPanel
 		return passed;
 	}
 	
+	/***
+	 * Click on OK button in the pop up.
+	 * @param action The action class to be passed.
+	 * @return True is able to click on OK button. Else will return false.
+	 */
 	public static boolean clickOnOKpopup(TestActions action)
 	{
 		By OK_Button = By.xpath("//input[@value='OK']");

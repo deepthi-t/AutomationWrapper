@@ -51,7 +51,6 @@ public class ManageServiceOrder {
 		msr.verifyServiceOrderDetails();
 		msr.addServiceCharge();
 		msr.verifyServiceCharge(msr.ServiceCharge, true);
-		msr.clickOnOKpopup();
 	}
 
 	@Test
@@ -65,6 +64,5 @@ public class ManageServiceOrder {
 		msr.verifyServiceOrderDetails();
 		msr.deleteServiceCharge();
 		msr.verifyServiceCharge(msr.ServiceCharge, false);
-		msr.clickOnOKpopup();
 	}
 }
