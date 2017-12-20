@@ -34,7 +34,6 @@ public class MSOAddRemoveServiceCharge {
 	 * Append '/descendant::td[4]' after adding count, for Exchange <br>
 	 * Append '/descendant::td[5]' after adding count, for Status
 	 */
-	By ServiceOrder_Row = CommonPanel.ServiceOrderList.ServiceOrderList_Row;
 
 	By New_ActionButton = By.xpath("//span[text()='New']");
 	By Delete_ActionButton = By.xpath("//span[text()='Delete']");

@@ -166,6 +166,11 @@ public class MSOEnquiry
 		return CurrentDepartments;
 	}
 	
+	public String getCurrentServiceOrderStatus()
+	{
+		return (action.getTextFromPage(By.xpath((action.getXpath(Circulation_Row)+"[1]"+"/descendant::td[4]"))).trim());
+	}
+	
 	public boolean verifySepcialInstructions(String SpecialInstruction)
 	{
 		boolean passed = false;

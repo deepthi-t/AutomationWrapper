@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
+import com.liberate.automation.pom.MSOCancelServiceOrder;
 import com.liberate.automation.pom.MSOEnquiry;
 
 public class ManageServiceOrder {
@@ -64,5 +65,23 @@ public class ManageServiceOrder {
 		msr.verifyServiceOrderDetails();
 		msr.deleteServiceCharge();
 		msr.verifyServiceCharge(msr.ServiceCharge, false);
+	}
+	
+	@Test
+	public void cancelServiceOrder()
+	{
+		MSOCancelServiceOrder msc = new MSOCancelServiceOrder(action);
+		MSOEnquiry mse = new MSOEnquiry(action);
+		
+		msc.navigate();
+		msc.searchSearviceOrder("", "");
+		msc.verifyServiceOrdeDetails(msc.ServiceOrderNumber);
+		msc.cancelServiceOrder();
+		msc.clickOnOKButton();
+		
+		mse.navigate();
+		mse.searchServiceOrder(msc.ServiceOrderNumber);
+		mse.verifyDepartmentCirculation();
+		mse.getCurrentServiceOrderStatus();
 	}
 }
