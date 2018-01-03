@@ -9,7 +9,7 @@ import com.liberate.automation.core.TestActions;
 
 public class MSOCancelServiceOrder {
 
-	TestActions action = null;
+	private TestActions action = null;
 
 	public String ServiceOrderNumber = "";
 

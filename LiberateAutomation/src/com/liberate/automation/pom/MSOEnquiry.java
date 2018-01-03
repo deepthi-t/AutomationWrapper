@@ -11,7 +11,7 @@ import com.liberate.automation.core.TestActions;
 
 public class MSOEnquiry 
 {
-	TestActions action = null;
+	private TestActions action = null;
 	
 	public String ServiceOrderNumber = "";
 	public String ServiceNumber = "";

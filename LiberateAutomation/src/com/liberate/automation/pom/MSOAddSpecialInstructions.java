@@ -9,7 +9,7 @@ import com.liberate.automation.core.TestActions;
 
 public class MSOAddSpecialInstructions 
 {
-	TestActions action = null;
+	private TestActions action = null;
 	
 	public String ServiceOrderNumber = "";
 	public String ServiceNumber = "";
