@@ -12,8 +12,12 @@ public class MSOSignoff {
 
 	public String ServiceOrderNumber = "";
 
-	By signOff_Button = By.xpath("//input[@value='Accept']");
+	By accpet_Button = By.xpath("//input[@value='Accept']");
+	By OK_Button = By.xpath("//input[@value='OK']");
+
 	By generalSignOff_Label = By.xpath("//*[text()[contains(.,'General Sign Off')]]");
+	By accountSignOff_Label = By.xpath("//*[text()[contains(.,'Account Signoff')]]");
+
 	By serviceOrder_Value = By.xpath("(//*[text()='Service Order:'])[2]/following::span[1]");
 
 	public MSOSignoff(TestActions action) {
@@ -53,7 +57,7 @@ public class MSOSignoff {
 		}
 		return passed;
 	}
-	
+
 	public boolean verifyServiceOrdeDetails(String ServiceOrderNumber) {
 		boolean passed = false;
 
@@ -62,26 +66,47 @@ public class MSOSignoff {
 
 		return passed;
 	}
-	
+
 	public boolean generalSignOff() {
 		boolean passed = false;
 
 		action.scrollDown();
-		
+
 		action.waitFor(generalSignOff_Label, 2, true);
-		
-		action.waitFor(signOff_Button, 2, true);
-		action.clickOn(signOff_Button);
-		
+
+		action.waitFor(accpet_Button, 2, true);
+		action.clickOn(accpet_Button);
+
 		action.waitFor(CommonPanel.popUp.popUpWindow, 4, true);
-		if(action.countOf(CommonPanel.popUp.popUpYes_Button)>0)
-		{
+		if (action.countOf(CommonPanel.popUp.popUpYes_Button) > 0) {
 			action.clickOn(CommonPanel.popUp.popUpYes_Button);
 			action.waitFor(CommonPanel.popUp.popUpYes_Button, 2, false);
 		}
-		
+
 		action.clickOn(CommonPanel.popUp.popUpOK_Button);
+
+		return passed;
+	}
+
+	public boolean accountSignOff() {
+		boolean passed = false;
+
+		action.waitFor(accountSignOff_Label, 2, true);
+
+		action.waitFor(OK_Button, 2, true);
+		action.clickOn(OK_Button);
 		
+		action.waitFor(accpet_Button, 2, true);
+		action.clickOn(accpet_Button);
+		
+		action.waitFor(CommonPanel.popUp.popUpWindow, 4, true);
+		if (action.countOf(CommonPanel.popUp.popUpYes_Button) > 0) {
+			action.clickOn(CommonPanel.popUp.popUpYes_Button);
+			action.waitFor(CommonPanel.popUp.popUpYes_Button, 2, false);
+		}
+
+		action.clickOn(CommonPanel.popUp.popUpOK_Button);
+
 		return passed;
 	}
 }

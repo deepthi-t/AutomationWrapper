@@ -96,4 +96,15 @@ public class ManageServiceOrder {
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.generalSignOff();
 	}
+	
+	@Test
+	public void accountSignOffServiceOrder()
+	{
+		MSOSignoff mss = new MSOSignoff(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("AQSOF", "ZE00240");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.accountSignOff();
+	}
 }
