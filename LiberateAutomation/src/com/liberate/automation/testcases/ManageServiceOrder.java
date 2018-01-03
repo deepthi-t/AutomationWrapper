@@ -7,6 +7,7 @@ import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
 import com.liberate.automation.pom.MSOCancelServiceOrder;
 import com.liberate.automation.pom.MSOEnquiry;
+import com.liberate.automation.pom.MSOSignoff;
 
 public class ManageServiceOrder {
 	static TestActions action = CommonLogin.action;
@@ -83,5 +84,16 @@ public class ManageServiceOrder {
 		mse.searchServiceOrder(msc.ServiceOrderNumber);
 		mse.verifyDepartmentCirculation();
 		mse.getCurrentServiceOrderStatus();
+	}
+	
+	@Test
+	public void generalSignOffServiceOrder()
+	{
+		MSOSignoff mss = new MSOSignoff(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("BGINS", "TB00196");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.generalSignOff();
 	}
 }

@@ -5,6 +5,18 @@ import org.openqa.selenium.By;
 import com.liberate.automation.core.TestActions;
 
 public class CommonPanel {
+
+	public static class popUp {
+		/***
+		 * XPath of pop up window
+		 */
+		public static By popUpWindow = By.xpath("//td[@class='icePnlPopBody popupPanelBody']");
+		
+		public static By popUpYes_Button = By.xpath("//input[@value='Yes']");
+		public static By popUpNo_Button = By.xpath("//input[@value='No']");
+		public static By popUpOK_Button = By.xpath("//input[@value='OK']");
+	}
+
 	public static class ServiceOrderList {
 		/***
 		 * XPath for Service Order List Header.
@@ -15,19 +27,24 @@ public class CommonPanel {
 		 * Method to select particular Service Order from List
 		 * 
 		 * @param element
-		 * Append '[<i><b>count</b></i>]' to select that row.
+		 *            Append '[<i><b>count</b></i>]' to select that row.
 		 * 
-		 * <br>
-		 * Append '/descendant::td[1]' after adding count, for Service Order <br>
-		 * Append '/descendant::td[2]' after adding count, for Customer Name <br>
-		 * Append '/descendant::td[3]' after adding count, for SO Priority <br>
-		 * Append '/descendant::td[4]' after adding count, for Exchange <br>
-		 * Append '/descendant::td[5]' after adding count, for Status
-		 * @return
-		 * XPath of the row or particular cell depends on the passed <i>element</i> parameter
+		 *            <br>
+		 *            Append '/descendant::td[1]' after adding count, for Service Order
+		 *            <br>
+		 *            Append '/descendant::td[2]' after adding count, for Customer Name
+		 *            <br>
+		 *            Append '/descendant::td[3]' after adding count, for SO Priority
+		 *            <br>
+		 *            Append '/descendant::td[4]' after adding count, for Exchange <br>
+		 *            Append '/descendant::td[5]' after adding count, for Status
+		 * @return XPath of the row or particular cell depends on the passed
+		 *         <i>element</i> parameter
 		 */
 		public static By ServiceOrderList_Row(String element) {
-			return By.xpath("//*[text()[contains(.,'Service Order List')]]/following::div[1]/descendant::tbody[1]/descendant::tr" + element);
+			return By.xpath(
+					"//*[text()[contains(.,'Service Order List')]]/following::div[1]/descendant::tbody[1]/descendant::tr"
+							+ element);
 		}
 	}
 
