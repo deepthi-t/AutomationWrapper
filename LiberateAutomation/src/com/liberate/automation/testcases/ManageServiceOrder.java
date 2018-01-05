@@ -10,6 +10,7 @@ import com.liberate.automation.pom.MSOEnquiry;
 import com.liberate.automation.pom.MSOReject;
 import com.liberate.automation.pom.MSORelease;
 import com.liberate.automation.pom.MSOSignoff;
+import com.liberate.automation.pom.MSOWaitlist;
 
 public class ManageServiceOrder {
 	static TestActions action = CommonLogin.action;
@@ -130,5 +131,16 @@ public class ManageServiceOrder {
 		mss.searchSearviceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.releaseServiceOrder();
+	}
+	
+	@Test
+	public void waitlistServiceOrder()
+	{
+		MSOWaitlist mss = new MSOWaitlist(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.waitlistServiceOrder();
 	}
 }
