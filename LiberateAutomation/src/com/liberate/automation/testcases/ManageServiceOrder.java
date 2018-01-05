@@ -11,6 +11,7 @@ import com.liberate.automation.pom.MSOManualWaitlistRelease;
 import com.liberate.automation.pom.MSOReject;
 import com.liberate.automation.pom.MSORelease;
 import com.liberate.automation.pom.MSOSignoff;
+import com.liberate.automation.pom.MSOSuspend;
 import com.liberate.automation.pom.MSOWaitlist;
 
 public class ManageServiceOrder {
@@ -154,5 +155,16 @@ public class ManageServiceOrder {
 		mss.searchSearviceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.manualWaitlistRelease();
+	}
+	
+	@Test
+	public void suspendSeviceOrder()
+	{
+		MSOSuspend mss = new MSOSuspend(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.suspendServiceOrder();
 	}
 }
