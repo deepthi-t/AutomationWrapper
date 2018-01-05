@@ -7,6 +7,7 @@ import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
 import com.liberate.automation.pom.MSOCancelServiceOrder;
 import com.liberate.automation.pom.MSOEnquiry;
+import com.liberate.automation.pom.MSOManualWaitlistRelease;
 import com.liberate.automation.pom.MSOReject;
 import com.liberate.automation.pom.MSORelease;
 import com.liberate.automation.pom.MSOSignoff;
@@ -142,5 +143,16 @@ public class ManageServiceOrder {
 		mss.searchSearviceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.waitlistServiceOrder();
+	}
+	
+	@Test
+	public void manualWaitlistReleaseServiceOrder()
+	{
+		MSOManualWaitlistRelease mss = new MSOManualWaitlistRelease(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.manualWaitlistRelease();
 	}
 }
