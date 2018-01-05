@@ -7,6 +7,8 @@ import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
 import com.liberate.automation.pom.MSOCancelServiceOrder;
 import com.liberate.automation.pom.MSOEnquiry;
+import com.liberate.automation.pom.MSOReject;
+import com.liberate.automation.pom.MSORelease;
 import com.liberate.automation.pom.MSOSignoff;
 
 public class ManageServiceOrder {
@@ -106,5 +108,27 @@ public class ManageServiceOrder {
 		mss.searchSearviceOrder("AQSOF", "ZE00240");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.accountSignOff();
+	}
+	
+	@Test
+	public void rejectServiceOrder()
+	{
+		MSOReject mss = new MSOReject(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("AQSOF", "YD00484");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.reject();
+	}
+	
+	@Test
+	public void releaseServiceOrder()
+	{
+		MSORelease mss = new MSORelease(action);
+		
+		mss.navigate();
+		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.releaseServiceOrder();
 	}
 }
