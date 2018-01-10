@@ -114,7 +114,7 @@ public class MSOAddRemoveServiceCharge {
 	 * @return True if able to search with service order number. Else will return
 	 *         false.
 	 */
-	public boolean searchByServiceOrder(String Department, String SONumber) {
+	public boolean searchServiceOrder(String Department, String SONumber) {
 		this.ServiceOrderNumber = SONumber;
 
 		boolean passed = false;

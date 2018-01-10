@@ -29,7 +29,7 @@ public class ManageServiceOrder {
 		action.getScreenShot("addSpecialInstructions");
 		mso.navigate();
 		action.getScreenShot("addSpecialInstructions");
-		mso.searchSearviceOrder(serviceOrderNumber);
+		mso.searchServiceOrder(serviceOrderNumber);
 		action.getScreenShot("addSpecialInstructions");
 		mso.verifyServiceOrderDetails();
 		action.getScreenShot("addSpecialInstructions");
@@ -55,7 +55,7 @@ public class ManageServiceOrder {
 		String serviceOrderNumber = "TK00144";
 
 		msr.navigate();
-		msr.searchByServiceOrder("RSNET", serviceOrderNumber);
+		msr.searchServiceOrder("RSNET", serviceOrderNumber);
 		msr.verifyServiceOrderDetails();
 		msr.addServiceCharge();
 		msr.verifyServiceCharge(msr.ServiceCharge, true);
@@ -68,7 +68,7 @@ public class ManageServiceOrder {
 		String serviceOrderNumber = "TK00144";
 
 		msr.navigate();
-		msr.searchByServiceOrder("RSNET", serviceOrderNumber);
+		msr.searchServiceOrder("RSNET", serviceOrderNumber);
 		msr.verifyServiceOrderDetails();
 		msr.deleteServiceCharge();
 		msr.verifyServiceCharge(msr.ServiceCharge, false);
@@ -81,7 +81,7 @@ public class ManageServiceOrder {
 		MSOEnquiry mse = new MSOEnquiry(action);
 		
 		msc.navigate();
-		msc.searchSearviceOrder("", "");
+		msc.searchServiceOrder("", "");
 		msc.verifyServiceOrdeDetails(msc.ServiceOrderNumber);
 		msc.cancelServiceOrder();
 		msc.clickOnOKButton();
@@ -98,7 +98,7 @@ public class ManageServiceOrder {
 		MSOSignoff mss = new MSOSignoff(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("BGINS", "TB00196");
+		mss.searchServiceOrder("BGINS", "TB00196");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.generalSignOff();
 	}
@@ -109,7 +109,7 @@ public class ManageServiceOrder {
 		MSOSignoff mss = new MSOSignoff(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("AQSOF", "ZE00240");
+		mss.searchServiceOrder("AQSOF", "ZE00240");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.accountSignOff();
 	}
@@ -120,7 +120,7 @@ public class ManageServiceOrder {
 		MSOReject mss = new MSOReject(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("AQSOF", "YD00484");
+		mss.searchServiceOrder("AQSOF", "YD00484");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.reject();
 	}
@@ -131,7 +131,7 @@ public class ManageServiceOrder {
 		MSORelease mss = new MSORelease(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.searchServiceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.releaseServiceOrder();
 	}
@@ -142,7 +142,7 @@ public class ManageServiceOrder {
 		MSOWaitlist mss = new MSOWaitlist(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.searchServiceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.waitlistServiceOrder();
 	}
@@ -153,7 +153,7 @@ public class ManageServiceOrder {
 		MSOManualWaitlistRelease mss = new MSOManualWaitlistRelease(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.searchServiceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.manualWaitlistRelease();
 	}
@@ -164,7 +164,7 @@ public class ManageServiceOrder {
 		MSOSuspend mss = new MSOSuspend(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("AQSOF", "A00173B");
+		mss.searchServiceOrder("AQSOF", "A00173B");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.suspendServiceOrder();
 	}
@@ -175,7 +175,7 @@ public class ManageServiceOrder {
 		MSOSplit mss = new MSOSplit(action);
 		
 		mss.navigate();
-		mss.searchSearviceOrder("CRCL", "WI00204");
+		mss.searchServiceOrder("CRCL", "WI00204");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.splitServiceOrder();
 	}

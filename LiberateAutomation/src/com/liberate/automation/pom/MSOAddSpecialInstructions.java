@@ -48,7 +48,7 @@ public class MSOAddSpecialInstructions
 		return passed;
 	}
 	
-	public boolean searchSearviceOrder(String ServiceOrder)
+	public boolean searchServiceOrder(String ServiceOrder)
 	{
 		boolean passed = false;
 		this.ServiceOrderNumber = ServiceOrder;

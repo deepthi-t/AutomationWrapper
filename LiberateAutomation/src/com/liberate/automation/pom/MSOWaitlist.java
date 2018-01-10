@@ -34,7 +34,7 @@ public class MSOWaitlist {
 		return passed;
 	}
 
-	public boolean searchSearviceOrder(String department, String ServiceOrderNumber) {
+	public boolean searchServiceOrder(String department, String ServiceOrderNumber) {
 		boolean passed = false;
 		if (!department.trim().equals("") && !ServiceOrderNumber.trim().equals("")) {
 			this.ServiceOrderNumber = ServiceOrderNumber;

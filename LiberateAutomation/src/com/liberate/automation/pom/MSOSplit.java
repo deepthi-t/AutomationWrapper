@@ -36,7 +36,7 @@ public class MSOSplit {
 		return passed;
 	}
 	
-	public boolean searchSearviceOrder(String department, String ServiceOrderNumber) {
+	public boolean searchServiceOrder(String department, String ServiceOrderNumber) {
 		
 		action.scrollUp();
 		
