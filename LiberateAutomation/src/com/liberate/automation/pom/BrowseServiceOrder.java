@@ -1,15 +1,18 @@
 package com.liberate.automation.pom;
 
+import org.openqa.selenium.By;
+
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class BrowseSO {
+public class BrowseServiceOrder {
 	private TestActions action = null;
 
 	public String ServiceOrderNumber = "";
+	By serviceOrder_Value = By.xpath("(//*[text()='Service Order:'])[2]/following::span[1]");
 
-	public BrowseSO(TestActions action) {
+	public BrowseServiceOrder(TestActions action) {
 		this.action = action;
 	}
 
@@ -28,7 +31,18 @@ public class BrowseSO {
 
 		boolean passed = false;
 
+		this.ServiceOrderNumber = ServiceOrderNumber;
+
 		passed = CommonPanel.SearchServiceOrder(action, department, ServiceOrderNumber);
+
+		return passed;
+	}
+
+	public boolean verifyServiceOrdeDetails(String ServiceOrderNumber) {
+		boolean passed = false;
+
+		passed = action.waitFor(serviceOrder_Value, 3, true);
+		passed = action.getTextFromPage(serviceOrder_Value).trim().equals(ServiceOrderNumber) ? true : false;
 
 		return passed;
 	}

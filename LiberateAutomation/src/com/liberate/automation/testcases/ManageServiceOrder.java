@@ -2,7 +2,9 @@ package com.liberate.automation.testcases;
 
 import org.testng.annotations.Test;
 
+import com.liberate.automation.common.LeftLink.BrowseSO;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
 import com.liberate.automation.pom.MSOCancelServiceOrder;
@@ -178,5 +180,15 @@ public class ManageServiceOrder {
 		mss.searchServiceOrder("CRCL", "WI00204");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.splitServiceOrder();
+	}
+	
+	@Test
+	public void browseSO()
+	{
+		BrowseServiceOrder mss = new BrowseServiceOrder(action);
+		
+		mss.navigate();
+		mss.searchServiceOrder("RSNET", "WH00477");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 	}
 }

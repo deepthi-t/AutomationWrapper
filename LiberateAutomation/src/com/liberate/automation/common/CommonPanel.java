@@ -64,7 +64,7 @@ public class CommonPanel {
 
 		By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
 		By departmentDisabled_Select = By
-				.xpath("//*[text()='Department:']/following::select[@disabled=\"disabled\"][1]");
+				.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
 		By changeDepartment_Button = By.xpath("//input[@value='Change']");
 		By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
 		By search_Button = By.xpath("//input[@value='Search']");
