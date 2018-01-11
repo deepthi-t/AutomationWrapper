@@ -2,11 +2,11 @@ package com.liberate.automation.testcases;
 
 import org.testng.annotations.Test;
 
-import com.liberate.automation.common.LeftLink.BrowseSO;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
+import com.liberate.automation.pom.MSOAssign;
 import com.liberate.automation.pom.MSOCancelServiceOrder;
 import com.liberate.automation.pom.MSOEnquiry;
 import com.liberate.automation.pom.MSOManualWaitlistRelease;
@@ -19,6 +19,17 @@ import com.liberate.automation.pom.MSOWaitlist;
 
 public class ManageServiceOrder {
 	static TestActions action = CommonLogin.action;
+	
+	@Test
+	public void soEnquiry()
+	{
+		MSOEnquiry msr = new MSOEnquiry(action);
+		String serviceOrderNumber = "TK00144";
+
+		msr.navigate();
+		msr.searchServiceOrder(serviceOrderNumber);
+		msr.verifyServiceOrderDetails(serviceOrderNumber);
+	}
 	
 	@Test
 	public void addSpecialInstructions()
@@ -180,6 +191,17 @@ public class ManageServiceOrder {
 		mss.searchServiceOrder("CRCL", "WI00204");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		mss.splitServiceOrder();
+	}
+	
+	@Test
+	public void assignServiceOrder()
+	{
+		MSOAssign mss = new MSOAssign(action);
+		
+		mss.navigate();
+		mss.searchServiceOrder("RSNET", "YD00245");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.assignServiceOrder();
 	}
 	
 	@Test
