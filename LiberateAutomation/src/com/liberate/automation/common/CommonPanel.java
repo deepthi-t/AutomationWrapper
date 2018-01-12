@@ -11,10 +11,39 @@ public class CommonPanel {
 		 * XPath of pop up window
 		 */
 		public static By popUpWindow = By.xpath("//td[@class='icePnlPopBody popupPanelBody']");
+		public static By popUpMessage_Value = By.xpath("//td[@class='icePnlPopBody popupPanelBody']/descendant::span[1]");
 		
 		public static By popUpYes_Button = By.xpath("//input[@value='Yes']");
 		public static By popUpNo_Button = By.xpath("//input[@value='No']");
 		public static By popUpOK_Button = By.xpath("//input[@value='OK']");
+		
+		public static boolean validateMessage(TestActions action, String message)
+		{
+			boolean passed = false;
+
+			passed = action.waitFor(CommonPanel.popUp.popUpWindow, 4, true);
+			passed = (action.getTextFromPage(CommonPanel.popUp.popUpMessage_Value).trim().equals(message.trim()))?true:false;
+			
+			return passed;
+		}
+		
+		/***
+		 * Click on OK button in the pop up.
+		 * 
+		 * @param action
+		 *            The action class to be passed.
+		 * @return True is able to click on OK button. Else will return false.
+		 */
+		public static boolean clickOK(TestActions action) {
+			By OK_Button = By.xpath("//input[@value='OK']");
+
+			boolean passed = false;
+
+			passed = action.waitFor(OK_Button, 4, true);
+			passed = action.clickOn(OK_Button);
+
+			return passed;
+		}
 	}
 
 	public static class ServiceOrderList {
@@ -84,24 +113,6 @@ public class CommonPanel {
 		passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
 		passed = action.waitFor(1);
 		passed = action.clickOn(search_Button);
-
-		return passed;
-	}
-
-	/***
-	 * Click on OK button in the pop up.
-	 * 
-	 * @param action
-	 *            The action class to be passed.
-	 * @return True is able to click on OK button. Else will return false.
-	 */
-	public static boolean clickOnOKpopup(TestActions action) {
-		By OK_Button = By.xpath("//input[@value='OK']");
-
-		boolean passed = false;
-
-		passed = action.waitFor(OK_Button, 4, true);
-		passed = action.clickOn(OK_Button);
 
 		return passed;
 	}

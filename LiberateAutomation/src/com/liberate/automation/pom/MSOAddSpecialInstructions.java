@@ -95,7 +95,7 @@ public class MSOAddSpecialInstructions
 	{
 		boolean passed = false;
 		
-		passed = CommonPanel.clickOnOKpopup(action);
+		passed = CommonPanel.popUp.clickOK(action);
 
 		return passed;
 	}
