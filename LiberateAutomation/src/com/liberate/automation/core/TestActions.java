@@ -27,7 +27,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
 	
-	public String classVersion = "0.6.0";
+	public String classVersion = "0.7.0";
 	
 	Boolean retry = false;
 	int retryCount = 3;
@@ -235,6 +235,37 @@ public class TestActions {
 			retry = handleException(e);
 			if (retry)
 				selectBy(locator, visibleText);
+			else
+				return false;
+		}
+
+		return true;
+	}
+	
+	/**
+	 * Method that can be called to select a value from a DropDown based on the Value
+	 * of the Select.
+	 * 
+	 * @param locator
+	 *            Identifies the drop down element.
+	 * @param index
+	 *            The Text of the value that needs to be selected.
+	 * @return Returns true, if able to select the provided Text from the provided
+	 *         element in WebPage
+	 */
+	public Boolean selectByValue(By locator, String value) {
+		if (value.equals(""))
+			return true;
+
+		try {
+			log("Selecting value '"+value+"' from '"+locator.toString()+"'");
+			select = new Select(driver.findElement(locator));
+			select.selectByValue(value);
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				selectByValue(locator, value);
 			else
 				return false;
 		}
@@ -667,7 +698,7 @@ public class TestActions {
 		}
 	}
 	
-	private void log(String message)
+	public void log(String message)
 	{
 		System.out.println(message);
 	}
