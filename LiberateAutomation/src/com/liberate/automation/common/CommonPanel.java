@@ -47,6 +47,14 @@ public class CommonPanel {
 	}
 
 	public static class ServiceOrder {
+		
+		static By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
+		static By departmentDisabled_Select = By
+				.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
+		static By changeDepartment_Button = By.xpath("//input[@value='Change']");
+		static By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
+		static By search_Button = By.xpath("//input[@value='Search']");
+		
 		/***
 		 * XPath for Service Order List Header.
 		 */
@@ -89,13 +97,19 @@ public class CommonPanel {
 		 */
 		public static boolean Search(TestActions action, String department, String ServiceOrderNumber) {
 			boolean passed = false;
+			
+			passed = selectDepartment(action, department);
+			
+			passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
+			passed = action.waitFor(1);
+			passed = action.clickOn(search_Button);
 
-			By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
-			By departmentDisabled_Select = By
-					.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
-			By changeDepartment_Button = By.xpath("//input[@value='Change']");
-			By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
-			By search_Button = By.xpath("//input[@value='Search']");
+			return passed;
+		}
+		
+		public static boolean selectDepartment(TestActions action, String department)
+		{
+			boolean passed = false;
 
 			passed = action.waitFor(department_Select, 4, true);
 
@@ -108,11 +122,7 @@ public class CommonPanel {
 
 				passed = action.waitFor(1);
 			}
-
-			passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
-			passed = action.waitFor(1);
-			passed = action.clickOn(search_Button);
-
+			
 			return passed;
 		}
 	}
