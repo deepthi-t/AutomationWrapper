@@ -33,7 +33,7 @@ public class BrowseServiceOrder {
 
 		this.ServiceOrderNumber = ServiceOrderNumber;
 
-		passed = CommonPanel.SearchServiceOrder(action, department, ServiceOrderNumber);
+		passed = CommonPanel.ServiceOrder.Search(action, department, ServiceOrderNumber);
 
 		return passed;
 	}
@@ -44,6 +44,15 @@ public class BrowseServiceOrder {
 		passed = action.waitFor(serviceOrder_Value, 3, true);
 		passed = action.getTextFromPage(serviceOrder_Value).trim().equals(ServiceOrderNumber) ? true : false;
 
+		return passed;
+	}
+	
+	public boolean selectMultipleServiceOrder(String Department, int count)
+	{
+		boolean passed = false;
+		
+		
+		
 		return passed;
 	}
 }
