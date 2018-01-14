@@ -17,4 +17,60 @@ public class QueryManagement {
 		mq.raiseAccountQuery();
 		mq.verifyQuery();
 	}
+	
+	@Test
+	public void amendQuery()
+	{
+		CCMaintainQuery mq = new CCMaintainQuery(action);
+		mq.navigate();
+		mq.searchByQueryNumber("B00006A");
+		mq.verifyQuery();
+		mq.amendQuery();
+		mq.verifyQuery();
+	}
+	
+	@Test
+	public void addNoteQuery()
+	{
+		CCMaintainQuery mq = new CCMaintainQuery(action);
+		mq.navigate();
+		mq.searchByQueryNumber("B00006A");
+		mq.verifyQuery();
+		mq.addNote("Additional Note");
+		mq.verifyQuery();
+	}
+	
+	@Test
+	public void progressQuery()
+	{
+		CCMaintainQuery mq = new CCMaintainQuery(action);
+		mq.navigate();
+		mq.searchByQueryNumber("B00006A");
+		mq.verifyQuery();
+		mq.progressQuery("ES");
+		mq.verifyQuery();
+	}
+	
+	@Test
+	public void signOffQuery()
+	{
+		CCMaintainQuery mq = new CCMaintainQuery(action);
+		mq.navigate();
+		mq.searchByQueryNumber("B00006A");
+		mq.verifyQuery();
+		mq.progressQuery("RE");
+		mq.verifyQuery();
+	}
+	
+	@Test
+	public void verifyBills()
+	{
+		CCMaintainQuery mq = new CCMaintainQuery(action);
+		mq.navigate();
+		mq.searchByQueryNumber("ZK00015");
+		mq.verifyQuery();
+		mq.verifyBills();
+		mq.navigateBackFromBillView();
+		mq.verifyQuery();
+	}
 }
