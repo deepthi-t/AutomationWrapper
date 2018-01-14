@@ -32,6 +32,15 @@ public class BrowseServiceOrder {
 	By BulkCancel_PanelHeader = By.xpath("//*[text()='Bulk Cancel Details']");
 	By BulkCancelReason_Select = By.xpath("//*[text()='Reason']/following::select[1]");
 	
+	By BulkSuspend_ActionButton = By.xpath("//span[text()='Bulk Suspend']");
+	By BulkSuspend_PanelHeader = By.xpath("//*[text()='Bulk Suspend Details']");
+	By BulkSuspendReason_Select = By.xpath("//*[text()='Suspend Reason']/following::select[1]");
+	
+	By BulkSignOff_ActionButton = By.xpath("//span[text()='Bulk Signoff']");
+	By BulkSignOff_PanelHeader = By.xpath("//*[text()='Bulk Account Sign off']");
+	By BulkSignOffBillDate_Input = By.xpath("//*[text()='Billing Date/Time']/following::input[1]");
+	By BillDateNow_Button = By.xpath("");
+	
 	By BulkOrderProcessSummary_Table = By.xpath("//div[@class='ui-datatable ui-widget']");
 	
 	/***
@@ -99,6 +108,8 @@ public class BrowseServiceOrder {
 
 		for (int i = 0; i < count; i++) {
 			By ServiceOrderCheckBox = By.xpath(action.getXpath(ServiceOrder_CheckBox) + "[" + (2 + i) + "]");
+			
+			passed = action.waitFor(ServiceOrderCheckBox, 2, true);
 			passed = action.clickOn(ServiceOrderCheckBox);
 			if (i == 0)
 				passed = action.waitFor(Cancel_ActionButton, 8, true);
@@ -128,16 +139,57 @@ public class BrowseServiceOrder {
 		return passed;
 	}
 	
-	public boolean verifyBulkCancel()
+	public boolean verifyBulkProcessing()
 	{
 		boolean passed = false;
 		
+		action.waitFor(Accept_Button, 10, false);
 		action.waitFor(BulkOrderProcessSummary_Table, 10, true);
 		
 		for(int i = 0; i < BulkCount; i++)
 		{
+			By ServiceOrder = By.xpath(action.getXpath(BulkOrderProcessSummary_Row)+"["+(i+1)+"]//td[1]");
+			By ProcessingStatus = By.xpath(action.getXpath(BulkOrderProcessSummary_Row)+"["+(i+1)+"]//td[2]");
 			
+			action.log("Service Order " + action.getTextFromPage(ServiceOrder) + " Processing Status : " + action.getTextFromPage(ProcessingStatus));
 		}
+		
+		return passed;
+	}
+	
+	public boolean bulkSuspend()
+	{
+		boolean passed = false;
+		
+		passed = action.clickOn(BulkSuspend_ActionButton);
+		
+		passed = action.waitFor(BulkSuspend_PanelHeader, 10, true);
+		
+		passed = action.selectBy(BulkSuspendReason_Select, 1);
+		
+		action.waitFor(2);
+		
+		passed = action.clickOn(Accept_Button);
+		
+		return passed;
+	}
+	
+	public boolean bulkSignOff()
+	{
+		boolean passed = false;
+		
+		passed = action.clickOn(BulkSignOff_ActionButton);
+		
+		passed = action.waitFor(BulkSignOff_PanelHeader, 10, true);
+		
+		if(action.countOf(BulkSignOffBillDate_Input)>0)
+		{
+			action.typeDataTo(BulkSignOffBillDate_Input, "12/01/2018 00:00");
+		}
+			
+		action.waitFor(2);
+		
+		passed = action.clickOn(Accept_Button);
 		
 		return passed;
 	}
