@@ -46,7 +46,7 @@ public class CommonPanel {
 		}
 	}
 
-	public static class ServiceOrderList {
+	public static class ServiceOrder {
 		/***
 		 * XPath for Service Order List Header.
 		 */
@@ -75,45 +75,45 @@ public class CommonPanel {
 					"//*[text()[contains(.,'Service Order List')]]/following::div[1]/descendant::tbody[1]/descendant::tr"
 							+ element);
 		}
-	}
+	
+		/***
+		 * Method to search with Service Order Number
+		 * 
+		 * @param action
+		 *            The action class that needs to be passed.
+		 * @param department
+		 *            The department to be selected while searching.
+		 * @param ServiceOrderNumber
+		 *            The Service Order Number to be searched for.
+		 * @return True is able to search. Else will return false.
+		 */
+		public static boolean Search(TestActions action, String department, String ServiceOrderNumber) {
+			boolean passed = false;
 
-	/***
-	 * Method to search with Service Order Number
-	 * 
-	 * @param action
-	 *            The action class that needs to be passed.
-	 * @param department
-	 *            The department to be selected while searching.
-	 * @param ServiceOrderNumber
-	 *            The Service Order Number to be searched for.
-	 * @return True is able to search. Else will return false.
-	 */
-	public static boolean SearchServiceOrder(TestActions action, String department, String ServiceOrderNumber) {
-		boolean passed = false;
+			By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
+			By departmentDisabled_Select = By
+					.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
+			By changeDepartment_Button = By.xpath("//input[@value='Change']");
+			By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
+			By search_Button = By.xpath("//input[@value='Search']");
 
-		By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
-		By departmentDisabled_Select = By
-				.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
-		By changeDepartment_Button = By.xpath("//input[@value='Change']");
-		By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
-		By search_Button = By.xpath("//input[@value='Search']");
+			passed = action.waitFor(department_Select, 4, true);
 
-		passed = action.waitFor(department_Select, 4, true);
+			if (!action.getSelectedOption(department_Select).contains(department)) {
+				passed = action.clickOn(changeDepartment_Button);
+				passed = action.waitFor(departmentDisabled_Select, 4, false);
 
-		if (!action.getSelectedOption(department_Select).contains(department)) {
-			passed = action.clickOn(changeDepartment_Button);
-			passed = action.waitFor(departmentDisabled_Select, 4, false);
+				passed = action.selectByPartialText(department_Select, department);
+				passed = action.waitFor(departmentDisabled_Select, 4, true);
 
-			passed = action.selectByPartialText(department_Select, department);
-			passed = action.waitFor(departmentDisabled_Select, 4, true);
+				passed = action.waitFor(1);
+			}
 
+			passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
 			passed = action.waitFor(1);
+			passed = action.clickOn(search_Button);
+
+			return passed;
 		}
-
-		passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
-		passed = action.waitFor(1);
-		passed = action.clickOn(search_Button);
-
-		return passed;
 	}
 }

@@ -27,4 +27,10 @@ public class CommonData {
 		public final static String PanamaReverseDropdown = "Q-Panama Reverse Dropdown";
 		public final static String StreetAddress = "S-Street Address";
 	}
+	
+	public static class PlantItemType
+	{
+		public final static String CopperDP = "DP-DISTRIBUTION";
+		public final static String FiberDP = "FDP";
+	}
 }

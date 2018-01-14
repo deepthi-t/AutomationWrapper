@@ -119,7 +119,7 @@ public class MSOAddRemoveServiceCharge {
 
 		boolean passed = false;
 
-		passed = CommonPanel.SearchServiceOrder(action, Department, this.ServiceOrderNumber);
+		passed = CommonPanel.ServiceOrder.Search(action, Department, this.ServiceOrderNumber);
 
 		return passed;
 	}

@@ -36,15 +36,15 @@ public class MSOManualWaitlistRelease {
 		boolean passed = false;
 		if (!department.trim().equals("") && !ServiceOrderNumber.trim().equals("")) {
 			this.ServiceOrderNumber = ServiceOrderNumber;
-			passed = CommonPanel.SearchServiceOrder(action, department, ServiceOrderNumber);
+			passed = CommonPanel.ServiceOrder.Search(action, department, ServiceOrderNumber);
 		}
 
 		else {
-			passed = action.clickOn(CommonPanel.ServiceOrderList.serviceOrderList_Header);
-			passed = action.waitFor(CommonPanel.ServiceOrderList.ServiceOrderList_Row("[1]"), 4, true);
+			passed = action.clickOn(CommonPanel.ServiceOrder.serviceOrderList_Header);
+			passed = action.waitFor(CommonPanel.ServiceOrder.ServiceOrderList_Row("[1]"), 4, true);
 			this.ServiceOrderNumber = action
-					.getTextFromPage(CommonPanel.ServiceOrderList.ServiceOrderList_Row("[1]/descendant::td[1]"));
-			passed = action.clickOn(CommonPanel.ServiceOrderList.ServiceOrderList_Row("[1]"));
+					.getTextFromPage(CommonPanel.ServiceOrder.ServiceOrderList_Row("[1]/descendant::td[1]"));
+			passed = action.clickOn(CommonPanel.ServiceOrder.ServiceOrderList_Row("[1]"));
 		}
 		return passed;
 	}

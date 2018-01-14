@@ -136,8 +136,9 @@ public class MSOEnquiry
 	{
 		boolean passed = false;
 		
+		passed = action.waitFor(DepartmentCirculation_Tab, 4, true);
 		passed = action.clickOn(DepartmentCirculation_Tab);
-		
+
 		passed = action.waitFor(Circulation_Row, 4, true);
 		
 		return passed;

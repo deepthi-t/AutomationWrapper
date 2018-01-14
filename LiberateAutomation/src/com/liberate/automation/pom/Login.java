@@ -12,7 +12,9 @@ public class Login {
 	By UserName = By.xpath("//*[@id='login:userName']");
 	By PassWord = By.xpath("//*[@id='login:userPassword']");
 	By LoginButton = By.xpath("//*[@id='login:loginButtonImg']");
-
+	
+	By LiberateFrame = By.xpath("//iframe[@id='liberate']");
+	
 	public Login(TestActions action) {
 		this.action = action;
 	}
@@ -27,6 +29,12 @@ public class Login {
 		passed = action.sendDataTo(PassWord, password);
 		passed = action.clickOn(LoginButton);
 		passed = action.waitFor(LoginButton, 5, false);
+		
+		if(action.countOf(LiberateFrame)>0)
+		{
+			action.switchToFrame(LiberateFrame);
+		}
+		
 		passed = action.waitFor(LiberateCommon.LevelOne.Home, 4, true);
 		
 		return passed;

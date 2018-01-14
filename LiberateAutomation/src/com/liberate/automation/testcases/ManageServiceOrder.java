@@ -2,7 +2,9 @@ package com.liberate.automation.testcases;
 
 import org.testng.annotations.Test;
 
+import com.liberate.automation.common.CommonData;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.AllocateRouteServiceOrder;
 import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.MSOAddRemoveServiceCharge;
 import com.liberate.automation.pom.MSOAddSpecialInstructions;
@@ -10,6 +12,7 @@ import com.liberate.automation.pom.MSOAssign;
 import com.liberate.automation.pom.MSOCancelServiceOrder;
 import com.liberate.automation.pom.MSOEnquiry;
 import com.liberate.automation.pom.MSOManualWaitlistRelease;
+import com.liberate.automation.pom.MSORedirect;
 import com.liberate.automation.pom.MSOReject;
 import com.liberate.automation.pom.MSORelease;
 import com.liberate.automation.pom.MSOSignoff;
@@ -212,5 +215,27 @@ public class ManageServiceOrder {
 		mss.navigate();
 		mss.searchServiceOrder("RSNET", "WH00477");
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+	}
+	
+	@Test
+	public void redirectSO()
+	{
+		MSORedirect mss = new MSORedirect(action);
+		
+		mss.navigate();
+		mss.searchServiceOrder("BGCNG", "WI00392");
+		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.redirectServiceOrder();
+		mss.validateMessage();
+	}
+	
+	@Test
+	public void allocateRoute()
+	{
+		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
+		arso.navigate();
+		arso.searchServiceOrder("BGNET", "YH00401");
+		arso.allocateAuto(CommonData.PlantItemType.CopperDP, "DP100");
+		arso.verifyAutoAllocateRoute();
 	}
 }
