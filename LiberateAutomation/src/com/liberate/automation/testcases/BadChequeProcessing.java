@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.BadCheckProcessing;
 
-public class BadCheckProcessing_tc {
+public class BadChequeProcessing {
 
 	static TestActions action = CommonLogin.action;
 	
 	@Test
-	public void doBadCheckProcessing() {
+	public void badCheckProcessing() {
 		BadCheckProcessing bcp = new BadCheckProcessing(action);
 
 		assertEquals(bcp.navigate(), true);

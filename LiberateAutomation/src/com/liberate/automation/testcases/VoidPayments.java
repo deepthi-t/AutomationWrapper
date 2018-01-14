@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.VoidPayment;
 
-public class VoidPayment_tc {
+public class VoidPayments {
 
 	static TestActions action = CommonLogin.action;
 
