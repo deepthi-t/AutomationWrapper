@@ -42,6 +42,9 @@ public class ManageFault
 		By FaultNotes_PanelHeader = By.xpath("//*[text()='Fault Notes']");
 		By AddNotes_Button = By.xpath("//input[@value='Add Notes']");
 		By CancelNotes_Button = By.xpath("//input[@value='Cancel']");
+		//xpath for validation if notes has been added or not
+		By NotesDetails_PanelHeader = By.xpath("//*[text()='Notes Details']");
+		By IdentifyAddNotes_LineCount = By.xpath("//*[@id='manageFault:notesDetailsTable']");
 		
 		//Add notes to fault through Maintain Fault Notes
 		By Addnotes_Input = By.xpath("(//*[text()='Add Notes']/following::textarea)[1]");
@@ -53,6 +56,9 @@ public class ManageFault
 		By AssignFaultDepartment_DropDown = By.xpath("(//*[text()[contains(.,'Assign Fault')]]//following::select)[1]");
 		By AssignFaultAssign_Button = By.xpath("//input[@value='Assign']");
 		By AssignFaultCancel_Button = By.xpath("//input[@value='Cancel']");
+		//xpath for validation if department is assigned or not
+		By AssignmentDetails_PanelHeader = By.xpath("//*[text()='Assignments Details']");
+		By IdentifyAssignmentDetails_LineCount = By.xpath("//*[@id='manageFault:assignmentsTable']");
 		
 		//Signoff a fault
 		By Signoff_PanelHeader = By.xpath("//*[text()='Sign Off']");
@@ -64,6 +70,9 @@ public class ManageFault
 		By SignoffApply_Button = By.xpath("//input[@value='Apply']");
 		By SignoffClear_Button = By.xpath("//input[@value='Clear']");
 		By SignoffCancel_Button = By.xpath("//input[@value='Cancel']");
+		//xpath for validation if fault is signed off or not
+		By FaultInfo_PanelHeader = By.xpath("//*[text()='Fault Info']");
+		By IdentifyFaultStatus_Text = By.xpath("(//*[text()='Status']/following::text())[3]");
 		
 		//Suspend/release a fault
 		By SuspendRelease_PanelHeader = By.xpath("//*[text()='Suspend/Release']");
@@ -94,10 +103,10 @@ public class ManageFault
 		By RecordFaultActivities_PanelHeader = By.xpath("//*[text()='Record Fault Activities']");
 		By RecordFaultActivitiesRecordActivity_Button = By.xpath("//input[@value='Record Activity']");
 		By RecordFaultActivitiesCancel_Button = By.xpath("//input[@value='Cancel']");
-		By RecordFaultActivitiesActivityID_Dropdown = By.xpath("");
-		By RecordFaultActivitiesActivityNotes_Input = By.xpath("");
+		By RecordFaultActivitiesActivityID_Dropdown = By.xpath("(//*[text()[contains(.,'Activity Id:')]]/following::select)[1]");
+		By RecordFaultActivitiesActivityNotes_Input = By.xpath("(//*[text()='Activity Notes:']/following::textarea)[1]");
 		By RecordFaultActivitiesActivityAccept_Button = By.xpath("//input[@value='Accept']");
-		By RecordFaultActivitiesActivityCancel_Button = By.xpath("");
+		By RecordFaultActivitiesActivityCancel_Button = By.xpath("//input[@value='Accept']/following::input[@value='Cancel']");
 				
 		public ManageFault(TestActions action)
 		{
@@ -226,6 +235,15 @@ public class ManageFault
 
 			return passed;
 		}
+	//Validate if notes has been added or not
+		public int rowCountofAddNotes() 
+		{
+			int count = 0;
+						
+			count = ManageFaultAction.countOf(IdentifyAddNotes_LineCount);
+			
+			return count;
+		}
 	//---------------------------------------------------
 		
 	
@@ -271,6 +289,15 @@ public class ManageFault
 
 			return passed;
 		}
+		//Validate if department has been assigned or not
+		public int rowcountofAssignFault() 
+		{
+			int passed = 0;
+								
+			passed = ManageFaultAction.countOf(IdentifyAssignmentDetails_LineCount);
+					
+			return passed;
+		}
 		//---------------------------------------------------
 		
 	
@@ -303,7 +330,11 @@ public class ManageFault
 				
 			return passed;
 		}
-		//* Sign off fault Apply button
+
+		/***
+		 * 
+		 * @return
+		 */
 		public boolean clickonSignOffApplybutton() 
 		{
 			boolean passed = false;
@@ -332,6 +363,14 @@ public class ManageFault
 			passed = ManageFaultAction.clickOn(SignoffCancel_Button);
 
 			return passed;
+		}
+		//Validate status of fualt number
+		public String statusOfFaultNumber() 
+		{
+			String status = null;
+
+			status = ManageFaultAction.getTextFromPage(IdentifyFaultStatus_Text);
+			return status;
 		}
 		//------------------------------------------	
 		
@@ -556,7 +595,38 @@ public class ManageFault
 
 			return passed;
 		}
+		/* Record Fault Activity selection of Activity ID and Activity Notes */
+		public boolean recordFaultActivitySelectActivityIDActivityNotes() 
+		{
+			boolean passed = false;
+			
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityID_Dropdown, 4, true);
+			passed = ManageFaultAction.selectBy(RecordFaultActivitiesActivityID_Dropdown, "Call Customer Care");
+				
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityNotes_Input, 4, true);
+			passed = ManageFaultAction.sendDataTo(RecordFaultActivitiesActivityNotes_Input, "Test");
+			return passed;
+		}
 		
-		
+		/* Record Fault Activity Accept of Raising activity*/
+		public boolean recordFaultActivityRaiseActivityAceeptbutton() 
+		{
+			boolean passed = false;
+				
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityAccept_Button, 4, true);
+			passed = ManageFaultAction.clickOn(RecordFaultActivitiesActivityAccept_Button);
+
+			return passed;
+		}
+		/* Record Fault Activity Cancel of Raising activity*/
+		public boolean recordFaultActivityRaiseActivityCancelbutton() 
+		{
+			boolean passed = false;
+								
+			passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityCancel_Button, 4, true);
+			passed = ManageFaultAction.clickOn(RecordFaultActivitiesActivityCancel_Button);
+
+			return passed;
+		}
 		//---------------------------------------------------------------
 }

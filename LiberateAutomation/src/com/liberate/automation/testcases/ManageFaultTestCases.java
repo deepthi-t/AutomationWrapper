@@ -32,6 +32,7 @@ public class ManageFaultTestCases
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonAddNotesApplybutton(),true);
 		action.getScreenShot("manageFault");
+
 	}
 	
 	public void assignFault_ManageFault() 
@@ -71,6 +72,8 @@ public class ManageFaultTestCases
 		assertEquals(mf.selectSignoffDropDowns(),true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSignOffApplybutton(),true);
+		action.getScreenShot("manageFault");
+		assertEquals(mf.statusOfFaultNumber(),"Cleared");
 		action.getScreenShot("manageFault");
 	}
 	
@@ -146,6 +149,24 @@ public class ManageFaultTestCases
 		assertEquals(mf.clickonPrintFaultDocketactionbutton(),true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonPrintFaultDocketAcceptbutton(),true);
+		action.getScreenShot("manageFault");
+	}
+	public void recordFaultActivity_ManageFault() 
+	{
+		ManageFault mf = new ManageFault(action);
+
+		assertEquals(mf.navigate(),true);
+		action.getScreenShot("manageFault");
+		
+		action.getScreenShot("manageFault");
+		assertEquals(mf.clickonSearchbutton(),true);
+		action.getScreenShot("manageFault");
+		
+		assertEquals(mf.clickonRecordFaultTestactionbutton(),true);
+		action.getScreenShot("manageFault");
+		assertEquals(mf.recordFaultActivitySelectActivityIDActivityNotes(),true);
+		action.getScreenShot("manageFault");
+		assertEquals(mf.recordFaultActivityRaiseActivityAceeptbutton(),true);
 		action.getScreenShot("manageFault");
 	}
 }
