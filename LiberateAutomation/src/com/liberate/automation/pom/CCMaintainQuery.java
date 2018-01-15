@@ -4,10 +4,12 @@ import org.openqa.selenium.By;
 
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LiberateCommon;
+import com.liberate.automation.common.TestData;
 import com.liberate.automation.core.TestActions;
 
 public class CCMaintainQuery {
 	TestActions action = null;
+	
 	String QueryCode = "";
 	String QueryStatus = "";
 	String SelectedQueryStatus = "";
@@ -17,7 +19,15 @@ public class CCMaintainQuery {
 	By Search_Button = By.xpath("//input[@value='Search']");
 
 	By NewQueryAccount_ActionButton = By.xpath("//span[text()[contains(.,'New Query-Account ')]]");
-
+	By NewQueryNonAccount_ActionButton = By.xpath("//span[text()='New Query-Non Account']");
+	
+	By Exchange_Input = By.xpath("//*[text()[contains(.,'Exchange:')]]/following::input[1]");
+	By ExchangeAutoFill_Input = By.xpath("//div[@class='iceSelInpTxtList seliceSelInpTxtList']/descendant::div[1]");
+	
+	By ContactName = By.xpath("//*[text()[contains(.,'Contact Name')]]/following::input[1]");
+	By ContactMethod = By.xpath("//*[text()[contains(.,'Contact Method')]]/following::select[1]");
+	By ContactDetails = By.xpath("//*[text()[contains(.,'Contact Details')]]/following::input[2]");
+	
 	By QueryInformation_PanelHeader = By.xpath("//*[text()='Query Information']");
 
 	By QueryType1_Select = By.xpath("//*[text()='Query Type1:']/following::select[1]");
@@ -129,17 +139,59 @@ public class CCMaintainQuery {
 		return passed;
 	}
 
+	
+	public boolean raiseNonAccountQuery(String Name, String Method, String Details) {
+		action.scrollUp();
+
+		boolean passed = false;
+		
+		passed = action.waitFor(NewQueryNonAccount_ActionButton, 4, true);
+		passed = action.clickOn(NewQueryNonAccount_ActionButton);
+
+		passed = action.waitFor(QueryInformation_PanelHeader, 4, true);
+
+		passed = action.waitFor(Exchange_Input, 4, true);
+		passed = action.waitFor(1);
+		passed = action.typeDataTo(Exchange_Input, "BOT");
+		
+		passed = action.waitFor(ExchangeAutoFill_Input, 6, true);
+		passed = action.clickOn(ExchangeAutoFill_Input);
+		
+		passed = action.waitFor(QueryType1_Select, 2, true);
+		passed = action.selectBy(QueryType1_Select, 3);
+		passed = action.waitFor(QueryType2Disabled_Select, 4, false);
+		passed = action.selectBy(QueryType2_Select, 1);
+
+		action.waitFor(2);
+
+		this.QueryCode = action.getSelectedOption(QueryType1_Select).substring(0, 2)
+				+ action.getSelectedOption(QueryType2_Select).substring(0, 2);
+
+		passed = action.sendDataTo(QueryNotes_Input, "Testing");
+
+		passed = action.sendDataTo(ContactName, Name);
+		passed = action.selectByPartialText(ContactMethod, Method);
+		passed = action.sendDataTo(ContactDetails, Details);
+		
+		passed = action.clickOn(Accept_Button);
+
+		return passed;
+	}
+	
 	public boolean verifyQuery() {
 		action.scrollUp();
 
 		boolean passed = false;
 
 		passed = action.waitFor(QueryDetails_PanelHeader, 4, true);
-		passed = action.getTextFromPage(QueryNumber_Value).equals("") ? false : true;
+
+		TestData.QueryNumber = action.getTextFromPage(QueryNumber_Value);
+		passed = TestData.QueryNumber.equals("") ? false : true;
 
 		passed = action.getTextFromPage(QueryType_Value).substring(0, 4).equals(QueryCode);
 
 		action.log("Raised Query Code    : " + QueryCode);
+		
 		action.log("Query Code in Screen : " + action.getTextFromPage(QueryType_Value).substring(0, 4));
 		
 		this.QueryStatus = action.getTextFromPage(QueryStatus_Value).trim();
@@ -153,6 +205,7 @@ public class CCMaintainQuery {
 		boolean passed = false;
 
 		passed = action.waitFor(Amend_ActionButton, 4, true);
+		action.waitFor(1);
 		passed = action.clickOn(Amend_ActionButton);
 
 		passed = action.waitFor(QueryType1_Select, 2, true);
@@ -173,6 +226,7 @@ public class CCMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 		
+		action.waitFor(1);
 		passed = action.clickOn(Notes_ActionButton);
 		
 		passed = action.waitFor(QueryNotes_Input, 4, true);
@@ -191,6 +245,7 @@ public class CCMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 		
+		action.waitFor(1);
 		passed = action.clickOn(Progress_ActionButton);
 		
 		passed = action.waitFor(ProgressStatus_PanelHeader, 4, true);
