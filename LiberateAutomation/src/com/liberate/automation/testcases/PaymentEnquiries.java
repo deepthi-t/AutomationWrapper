@@ -13,7 +13,7 @@ public class PaymentEnquiries
 	static TestActions action = CommonLogin.action;
 	
 	@Test
-	public void paymentEnquiry_SearchWithAccountNumber()
+	public void searchWithAccountNumber()
 	{
 		PaymentEnquiriesPOM pe=new PaymentEnquiriesPOM(action);
 		
@@ -29,7 +29,7 @@ public class PaymentEnquiries
 	}
 	
 	@Test
-	public void paymentEnquiry_SearchWithPaymentNumber()
+	public void searchWithPaymentNumber()
 	{
 		PaymentEnquiriesPOM pe=new PaymentEnquiriesPOM(action);
 		
@@ -45,7 +45,7 @@ public class PaymentEnquiries
 	
 	
 	@Test
-	public void paymentEnquiry_SearchWithServiceOrderNumber()
+	public void SearchWithServiceOrderNumber()
 	{
 		PaymentEnquiriesPOM pe=new PaymentEnquiriesPOM(action);
 		
