@@ -688,7 +688,7 @@ public class TestActions {
 		} else if (e instanceof WebDriverException) {
 			waitFor(1);
 			if (countOf(By.xpath("//input[@value='OK']")) > 0) {
-				clickOn(By.xpath("//input[@value='OK']"));
+				clickOn(By.xpath("(//input[@value='OK'])[last()]"));
 				waitFor(By.xpath("//input[@value='OK']"), 2, false);
 			}
 			return true;
