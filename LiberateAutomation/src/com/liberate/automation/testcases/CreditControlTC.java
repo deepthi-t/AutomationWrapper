@@ -14,9 +14,13 @@ public class CreditControlTC {
 		CreditControlService msr = new CreditControlService(action);
 
 		msr.navigate();
+		action.getScreenShot("serviceBAR");
 		msr.searchWithServiceNumber("9177243");
+		action.getScreenShot("serviceBAR");
 		msr.serviceBAR();
+		action.getScreenShot("serviceBAR");
 		msr.verifyServiceStatus();
+		action.getScreenShot("serviceBAR");
 	}
 	
 	@Test
@@ -25,9 +29,13 @@ public class CreditControlTC {
 		CreditControlService msr = new CreditControlService(action);
 
 		msr.navigate();
+		action.getScreenShot("serviceTOS");
 		msr.searchWithServiceNumber("9177243");
+		action.getScreenShot("serviceTOS");
 		msr.serviceTOS();
+		action.getScreenShot("serviceTOS");
 		msr.verifyServiceStatus();
+		action.getScreenShot("serviceTOS");
 	}
 	
 	@Test
@@ -36,8 +44,12 @@ public class CreditControlTC {
 		CreditControlService msr = new CreditControlService(action);
 
 		msr.navigate();
+		action.getScreenShot("serviceROS");
 		msr.searchWithServiceNumber("9177243");
+		action.getScreenShot("serviceROS");
 		msr.serviceROS();
+		action.getScreenShot("serviceROS");
 		msr.verifyServiceStatus();
+		action.getScreenShot("serviceROS");
 	}
 }

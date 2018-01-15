@@ -22,6 +22,8 @@ public class PaymentsTC {
 		BatchPayment bp = new BatchPayment(action);
 
 		bp.navigate();
+		action.getScreenShot("batchPayment");
 		bp.providePaymentDetails(accountNumber);
+		action.getScreenShot("batchPayment");
 	}
 }
