@@ -303,6 +303,30 @@ public class TestActions {
 
 		return selectBy(locator, fullText);
 	}
+	
+	/***
+	 * Method to get the index of an Option from Select
+	 * @param locator The Locator of Select
+	 * @param SelectText The Text to get the index of.
+	 * @return 0 if not found. Else the index.
+	 */
+	public int getIndexOfSelect(By locator, String SelectText) {
+		String xpath = getXpath(locator);
+		xpath = xpath + "/descendant::option";
+		
+		int index = 0;
+		
+		List<WebElement> options = driver.findElements(By.xpath(xpath));
+
+		for (WebElement option : options) {
+			if (option.getText().contains(SelectText)) {
+				index = options.indexOf(option);
+				break;
+			}
+		}
+
+		return (index+1);
+	}
 
 	/***
 	 * Method to get the selected value from The Drop-down.
