@@ -1,7 +1,6 @@
 package com.liberate.automation.core;
 
 import java.io.File;
-import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -26,15 +25,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-
 public class TestActions {
-	
-	public String classVersion = "0.8.1";
-	
+
+	public String classVersion = "0.8.2";
+
 	Date date = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-	
+
 	Boolean retry = false;
 	int retryCount = 3;
 	int executionCount = 0;
@@ -67,7 +64,7 @@ public class TestActions {
 	 */
 	public Boolean gotoURL(String URL) {
 		try {
-			log("Navigating to '"+URL+"'");
+			log("Navigating to '" + URL + "'");
 			driver.navigate().to(URL);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +87,7 @@ public class TestActions {
 	 */
 	public Boolean clickOn(By locator) {
 		try {
-			log("Clicking on element '"+locator.toString()+"'");
+			log("Clicking on element '" + locator.toString() + "'");
 			driver.findElement(locator).click();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +116,7 @@ public class TestActions {
 			return true;
 
 		try {
-			log("Sending data '"+data+"' to field '"+locator.toString()+"'");
+			log("Sending data '" + data + "' to field '" + locator.toString() + "'");
 			driver.findElement(locator).clear();
 			driver.findElement(locator).sendKeys(data);
 		} catch (Exception e) {
@@ -152,8 +149,8 @@ public class TestActions {
 
 		try {
 			char[] dateChars = data.toCharArray();
-			log("Typing in data '"+data+"' to '"+locator.toString()+"'");
-			
+			log("Typing in data '" + data + "' to '" + locator.toString() + "'");
+
 			for (int i = 0; i < data.length(); i++) {
 				driver.findElement(locator).sendKeys(Character.toString(dateChars[i]));
 				Thread.sleep(100);
@@ -176,7 +173,7 @@ public class TestActions {
 	 */
 	public Boolean clearField(By locator) {
 		try {
-			log("Clearing field '"+locator.toString()+"'");
+			log("Clearing field '" + locator.toString() + "'");
 			driver.findElement(locator).clear();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -203,7 +200,7 @@ public class TestActions {
 	 */
 	public Boolean selectBy(By locator, int index) {
 		try {
-			log("Selecting index '"+index+"' from '"+locator.toString()+"'");
+			log("Selecting index '" + index + "' from '" + locator.toString() + "'");
 			select = new Select(driver.findElement(locator));
 			select.selectByIndex(index);
 		} catch (Exception e) {
@@ -233,7 +230,7 @@ public class TestActions {
 			return true;
 
 		try {
-			log("Selecting value '"+visibleText+"' from '"+locator.toString()+"'");
+			log("Selecting value '" + visibleText + "' from '" + locator.toString() + "'");
 			select = new Select(driver.findElement(locator));
 			select.selectByVisibleText(visibleText);
 		} catch (Exception e) {
@@ -247,10 +244,10 @@ public class TestActions {
 
 		return true;
 	}
-	
+
 	/**
-	 * Method that can be called to select a value from a DropDown based on the Value
-	 * of the Select.
+	 * Method that can be called to select a value from a DropDown based on the
+	 * Value of the Select.
 	 * 
 	 * @param locator
 	 *            Identifies the drop down element.
@@ -264,7 +261,7 @@ public class TestActions {
 			return true;
 
 		try {
-			log("Selecting value '"+value+"' from '"+locator.toString()+"'");
+			log("Selecting value '" + value + "' from '" + locator.toString() + "'");
 			select = new Select(driver.findElement(locator));
 			select.selectByValue(value);
 		} catch (Exception e) {
@@ -278,45 +275,50 @@ public class TestActions {
 
 		return true;
 	}
-	
+
 	/***
-	 * Method that can be called to select a value from a DropDown based on the partial text passed 
-	 * @param locator Identifies the drop down element.
-	 * @param partialText The partial Text of the value that needs to be selected
-	 * @return Returns true, if able to select the provided Text from the provided element in WebPage
+	 * Method that can be called to select a value from a DropDown based on the
+	 * partial text passed
+	 * 
+	 * @param locator
+	 *            Identifies the drop down element.
+	 * @param partialText
+	 *            The partial Text of the value that needs to be selected
+	 * @return Returns true, if able to select the provided Text from the provided
+	 *         element in WebPage
 	 */
-	public boolean selectByPartialText(By locator, String partialText)
-	{
+	public boolean selectByPartialText(By locator, String partialText) {
 		String xpath = getXpath(locator);
 		String fullText = "";
 		xpath = xpath + "/descendant::option";
-		
+
 		List<WebElement> options = driver.findElements(By.xpath(xpath));
-		
+
 		for (WebElement option : options) {
-		    if (option.getText().contains(partialText)) {
-		    	fullText = option.getText();
-		        break;
-		    }
+			if (option.getText().contains(partialText)) {
+				fullText = option.getText();
+				break;
+			}
 		}
-		
+
 		return selectBy(locator, fullText);
 	}
-	
+
 	/***
 	 * Method to get the selected value from The Drop-down.
-	 * @param locator The locator of drop down from which the selected value should be returned.
+	 * 
+	 * @param locator
+	 *            The locator of drop down from which the selected value should be
+	 *            returned.
 	 * @return The selected value as String.
 	 */
-	public String getSelectedValue(By dropdown)
-	{
+	public String getSelectedValue(By dropdown) {
 		String xpath = getXpath(dropdown);
 		xpath = xpath + "/descendant::option[@selected='selected']";
-		
+
 		return getTextFromPage(By.xpath(xpath));
 	}
-	
-	
+
 	/**
 	 * Method that can be called to wait until an element is available on not
 	 * available based of parameter 'visibility'.
@@ -337,10 +339,10 @@ public class TestActions {
 
 		try {
 			if (visibility) {
-				log("Waiting '"+seconds+"' seconds for '"+locator.toString()+"' to appear");
+				log("Waiting '" + seconds + "' seconds for '" + locator.toString() + "' to appear");
 				wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 			} else {
-				log("Waiting '"+seconds+"' seconds for '"+locator.toString()+"' to disappear");
+				log("Waiting '" + seconds + "' seconds for '" + locator.toString() + "' to disappear");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 			}
 		} catch (Exception e) {
@@ -369,7 +371,7 @@ public class TestActions {
 		WebDriverWait wait = new WebDriverWait(driver, seconds);
 
 		try {
-			log("Waiting '"+seconds+"' seconds for '"+locator.toString()+"' to be clickable");
+			log("Waiting '" + seconds + "' seconds for '" + locator.toString() + "' to be clickable");
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -402,7 +404,7 @@ public class TestActions {
 	 */
 	public Boolean waitFor(int seconds) {
 		try {
-			log("Waiting for '"+seconds+"' seconds");
+			log("Waiting for '" + seconds + "' seconds");
 			Thread.sleep(seconds * 1000);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -427,7 +429,7 @@ public class TestActions {
 		int count = 0;
 
 		try {
-			log("Counting the occurence of element '"+locator.toString()+"'");
+			log("Counting the occurence of element '" + locator.toString() + "'");
 			count = driver.findElements(locator).size();
 			log("Count is : " + count);
 		} catch (Exception e) {
@@ -441,19 +443,21 @@ public class TestActions {
 
 		return count;
 	}
-	
+
 	/***
 	 * Method to check is passed Text is available in page.
-	 * @param Text The Text that needs to be checked for availability.
+	 * 
+	 * @param Text
+	 *            The Text that needs to be checked for availability.
 	 * @return True: If available, False : If not available.
 	 */
 	public boolean isTextAvailable(String Text) {
 		int count = 0;
-		
-		By locator = By.xpath("//*[text()[contains(.,'"+Text.trim()+"')]]");
-		
+
+		By locator = By.xpath("//*[text()[contains(.,'" + Text.trim() + "')]]");
+
 		try {
-			log("Checking Availability of text : '"+Text+"'");
+			log("Checking Availability of text : '" + Text + "'");
 			count = driver.findElements(locator).size();
 			log("Count is : " + count);
 		} catch (Exception e) {
@@ -465,9 +469,9 @@ public class TestActions {
 				return false;
 		}
 
-		return (count>0);
+		return (count > 0);
 	}
-	
+
 	/***
 	 * Method that can be called to get the selected value from a Drop-down.
 	 * 
@@ -480,10 +484,10 @@ public class TestActions {
 		String option = "";
 
 		try {
-			log("Getting selected value from '"+locator.toString()+"'");
+			log("Getting selected value from '" + locator.toString() + "'");
 			Select select = new Select(driver.findElement(locator));
 			option = select.getFirstSelectedOption().getText();
-			log("Selected value is : " + option );
+			log("Selected value is : " + option);
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -507,9 +511,9 @@ public class TestActions {
 		String text = "";
 
 		try {
-			log("Getting text from '"+locator.toString()+"'");
+			log("Getting text from '" + locator.toString() + "'");
 			text = driver.findElement(locator).getText();
-			log("Text is : " + text );
+			log("Text is : " + text);
 		} catch (Exception e) {
 			e.printStackTrace();
 			retry = handleException(e);
@@ -531,7 +535,7 @@ public class TestActions {
 	 */
 	public Boolean switchToFrame(By locator) {
 		try {
-			log("Switching to fram '"+locator.toString()+"'");
+			log("Switching to fram '" + locator.toString() + "'");
 			driver.switchTo().frame(driver.findElement(locator));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -668,23 +672,22 @@ public class TestActions {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/***
 	 * Simple method that can be called to scroll Up
 	 */
-	public void scrollUp()
-	{
+	public void scrollUp() {
 		log("Scrolling up");
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,-2000)", "");
 	}
+
 	/***
 	 * Simple method that can be called to scroll Down
 	 */
-	public void scrollDown()
-	{
+	public void scrollDown() {
 		log("Scrolling down");
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,2000)", "");
 	}
 
@@ -729,9 +732,8 @@ public class TestActions {
 			return false;
 		}
 	}
-	
-	public void log(String message)
-	{
+
+	public void log(String message) {
 		System.out.println(sdf.format(date) + " : " + message);
 	}
 }
