@@ -60,4 +60,22 @@ public class PYSinglePayment {
 		
 		return passed;
 	}
+	
+	public boolean searchWithAccountNumber()
+	{
+		boolean passed = false;
+		
+		
+		
+		return passed;
+	}
+	
+	public boolean searchWithServiceNumber()
+	{
+		boolean passed = false;
+		
+		
+		
+		return passed;
+	}
 }
