@@ -5,7 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.VoidPayment;
+import com.liberate.automation.pom.PYVoidPayment;
 
 public class VoidPayments {
 
@@ -13,7 +13,7 @@ public class VoidPayments {
 
 	@Test
 	public void voidPayment() {
-		VoidPayment vp = new VoidPayment(action);
+		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
 		action.getScreenShot("VoidPayment");
@@ -27,7 +27,7 @@ public class VoidPayments {
 	}
 
 	public void voidPaymentReset() {
-		VoidPayment vp = new VoidPayment(action);
+		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
 		action.getScreenShot("VoidPayment");
@@ -40,7 +40,7 @@ public class VoidPayments {
 
 	public void newVoidPaymentCancel() {
 
-		VoidPayment vp = new VoidPayment(action);
+		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
 		action.getScreenShot("VoidPayment");

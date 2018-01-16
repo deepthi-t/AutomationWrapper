@@ -5,7 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.BadCheckProcessing;
+import com.liberate.automation.pom.PYBadCheckProcessing;
 
 public class BadChequeProcessing {
 
@@ -13,7 +13,7 @@ public class BadChequeProcessing {
 	
 	@Test
 	public void badCheckProcessing() {
-		BadCheckProcessing bcp = new BadCheckProcessing(action);
+		PYBadCheckProcessing bcp = new PYBadCheckProcessing(action);
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot("BadCheckProcessing");

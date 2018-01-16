@@ -9,7 +9,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon.LevelOne;
 import com.liberate.automation.core.TestActions;
 
-public class BatchPayment {
+public class PYBatchPayment {
 	TestActions action = null;
 	
 	By BatchNumber_Input = By.xpath("//*[text()='Batch No:']/following::input[1]");
@@ -36,7 +36,7 @@ public class BatchPayment {
 	By Proceed_Button = By.xpath("//input[@value='Proceed']");
 
 	
-	public BatchPayment(TestActions action) {
+	public PYBatchPayment(TestActions action) {
 		this.action = action;
 	}
 	

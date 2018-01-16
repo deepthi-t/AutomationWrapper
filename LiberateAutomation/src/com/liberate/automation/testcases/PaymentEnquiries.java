@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.PaymentEnquiriesPOM;
+import com.liberate.automation.pom.PYPaymentEnquiriesPOM;
 
 public class PaymentEnquiries 
 {
@@ -15,7 +15,7 @@ public class PaymentEnquiries
 	@Test
 	public void searchWithAccountNumber()
 	{
-		PaymentEnquiriesPOM pe=new PaymentEnquiriesPOM(action);
+		PYPaymentEnquiriesPOM pe=new PYPaymentEnquiriesPOM(action);
 		
 		action.getScreenShot("PaymentEnquiries");
 		assertEquals(pe.navigate(),true);
