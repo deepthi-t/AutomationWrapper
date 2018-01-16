@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.PYBatchPayment;
+import com.liberate.automation.pom.PYSinglePayment;
 
 public class PaymentsTC {
 	static TestActions action = CommonLogin.action;
@@ -25,5 +26,15 @@ public class PaymentsTC {
 		action.getScreenShot("batchPayment");
 		bp.providePaymentDetails(accountNumber);
 		action.getScreenShot("batchPayment");
+	}
+	
+	public void verifyCashDrawer()
+	{
+		PYSinglePayment sp = new PYSinglePayment(action);
+		
+		sp.navigate();
+		action.getScreenShot("verifyCashDrawer");
+		sp.verifyCashDrawer();
+		action.getScreenShot("verifyCashDrawer");
 	}
 }
