@@ -30,6 +30,7 @@ public class PaymentsTC {
 		action.getScreenShot("batchPayment");
 	}
 
+	@Test
 	public void verifyCashDrawer() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 
@@ -39,6 +40,7 @@ public class PaymentsTC {
 		action.getScreenShot("verifyCashDrawer");
 	}
 
+	@Test
 	public void singlePaymentAccountNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -52,6 +54,7 @@ public class PaymentsTC {
 		sp.verifySuccessMessage();
 	}
 
+	@Test
 	public void depositPaymentAccountNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -65,6 +68,7 @@ public class PaymentsTC {
 		sp.verifySuccessMessage();
 	}
 
+	@Test
 	public void singlePaymentServicetNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -78,6 +82,7 @@ public class PaymentsTC {
 		sp.verifySuccessMessage();
 	}
 
+	@Test
 	public void depositPaymentServiceNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -91,31 +96,32 @@ public class PaymentsTC {
 		sp.verifySuccessMessage();
 	}
 
+	@Test
 	public void payAndRefundDeposit() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDepositRequirement cd = new CRDepositRequirement(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYSinglePayment sp = new PYSinglePayment(action);
-		
+
 		cr.navigate();
 		cr.searchByAccountNumber("260002280000");
-		
+
 		cd.navigate();
 		cd.verifyDepositRequirement();
 		cd.addNewDepositRequirement("10.00");
 		cd.verifyDepositRequirement();
-		
+
 		bso.navigate();
 		bso.selectDepartment("CASH1");
-		
+
 		sp.navigate();
 		sp.searchWithAccountNumber("260002280000");
 		sp.doDepositPayment("10.00");
 		sp.verifySuccessMessage();
-		
+
 		cr.navigate();
 		cr.searchByAccountNumber("260002280000");
-		
+
 		cd.navigate();
 		cd.verifyDepositRequirement();
 		cd.refundDeposit("10.00");

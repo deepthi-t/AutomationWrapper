@@ -7,55 +7,49 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.RaiseFault;
 
-public class RaiseFaultTestCases 
-{
+public class RaiseFaultTestCases {
 	static TestActions action = CommonLogin.action;
-	
+
 	@Test
-	public void raiseNewFault() 
-	{
+	public void raiseNewFault() {
 		RaiseFault rf = new RaiseFault(action);
 
-		assertEquals(rf.navigate(),true);
+		assertEquals(rf.navigate(), true);
 		action.getScreenShot("raiseNewFault");
-		
-		assertEquals(rf.enterServiceNumber("9291838"),true);
+
+		assertEquals(rf.enterServiceNumber("9291838"), true);
 		action.getScreenShot("raiseNewFault");
-		assertEquals(rf.clickonRaiseFaultbutton(),true);
+		assertEquals(rf.clickonRaiseFaultbutton(), true);
 		action.getScreenShot("raiseNewFault");
-		assertEquals(rf.enterDataInFieldsToRaiseFault(),true);
+		assertEquals(rf.enterDataInFieldsToRaiseFault(), true);
 		action.getScreenShot("raiseNewFault");
-		assertEquals(rf.clickonAccepttbutton(),true);
+		assertEquals(rf.clickonAccepttbutton(), true);
 		action.getScreenShot("raiseNewFault");
-		assertEquals(rf.raisedFaultNumber(),true);
+		assertEquals(rf.raisedFaultNumber(), true);
 		action.getScreenShot("raiseNewFault");
 	}
-	
-	public void raiseNewFault_reset() 
-	{
+
+	public void raiseNewFault_reset() {
 		RaiseFault rf = new RaiseFault(action);
 
-		assertEquals(rf.navigate(),true);
+		assertEquals(rf.navigate(), true);
 		action.getScreenShot("raiseNewFault_reset");
-		
-		assertEquals(rf.enterServiceNumber("154180"),true);
+
+		assertEquals(rf.enterServiceNumber("154180"), true);
 		action.getScreenShot("raiseNewFault_reset");
-		assertEquals(rf.clickonResetbutton(),true);
+		assertEquals(rf.clickonResetbutton(), true);
 		action.getScreenShot("raiseNewFault_reset");
 	}
-	
-	public void raiseNewFault_cancel() 
-	{
+
+	public void raiseNewFault_cancel() {
 		RaiseFault rf = new RaiseFault(action);
 
-		assertEquals(rf.navigate(),true);
+		assertEquals(rf.navigate(), true);
 		action.getScreenShot("raiseNewFault_cancel");
-		
-		assertEquals(rf.enterServiceNumber("154180"),true);
+
+		assertEquals(rf.enterServiceNumber("154180"), true);
 		action.getScreenShot("raiseNewFault_cancel");
-		assertEquals(rf.clickonCanceltbutton(),true);
+		assertEquals(rf.clickonCanceltbutton(), true);
 		action.getScreenShot("raiseNewFault_cancel");
 	}
 }
-
-

@@ -7,10 +7,9 @@ import com.liberate.automation.pom.BrowseServiceOrder;
 
 public class BulkSOProcessing {
 	static TestActions action = CommonLogin.action;
-	
+
 	@Test
-	public void bulkCancel()
-	{
+	public void bulkCancel() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		msr.navigate();
@@ -21,10 +20,9 @@ public class BulkSOProcessing {
 		action.getScreenShot("bulkCancel");
 		msr.verifyBulkProcessing();
 	}
-	
+
 	@Test
-	public void bulkSuspend()
-	{
+	public void bulkSuspend() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		msr.navigate();
@@ -36,10 +34,9 @@ public class BulkSOProcessing {
 		msr.verifyBulkProcessing();
 		action.getScreenShot("bulkSuspend");
 	}
-	
+
 	@Test
-	public void bulkAccountSignOff()
-	{
+	public void bulkAccountSignOff() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		msr.navigate();
@@ -51,10 +48,9 @@ public class BulkSOProcessing {
 		msr.verifyBulkProcessing();
 		action.getScreenShot("bulkAccountSignOff");
 	}
-	
+
 	@Test
-	public void bulkGeneralSignOff()
-	{
+	public void bulkGeneralSignOff() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		msr.navigate();

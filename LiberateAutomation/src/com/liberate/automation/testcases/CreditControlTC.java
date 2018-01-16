@@ -9,8 +9,7 @@ public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void serviceBAR()
-	{
+	public void serviceBAR() {
 		CreditControlService msr = new CreditControlService(action);
 
 		msr.navigate();
@@ -22,10 +21,9 @@ public class CreditControlTC {
 		msr.verifyServiceStatus();
 		action.getScreenShot("serviceBAR");
 	}
-	
+
 	@Test
-	public void serviceTOS()
-	{
+	public void serviceTOS() {
 		CreditControlService msr = new CreditControlService(action);
 
 		msr.navigate();
@@ -37,10 +35,9 @@ public class CreditControlTC {
 		msr.verifyServiceStatus();
 		action.getScreenShot("serviceTOS");
 	}
-	
+
 	@Test
-	public void serviceROS()
-	{
+	public void serviceROS() {
 		CreditControlService msr = new CreditControlService(action);
 
 		msr.navigate();
