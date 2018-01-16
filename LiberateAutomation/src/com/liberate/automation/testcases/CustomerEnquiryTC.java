@@ -3,6 +3,7 @@ package com.liberate.automation.testcases;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.CRCustomerDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 
@@ -10,29 +11,56 @@ public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void verifyCustomerEnquiry()
-	{
+	public void verifyCustomerEnquiry() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
-		
+
 		cr.navigate();
+		action.getScreenShot("verifyCustomerEnquiry");
 		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("verifyCustomerEnquiry");
 		cd.navigate();
+		action.getScreenShot("verifyCustomerEnquiry");
 		cd.verifyDashBoard("260002260000");
+		action.getScreenShot("verifyCustomerEnquiry");
 	}
-	
+
 	@Test
-	public void amendAccountDetails()
-	{
+	public void amendAccountDetails() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
+
+		cr.navigate();
+		action.getScreenShot("amendAccountDetails");
+		cr.searchByAccountNumber("260002270000");
+		action.getScreenShot("amendAccountDetails");
+		cd.navigate();
+		action.getScreenShot("amendAccountDetails");
+		cd.verifyDashBoard("260002270000");
+		action.getScreenShot("amendAccountDetails");
+
+		cd.amendAccount();
+		action.getScreenShot("amendAccountDetails");
+		cd.verifyDashBoard("260002270000");
+		action.getScreenShot("amendAccountDetails");
+	}
+
+	public void amendDayOfBilling() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRCustomerDetails cu = new CRCustomerDetails(action);
 		
 		cr.navigate();
-		cr.searchByAccountNumber("260002270000");
-		cd.navigate();
-		cd.verifyDashBoard("260002270000");
+		action.getScreenShot("amendDayOfBilling");
+		cr.searchByAccountNumber("260002310000");
+		action.getScreenShot("amendDayOfBilling");
 		
-		cd.amendAccount();
-		cd.verifyDashBoard("260002270000");
+		cu.navigate();
+		action.getScreenShot("amendDayOfBilling");
+		cu.validateGeneralDetails();
+		action.getScreenShot("amendDayOfBilling");
+		cu.amendDayOfBilling();
+		action.getScreenShot("amendDayOfBilling");
+		cu.validatedayOfBilling();
+		action.getScreenShot("amendDayOfBilling");
 	}
 }
