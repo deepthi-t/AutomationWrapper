@@ -33,7 +33,7 @@ public class PYSinglePayment {
 	By Deposits_PanelHeader = By.xpath("//*[text()='Deposits']");
 
 	By DepositAmount_Input = By.xpath("//tbody[@id='singlePayment:deposits:tbody']//tr[1]//td[5]//input");
-
+		
 	public PYSinglePayment(TestActions action) {
 		this.action = action;
 	}
@@ -109,9 +109,11 @@ public class PYSinglePayment {
 
 		passed = action.selectByPartialText(PaymentType_Select, "Standard");
 		passed = action.selectBy(PaymentMethod_Select, 1);
-
+		
+		action.waitFor(1);
+		
 		passed = action.sendDataTo(Amount_Input, Amount);
-
+		
 		passed = action.clickOn(CommonPanel.Accept_Button);
 
 		passed = action.waitFor(AmountAvailable_Lable, 4, true);
@@ -129,7 +131,10 @@ public class PYSinglePayment {
 		passed = action.selectByPartialText(PaymentType_Select, "Deposit");
 		passed = action.selectBy(PaymentMethod_Select, 1);
 
+		action.waitFor(1);
+		
 		passed = action.sendDataTo(Amount_Input, Amount);
+		
 		passed = action.clickOn(CommonPanel.Accept_Button);
 
 		passed = action.waitFor(Deposits_PanelHeader, 4, true);

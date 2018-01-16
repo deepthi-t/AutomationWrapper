@@ -1,6 +1,9 @@
 package com.liberate.automation.core;
 
 import java.io.File;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -27,7 +30,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
 	
-	public String classVersion = "0.7.0";
+	public String classVersion = "0.8.1";
+	
+	Date date = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
 	
 	Boolean retry = false;
 	int retryCount = 3;
@@ -435,7 +441,33 @@ public class TestActions {
 
 		return count;
 	}
+	
+	/***
+	 * Method to check is passed Text is available in page.
+	 * @param Text The Text that needs to be checked for availability.
+	 * @return True: If available, False : If not available.
+	 */
+	public boolean isTextAvailable(String Text) {
+		int count = 0;
+		
+		By locator = By.xpath("//*[text()[contains(.,'"+Text.trim()+"')]]");
+		
+		try {
+			log("Checking Availability of text : '"+Text+"'");
+			count = driver.findElements(locator).size();
+			log("Count is : " + count);
+		} catch (Exception e) {
+			e.printStackTrace();
+			retry = handleException(e);
+			if (retry)
+				countOf(locator);
+			else
+				return false;
+		}
 
+		return (count>0);
+	}
+	
 	/***
 	 * Method that can be called to get the selected value from a Drop-down.
 	 * 
@@ -700,6 +732,6 @@ public class TestActions {
 	
 	public void log(String message)
 	{
-		System.out.println(message);
+		System.out.println(sdf.format(date) + " : " + message);
 	}
 }
