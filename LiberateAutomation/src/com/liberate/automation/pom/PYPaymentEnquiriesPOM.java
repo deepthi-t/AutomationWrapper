@@ -6,7 +6,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class PaymentEnquiriesPOM 
+public class PYPaymentEnquiriesPOM 
 {
 	TestActions action = null;
 			
@@ -45,7 +45,7 @@ public class PaymentEnquiriesPOM
 	*            steps
 	*/
 
-	public PaymentEnquiriesPOM(TestActions action) 
+	public PYPaymentEnquiriesPOM(TestActions action) 
 	{
 		this.action = action;
 	}

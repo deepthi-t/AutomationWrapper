@@ -6,7 +6,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class BadCheckProcessing {
+public class PYBadCheckProcessing {
 	TestActions action = null;
 
 	// Search Panel
@@ -32,7 +32,7 @@ public class BadCheckProcessing {
 	 * @param action
 	 *            The TestAction class object, which will be used to run test steps
 	 */
-	public BadCheckProcessing(TestActions action) {
+	public PYBadCheckProcessing(TestActions action) {
 		this.action = action;
 	}
 

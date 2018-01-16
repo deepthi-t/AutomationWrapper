@@ -6,7 +6,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class VoidPayment {
+public class PYVoidPayment {
 
 	TestActions action = null;
 
@@ -43,7 +43,7 @@ public class VoidPayment {
 	 * @param action
 	 *            The TestAction class object, which will be used to run test steps
 	 */
-	public VoidPayment(TestActions action) {
+	public PYVoidPayment(TestActions action) {
 		this.action = action;
 	}
 

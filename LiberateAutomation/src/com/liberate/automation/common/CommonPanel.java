@@ -5,7 +5,10 @@ import org.openqa.selenium.By;
 import com.liberate.automation.core.TestActions;
 
 public class CommonPanel {
-
+	public static By Accept_Button = By.xpath("//*[@value = 'Accept']");
+	public static By Apply_Button = By.xpath("//*[@value = 'Apply']");
+	public static By Search_Button = By.xpath("//*[@value = 'Search']");
+	
 	public static class popUp {
 		/***
 		 * XPath of pop up window
