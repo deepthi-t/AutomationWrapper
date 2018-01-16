@@ -90,12 +90,18 @@ public class BrowseServiceOrder {
 
 		return passed;
 	}
-
+	
+	public boolean selectDepartment(String Department)
+	{
+		return (CommonPanel.ServiceOrder.selectDepartment(action, Department));
+	}
+	
 	public boolean selectMultipleServiceOrder(String Department, int count) {
 		boolean passed = false;
 		this.BulkCount = count;
 		
-		passed = CommonPanel.ServiceOrder.selectDepartment(action, Department);
+		passed = this.selectDepartment(Department);
+		
 		passed = action.selectBy(ServiceOrderStatus_Select, 1);
 
 		passed = action.clickOn(Search_Button);

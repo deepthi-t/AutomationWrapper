@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 
 import com.liberate.automation.core.TestActions;
 
-public class CustomerSearch {
+public class CRCustomerSearch {
 	TestActions action = null;
 	
-	public CustomerSearch(TestActions action)
+	public CRCustomerSearch(TestActions action)
 	{
 		this.action = action;
 	}

@@ -5,7 +5,8 @@ import org.openqa.selenium.By;
 import com.liberate.automation.core.TestActions;
 
 public class CommonPanel {
-
+	public static By Accept_Button = By.xpath("//*[@value = 'Accept']");
+	
 	public static class popUp {
 		/***
 		 * XPath of pop up window

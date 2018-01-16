@@ -19,6 +19,6 @@ public class AllocateReleaseRouteServiceNumber {
 	By ExchangeArea = By.xpath("//*[text ( ) = 'Exchange Area:']/following::select[1]");
 	By Plant_Item_Type = By.xpath("//*[text ( ) = 'Exchange Area:']/following::select[2]");
 	By Plant_Item_No = By.xpath("//*[text ( ) = 'Plant Item No:']/following::input[1]");
-	By AcceptButton = By.xpath("//*[@value = 'Accept']");
+	By Accept_Button = By.xpath("//*[@value = 'Accept']");
 	
 }
