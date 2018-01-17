@@ -10,7 +10,7 @@ import com.liberate.automation.pom.CRDashBoard;
 public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
 
-	@Test
+	@Test(priority = 1)
 	public void verifyCustomerEnquiry() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -25,7 +25,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifyCustomerEnquiry");
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void amendAccountDetails() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -45,13 +45,14 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("amendAccountDetails");
 	}
 
+	@Test(priority = 3)
 	public void amendDayOfBilling() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRCustomerDetails cu = new CRCustomerDetails(action);
 		
 		cr.navigate();
 		action.getScreenShot("amendDayOfBilling");
-		cr.searchByAccountNumber("260002310000");
+		cr.searchByAccountNumber("260002320000");
 		action.getScreenShot("amendDayOfBilling");
 		
 		cu.navigate();

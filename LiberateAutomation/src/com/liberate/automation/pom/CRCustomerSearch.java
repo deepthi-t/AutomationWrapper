@@ -32,6 +32,10 @@ public class CRCustomerSearch {
 	public boolean navigate() {
 		boolean passed = false;
 		
+		action.scrollUp();
+		action.scrollUp();
+		action.waitFor(2);
+		
 		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.CustomerCare);
 		

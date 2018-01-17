@@ -68,7 +68,7 @@ public class RaiseFault
 	By Cancel_Button = By.xpath("//input[@value='Cancel']");
 	
 	//Identifying the Fault number
-	By RaisedFault_Number = By.xpath("//*[text()='Fault Number:']/following::text()[1]");
+	By RaisedFault_Number = By.xpath("//*[text()='Fault Number:']/following::span[1]");
 
 public RaiseFault(TestActions action)
 	{

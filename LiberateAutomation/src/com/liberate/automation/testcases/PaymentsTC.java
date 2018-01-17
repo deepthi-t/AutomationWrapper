@@ -14,7 +14,7 @@ import com.liberate.automation.pom.PYSinglePayment;
 public class PaymentsTC {
 	static TestActions action = CommonLogin.action;
 
-	@Test
+	@Test(priority = 3)
 	public void batchPayment() {
 		ArrayList<String> accountNumber = new ArrayList<String>();
 
@@ -23,31 +23,43 @@ public class PaymentsTC {
 		accountNumber.add("260002270000");
 
 		PYBatchPayment bp = new PYBatchPayment(action);
+		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
+		bso.navigate();
+		action.getScreenShot("batchPayment");
+		bso.selectDepartment("CASH4");
+		action.getScreenShot("batchPayment");
+		
 		bp.navigate();
 		action.getScreenShot("batchPayment");
 		bp.providePaymentDetails(accountNumber);
 		action.getScreenShot("batchPayment");
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void verifyCashDrawer() {
 		PYSinglePayment sp = new PYSinglePayment(action);
-
+		BrowseServiceOrder bso = new BrowseServiceOrder(action);
+		
+		bso.navigate();
+		action.getScreenShot("verifyCashDrawer");
+		bso.selectDepartment("CASH6");
+		action.getScreenShot("verifyCashDrawer");
+		
 		sp.navigate();
 		action.getScreenShot("verifyCashDrawer");
 		sp.verifyCashDrawer();
 		action.getScreenShot("verifyCashDrawer");
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void singlePaymentAccountNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
 		action.getScreenShot("singlePaymentAccountNumber");
-		bso.selectDepartment("CASH");
+		bso.selectDepartment("CASH4");
 		action.getScreenShot("singlePaymentAccountNumber");
 
 		sp.navigate();
@@ -60,14 +72,14 @@ public class PaymentsTC {
 		action.getScreenShot("singlePaymentAccountNumber");
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void depositPaymentAccountNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
 		action.getScreenShot("depositPaymentAccountNumber");
-		bso.selectDepartment("CASH");
+		bso.selectDepartment("CASH4");
 		action.getScreenShot("depositPaymentAccountNumber");
 
 		sp.navigate();
@@ -80,19 +92,19 @@ public class PaymentsTC {
 		action.getScreenShot("depositPaymentAccountNumber");
 	}
 
-	@Test
+	@Test(priority = 3)
 	public void singlePaymentServicetNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
 		action.getScreenShot("singlePaymentServicetNumber");
-		bso.selectDepartment("CASH");
+		bso.selectDepartment("CASH4");
 		action.getScreenShot("singlePaymentServicetNumber");
 
 		sp.navigate();
 		action.getScreenShot("singlePaymentServicetNumber");
-		sp.searchWithServiceNumber("556166");
+		sp.searchWithServiceNumber("4747623");
 		action.getScreenShot("singlePaymentServicetNumber");
 		sp.doSinglePayment("10.00");
 		action.getScreenShot("singlePaymentServicetNumber");
@@ -100,14 +112,14 @@ public class PaymentsTC {
 		action.getScreenShot("singlePaymentServicetNumber");
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void depositPaymentServiceNumber() {
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
 		action.getScreenShot("depositPaymentServiceNumber");
-		bso.selectDepartment("CASH");
+		bso.selectDepartment("CASH4");
 		action.getScreenShot("depositPaymentServiceNumber");
 
 		sp.navigate();
@@ -120,7 +132,7 @@ public class PaymentsTC {
 		action.getScreenShot("depositPaymentServiceNumber");
 	}
 
-	@Test
+	@Test(priority = 4)
 	public void payAndRefundDeposit() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDepositRequirement cd = new CRDepositRequirement(action);
@@ -143,7 +155,7 @@ public class PaymentsTC {
 
 		bso.navigate();
 		action.getScreenShot("payAndRefundDeposit");
-		bso.selectDepartment("CASH1");
+		bso.selectDepartment("CASH4");
 		action.getScreenShot("payAndRefundDeposit");
 
 		sp.navigate();
