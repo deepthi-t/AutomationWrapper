@@ -25,20 +25,23 @@ public class CRCustomerSearch {
 	By ShowFullStructure_Input = By.xpath("//*[text()='Show Full Structure:']/following::input[1]");
 	By WorkingServiceOnly_input = By.xpath("//*[text()='Working Service Only:']/following::input[1]");
 
+	By CustomerDetails_Tab = By.xpath("//*[text()='Customer Details Search']");
+	By SurName_Input = By.xpath("//*[text()='Surname:']/following::input[1]");
+	
 	// Buttons
 	By Search_Button = By.xpath("//input[@value='Search']");
 	By Reset_Button = By.xpath("//input[@value='Reset']");
 
 	public boolean navigate() {
 		boolean passed = false;
-		
+
 		action.scrollUp();
 		action.scrollUp();
 		action.waitFor(2);
-		
+
 		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.CustomerCare);
-		
+
 		return passed;
 	}
 
@@ -61,6 +64,35 @@ public class CRCustomerSearch {
 		passed = action.waitFor(1);
 		passed = action.clickOn(Search_Button);
 
+		return passed;
+	}
+
+	public boolean searchByID(String IDType, String IDValue) {
+		boolean passed = false;
+
+		passed = action.waitFor(CustomerID_Select, 4, true);
+		passed = action.selectByPartialText(CustomerID_Select, IDType);
+		passed = action.waitFor(1);
+
+		passed = action.sendDataTo(CustomerID_Input, IDValue);
+		passed = action.waitFor(1);
+
+		passed = action.clickOn(Search_Button);
+
+		return passed;
+	}
+
+	public boolean searchBySurname(String Surname) {
+		boolean passed = false;
+		
+		passed = action.waitFor(CustomerDetails_Tab, 4, true);
+		passed = action.clickOn(CustomerDetails_Tab);
+		
+		passed = action.waitFor(SurName_Input, 4, true);
+		passed = action.sendDataTo(SurName_Input, Surname);
+		
+		passed = action.clickOn(Search_Button);
+		
 		return passed;
 	}
 }

@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.CRAdjustments;
+import com.liberate.automation.pom.CRBills;
 import com.liberate.automation.pom.CRCustomerDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
@@ -26,7 +27,34 @@ public class CustomerEnquiryTC {
 		cd.verifyDashBoard("260002260000");
 		action.getScreenShot("verifyCustomerEnquiry");
 	}
+	
+	public void customerEnquiryWithID() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRDashBoard cd = new CRDashBoard(action);
 
+		cr.navigate();
+		action.getScreenShot("customerEnquiryWithID");
+		cr.searchByID("NI", "FN9ONJ2S3RPN ");
+		action.getScreenShot("customerEnquiryWithID");
+		cd.navigate();
+		action.getScreenShot("customerEnquiryWithID");
+		cd.verifyDashBoard("");
+		action.getScreenShot("customerEnquiryWithID");
+	}
+	
+	public void customerEnquiryWithSurname() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRDashBoard cd = new CRDashBoard(action);
+
+		cr.navigate();
+		action.getScreenShot("customerEnquiryWithSurname");
+		cr.searchBySurname("bmv8h36pneou");
+		action.getScreenShot("customerEnquiryWithSurname");
+		cd.navigate();
+		action.getScreenShot("customerEnquiryWithSurname");
+		cd.verifyDashBoard("");
+		action.getScreenShot("customerEnquiryWithSurname");
+	}
 	
 	@Test(priority = 2)
 	public void amendAccountDetails() {
@@ -153,5 +181,23 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifySericeChargeAccount");
 		ad.verifyServiceCharge();
 		action.getScreenShot("verifySericeChargeAccount");
+	}
+	
+	public void verifyBills()
+	{
+		//Should be executed in S10
+		
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRBills cb = new CRBills(action);
+		
+		cr.navigate();
+		action.getScreenShot("verifyBills");
+		cr.searchByAccountNumber("150303960000");
+		action.getScreenShot("verifyBills");
+		
+		cb.navigate();
+		action.getScreenShot("verifyBills");
+		cb.verifyBill();
+		action.getScreenShot("verifyBills");
 	}
 }

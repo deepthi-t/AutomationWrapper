@@ -49,17 +49,29 @@ public class CRDashBoard {
 	public boolean verifyDashBoard(String AccountNumber) {
 		boolean passed = false;
 
-		passed = action.getTextFromPage(AccountNumber_Value).trim().equals(AccountNumber);
-		passed = !action.getTextFromPage(AccountStatus_Value).trim().equals("");
-		passed = !action.getTextFromPage(AccountID_Value).trim().equals("");
-		passed = !action.getTextFromPage(CustomerType_Value).trim().equals("");
+		if (!AccountNumber.trim().equals("")) {
+			passed = action.getTextFromPage(AccountNumber_Value).trim().equals(AccountNumber);
+		}
+		
+		String ACNumber = action.getTextFromPage(AccountNumber_Value).trim();
+		String AccountStatus = action.getTextFromPage(AccountStatus_Value).trim();
+		String CustomerType = action.getTextFromPage(CustomerType_Value).trim();
+				
+		passed = !AccountStatus.equals("");
+		passed = !AccountStatus.equals("");
+		passed = !CustomerType.equals("");
 		passed = !action.getTextFromPage(MarketingCategory_Value).trim().equals("");
 		
-		if(this.MarketingCategory.equals(""))
+		if (this.MarketingCategory.equals(""))
 			this.MarketingCategory = action.getTextFromPage(MarketingCategory_Value).trim();
 		else
 			passed = action.getTextFromPage(MarketingCategory_Value).trim().equals(MarketingCategory);
 		
+		action.log("Account Number : " + ACNumber);
+		action.log("Account Status : " + AccountStatus);
+		action.log("Customer Type : " + CustomerType);
+		action.log("Marketing Category: " + MarketingCategory_Value);
+
 		return passed;
 	}
 
@@ -84,13 +96,13 @@ public class CRDashBoard {
 
 		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, true);
 		passed = action.isTextAvailable("Account details updated successfully.");
-		
+
 		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
 		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, false);
-		
+
 		action.scrollUp();
 		action.scrollUp();
-		
+
 		passed = action.clickOn(LeftLink.Search.Dashboard);
 
 		return passed;
