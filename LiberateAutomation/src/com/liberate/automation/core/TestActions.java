@@ -1,5 +1,7 @@
 package com.liberate.automation.core;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +29,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
 
-	public String classVersion = "0.8.2";
+	public String classVersion = "0.9.0";
 
 	Date date = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
@@ -303,19 +305,22 @@ public class TestActions {
 
 		return selectBy(locator, fullText);
 	}
-	
+
 	/***
 	 * Method to get the index of an Option from Select
-	 * @param locator The Locator of Select
-	 * @param SelectText The Text to get the index of.
+	 * 
+	 * @param locator
+	 *            The Locator of Select
+	 * @param SelectText
+	 *            The Text to get the index of.
 	 * @return 0 if not found. Else the index.
 	 */
 	public int getIndexOfSelect(By locator, String SelectText) {
 		String xpath = getXpath(locator);
 		xpath = xpath + "/descendant::option";
-		
+
 		int index = 0;
-		
+
 		List<WebElement> options = driver.findElements(By.xpath(xpath));
 
 		for (WebElement option : options) {
@@ -325,7 +330,7 @@ public class TestActions {
 			}
 		}
 
-		return (index+1);
+		return (index + 1);
 	}
 
 	/***
@@ -713,6 +718,20 @@ public class TestActions {
 		log("Scrolling down");
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,2000)", "");
+	}
+	
+	/***
+	 * Method to move mouse away from web application.
+	 */
+	public void moveMouseAwayFromScreen() {
+	    Robot robot;
+		try {
+			robot = new Robot();
+		    robot.mouseMove(2000, 0);
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/***
