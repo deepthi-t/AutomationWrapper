@@ -3,6 +3,7 @@ package com.liberate.automation.testcases;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.CRAdjustments;
 import com.liberate.automation.pom.CRCustomerDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
@@ -25,6 +26,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifyCustomerEnquiry");
 	}
 
+	
 	@Test(priority = 2)
 	public void amendAccountDetails() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
@@ -49,12 +51,12 @@ public class CustomerEnquiryTC {
 	public void amendDayOfBilling() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRCustomerDetails cu = new CRCustomerDetails(action);
-		
+
 		cr.navigate();
 		action.getScreenShot("amendDayOfBilling");
 		cr.searchByAccountNumber("260002320000");
 		action.getScreenShot("amendDayOfBilling");
-		
+
 		cu.navigate();
 		action.getScreenShot("amendDayOfBilling");
 		cu.validateGeneralDetails();
@@ -63,5 +65,39 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("amendDayOfBilling");
 		cu.validatedayOfBilling();
 		action.getScreenShot("amendDayOfBilling");
+	}
+
+	@Test
+	public void raiseAdjustment() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRAdjustments ad = new CRAdjustments(action);
+		
+		cr.navigate();
+		action.getScreenShot("addAdjustment");
+		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("addAdjustment");
+		
+		ad.navigate();
+		action.getScreenShot("addAdjustment");
+		ad.raiseAjustment();
+		action.getScreenShot("addAdjustment");
+		ad.verifyRaiseAdjustment();
+		action.getScreenShot("addAdjustment");
+	}
+
+	@Test
+	public void verifyAdjustment() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRAdjustments ad = new CRAdjustments(action);
+		
+		cr.navigate();
+		action.getScreenShot("verifyAdjustment");
+		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("verifyAdjustment");
+		
+		ad.navigate();
+		action.getScreenShot("verifyAdjustment");
+		ad.verifyAdjustmenst();
+		action.getScreenShot("verifyAdjustment");
 	}
 }

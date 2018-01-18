@@ -28,21 +28,21 @@ public class SwitchRequest {
 	}
 
 	@Test
-	public static void FailureQueries() {
+	public static void SwitchRequestFailureQueries() {
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
 		Login login = new Login(action);
 
 		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
-		action.getScreenShot("FailureQueries");
+		action.getScreenShot("SwitchRequestFailureQueries");
 		assertEquals(msr.navigate(), true);
-		action.getScreenShot("FailureQueries");
+		action.getScreenShot("SwitchRequestFailureQueries");
 		assertEquals(msr.selectFailureQueries(), true);
-		action.getScreenShot("FailureQueries");
+		action.getScreenShot("SwitchRequestFailureQueries");
 		assertEquals(msr.failureQueries("FLOW-FLOW TV Gateway Interface", "CAY-Cayman Islands Region", "FLOW-FLOW", "",
 				"31/05/2015 03:15", "31/05/2017 03:15"), true);
-		action.getScreenShot("FailureQueries");
+		action.getScreenShot("SwitchRequestFailureQueries");
 		assertEquals(msr.verifyResults(), true);
-		action.getScreenShot("MonitorNewSwitchRequest");
+		action.getScreenShot("SwitchRequestFailureQueries");
 
 	}
 
