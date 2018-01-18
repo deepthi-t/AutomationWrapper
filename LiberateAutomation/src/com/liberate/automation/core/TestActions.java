@@ -21,6 +21,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -69,7 +70,6 @@ public class TestActions {
 			log("Navigating to '" + URL + "'");
 			driver.navigate().to(URL);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				gotoURL(URL);
@@ -92,7 +92,6 @@ public class TestActions {
 			log("Clicking on element '" + locator.toString() + "'");
 			driver.findElement(locator).click();
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				clickOn(locator);
@@ -122,7 +121,6 @@ public class TestActions {
 			driver.findElement(locator).clear();
 			driver.findElement(locator).sendKeys(data);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				sendDataTo(locator, data);
@@ -158,7 +156,6 @@ public class TestActions {
 				Thread.sleep(100);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			handleException(e);
 		}
 
@@ -178,7 +175,6 @@ public class TestActions {
 			log("Clearing field '" + locator.toString() + "'");
 			driver.findElement(locator).clear();
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				clearField(locator);
@@ -206,7 +202,6 @@ public class TestActions {
 			select = new Select(driver.findElement(locator));
 			select.selectByIndex(index);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				selectBy(locator, index);
@@ -236,7 +231,6 @@ public class TestActions {
 			select = new Select(driver.findElement(locator));
 			select.selectByVisibleText(visibleText);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				selectBy(locator, visibleText);
@@ -267,7 +261,6 @@ public class TestActions {
 			select = new Select(driver.findElement(locator));
 			select.selectByValue(value);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				selectByValue(locator, value);
@@ -375,7 +368,6 @@ public class TestActions {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				waitFor(locator, seconds, visibility);
@@ -403,7 +395,6 @@ public class TestActions {
 			log("Waiting '" + seconds + "' seconds for '" + locator.toString() + "' to be clickable");
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				waitForClickable(locator, seconds);
@@ -436,7 +427,6 @@ public class TestActions {
 			log("Waiting for '" + seconds + "' seconds");
 			Thread.sleep(seconds * 1000);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				waitFor(seconds);
@@ -462,7 +452,6 @@ public class TestActions {
 			count = driver.findElements(locator).size();
 			log("Count is : " + count);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				countOf(locator);
@@ -490,7 +479,6 @@ public class TestActions {
 			count = driver.findElements(locator).size();
 			log("Count is : " + count);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				countOf(locator);
@@ -518,7 +506,6 @@ public class TestActions {
 			option = select.getFirstSelectedOption().getText();
 			log("Selected value is : " + option);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				getSelectedOption(locator);
@@ -544,7 +531,6 @@ public class TestActions {
 			text = driver.findElement(locator).getText();
 			log("Text is : " + text);
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				getTextFromPage(locator);
@@ -567,7 +553,6 @@ public class TestActions {
 			log("Switching to fram '" + locator.toString() + "'");
 			driver.switchTo().frame(driver.findElement(locator));
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				switchToFrame(locator);
@@ -586,7 +571,6 @@ public class TestActions {
 		try {
 			driver.switchTo().defaultContent();
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				switchBacktoMain();
@@ -611,7 +595,6 @@ public class TestActions {
 			screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File("Screenshots//" + filename + "_" + screenshotCount + ".png"));
 		} catch (Exception e) {
-			e.printStackTrace();
 			retry = handleException(e);
 			if (retry)
 				getScreenShot(filename);
@@ -702,6 +685,32 @@ public class TestActions {
 		}
 	}
 
+	public boolean moveMouseToElement(By ParentElement, By Subelement) {
+		WebElement element = driver.findElement(ParentElement);
+		WebElement subElement = driver.findElement(Subelement);
+
+		try {
+			Actions action = new Actions(driver);
+
+			action.moveToElement(element).perform();
+
+			action.moveToElement(subElement);
+
+			action.click();
+
+			action.perform();
+
+		} catch (Exception e) {
+			retry = handleException(e);
+			if (retry)
+				moveMouseToElement(ParentElement, Subelement);
+			else
+				return false;
+		}
+
+		return true;
+	}
+
 	/***
 	 * Simple method that can be called to scroll Up
 	 */
@@ -719,15 +728,15 @@ public class TestActions {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,2000)", "");
 	}
-	
+
 	/***
 	 * Method to move mouse away from web application.
 	 */
 	public void moveMouseAwayFromScreen() {
-	    Robot robot;
+		Robot robot;
 		try {
 			robot = new Robot();
-		    robot.mouseMove(2000, 0);
+			robot.mouseMove(0, 2000);
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -748,22 +757,23 @@ public class TestActions {
 		executionCount = executionCount + 1;
 		if (executionCount > retryCount) {
 			executionCount = 0;
+			log("ERROR : UAVOIDABLE ERROR OCCURED.");
+			e.printStackTrace();
 			return false;
 		}
-
-		// This snippet will get the Method name where the exception occurred.
-		// String errorMethod =
-		// (e.getCause().getStackTrace()[0].getMethodName());
-		// System.out.println(errorMethod);
 
 		// This code block with get the type of exception occurred and Handle
 		// it.
 		if (e instanceof StaleElementReferenceException) {
+			log("WARNING : StaleElementReferenceException occured");
 			waitFor(1);
 			return true;
 		} else if (e instanceof TimeoutException) {
+			log("WARNING : TimeoutException occured");
 			return false;
 		} else if (e instanceof WebDriverException) {
+			log("WARNING : WebDriverException occured");
+			e.printStackTrace();
 			waitFor(1);
 			if (countOf(By.xpath("//input[@value='OK']")) > 0) {
 				clickOn(By.xpath("(//input[@value='OK'])[last()]"));
@@ -771,7 +781,9 @@ public class TestActions {
 			}
 			return true;
 		} else {
+			log("ERROR");
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 	}
