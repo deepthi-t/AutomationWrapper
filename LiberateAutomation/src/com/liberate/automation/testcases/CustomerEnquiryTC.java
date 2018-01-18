@@ -7,6 +7,7 @@ import com.liberate.automation.pom.CRAdjustments;
 import com.liberate.automation.pom.CRCustomerDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
+import com.liberate.automation.pom.CRServiceCharges;
 
 public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
@@ -99,5 +100,58 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifyAdjustment");
 		ad.verifyAdjustmenst();
 		action.getScreenShot("verifyAdjustment");
+	}
+
+	public void addServiceCharge()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceCharges ad = new CRServiceCharges(action);
+		
+		cr.navigate();
+		action.getScreenShot("addServiceCharge");
+		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("addServiceCharge");
+		
+		ad.navigate();
+		action.getScreenShot("addServiceCharge");
+		ad.addServiceCharge();
+		action.getScreenShot("addServiceCharge");
+		ad.verifyRaisedServiceCharge();
+		action.getScreenShot("addServiceCharge");
+
+	}
+	
+	public void verifySericeChargeServiceNumber()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceCharges ad = new CRServiceCharges(action);
+		
+		cr.navigate();
+		action.getScreenShot("verifySericeChargeServiceNumber");
+		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("verifySericeChargeServiceNumber");
+		
+		ad.navigate();
+		action.getScreenShot("verifySericeChargeServiceNumber");
+		ad.searchWithServiceNumber();
+		action.getScreenShot("verifySericeChargeServiceNumber");
+		ad.verifyServiceCharge();
+		action.getScreenShot("verifySericeChargeServiceNumber");
+	}
+	
+	public void verifySericeChargeAccount()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceCharges ad = new CRServiceCharges(action);
+		
+		cr.navigate();
+		action.getScreenShot("verifySericeChargeAccount");
+		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("verifySericeChargeAccount");
+		
+		ad.navigate();
+		action.getScreenShot("verifySericeChargeAccount");
+		ad.verifyServiceCharge();
+		action.getScreenShot("verifySericeChargeAccount");
 	}
 }
