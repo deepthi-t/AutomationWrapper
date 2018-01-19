@@ -20,12 +20,12 @@ public class PaymentEnquiries
 		action.getScreenShot("PaymentEnquiries");
 		assertEquals(pe.navigate(),true);
 		action.getScreenShot("PaymentEnquiries");
-		assertEquals(pe.paymentEnquiryWithAccountNumber("270004470000"),true);
+		assertEquals(pe.paymentEnquiryWithAccountNumber("260002280000"),true);
 		action.getScreenShot("PaymentEnquiries");
 		String acctnum = action.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]"));
 		action.getScreenShot("PaymentEnquiries");
 		System.out.println("Searched Account number is"+" "+acctnum);
-		if(acctnum.equals("270004470000"))
+		if(acctnum.equals("260002280000"))
 		{
 			System.out.println("Test passed");
 		}

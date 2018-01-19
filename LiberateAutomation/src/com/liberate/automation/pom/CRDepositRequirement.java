@@ -10,6 +10,8 @@ public class CRDepositRequirement {
 	TestActions action = null;
 	
 	String DepositReason = "";
+
+	By ExcludeCeaseClosed_CheckBox = By.xpath("//*[text()='Exclude Closed/Ceased Accounts:']");
 	
 	By DepositSummary_TabHeader = By.xpath("//*[text()='Deposit Summary']");
 	By RefundDeposit_TabHeader = By.xpath("//*[text()='Refund Deposit']");
@@ -34,9 +36,7 @@ public class CRDepositRequirement {
 	public CRDepositRequirement(TestActions action) {
 		this.action = action;
 	}
-
-	By ExcludeCeaseClosed_CheckBox = By.xpath("//*[text()='Exclude Closed/Ceased Accounts:']");
-
+	
 	public boolean navigate() {
 		boolean passed = false;
 

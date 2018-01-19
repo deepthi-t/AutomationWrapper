@@ -6,8 +6,23 @@ import com.liberate.automation.core.TestActions;
 
 public class CommonPanel {
 	public static By Accept_Button = By.xpath("//*[@value = 'Accept']");
+	public static By AcceptDisable_Button = By.xpath("//input[@value='Accept' and @disabled='disabled']");
 	public static By Apply_Button = By.xpath("//*[@value = 'Apply']");
 	public static By Search_Button = By.xpath("//*[@value = 'Search']");
+	
+	/***
+	 * Class which holds information about Liberate Header
+	 * @author Nikhil Das
+	 *
+	 */
+	public static class LiberateHeader{
+		
+		/***
+		 * To get Liberate System Date in 'DD/MM/YYYY, HH:mm' 
+		 */
+		public static By LiberateDate = By.xpath("//span[text()='Date:']/following::span[1]");
+		public static By EnvironmentDetails = By.xpath("//span[text()='CIS System:']/following::span[1]"); 
+	}
 	
 	public static class popUp {
 		/***

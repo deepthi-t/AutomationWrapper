@@ -149,14 +149,17 @@ public class BrowseServiceOrder {
 	{
 		boolean passed = false;
 		
-		action.waitFor(Accept_Button, 10, false);
-		action.waitFor(BulkOrderProcessSummary_Table, 10, true);
+		passed = action.waitFor(Accept_Button, 10, false);
+		passed = action.waitFor(BulkOrderProcessSummary_Table, 10, true);
 		
 		for(int i = 0; i < BulkCount; i++)
 		{
 			By ServiceOrder = By.xpath(action.getXpath(BulkOrderProcessSummary_Row)+"["+(i+1)+"]//td[1]");
 			By ProcessingStatus = By.xpath(action.getXpath(BulkOrderProcessSummary_Row)+"["+(i+1)+"]//td[2]");
 			
+			passed = action.countOf(ServiceOrder)>0;
+			passed = action.countOf(ProcessingStatus)>0;
+
 			action.log("Service Order " + action.getTextFromPage(ServiceOrder) + " Processing Status : " + action.getTextFromPage(ProcessingStatus));
 		}
 		
@@ -190,7 +193,7 @@ public class BrowseServiceOrder {
 		
 		if(action.countOf(BulkSignOffBillDate_Input)>0)
 		{
-			action.typeDataTo(BulkSignOffBillDate_Input, "12/01/2018 00:00");
+			action.typeDataTo(BulkSignOffBillDate_Input, "17/01/2018 00:00");
 		}
 			
 		action.waitFor(2);

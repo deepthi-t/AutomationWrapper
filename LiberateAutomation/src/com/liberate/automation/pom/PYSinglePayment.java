@@ -71,6 +71,8 @@ public class PYSinglePayment {
 		action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, true);
 		String PopUpMessage = action.getTextFromPage(CashDrawerOpenedMessage_Value);
 		passed = PopUpMessage.equals("Cashdrawer already open in another office.");
+		
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
 
 		return passed;
 	}

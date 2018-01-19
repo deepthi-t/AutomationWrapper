@@ -27,7 +27,7 @@ public class CommonData {
 
 	public static class PlantItemType {
 		public final static String CopperDP = "DP-DISTRIBUTION";
-		public final static String FiberDP = "FDP";
+		public final static String FiberDP = "FDP-";
 	}
 
 	public static class CreditControlServiceStatus {

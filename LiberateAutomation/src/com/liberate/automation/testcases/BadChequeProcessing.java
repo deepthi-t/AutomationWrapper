@@ -10,7 +10,7 @@ import com.liberate.automation.pom.PYBadCheckProcessing;
 public class BadChequeProcessing {
 
 	static TestActions action = CommonLogin.action;
-	
+
 	@Test
 	public void badCheckProcessing() {
 		PYBadCheckProcessing bcp = new PYBadCheckProcessing(action);
