@@ -3,6 +3,7 @@ package com.liberate.automation.testcases;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.CRAccountPricingPlans;
 import com.liberate.automation.pom.CRAdjustments;
 import com.liberate.automation.pom.CRBills;
 import com.liberate.automation.pom.CRCustomerDetails;
@@ -216,5 +217,43 @@ public class CustomerEnquiryTC {
 
 		sc.verifyTransferService("260002270000");
 		action.getScreenShot("transferService");
+	}
+
+	public void addNominatedNumPricingPlan() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
+		
+		cr.navigate();
+		action.getScreenShot("addNominatedNumPricingPlan");
+		cr.searchByAccountNumber("260002260000");
+		action.getScreenShot("addNominatedNumPricingPlan");
+
+		cp.navigate();
+		action.getScreenShot("addNominatedNumPricingPlan");
+		cp.searchPricingPlan("AC+NN");
+		action.getScreenShot("addNominatedNumPricingPlan");
+		cp.addPricingPlan();
+		action.getScreenShot("addNominatedNumPricingPlan");
+		cp.validatePricingPlan();
+		action.getScreenShot("addNominatedNumPricingPlan");
+	}
+	
+	public void addCUGPricingPlan() {
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
+		
+		cr.navigate();
+		action.getScreenShot("addCUGPricingPlan");
+		cr.searchByAccountNumber("280000380000");
+		action.getScreenShot("addCUGPricingPlan");
+
+		cp.navigate();
+		action.getScreenShot("addCUGPricingPlan");
+		cp.searchPricingPlan("CUG");
+		action.getScreenShot("addCUGPricingPlan");
+		cp.addPricingPlan();
+		action.getScreenShot("addCUGPricingPlan");
+		cp.validatePricingPlan();
+		action.getScreenShot("addCUGPricingPlan");
 	}
 }
