@@ -6,18 +6,38 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.ManageFault;
+import com.liberate.automation.pom.RaiseFault;
 
-public class ManageFaultTC {
+public class FaultManagement {
 	static TestActions action = CommonLogin.action;
-
+	
 	@Test
-	public void addNotes_ManageFault() {
+	public void raiseFault() {
+		RaiseFault rf = new RaiseFault(action);
+
+		assertEquals(rf.navigate(), true);
+		action.getScreenShot("raiseNewFault");
+
+		assertEquals(rf.enterServiceNumber("510284"), true);
+		action.getScreenShot("raiseNewFault");
+		assertEquals(rf.clickonRaiseFaultbutton(), true);
+		action.getScreenShot("raiseNewFault");
+		assertEquals(rf.enterDataInFieldsToRaiseFault(), true);
+		action.getScreenShot("raiseNewFault");
+		assertEquals(rf.clickonAccepttbutton(), true);
+		action.getScreenShot("raiseNewFault");
+		assertEquals(rf.raisedFaultNumber(), true);
+		action.getScreenShot("raiseNewFault");
+	}
+	
+	@Test
+	public void manageFaultAddNotes() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot("manageFault");
 
-		assertEquals(mf.enterFaultNumber("B00020B"), true);
+		assertEquals(mf.enterFaultNumber("C00003A"), true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot("manageFault");
@@ -54,25 +74,25 @@ public class ManageFaultTC {
 	}
 
 	@Test
-	public void signoff_ManageFault() {
+	public void signoffFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
-		action.getScreenShot("manageFault");
+		action.getScreenShot("signoffFault");
 
-		assertEquals(mf.enterFaultNumber(""), true);
-		action.getScreenShot("manageFault");
+		assertEquals(mf.enterFaultNumber("C00010A"), true);
+		action.getScreenShot("signoffFault");
 		assertEquals(mf.clickonSearchbutton(), true);
-		action.getScreenShot("manageFault");
+		action.getScreenShot("signoffFault");
 
 		assertEquals(mf.clickonSignOffactionbutton(), true);
-		action.getScreenShot("manageFault");
+		action.getScreenShot("signoffFault");
 		assertEquals(mf.selectSignoffDropDowns(), true);
-		action.getScreenShot("manageFault");
+		action.getScreenShot("signoffFault");
 		assertEquals(mf.clickonSignOffApplybutton(), true);
-		action.getScreenShot("manageFault");
+		action.getScreenShot("signoffFault");
 		assertEquals(mf.statusOfFaultNumber(), "Cleared");
-		action.getScreenShot("manageFault");
+		action.getScreenShot("signoffFault");
 	}
 
 	@Test
@@ -82,7 +102,7 @@ public class ManageFaultTC {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot("manageFault");
 
-		assertEquals(mf.enterFaultNumber(""), true);
+		assertEquals(mf.enterFaultNumber("C00003A"), true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot("manageFault");
@@ -102,7 +122,7 @@ public class ManageFaultTC {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot("manageFault");
 
-		assertEquals(mf.enterFaultNumber(""), true);
+		assertEquals(mf.enterFaultNumber("C00003A"), true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot("manageFault");
@@ -122,7 +142,7 @@ public class ManageFaultTC {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot("manageFault");
 
-		assertEquals(mf.enterFaultNumber(""), true);
+		assertEquals(mf.enterFaultNumber("C00003A"), true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot("manageFault");
@@ -142,7 +162,7 @@ public class ManageFaultTC {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot("manageFault");
 
-		assertEquals(mf.enterFaultNumber(""), true);
+		assertEquals(mf.enterFaultNumber("C00003A"), true);
 		action.getScreenShot("manageFault");
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot("manageFault");

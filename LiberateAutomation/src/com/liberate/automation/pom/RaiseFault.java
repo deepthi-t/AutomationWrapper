@@ -185,7 +185,7 @@ public boolean raisedFaultNumber()
 	boolean passed = false;
 
 	passed = RaiseFaultAction.waitFor(RaisedFault_Number, 4, true);
-	System.out.println(RaisedFault_Number);
+	System.out.println(RaiseFaultAction.getTextFromPage(RaisedFault_Number));
 
 	return passed;
 }

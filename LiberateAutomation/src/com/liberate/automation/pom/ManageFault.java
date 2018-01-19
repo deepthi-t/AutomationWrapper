@@ -71,7 +71,7 @@ public class ManageFault {
 	By SignoffCancel_Button = By.xpath("//input[@value='Cancel']");
 	// xpath for validation if fault is signed off or not
 	By FaultInfo_PanelHeader = By.xpath("//*[text()='Fault Info']");
-	By IdentifyFaultStatus_Text = By.xpath("(//*[text()='Status']/following::text())[3]");
+	By FaultStatus_Value = By.xpath("//*[text()='Status']/following::td[1]//span");
 
 	// Suspend/release a fault
 	By SuspendRelease_PanelHeader = By.xpath("//*[text()='Suspend/Release']");
@@ -134,8 +134,8 @@ public class ManageFault {
 	public boolean enterFaultNumber(String FaultNumberValue) {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(ServiceNumber_Input, 4, true);
-		passed = ManageFaultAction.sendDataTo(ServiceNumber_Input, FaultNumberValue);
+		passed = ManageFaultAction.waitFor(FaultNumber_Input, 4, true);
+		passed = ManageFaultAction.sendDataTo(FaultNumber_Input, FaultNumberValue);
 
 		return passed;
 	}
@@ -309,15 +309,24 @@ public class ManageFault {
 		boolean passed = false;
 
 		passed = ManageFaultAction.waitFor(SignoffClearedBy_DropDown, 4, true);
-		passed = ManageFaultAction.selectBy(SignoffClearedBy_DropDown, "99999-RHQ DEVELOP");
+		passed = ManageFaultAction.selectByPartialText(SignoffClearedBy_DropDown, "99999-");
+		ManageFaultAction.waitFor(1);
 		passed = ManageFaultAction.waitFor(SignoffClearedCode_DropDown, 4, true);
-		passed = ManageFaultAction.selectBy(SignoffClearedCode_DropDown, "7-Power supply");
+		ManageFaultAction.waitFor(1);
+		passed = ManageFaultAction.selectBy(SignoffClearedCode_DropDown, 1);
+		ManageFaultAction.waitFor(1);
 		passed = ManageFaultAction.waitFor(SignoffLevel2_Dropdown, 4, true);
-		passed = ManageFaultAction.selectBy(SignoffLevel2_Dropdown, "1-Power Supply");
+		ManageFaultAction.waitFor(1);
+		passed = ManageFaultAction.selectBy(SignoffLevel2_Dropdown, 1);
+		ManageFaultAction.waitFor(1);
 		passed = ManageFaultAction.waitFor(SignoffLevel3_Dropdown, 4, true);
-		passed = ManageFaultAction.selectBy(SignoffLevel3_Dropdown, "3-Transformer");
+		ManageFaultAction.waitFor(1);
+		passed = ManageFaultAction.selectBy(SignoffLevel3_Dropdown, 1);
+		ManageFaultAction.waitFor(1);
 		passed = ManageFaultAction.waitFor(SignoffClearAction_Dropdown, 4, true);
-		passed = ManageFaultAction.selectBy(SignoffClearAction_Dropdown, "1-TP_Repair System");
+		ManageFaultAction.waitFor(1);
+		passed = ManageFaultAction.selectBy(SignoffClearAction_Dropdown, 1);
+		ManageFaultAction.waitFor(1);
 
 		return passed;
 	}
@@ -355,11 +364,12 @@ public class ManageFault {
 		return passed;
 	}
 
-	// Validate status of fualt number
+	// Validate status of fault number
 	public String statusOfFaultNumber() {
 		String status = null;
-
-		status = ManageFaultAction.getTextFromPage(IdentifyFaultStatus_Text);
+		
+		ManageFaultAction.waitFor(SignoffApply_Button, 4, false);
+		status = ManageFaultAction.getTextFromPage(FaultStatus_Value);
 		return status;
 	}
 	// ------------------------------------------
