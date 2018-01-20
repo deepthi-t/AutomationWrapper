@@ -10,7 +10,6 @@ import com.liberate.automation.pom.CRCustomerDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceCharges;
-import com.liberate.automation.pom.CRServiceOperations;
 
 public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
@@ -30,6 +29,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifyCustomerEnquiry");
 	}
 
+	@Test
 	public void customerEnquiryWithID() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -44,6 +44,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("customerEnquiryWithID");
 	}
 
+	@Test
 	public void customerEnquiryWithSurname() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -132,6 +133,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifyAdjustment");
 	}
 
+	@Test
 	public void addServiceCharge() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
@@ -150,6 +152,7 @@ public class CustomerEnquiryTC {
 
 	}
 
+	@Test
 	public void verifySericeChargeServiceNumber() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
@@ -167,6 +170,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifySericeChargeServiceNumber");
 	}
 
+	@Test
 	public void verifySericeChargeAccount() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
@@ -182,6 +186,7 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifySericeChargeAccount");
 	}
 
+	@Test
 	public void verifyBills() {
 		// Should be executed in S10
 
@@ -199,30 +204,11 @@ public class CustomerEnquiryTC {
 		action.getScreenShot("verifyBills");
 	}
 
-	public void transferService() {
-		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRServiceOperations sc = new CRServiceOperations(action);
-
-		cr.navigate();
-		action.getScreenShot("transferService");
-		cr.searchByAccountNumber("260002290000");
-		action.getScreenShot("transferService");
-
-		sc.navigate();
-		action.getScreenShot("transferService");
-		sc.verifyServicesScreen();
-		action.getScreenShot("transferService");
-		sc.transferService("260002270000");
-		action.getScreenShot("transferService");
-
-		sc.verifyTransferService("260002270000");
-		action.getScreenShot("transferService");
-	}
-
+	@Test
 	public void addNominatedNumPricingPlan() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
-		
+
 		cr.navigate();
 		action.getScreenShot("addNominatedNumPricingPlan");
 		cr.searchByAccountNumber("260002260000");
@@ -237,11 +223,12 @@ public class CustomerEnquiryTC {
 		cp.validatePricingPlan();
 		action.getScreenShot("addNominatedNumPricingPlan");
 	}
-	
+
+	@Test
 	public void addCUGPricingPlan() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
-		
+
 		cr.navigate();
 		action.getScreenShot("addCUGPricingPlan");
 		cr.searchByAccountNumber("280000380000");
