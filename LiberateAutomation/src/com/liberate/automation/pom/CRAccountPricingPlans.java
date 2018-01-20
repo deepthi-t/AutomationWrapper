@@ -11,7 +11,7 @@ public class CRAccountPricingPlans {
 
 	String PricingPlan = "";
 	String PlanAddedDate = "";
-	
+
 	By ExcludeCeaseClosed_CheckBox = By.xpath("//*[text()='Exclude Closed/Ceased Accounts:']");
 
 	By PricingPlanSummary_Tab = By.xpath("//*[text()='Pricing Plan Sum']");
@@ -27,11 +27,11 @@ public class CRAccountPricingPlans {
 	By Proceed_Button = By.xpath("//*[@value='Proceed']");
 
 	By NominatedNumber_CheckBox = By.xpath("(//input[@class='iceSelBoolChkbx'])[1]");
-	
+
 	By ToBeAuthorizedSearch_Input = By.xpath("//*[text()='To Be Authorised By:']/following::input[1]");
 	By ToBeAuthorizedSearch_Button = By.xpath("(//*[text()='To Be Authorised By:']/following::input)[2]");
 	By ToBeAuthorizedBy_Select = By.xpath("//*[text()='To Be Authorised By:']/following::select[1]");
-	
+
 	public CRAccountPricingPlans(TestActions action) {
 		this.action = action;
 	}
@@ -81,16 +81,15 @@ public class CRAccountPricingPlans {
 		passed = action.waitFor(SalesPerson_Select, 4, true);
 		passed = action.selectByPartialText(SalesPerson_Select, "99999-");
 		action.waitFor(3);
-		
-		if(action.countOf(ToBeAuthorizedSearch_Input)>0)
-		{
+
+		if (action.countOf(ToBeAuthorizedSearch_Input) > 0) {
 			passed = action.sendDataTo(ToBeAuthorizedSearch_Input, "99999");
 			action.waitFor(3);
 			passed = action.selectBy(ToBeAuthorizedBy_Select, 1);
 			action.waitFor(1);
 		}
-		
-		if(action.countOf(Proceed_Button)>0)
+
+		if (action.countOf(Proceed_Button) > 0)
 			passed = action.clickOn(Proceed_Button);
 
 		action.waitFor(NominatedNumber_CheckBox, 4, true);
@@ -102,19 +101,19 @@ public class CRAccountPricingPlans {
 
 		if (action.countOf(NominatedNumber_CheckBox) > 0)
 
-		passed = action.clickOn(CommonPanel.Accept_Button);
-		
+			passed = action.clickOn(CommonPanel.Accept_Button);
+
 		this.PlanAddedDate = action.getTextFromPage(CommonPanel.LiberateHeader.LiberateDate).replace(",", "");
-		
+
 		return passed;
 	}
 
 	public boolean validatePricingPlan() {
 		boolean passed = false;
-		
+
 		passed = action.waitFor(CommonPanel.Accept_Button, 4, false);
 		passed = action.isTextAvailable(PlanAddedDate);
-		
+
 		return passed;
 	}
 }
