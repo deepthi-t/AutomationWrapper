@@ -3,6 +3,7 @@ package com.liberate.automation.testcases;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.ADMaintainEmployee;
 import com.liberate.automation.pom.ADManageUser;
 
 public class UserManagementTC {
@@ -50,5 +51,24 @@ public class UserManagementTC {
 		action.getScreenShot("copyUser");
 		adm.verifyUserDetails();
 		action.getScreenShot("copyUser");
+	}
+	
+	@Test
+	public void createUser() {
+		ADManageUser adm = new ADManageUser(action);
+		ADMaintainEmployee ade = new ADMaintainEmployee(action);
+		
+		ade.navigate();
+		ade.searchWithStaffNumber("999908");
+		ade.createNewEmployee();
+		
+		adm.navigate();
+		action.getScreenShot("createUser");
+		adm.searchByUserName("");
+		action.getScreenShot("createUser");
+		adm.createUser(ade.EmployeeID, ade.VMSUserName);
+		action.getScreenShot("createUser");
+		adm.verifyUserDetails();
+		action.getScreenShot("createUser");
 	}
 }

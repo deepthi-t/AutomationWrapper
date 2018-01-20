@@ -49,11 +49,19 @@ public class ADManageUser {
 	By CopyUser_ActionButton = By.xpath("//span[text()[contains(.,'Copy User')]]");
 	By CopyUserSuccess_Message = By.xpath("//*[text()='Copy User successfully completed']");
 
+	By Position_Select = By.xpath("//*[text()='Position']/following::select[1]");
+
+	By CreateUserSuccess_Message = By.xpath("//*[text()='User creation successfully completed']");
+	By NewUser_ActionButton = By.xpath("//span[text()[contains(.,'New User')]]");
+
 	public ADManageUser(TestActions action) {
 		this.action = action;
 	}
 
 	public boolean navigate() {
+		action.scrollUp();
+		action.scrollUp();
+
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.Admin, 4, true);
@@ -151,16 +159,46 @@ public class ADManageUser {
 	public boolean verifyCopyUser() {
 		boolean passed = false;
 
+		action.waitFor(2);
+
+		passed = action.clickOn(CommonPanel.Accept_Button);
+
 		passed = action.waitFor(CopyUserSuccess_Message, 4, true);
 		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+
 		return passed;
 	}
 
-	public boolean createUser(String EmployeeID) {
+	public boolean createUser(String EmployeeID, String CISUserName) {
 		boolean passed = false;
 		CopyUser = false;
 
+		passed = action.waitFor(NewUser_ActionButton, 4, true);
+		passed = action.clickOn(NewUser_ActionButton);
+
+		passed = action.waitFor(CISUserName_Input, 4, true);
+		passed = action.sendDataTo(CISUserName_Input, CISUserName);
+
 		fillUserDetails(EmployeeID);
+
+		action.waitFor(3);
+
+		passed = action.selectByPartialText(Position_Select, "Basic");
+
+		passed = action.clickOn(CommonPanel.Accept_Button);
+
+		return passed;
+	}
+
+	public boolean verifyCreateUser() {
+		boolean passed = false;
+
+		action.waitFor(2);
+
+		passed = action.clickOn(CommonPanel.Accept_Button);
+
+		passed = action.waitFor(CreateUserSuccess_Message, 4, true);
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
 
 		return passed;
 	}
@@ -182,17 +220,15 @@ public class ADManageUser {
 
 		this.CISUserName = CopyUser ? "RHQ_DEVELOP" : random.nextString();
 
-		passed = action.sendDataTo(CISUserName_Input, CISUserName);
+		if (CopyUser) {
+			passed = action.sendDataTo(CISUserName_Input, CISUserName);
+		}
 		passed = action.sendDataTo(EmployeeID_Input, EmployeeID);
 
 		passed = action.clickOn(CommonPanel.Accept_Button);
 
 		passed = action.waitFor(SelectAllBU_CheckBox, 4, true);
 		passed = action.clickOn(SelectAllBU_CheckBox);
-
-		action.waitFor(2);
-
-		passed = action.clickOn(CommonPanel.Accept_Button);
 
 		return passed;
 	}
