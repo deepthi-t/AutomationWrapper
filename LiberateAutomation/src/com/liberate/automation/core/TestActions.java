@@ -788,6 +788,10 @@ public class TestActions {
 		}
 	}
 
+	/***
+	 * Class to log String Message
+	 * @param message String Message that needs to be logged.
+	 */
 	public void log(String message) {
 		System.out.println(sdf.format(date) + " : " + message);
 	}
