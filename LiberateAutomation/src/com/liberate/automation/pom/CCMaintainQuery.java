@@ -34,6 +34,9 @@ public class CCMaintainQuery {
 	By QueryType2Disabled_Select = By.xpath("//*[text()='Query Type3:']/preceding::select[@disabled='disabled'][1]");
 	By QueryType2_Select = By.xpath("//*[text()='Query Type2:']/following::select[1]");
 
+	By Bill_Select = By.xpath("//*[text()='Bill:']//following::select[1]");
+	By Bill_Options = By.xpath("//*[text()='Bill:']//following::select[1]//child::option");
+	
 	By QueryNotes_Input = By.xpath("//*[text()='Notes:']/following::textarea");
 
 	By Accept_Button = By.xpath("//input[@value='Accept']");
@@ -128,6 +131,12 @@ public class CCMaintainQuery {
 		passed = action.selectBy(QueryType2_Select, 1);
 
 		action.waitFor(2);
+		
+		if(action.countOf(Bill_Options)>1)
+		{
+			action.selectBy(Bill_Select, 1);
+		}
+		action.waitFor(1);
 
 		this.QueryCode = action.getSelectedOption(QueryType1_Select).substring(0, 2)
 				+ action.getSelectedOption(QueryType2_Select).substring(0, 2);

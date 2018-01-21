@@ -9,7 +9,7 @@ public class Main {
 		QueryManagement bso = new QueryManagement();
 
 		CommonLogin.navigateToURL();
-		bso.raiseQueryNonAccount();
+		bso.raiseQueryAccount();
 		CommonLogin.endTesting();
 	}
 }
