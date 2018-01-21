@@ -71,22 +71,31 @@ public class QueryManagement {
 		action.getScreenShot("progressQuery");
 	}
 
-	@Test(enabled = false)
+	@Test
 	public void signOffQuery() {
 		CCMaintainQuery mq = new CCMaintainQuery(action);
 
 		mq.navigate();
-		action.getScreenShot("signOffQuery");
-		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A");
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.searchByAccount("260002260000");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.raiseAccountQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
 		mq.progressQuery("RE");
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.signOffQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");		
 	}
 	
+	@Test
 	public void raiseAndAuthoriseAdjustment()
 	{
 		CCMaintainQuery mq = new CCMaintainQuery(action);

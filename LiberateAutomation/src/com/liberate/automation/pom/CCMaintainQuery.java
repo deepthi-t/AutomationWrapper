@@ -67,9 +67,17 @@ public class CCMaintainQuery {
 	By RaiseAdjustment_ActionButton = By.xpath("//span[text() = 'Raise Adjustment']");
 	By AdjustmentType_Select = By.xpath("//*[text()='Adjustment Type:']/following::select[1]");
 	By AdjustmentAmount_Input = By.xpath("//*[text()='Adjustment Amount:']/following::input[1]");
-	
+
 	By AuthoriseAdjustment_ActionButton = By.xpath("//span[text()='Authorise Adjustment']");
-	
+
+	By ChangeDepartment_Tab = By.xpath("//*[text()='Change Department']");
+	By Department_Select = By.xpath("//*[text()='Department:']//following::select[1]");
+
+	By SearchQuery_Tab = By.xpath("//*[text()='Search Query']");
+
+	By SignOff_ActionButton = By.xpath("//span[text()='Sign Off']");
+	By Resolution_Select = By.xpath("(//*[text()='Resolution:']//following::select)[last()]");
+
 	public CCMaintainQuery(TestActions action) {
 		this.action = action;
 	}
@@ -303,16 +311,45 @@ public class CCMaintainQuery {
 	public boolean authoriseAdjustment() {
 		action.scrollUp();
 		boolean passed = false;
-		
+
 		passed = action.waitFor(AuthoriseAdjustment_ActionButton, 4, true);
 		passed = action.clickOn(AuthoriseAdjustment_ActionButton);
-		
+
 		passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
 		passed = action.clickOn(CommonPanel.Accept_Button);
-		
+
 		passed = action.waitFor(CommonPanel.popUp.popUpYes_Button, 4, true);
 		passed = action.clickOn(CommonPanel.popUp.popUpYes_Button);
-		
+
+		return passed;
+	}
+
+	public boolean signOffQuery() {
+		action.scrollUp();
+		boolean passed = false;
+
+		if (action.countOf(SignOff_ActionButton) == 0) {
+			passed = action.waitFor(ChangeDepartment_Tab, 4, true);
+			passed = action.clickOn(ChangeDepartment_Tab);
+
+			if (!action.getSelectedOption(Department_Select).contains("AQSAL")) {
+				CommonPanel.ServiceOrder.selectDepartment(action, "AQSAL");
+			}
+		}
+
+		action.waitFor(2);
+
+		passed = action.waitFor(SignOff_ActionButton, 4, true);
+		passed = action.clickOn(SignOff_ActionButton);
+
+		passed = action.waitFor(CommonPanel.Accept_Button, 6, true);
+		passed = action.selectBy(Resolution_Select, 1);
+
+		action.waitFor(2);
+
+		passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
+		passed = action.clickOn(CommonPanel.Accept_Button);
+
 		return passed;
 	}
 
