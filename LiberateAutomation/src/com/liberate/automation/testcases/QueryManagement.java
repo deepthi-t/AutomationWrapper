@@ -65,7 +65,7 @@ public class QueryManagement {
 		action.getScreenShot("progressQuery");
 		mq.verifyQuery();
 		action.getScreenShot("progressQuery");
-		mq.progressQuery("ES");
+		mq.progressQuery("RE");
 		action.getScreenShot("progressQuery");
 		mq.verifyQuery();
 		action.getScreenShot("progressQuery");
@@ -85,6 +85,35 @@ public class QueryManagement {
 		action.getScreenShot("signOffQuery");
 		mq.verifyQuery();
 		action.getScreenShot("signOffQuery");
+	}
+	
+	public void raiseAndAuthoriseAdjustment()
+	{
+		CCMaintainQuery mq = new CCMaintainQuery(action);
+
+		mq.navigate();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.searchByAccount("260002260000");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.raiseAccountQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.progressQuery("RE");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.raiseAdjustment();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.authoriseAdjustment();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 	}
 
 	@Test(enabled = false)
