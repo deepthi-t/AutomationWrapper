@@ -5,6 +5,11 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 
+/***
+ * Class to create Random Data for Test.
+ * @author Nikhil
+ *
+ */
 public class RandomData {
     public static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String digits = "0123456789";
