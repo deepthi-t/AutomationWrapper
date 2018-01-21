@@ -4,6 +4,11 @@ import org.openqa.selenium.By;
 
 import com.liberate.automation.core.TestActions;
 
+/***
+ * Class which holds Common Elements/Panels used in Liberate.
+ * @author Nikhil
+ *
+ */
 public class CommonPanel {
 	public static By Accept_Button = By.xpath("//*[@value = 'Accept']");
 	public static By AcceptDisable_Button = By.xpath("//input[@value='Accept' and @disabled='disabled']");
@@ -24,6 +29,11 @@ public class CommonPanel {
 		public static By EnvironmentDetails = By.xpath("//span[text()='CIS System:']/following::span[1]"); 
 	}
 	
+	/***
+	 * Class with Pop Up window elements and actions.
+	 * @author Nikhil
+	 *
+	 */
 	public static class popUp {
 		/***
 		 * XPath of pop up window
@@ -53,17 +63,20 @@ public class CommonPanel {
 		 * @return True is able to click on OK button. Else will return false.
 		 */
 		public static boolean clickOK(TestActions action) {
-			By OK_Button = By.xpath("//input[@value='OK']");
-
 			boolean passed = false;
 
-			passed = action.waitFor(OK_Button, 4, true);
-			passed = action.clickOn(OK_Button);
+			passed = action.waitFor(popUpOK_Button, 4, true);
+			passed = action.clickOn(popUpOK_Button);
 
 			return passed;
 		}
 	}
-
+	
+	/***
+	 * Common Service Order class. Holds common webelements for Service order search panel.
+	 * @author Nikhil
+	 *
+	 */
 	public static class ServiceOrder {
 		
 		static By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
@@ -125,6 +138,12 @@ public class CommonPanel {
 			return passed;
 		}
 		
+		/***
+		 * Method to select Department from Department drop down, if not already selected.
+		 * @param action Action class which operates the Browser
+		 * @param department Department that needs to be selected.
+		 * @return True if selected successfully, else False.
+		 */
 		public static boolean selectDepartment(TestActions action, String department)
 		{
 			boolean passed = false;
