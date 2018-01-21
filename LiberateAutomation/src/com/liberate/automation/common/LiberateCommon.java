@@ -9,6 +9,11 @@ public class LiberateCommon
 		return By.xpath("(//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'"+menuName+"')]])[1]");
 	}
 	
+	/***
+	 * Contains All Level One Menu Items
+	 * @author Nikhil
+	 *
+	 */
 	public static class LevelOne
 	{
 		public static final By Home = By.xpath("//div[@class='headermenu_row']/descendant::*[text()='Home']");
@@ -25,12 +30,22 @@ public class LiberateCommon
 		public static final By Admin = By.xpath("//div[@class='headermenu_row']/descendant::*[text()='Admin']");
 	}
 	
+	/***
+	 * Contains All Level Two link for Home
+	 * @author Nikhil
+	 *
+	 */
 	public static class Home
 	{
 		public static final By News = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='News']");
 		public static final By Reports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Reports']");
 	}
 	
+	/***
+	 * Contains All Level Two link for Customer Care
+	 * @author Nikhil
+	 *
+	 */
 	public static class CustomerCare
 	{
 		public static final By Search = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Search')]]");
@@ -42,6 +57,11 @@ public class LiberateCommon
 		public static final By LIMELITE = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='LIME LITE']");
 	}
 	
+	/***
+	 * Contains All Level Two link for Orders
+	 * @author Nikhil
+	 *
+	 */
 	public static class Orders
 	{
 		public static final By BrowseSO = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Browse SO']");
@@ -55,6 +75,11 @@ public class LiberateCommon
 		public static final By OrderReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()[contains(.,'Orders Reports')]]");
 	}
 
+	/***
+	 * Contains All Level Two link for Inventory
+	 * @author Nikhil
+	 *
+	 */
 	public static class Inventory
 	{
 		public static final By SimManagement = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='SIM Management']");
@@ -64,6 +89,11 @@ public class LiberateCommon
 		public static final By InventoryReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Inventory Reports']");
 	}
 
+	/***
+	 * Contains All Level Two link for Faults
+	 * @author Nikhil
+	 *
+	 */
 	public static class Faults
 	{
 		public static final By Faults = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Faults']");
@@ -71,6 +101,11 @@ public class LiberateCommon
 		public static final By FaultsReports = By.xpath("//div[@class='subheadermenu_row']/descendant::*[text()='Faults Reports']");
 	}
 	
+	/***
+	 * Contains All Level Two link for Networks
+	 * @author Nikhil
+	 *
+	 */
 	public static class Networks
 	{
 		public static final By NetworkEnquiries = getSecondLevelLocator("Network Enquiries");
@@ -82,6 +117,11 @@ public class LiberateCommon
 		public static final By NetworkReports = getSecondLevelLocator("Network Reports");
 	}
 
+	/***
+	 * Contains All Level Two link for Billing Event Processing
+	 * @author Nikhil
+	 *
+	 */
 	public static class BillingEventProcessing
 	{
 		public static final By EventProcessing = getSecondLevelLocator("Event Processing(D176)");
@@ -93,6 +133,11 @@ public class LiberateCommon
 		public static final By BillingReports = getSecondLevelLocator("Billing Reports");
 	}
 
+	/***
+	 * Contains All Level Two link for Payments
+	 * @author Nikhil
+	 *
+	 */
 	public static class Payments
 	{
 		public static final By Payments = getSecondLevelLocator("Payments");
@@ -102,6 +147,11 @@ public class LiberateCommon
 		public static final By PaymentsReports = getSecondLevelLocator("Payments Reports");
 	}
 
+	/***
+	 * Contains All Level Two link for Credit Control
+	 * @author Nikhil
+	 *
+	 */
 	public static class CreditControl
 	{
 		public static final By CreditControl = getSecondLevelLocator("Credit Control");
@@ -111,6 +161,11 @@ public class LiberateCommon
 		public static final By CreditControlReports = getSecondLevelLocator("Credit Control Reports");
 	}
 
+	/***
+	 * Contains All Level Two link for Directory Enquiries
+	 * @author Nikhil
+	 *
+	 */
 	public static class DirectoryEnquiries
 	{
 		public static final By DirectorySearch = getSecondLevelLocator("Directory Search");
@@ -118,6 +173,11 @@ public class LiberateCommon
 		public static final By DirectoryReports = getSecondLevelLocator("Directory Reports");
 	}
 
+	/***
+	 * Contains All Level Two link for Products Pricing
+	 * @author Nikhil
+	 *
+	 */
 	public static class ProductsPricing
 	{
 		public static final By Products = getSecondLevelLocator("Productsv");
@@ -134,6 +194,11 @@ public class LiberateCommon
 		public static final By Ericsson = getSecondLevelLocator("Ericsson");
 	}
 
+	/***
+	 * Contains All Level Two link for Admin
+	 * @author Nikhil
+	 *
+	 */
 	public static class Admin
 	{
 		public static By EmployeeAdministration = getSecondLevelLocator("Employee Administration");
