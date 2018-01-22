@@ -6,6 +6,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -550,7 +551,7 @@ public class TestActions {
 	 */
 	public Boolean switchToFrame(By locator) {
 		try {
-			log("Switching to fram '" + locator.toString() + "'");
+			log("Switching to frame '" + locator.toString() + "'");
 			driver.switchTo().frame(driver.findElement(locator));
 		} catch (Exception e) {
 			retry = handleException(e);
@@ -561,7 +562,28 @@ public class TestActions {
 		}
 		return true;
 	}
-
+	
+	/***
+	 * Method that can be called to switch to newly opened Window/Tab.
+	 * 
+	 * @return returns True, if able to switch else false.
+	 */
+	public Boolean switchToNewWindow() {
+		try {
+			log("Switching to New Window");
+			Set<String> WindowHandles = driver.getWindowHandles();
+			String[] Window = WindowHandles.toArray(new String[WindowHandles.size()]);
+			driver.switchTo().window(Window[Window.length-1]);
+		} catch (Exception e) {
+			retry = handleException(e);
+			if (retry)
+				switchToNewWindow();
+			else
+				return false;
+		}
+		return true;
+	}
+	
 	/***
 	 * Method that is called to switch to default frame in the page.
 	 * 
@@ -790,7 +812,9 @@ public class TestActions {
 
 	/***
 	 * Class to log String Message
-	 * @param message String Message that needs to be logged.
+	 * 
+	 * @param message
+	 *            String Message that needs to be logged.
 	 */
 	public void log(String message) {
 		System.out.println(sdf.format(date) + " : " + message);

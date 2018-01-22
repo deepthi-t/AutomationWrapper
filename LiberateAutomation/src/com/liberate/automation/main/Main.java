@@ -1,15 +1,15 @@
 package com.liberate.automation.main;
 
 import com.liberate.automation.testcases.CommonLogin;
-import com.liberate.automation.testcases.QueryManagement;
+import com.liberate.automation.testcases.PaymentsTC;
 
 public class Main {
 
 	public static void main(String[] args) {
-		QueryManagement bso = new QueryManagement();
+		PaymentsTC bso = new PaymentsTC();
 
 		CommonLogin.navigateToURL();
-		bso.signOffQuery();
-		CommonLogin.endTesting();
+		bso.paymentPOS();
+//		CommonLogin.endTesting();
 	}
 }
