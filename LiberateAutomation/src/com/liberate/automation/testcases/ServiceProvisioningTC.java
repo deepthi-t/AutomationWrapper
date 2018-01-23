@@ -19,5 +19,7 @@ public class ServiceProvisioningTC {
 		cp.fillCustomerClassification();
 		cp.fillBillingDetails();
 		cp.fillCustomerID();
+		cp.fillContactDetails();
+		cp.verifyCreatedAccount();
 	}
 }

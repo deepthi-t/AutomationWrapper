@@ -4,6 +4,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 
 import com.liberate.automation.common.CommonData;
+import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
@@ -15,6 +16,8 @@ public class CPNewCustomer {
 	public CPNewCustomer(TestActions action) {
 		this.action = action;
 	}
+
+	public String AccountNumber = "";
 
 	// Common
 	By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
@@ -61,6 +64,8 @@ public class CPNewCustomer {
 	By EmailNotificationNo_Radio = By.xpath("//*[text()='E-mail Notification:']/following::input[2]");
 
 	By PrimaryEmailAddress_Input = By.xpath("//*[text()='Primary E-mail Address:']/following::input[1]");
+	By PrimaryEmailAddressDisabled_Input = By
+			.xpath("(//*[text()='Primary E-mail Address:']/following::input[@disabled='true'])[1]");
 	By OtherEmailAddress_Input = By.xpath("//*[text()='Other E-mail Address:']/following::input[1]");
 	By AccountPassword_Input = By.xpath("//*[text()='Account Password:']/following::input[1]");
 
@@ -95,7 +100,7 @@ public class CPNewCustomer {
 			.xpath("//div[@class='icePnlClpsblCnt singletabcollapsiblepanelCnt']/descendant::input[@value='Reset']");
 	By CustomerIDDisabled_Input = By.xpath(
 			"//*[text()[contains(.,'Customer ID')]]//following::tbody//child::tr[4]//td[3]//input[@disabled='true']"); // Wait
-																														// till
+																														// //
 																														// enabled
 
 	// Contact Information
@@ -129,6 +134,16 @@ public class CPNewCustomer {
 			.xpath("//*[text()[contains(.,'Customer ID')]]//following::tbody//child::tr[2]//td[2]//select[1]");
 	By CustomerID_Input = By
 			.xpath("//*[text()[contains(.,'Customer ID')]]//following::tbody//child::tr[2]//td[3]//input");
+
+	// Contact Information Panel
+	By AddNewContact_Button = By.xpath("//input[@value='Add New Contact']");
+	By ContactInformation_PanelHeader = By.xpath("//*[text()='Contact Information']");
+	By ContactMandatoryNumber_Input = By.xpath(
+			"//*[text()='Contact Method']//following::tbody[1]//descendant::input[@class='iceInpTxt MandatoryTextBox']");
+	By Confirm_Button = By.xpath("(//input[@value='Confirm'])[last()]");
+
+	// Existing Customer Screen
+	By AccountNumber_Value = By.xpath("//*[text()='Account Number:']//following::span[1]");
 
 	/***
 	 * The method to navigate to New Customer screen
@@ -212,8 +227,10 @@ public class CPNewCustomer {
 		passed = action.selectBy(Nationality_DropDown, 2);
 		passed = action.clickOn(EmailNotificationNo_Radio);
 
-		if (action.countOf(PrimaryEmailAddress_Input) == 1)
-			action.sendDataTo(PrimaryEmailAddress_Input, random.nextString().substring(10) + "@cwc.com");
+		if (action.countOf(PrimaryEmailAddress_Input) == 1) {
+			if (action.countOf(PrimaryEmailAddressDisabled_Input) == 0)
+				action.sendDataTo(PrimaryEmailAddress_Input, random.nextString().substring(10) + "@cwc.com");
+		}
 		if (action.countOf(CreateiserviceAccountNo_Radio) == 1)
 			action.clickOn(CreateiserviceAccountNo_Radio);
 
@@ -241,10 +258,14 @@ public class CPNewCustomer {
 			passed = action.selectBy(Company_DropDown, 1);
 		passed = action.selectByPartialText(CustomerType_DropDown, "R -");
 		passed = action.selectByPartialText(MarketingCategory_DropDown, "990000");
+		passed = action.selectByPartialText(Region_DropDown, "CAY");
 		passed = action.selectByPartialText(AccountType_DropDown, "TP");
 
 		passed = action.clickOn(BillStatusArea_SearchButton);
 		passed = action.waitFor(BillStatusArea_Option, 4, true);
+		
+		action.waitFor(2);
+		
 		passed = action.selectByPartialText(BillStatusArea_DropDown, "BOT");
 
 		return passed;
@@ -276,11 +297,11 @@ public class CPNewCustomer {
 	public boolean fillCustomerID() {
 		boolean passed = false;
 
-		if (!(action.countOf(CustomerIDDisabled_Select) > 1)) {
+		if (action.countOf(CustomerIDDisabled_Select) == 0) {
 			action.waitFor(1);
 			passed = action.selectBy(CusotmerID_Select, 1);
 			passed = action.waitFor(CustomerIDDisabled_Select, 4, true);
-			passed = action.waitFor(CustomerIDDisabled_Input, 4, false);
+			action.waitFor(1);
 		}
 		passed = action.sendDataTo(CustomerID_Input, random.nextString().substring(0, 15));
 
@@ -293,6 +314,38 @@ public class CPNewCustomer {
 
 	public boolean fillContactDetails() {
 		boolean passed = false;
+
+		passed = action.waitFor(ContactInformation_PanelHeader, 4, true);
+
+		if (action.countOf(AddNewContact_Button) == 0) {
+			if (action.countOf(ContactName_Input) > 0)
+				action.sendDataTo(ContactName_Input, random.nextString().substring(0, 14));
+			fillStandardAddress();
+
+			action.waitFor(2);
+
+			passed = action.sendDataTo(ContactMandatoryNumber_Input, "89897700");
+
+			passed = action.clickOn(CommonPanel.Accept_Button);
+
+			action.waitFor(2);
+			action.waitFor(AddNewContact_Button, 2, true);
+		}
+
+		passed = action.clickOn(Confirm_Button);
+
+		return passed;
+	}
+
+	public boolean verifyCreatedAccount() {
+		boolean passed = false;
+
+		passed = action.waitFor(AccountNumber_Value, 4, true);
+		this.AccountNumber = action.getTextFromPage(AccountNumber_Value);
+		action.log("Account Number created : " + this.AccountNumber);
+
+		passed = !this.AccountNumber.trim().equals("");
+
 		return passed;
 	}
 }
