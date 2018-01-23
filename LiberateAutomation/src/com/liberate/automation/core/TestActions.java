@@ -154,7 +154,7 @@ public class TestActions {
 
 			for (int i = 0; i < data.length(); i++) {
 				driver.findElement(locator).sendKeys(Character.toString(dateChars[i]));
-				Thread.sleep(100);
+				Thread.sleep(200);
 			}
 		} catch (Exception e) {
 			handleException(e);
@@ -198,6 +198,16 @@ public class TestActions {
 	 *         element in WebPage
 	 */
 	public Boolean selectBy(By locator, int index) {
+		if(countOf(locator)==0)
+		{
+			log("ERROR : Element located by '" + locator.toString() + "' is not available.");
+			try {
+				throw new TimeoutException();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				retry = handleException(e);
+			}
+		}
 		try {
 			log("Selecting index '" + index + "' from '" + locator.toString() + "'");
 			select = new Select(driver.findElement(locator));

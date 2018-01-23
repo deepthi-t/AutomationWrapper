@@ -1,15 +1,15 @@
 package com.liberate.automation.main;
 
 import com.liberate.automation.testcases.CommonLogin;
-import com.liberate.automation.testcases.PaymentsTC;
+import com.liberate.automation.testcases.ServiceProvisioningTC;
 
 public class Main {
 
 	public static void main(String[] args) {
-		PaymentsTC bso = new PaymentsTC();
+		ServiceProvisioningTC bso = new ServiceProvisioningTC();
 
 		CommonLogin.navigateToURL();
-		bso.paymentPOS();
+		bso.newCustomer();
 //		CommonLogin.endTesting();
 	}
 }

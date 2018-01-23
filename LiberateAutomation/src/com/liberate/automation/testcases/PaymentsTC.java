@@ -221,8 +221,6 @@ public class PaymentsTC {
 	@Test
 	public void paymentPOS()
 	{
-		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDepositRequirement cd = new CRDepositRequirement(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYPOSPayment pos = new PYPOSPayment(action);
 		
