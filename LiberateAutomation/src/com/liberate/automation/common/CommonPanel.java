@@ -6,6 +6,7 @@ import com.liberate.automation.core.TestActions;
 
 /***
  * Class which holds Common Elements/Panels used in Liberate.
+ * 
  * @author Nikhil
  *
  */
@@ -14,23 +15,25 @@ public class CommonPanel {
 	public static By AcceptDisable_Button = By.xpath("//input[@value='Accept' and @disabled='disabled']");
 	public static By Apply_Button = By.xpath("//*[@value = 'Apply']");
 	public static By Search_Button = By.xpath("//*[@value = 'Search']");
-	
+
 	/***
 	 * Class which holds information about Liberate Header
+	 * 
 	 * @author Nikhil Das
 	 *
 	 */
-	public static class LiberateHeader{
-		
+	public static class LiberateHeader {
+
 		/***
-		 * To get Liberate System Date in 'DD/MM/YYYY, HH:mm' 
+		 * To get Liberate System Date in 'DD/MM/YYYY, HH:mm'
 		 */
 		public static By LiberateDate = By.xpath("//span[text()='Date:']/following::span[1]");
-		public static By EnvironmentDetails = By.xpath("//span[text()='CIS System:']/following::span[1]"); 
+		public static By EnvironmentDetails = By.xpath("//span[text()='CIS System:']/following::span[1]");
 	}
-	
+
 	/***
 	 * Class with Pop Up window elements and actions.
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -39,22 +42,23 @@ public class CommonPanel {
 		 * XPath of pop up window
 		 */
 		public static By popUpWindow = By.xpath("//td[@class='icePnlPopBody popupPanelBody']");
-		public static By popUpMessage_Value = By.xpath("//td[@class='icePnlPopBody popupPanelBody']/descendant::span[1]");
-		
+		public static By popUpMessage_Value = By
+				.xpath("//td[@class='icePnlPopBody popupPanelBody']/descendant::span[1]");
+
 		public static By popUpYes_Button = By.xpath("//input[@value='Yes']");
 		public static By popUpNo_Button = By.xpath("//input[@value='No']");
 		public static By popUpOK_Button = By.xpath("//input[@value='OK']");
-		
-		public static boolean validateMessage(TestActions action, String message)
-		{
+
+		public static boolean validateMessage(TestActions action, String message) {
 			boolean passed = false;
 
 			passed = action.waitFor(CommonPanel.popUp.popUpWindow, 4, true);
-			passed = (action.getTextFromPage(CommonPanel.popUp.popUpMessage_Value).trim().equals(message.trim()))?true:false;
-			
+			passed = (action.getTextFromPage(CommonPanel.popUp.popUpMessage_Value).trim().equals(message.trim())) ? true
+					: false;
+
 			return passed;
 		}
-		
+
 		/***
 		 * Click on OK button in the pop up.
 		 * 
@@ -65,27 +69,30 @@ public class CommonPanel {
 		public static boolean clickOK(TestActions action) {
 			boolean passed = false;
 
-			passed = action.waitFor(popUpOK_Button, 4, true);
-			passed = action.clickOn(popUpOK_Button);
-
+			if (action.countOf(popUpOK_Button) > 0) {
+				passed = action.clickOn(popUpOK_Button);
+				passed = action.waitFor(popUpOK_Button, 4, false);
+			}
 			return passed;
 		}
 	}
-	
+
 	/***
-	 * Common Service Order class. Holds common webelements for Service order search panel.
+	 * Common Service Order class. Holds common webelements for Service order search
+	 * panel.
+	 * 
 	 * @author Nikhil
 	 *
 	 */
 	public static class ServiceOrder {
-		
+
 		static By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
 		static By departmentDisabled_Select = By
 				.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
 		static By changeDepartment_Button = By.xpath("//input[@value='Change']");
 		static By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
 		static By search_Button = By.xpath("//input[@value='Search']");
-		
+
 		/***
 		 * XPath for Service Order List Header.
 		 */
@@ -114,7 +121,7 @@ public class CommonPanel {
 					"//*[text()[contains(.,'Service Order List')]]/following::div[1]/descendant::tbody[1]/descendant::tr"
 							+ element);
 		}
-	
+
 		/***
 		 * Method to search with Service Order Number
 		 * 
@@ -128,24 +135,27 @@ public class CommonPanel {
 		 */
 		public static boolean Search(TestActions action, String department, String ServiceOrderNumber) {
 			boolean passed = false;
-			
+
 			passed = selectDepartment(action, department);
-			
+
 			passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
 			passed = action.waitFor(1);
 			passed = action.clickOn(search_Button);
 
 			return passed;
 		}
-		
+
 		/***
-		 * Method to select Department from Department drop down, if not already selected.
-		 * @param action Action class which operates the Browser
-		 * @param department Department that needs to be selected.
+		 * Method to select Department from Department drop down, if not already
+		 * selected.
+		 * 
+		 * @param action
+		 *            Action class which operates the Browser
+		 * @param department
+		 *            Department that needs to be selected.
 		 * @return True if selected successfully, else False.
 		 */
-		public static boolean selectDepartment(TestActions action, String department)
-		{
+		public static boolean selectDepartment(TestActions action, String department) {
 			boolean passed = false;
 
 			passed = action.waitFor(department_Select, 4, true);
@@ -159,7 +169,7 @@ public class CommonPanel {
 
 				passed = action.waitFor(1);
 			}
-			
+
 			return passed;
 		}
 	}

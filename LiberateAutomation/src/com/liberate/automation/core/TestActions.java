@@ -297,14 +297,19 @@ public class TestActions {
 		String xpath = getXpath(locator);
 		String fullText = "";
 		xpath = xpath + "/descendant::option";
+		
+		try {
+			List<WebElement> options = driver.findElements(By.xpath(xpath));
 
-		List<WebElement> options = driver.findElements(By.xpath(xpath));
-
-		for (WebElement option : options) {
-			if (option.getText().contains(partialText)) {
-				fullText = option.getText();
-				break;
+			for (WebElement option : options) {
+				if (option.getText().contains(partialText)) {
+					fullText = option.getText();
+					break;
+				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			handleException(e);
 		}
 
 		return selectBy(locator, fullText);
@@ -805,7 +810,6 @@ public class TestActions {
 			return false;
 		} else if (e instanceof WebDriverException) {
 			log("WARNING : WebDriverException occured");
-			e.printStackTrace();
 			waitFor(1);
 			if (countOf(By.xpath("//input[@value='OK']")) > 0) {
 				clickOn(By.xpath("(//input[@value='OK'])[last()]"));
