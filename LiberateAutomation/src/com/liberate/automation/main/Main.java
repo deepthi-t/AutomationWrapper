@@ -9,7 +9,7 @@ public class Main {
 		ServiceProvisioningTC bso = new ServiceProvisioningTC();
 
 		CommonLogin.navigateToURL();
-		bso.newCustomerPEL();
+		bso.addMorePELandPDL();
 //		CommonLogin.endTesting();
 	}
 }

@@ -152,9 +152,23 @@ public class CPExistingCustomer {
 	public boolean processPricingPlanScreen() {
 		boolean passed = false;
 
+		By PlanAuthorizedBy_Input = By.xpath("//*[text()='To be Authorised By:']//input[1]");
+		By PlanAuthorizedBy_Button = By.xpath("//*[text()='To be Authorised By:']//input[2]");
+		By PlanAuthorizedBy_Select = By.xpath("//*[text()='To be Authorised By:']//select[1]");
+
 		passed = action.waitFor(PricingPlan_PanelHeader, 4, true);
 		action.scrollUp();
 		action.getTextFromPage(Panel_Header);
+
+		if (action.countOf(PlanAuthorizedBy_Input) == 1) {
+			action.sendDataTo(PlanAuthorizedBy_Input, "99999");
+			action.clickOn(PlanAuthorizedBy_Button);
+
+			action.waitFor(2);
+
+			action.selectBy(PlanAuthorizedBy_Select, 1);
+		}
+
 		action.clickOn(Proceed_Button);
 
 		return passed;
@@ -219,6 +233,11 @@ public class CPExistingCustomer {
 	public boolean provideServiceDetailsScreen(String Exchange, String NumberArea) {
 		boolean passed = false;
 
+		By SIM_Select = By.xpath("//*[text()='SIM:']//following::select[1]");
+		By LookUp_Button = By.xpath("//input[@value='Look Up']");
+		By SIMSearch_Message = By.xpath("//*[text()='More Numbers exist matching the details entered']");
+		
+		
 		passed = action.waitFor(ServiceDetails_PanelHeader, 4, true);
 
 		passed = action.selectByPartialText(Exchange_Select, Exchange);
@@ -234,20 +253,63 @@ public class CPExistingCustomer {
 
 		passed = action.waitFor(Deallocate_Button, 4, true);
 
-		if (action.countOf(ServiceUsage_Select) == 1)
+		if (action.countOf(LookUp_Button) == 1) {
+			action.clickOn(LookUp_Button);
+			action.waitFor(SIMSearch_Message, 4, true);
+			action.waitFor(1);
+			action.selectBy(SIM_Select, 8);
+			action.waitFor(2);
+		}
+		
+		if (action.countOf(ServiceUsage_Select) == 1) {
 			passed = action.selectByPartialText(ServiceUsage_Select, "V-");
-		if (action.countOf(ChargeOption_Select) == 1)
+		}
+		if (action.countOf(ChargeOption_Select) == 1) {
 			passed = action.selectBy(ChargeOption_Select, 2);
+		}
 
 		action.waitFor(1);
 
 		passed = action.clickOn(SameAccountAddress_CheckBox);
 		passed = action.waitFor(AddressType_Label, 4, false);
-
+		
+		action.waitFor(1);
+		
+		addCreditLimit();
+		
 		action.waitFor(1);
 		action.clickOn(Proceed_Button);
 
 		return passed;
+	}
+
+	private void addCreditLimit() {
+		By CreditLimit_Input = By.xpath("//*[text()='Credit Limit:']//following::input[1]");
+		By CallLimit_Input = By.xpath("//*[text()='Call Limit:']//following::input[1]");
+		By CustomerSelectedLimit_Radio = By.xpath("//*[text()='Use Customer-Selected Credit Limit:']//following::input[1]");
+		
+		By CustomerSelectedCreditLimit_Input = By.xpath("//*[text()='Customer-Selected Credit Limit:']//following::input[1]");
+		By CustomerSelectedUpdateType_Select = By.xpath("//*[text()='Customer-Selected Update Type:']//following::select[1]");
+		By CustomerSelectedBarType_Select = By.xpath("//*[text()='Customer-Selected Bar Type:']//following::select[1]");
+		
+		if (action.countOf(CreditLimit_Input) == 1) {
+			action.sendDataTo(CreditLimit_Input, "100");
+		}
+		if (action.countOf(CallLimit_Input) == 1) {
+			action.sendDataTo(CallLimit_Input, "100");
+		}
+		if (action.countOf(CustomerSelectedLimit_Radio) == 1) {
+			action.clickOn(CustomerSelectedLimit_Radio);
+		}
+		if (action.countOf(CustomerSelectedCreditLimit_Input) == 1) {
+			action.sendDataTo(CustomerSelectedCreditLimit_Input, "90");
+		}
+		if (action.countOf(CustomerSelectedUpdateType_Select) == 1) {
+			action.selectByPartialText(CustomerSelectedUpdateType_Select, "Phone");
+		}
+		if (action.countOf(CustomerSelectedBarType_Select) == 1) {
+			action.selectByPartialText(CustomerSelectedBarType_Select, "All");
+		}
 	}
 
 	public boolean provideContractDetails() {
