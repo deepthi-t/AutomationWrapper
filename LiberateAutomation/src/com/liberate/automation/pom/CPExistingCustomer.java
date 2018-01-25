@@ -197,6 +197,8 @@ public class CPExistingCustomer {
 	}
 
 	public boolean processISPFieldsScreen() {
+		By EmailDomain_Select = By.xpath("//*[text()='Email Address']//following::select[1]");
+		
 		boolean passed = false;
 
 		passed = action.waitFor(ISPField_PanelHeader, 4, true);
@@ -207,6 +209,12 @@ public class CPExistingCustomer {
 
 		if (action.countOf(Email_Input) == 1)
 			passed = action.sendDataTo(Email_Input, this.ServiceOrderNumber);
+		if (action.countOf(EmailDomain_Select) == 1)
+		{
+			if (action.getSelectedOption(EmailDomain_Select).contains("Select")) {
+				action.selectBy(EmailDomain_Select, 1);
+			}
+		}
 		if (action.countOf(ISPUserName_Input) == 1)
 			passed = action.sendDataTo(ISPUserName_Input, this.ServiceOrderNumber);
 		passed = action.clickOn(GeneratePassword_Button);

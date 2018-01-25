@@ -304,6 +304,7 @@ public class TestActions {
 			for (WebElement option : options) {
 				if (option.getText().contains(partialText)) {
 					fullText = option.getText();
+					log("Full Text : " + fullText);
 					break;
 				}
 			}

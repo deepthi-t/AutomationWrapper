@@ -285,6 +285,41 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPDL");
 	}
 
+	public void existingCustomerPTV() {
+		CPExistingCustomer ce = new CPExistingCustomer(action);
+		SalesSignOff sso = new SalesSignOff(action);
+		CRServiceOrder cso = new CRServiceOrder(action);
+
+		ce.navigate();
+		action.getScreenShot("existingCustomerPEL");
+		ce.searchWithAccount("280000710000");
+		action.getScreenShot("existingCustomerPEL");
+		ce.selectDepartmentSite("BGSAL", "BUSG");
+		action.getScreenShot("existingCustomerPEL");
+		ce.selectServicePackage("PTV - ", "CableTV");
+		action.getScreenShot("existingCustomerPEL");
+		ce.processPricingPlanScreen();
+		action.getScreenShot("existingCustomerPEL");
+		ce.processServiceProductsScreen();
+		action.getScreenShot("existingCustomerPEL");
+		ce.processISPFieldsScreen();
+		action.getScreenShot("existingCustomerPEL");
+		ce.provideServiceDetailsScreen("BOT", "BODD");
+		action.getScreenShot("existingCustomerPEL");
+		ce.provideContractDetails();
+		action.getScreenShot("existingCustomerPEL");
+
+		sso.verifySalesSignOff();
+		action.getScreenShot("existingCustomerPEL");
+		sso.signOff();
+		action.getScreenShot("existingCustomerPEL");
+
+		cso.getSONumber();
+		action.getScreenShot("existingCustomerPEL");
+		cso.getSOCommand();
+		action.getScreenShot("existingCustomerPEL");
+	}
+
 	public void newCustomerPELandPDL() {
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
@@ -413,7 +448,6 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("addMorePELandPDL");
 	}
 
-	
 	public void addMorePELandPCL() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);

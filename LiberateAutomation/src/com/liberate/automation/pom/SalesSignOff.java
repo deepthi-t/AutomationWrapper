@@ -61,6 +61,8 @@ public class SalesSignOff {
 		
 		By AccountEbilling_input = By.xpath("//*[text()='Account eBilling Email Address Entry']//following::input[1]");
 		
+		By MacAddressConfirmation_Message = By.xpath("//*[text()='Do you wish to allocate MAC Addresses and Smart Card references?']");
+		
 		if (action.countOf(PymentItem_CheckBox) > 0) {
 			for(int i = 0; i < action.countOf(PymentItem_CheckBox); i++)
 			{
@@ -108,6 +110,11 @@ public class SalesSignOff {
 				CommonPanel.popUp.clickOK(action);
 				break;
 			}
+		}
+		if (action.countOf(MacAddressConfirmation_Message) > 0) {
+			action.waitFor(2);
+			passed = action.clickOn(CommonPanel.popUp.popUpNo_Button);
+			action.waitFor(2);
 		}
 		
 		return passed;
