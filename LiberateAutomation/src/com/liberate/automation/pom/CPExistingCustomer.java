@@ -244,8 +244,9 @@ public class CPExistingCustomer {
 		By SIM_Select = By.xpath("//*[text()='SIM:']//following::select[1]");
 		By LookUp_Button = By.xpath("//input[@value='Look Up']");
 		By SIMSearch_Message = By.xpath("//*[text()='More Numbers exist matching the details entered']");
-		
-		
+		By UserName_Input = By.xpath("(//*[text()='User Name:']//following::input)[1]");
+		By PIN_Input = By.xpath("(//*[text()='PIN:']//following::input)[1]");
+				
 		passed = action.waitFor(ServiceDetails_PanelHeader, 4, true);
 
 		passed = action.selectByPartialText(Exchange_Select, Exchange);
@@ -269,6 +270,14 @@ public class CPExistingCustomer {
 			action.waitFor(2);
 		}
 		
+		if (action.countOf(UserName_Input) == 1) {
+			passed = action.sendDataTo(UserName_Input, random.nextString().substring(0, 8).toUpperCase());
+		}
+		if (action.countOf(PIN_Input) == 1) {
+			action.clickOn(PIN_Input);
+			action.waitFor(2);
+			passed = action.sendDataTo(PIN_Input, "4545");
+		}
 		if (action.countOf(ServiceUsage_Select) == 1) {
 			passed = action.selectByPartialText(ServiceUsage_Select, "V-");
 		}

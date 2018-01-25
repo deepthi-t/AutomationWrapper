@@ -33,9 +33,6 @@ public class TestActions {
 
 	public String classVersion = "0.9.0";
 
-	Date date = new Date();
-	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-
 	Boolean retry = false;
 	int retryCount = 3;
 	int executionCount = 0;
@@ -832,6 +829,9 @@ public class TestActions {
 	 *            String Message that needs to be logged.
 	 */
 	public void log(String message) {
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		
 		System.out.println(sdf.format(date) + " : " + message);
 	}
 }

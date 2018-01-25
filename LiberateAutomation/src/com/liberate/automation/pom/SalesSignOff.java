@@ -40,7 +40,7 @@ public class SalesSignOff {
 		if(action.countOf(CommonPanel.popUp.popUpOK_Button)>0)
 			CommonPanel.popUp.clickOK(action);
 		
-		passed = action.waitFor(ServiceOrderLines_PanelHeader, 4, true);
+		passed = action.waitFor(ServiceOrderLines_PanelHeader, 80, true);
 
 		passed = action.waitFor(Provisioned_Message, 4, true);
 

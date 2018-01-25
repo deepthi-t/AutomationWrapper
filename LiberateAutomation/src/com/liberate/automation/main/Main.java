@@ -9,7 +9,7 @@ public class Main {
 		ServiceProvisioningTC bso = new ServiceProvisioningTC();
 
 		CommonLogin.navigateToURL();
-		bso.existingCustomerPTV();
+		bso.existingCustomerIPTV();
 //		CommonLogin.endTesting();
 	}
 }
