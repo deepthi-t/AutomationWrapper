@@ -63,6 +63,8 @@ public class SalesSignOff {
 		
 		By MacAddressConfirmation_Message = By.xpath("//*[text()='Do you wish to allocate MAC Addresses and Smart Card references?']");
 		
+		By SignOffSuccess_Message = By.xpath("//*[text()='Service order signed off successfully.']");
+		
 		if (action.countOf(PymentItem_CheckBox) > 0) {
 			for(int i = 0; i < action.countOf(PymentItem_CheckBox); i++)
 			{
@@ -89,7 +91,12 @@ public class SalesSignOff {
 		
 		while (true) {
 			action.waitFor(4);
-			if(action.countOf(AccountEbilling_input) > 0)
+			if(action.countOf(SignOffSuccess_Message) > 0)
+			{
+				CommonPanel.popUp.clickOK(action);
+				break;
+			}
+			else if(action.countOf(AccountEbilling_input) > 0)
 			{
 				action.sendDataTo(AccountEbilling_input, "automation@cwc.com");
 				action.clickOn(CommonPanel.Accept_Button);
@@ -98,17 +105,18 @@ public class SalesSignOff {
 				passed = action.clickOn(SubmitOrder_Button);
 				action.waitFor(2);
 			}
-			if (action.countOf(SignOff_Button) > 0) {
+			else if (action.countOf(SignOff_Button) > 0) {
 				passed = action.clickOn(SignOff_Button);
+				action.waitFor(SignOff_Button, 4, false);
 				action.waitFor(2);
 			}
-			if (action.countOf(CommonPanel.Accept_Button) > 0) {
+			else if (action.countOf(CommonPanel.Accept_Button) > 0) {
 				passed = action.clickOn(CommonPanel.Accept_Button);
+				action.waitFor(CommonPanel.Accept_Button, 4, false);
 				action.waitFor(2);
 			}
-			if (action.countOf(CommonPanel.popUp.popUpOK_Button) > 0) {
+			else if (action.countOf(CommonPanel.popUp.popUpOK_Button) > 0) {
 				CommonPanel.popUp.clickOK(action);
-				break;
 			}
 		}
 		if (action.countOf(MacAddressConfirmation_Message) > 0) {

@@ -73,6 +73,10 @@ public class CPExistingCustomer {
 	By ContractDescription_Input = By.xpath("//*[text()='Contract Description:']//following::textarea[1]");
 	By ContractDuration_Select = By.xpath("//*[text()='Contract Duration:']//following::select[1]");
 
+	// Non Package Service Number Panel
+	By ServiceNo_PanelHeader = By.xpath("//span[@class = 'iceOutTxt blackBold' and text()='Service No']");
+	By ServiceNo_Input = By.xpath("//*[text() = 'Current Service No.:']//following::input[1]");
+
 	By Submit_Button = By.xpath("//input[@value='Submit']");
 
 	public CPExistingCustomer(TestActions action) {
@@ -135,6 +139,21 @@ public class CPExistingCustomer {
 		return passed;
 	}
 
+	public boolean selectNonPackage(String NonPackage) {
+		By nonPackage_Radio = By.xpath("(//label[text()='Non Package Based Provisioning']//preceding::input)[last()]");
+
+		boolean passed = false;
+
+		passed = action.clickOn(nonPackage_Radio);
+		passed = action.waitFor(ServiceType_Select, 4, false);
+		passed = action.selectByPartialText(ServicePackage_Select, NonPackage);
+
+		action.waitFor(1);
+		passed = action.clickOn(Proceed_Button);
+
+		return passed;
+	}
+
 	public boolean selectServicePackage(String ServiceType, String ServicePackage) {
 		boolean passed = false;
 
@@ -144,6 +163,7 @@ public class CPExistingCustomer {
 			passed = action.selectByPartialText(ServicePackage_Select, ServicePackage);
 		}
 
+		action.waitFor(1);
 		passed = action.clickOn(Proceed_Button);
 
 		return passed;
@@ -174,6 +194,20 @@ public class CPExistingCustomer {
 		return passed;
 	}
 
+	public boolean processServiceNoScreen(String ServiceNo) {
+		boolean passed = false;
+
+		passed = action.waitFor(ServiceNo_PanelHeader, 4, true);
+		action.scrollUp();
+		action.getTextFromPage(Panel_Header);
+
+		passed = action.sendDataTo(ServiceNo_Input, ServiceNo);
+
+		action.clickOn(Proceed_Button);
+
+		return passed;
+	}
+
 	public boolean processServiceProductsScreen() {
 		boolean passed = false;
 
@@ -198,7 +232,7 @@ public class CPExistingCustomer {
 
 	public boolean processISPFieldsScreen() {
 		By EmailDomain_Select = By.xpath("//*[text()='Email Address']//following::select[1]");
-		
+
 		boolean passed = false;
 
 		passed = action.waitFor(ISPField_PanelHeader, 4, true);
@@ -209,8 +243,7 @@ public class CPExistingCustomer {
 
 		if (action.countOf(Email_Input) == 1)
 			passed = action.sendDataTo(Email_Input, this.ServiceOrderNumber);
-		if (action.countOf(EmailDomain_Select) == 1)
-		{
+		if (action.countOf(EmailDomain_Select) == 1) {
 			if (action.getSelectedOption(EmailDomain_Select).contains("Select")) {
 				action.selectBy(EmailDomain_Select, 1);
 			}
@@ -246,18 +279,20 @@ public class CPExistingCustomer {
 		By SIMSearch_Message = By.xpath("//*[text()='More Numbers exist matching the details entered']");
 		By UserName_Input = By.xpath("(//*[text()='User Name:']//following::input)[1]");
 		By PIN_Input = By.xpath("(//*[text()='PIN:']//following::input)[1]");
-				
+
 		passed = action.waitFor(ServiceDetails_PanelHeader, 4, true);
 
-		passed = action.selectByPartialText(Exchange_Select, Exchange);
-		passed = action.waitFor(NumberAreaDisabled_Select, 4, false);
-		action.waitFor(1);
-		passed = action.selectByPartialText(NumberArea_Select, NumberArea);
+		if (action.countOf(Deallocate_Button) == 0) {
+			passed = action.selectByPartialText(Exchange_Select, Exchange);
+			passed = action.waitFor(NumberAreaDisabled_Select, 4, false);
+			action.waitFor(1);
+			passed = action.selectByPartialText(NumberArea_Select, NumberArea);
 
-		if (!action.getSelectedOption(ServiceNumberAllocation_Select).contains("Auto")) {
-			passed = action.selectByPartialText(ServiceNumberAllocation_Select, "Auto");
-		} else {
-			passed = action.clickOn(Find_Button);
+			if (!action.getSelectedOption(ServiceNumberAllocation_Select).contains("Auto")) {
+				passed = action.selectByPartialText(ServiceNumberAllocation_Select, "Auto");
+			} else {
+				passed = action.clickOn(Find_Button);
+			}
 		}
 
 		passed = action.waitFor(Deallocate_Button, 4, true);
@@ -269,7 +304,7 @@ public class CPExistingCustomer {
 			action.selectBy(SIM_Select, 8);
 			action.waitFor(2);
 		}
-		
+
 		if (action.countOf(UserName_Input) == 1) {
 			passed = action.sendDataTo(UserName_Input, random.nextString().substring(0, 8).toUpperCase());
 		}
@@ -289,11 +324,11 @@ public class CPExistingCustomer {
 
 		passed = action.clickOn(SameAccountAddress_CheckBox);
 		passed = action.waitFor(AddressType_Label, 4, false);
-		
+
 		action.waitFor(1);
-		
+
 		addCreditLimit();
-		
+
 		action.waitFor(1);
 		action.clickOn(Proceed_Button);
 
@@ -303,12 +338,15 @@ public class CPExistingCustomer {
 	private void addCreditLimit() {
 		By CreditLimit_Input = By.xpath("//*[text()='Credit Limit:']//following::input[1]");
 		By CallLimit_Input = By.xpath("//*[text()='Call Limit:']//following::input[1]");
-		By CustomerSelectedLimit_Radio = By.xpath("//*[text()='Use Customer-Selected Credit Limit:']//following::input[1]");
-		
-		By CustomerSelectedCreditLimit_Input = By.xpath("//*[text()='Customer-Selected Credit Limit:']//following::input[1]");
-		By CustomerSelectedUpdateType_Select = By.xpath("//*[text()='Customer-Selected Update Type:']//following::select[1]");
+		By CustomerSelectedLimit_Radio = By
+				.xpath("//*[text()='Use Customer-Selected Credit Limit:']//following::input[1]");
+
+		By CustomerSelectedCreditLimit_Input = By
+				.xpath("//*[text()='Customer-Selected Credit Limit:']//following::input[1]");
+		By CustomerSelectedUpdateType_Select = By
+				.xpath("//*[text()='Customer-Selected Update Type:']//following::select[1]");
 		By CustomerSelectedBarType_Select = By.xpath("//*[text()='Customer-Selected Bar Type:']//following::select[1]");
-		
+
 		if (action.countOf(CreditLimit_Input) == 1) {
 			action.sendDataTo(CreditLimit_Input, "100");
 		}

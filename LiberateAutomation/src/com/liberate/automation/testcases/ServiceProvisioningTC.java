@@ -355,6 +355,41 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPEL");
 	}
 
+	public void existingCustomerARN() {
+		CPExistingCustomer ce = new CPExistingCustomer(action);
+		SalesSignOff sso = new SalesSignOff(action);
+		CRServiceOrder cso = new CRServiceOrder(action);
+
+		ce.navigate();
+		action.getScreenShot("existingCustomerPEL");
+		ce.searchWithAccount("260002270000");
+		action.getScreenShot("existingCustomerPEL");
+		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		action.getScreenShot("existingCustomerPEL");
+		ce.selectNonPackage("ARN");
+		action.getScreenShot("existingCustomerPEL");
+		
+		ce.processServiceNoScreen("510370");
+		action.getScreenShot("existingCustomerPEL");
+		ce.processServiceProductsScreen();
+		action.getScreenShot("existingCustomerPEL");
+		ce.provideServiceDetailsScreen("BOT", "BODD");
+		action.getScreenShot("existingCustomerPEL");
+		ce.provideContractDetails();
+		action.getScreenShot("existingCustomerPEL");
+
+		sso.verifySalesSignOff();
+		action.getScreenShot("existingCustomerPEL");
+		sso.signOff();
+		action.getScreenShot("existingCustomerPEL");
+
+		cso.getSONumber();
+		action.getScreenShot("existingCustomerPEL");
+		cso.getSOCommand();
+		action.getScreenShot("existingCustomerPEL");
+	}
+
+	
 	public void newCustomerPELandPDL() {
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
