@@ -9,7 +9,7 @@ public class Main {
 		CustomerCareTC testCase = new CustomerCareTC();
 
 		CommonLogin.navigateToURL();
-		testCase.ceaseServiceNumberPCL();
+		testCase.ceaseServiceNumberPCLServiceCharge();
 //		CommonLogin.endTesting();
 	}
 }

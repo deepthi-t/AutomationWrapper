@@ -178,4 +178,32 @@ public class CustomerCareTC {
 		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
 		action.getScreenShot("alterServiceNumberPCL");
 	}
+	
+	public void ceaseServiceNumberPCLServiceCharge()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceOperations cs = new CRServiceOperations(action);
+		SalesSignOff sales = new SalesSignOff(action);
+		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		
+		cr.navigate();
+		action.getScreenShot("ceaseServiceNumberPCL");
+		cr.searchByAccountNumber("280000080000");
+		action.getScreenShot("ceaseServiceNumberPCL");
+		
+		cs.navigate();
+		action.getScreenShot("ceaseServiceNumberPCL");
+		cs.ceaseService();
+		action.getScreenShot("ceaseServiceNumberPCL");
+
+		sales.verifySalesSignOff();
+		action.getScreenShot("alterServiceNumberPCL");
+		sales.addServiceCharge();
+		action.getScreenShot("alterServiceNumberPCL");
+		sales.signOff();
+		action.getScreenShot("alterServiceNumberPCL");
+		
+		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
+		action.getScreenShot("alterServiceNumberPCL");
+	}
 }

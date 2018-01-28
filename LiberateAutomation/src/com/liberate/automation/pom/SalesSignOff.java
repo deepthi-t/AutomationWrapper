@@ -52,7 +52,34 @@ public class SalesSignOff {
 
 		return passed;
 	}
-
+	
+	public boolean addServiceCharge()
+	{
+		By AddServiceCharge_Radio = By.xpath("//*[text()[contains(.,'Service Charge Required:')]]//following::input[1]");
+		By New_Button = By.xpath("//input[@value='New']");
+		By ServiceCharge_Select = By.xpath("//*[text()='ServiceChargeType:']//following::select[1]");
+		
+		boolean passed = false;
+		
+		if(action.countOf(AddServiceCharge_Radio)==1)
+		{
+			action.clickOn(AddServiceCharge_Radio);
+			
+			action.waitFor(New_Button, 4, true);
+			action.clickOn(New_Button);
+			
+			action.waitFor(ServiceCharge_Select, 4, true);
+			action.selectBy(ServiceCharge_Select, 1);
+			
+			action.waitFor(3);
+			
+			action.clickOn(CommonPanel.Accept_Button);
+			action.waitFor(New_Button, 4, true);
+		}
+		
+		return passed;
+	}
+	
 	public boolean signOff() {
 		boolean passed = false;
 		
