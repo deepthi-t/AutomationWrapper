@@ -9,6 +9,7 @@ import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRServiceOperations;
 import com.liberate.automation.pom.CRServiceOrder;
 import com.liberate.automation.pom.InterimBillGeneration;
+import com.liberate.automation.pom.SalesSignOff;
 
 public class CustomerCareTC {
 	static TestActions action = CommonLogin.action;
@@ -76,7 +77,7 @@ public class CustomerCareTC {
 	public void restoreService() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceOperations cs = new CRServiceOperations(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CRServiceOrder serviceOrder = new CRServiceOrder(action);
 
 		cr.navigate();
 		action.getScreenShot("restoreService");
@@ -92,11 +93,89 @@ public class CustomerCareTC {
 		cs.verifyServicesScreen();
 		action.getScreenShot("restoreService");
 
-		cso.navigate();
+		serviceOrder.navigate();
 		action.getScreenShot("restoreService");
-		cso.filterByServiceOrder(cs.RaisedServiceOrder);
+		serviceOrder.filterByServiceOrder(cs.RaisedServiceOrder);
 		action.getScreenShot("restoreService");
-		assertEquals(cso.getSOCommand(), "ROS");
+		assertEquals(serviceOrder.getSOCommand(), "ROS");
 		action.getScreenShot("restoreService");
+	}
+
+	public void alterServiceNumberPCL()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceOperations cs = new CRServiceOperations(action);
+		SalesSignOff sales = new SalesSignOff(action);
+		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		
+		cr.navigate();
+		action.getScreenShot("alterServiceNumberPCL");
+		cr.searchByAccountNumber("270002280000");
+		action.getScreenShot("alterServiceNumberPCL");
+		
+		cs.navigate();
+		action.getScreenShot("alterServiceNumberPCL");
+		cs.alterServiceNumber(false);
+		action.getScreenShot("alterServiceNumberPCL");
+		
+		sales.verifySalesSignOff();
+		action.getScreenShot("alterServiceNumberPCL");
+		sales.signOff();
+		action.getScreenShot("alterServiceNumberPCL");
+		
+		assertEquals(serviceOrder.getSOCommand(), "ASN");
+		action.getScreenShot("alterServiceNumberPCL");
+
+	}
+	
+	public void alterServiceNumberPCLServiceCharge()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceOperations cs = new CRServiceOperations(action);
+		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		
+		cr.navigate();
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+		cr.searchByAccountNumber("270002280000");
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+		
+		cs.navigate();
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+		cs.alterServiceNumber(true);
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+		cs.raiseServiceCharge();
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+		
+		serviceOrder.navigate();
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+		assertEquals(serviceOrder.getSOCommand(), "ASN");
+		action.getScreenShot("alterServiceNumberPCLServiceCharge");
+
+	}
+	
+	public void ceaseServiceNumberPCL()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRServiceOperations cs = new CRServiceOperations(action);
+		SalesSignOff sales = new SalesSignOff(action);
+		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		
+		cr.navigate();
+		action.getScreenShot("ceaseServiceNumberPCL");
+		cr.searchByAccountNumber("280000180000");
+		action.getScreenShot("ceaseServiceNumberPCL");
+		
+		cs.navigate();
+		action.getScreenShot("ceaseServiceNumberPCL");
+		cs.ceaseService();
+		action.getScreenShot("ceaseServiceNumberPCL");
+
+		sales.verifySalesSignOff();
+		action.getScreenShot("alterServiceNumberPCL");
+		sales.signOff();
+		action.getScreenShot("alterServiceNumberPCL");
+		
+		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
+		action.getScreenShot("alterServiceNumberPCL");
 	}
 }

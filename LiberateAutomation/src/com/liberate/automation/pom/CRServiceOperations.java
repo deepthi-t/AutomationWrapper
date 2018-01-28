@@ -48,6 +48,8 @@ public class CRServiceOperations {
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Suspend')]]//following::span[text()='Suspend']");
 	By ROS_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Change')]]//following::span[text()='ROS']");
+	By CeaseService_ActionButton = By.xpath(
+			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Cease Service')]]");
 
 	By Summary_Tab = By.xpath("//*[text()='Summary']");
 
@@ -91,9 +93,9 @@ public class CRServiceOperations {
 
 		passed = action.waitFor(ServiceNumberSearch_Input, 4, true);
 		passed = action.sendDataTo(ServiceNumberSearch_Input, SNumber);
-		
+
 		passed = action.clickOn(CommonPanel.Search_Button);
-		
+
 		action.waitFor(3);
 
 		return passed;
@@ -147,6 +149,117 @@ public class CRServiceOperations {
 		passed = action.isTextAvailable(this.ServiceNumber);
 
 		this.ServiceNumber = "";
+
+		return passed;
+	}
+
+	public boolean alterServiceNumber(boolean raiseServiceCharge) {
+		By ServiceNumberAllocation_Select = By.xpath("//*[text()='Service Number Allocation:']//following::select[1]");
+		By Deallocate_Button = By.xpath("//input[@value='Deallocate']");
+		By SalesSignOff_CheckBox = By
+				.xpath("//*[text()='Perform Sales Sign Off:']//following::input[@checked='checked']");
+		By RaiseServiceCharge_CheckBox = By.xpath("//*[text()='Raise Service Charge:']//following::input[1]");
+
+		boolean passed = false;
+
+		passed = action.waitFor(Change_ActionButton, 4, true);
+		if (!passed)
+			return passed;
+
+		action.moveMouseAwayFromScreen();
+
+		this.ServiceNumber = action.getTextFromPage(FirstServiceNumber_Value);
+
+		passed = action.clickOn(Change_ActionButton);
+		passed = action.waitForClickable(ASN_ActionButton, 2);
+		passed = action.clickOn(ASN_ActionButton);
+
+		passed = action.waitFor(Department_Select, 4, true);
+
+		passed = action.selectByPartialText(Department_Select, "AQSAL");
+		passed = action.waitFor(SiteDisabled_Select, 2, false);
+		passed = action.selectByPartialText(Site_Select, "ANSQ");
+
+		action.waitFor(1);
+
+		passed = action.selectByPartialText(ServiceNumberAllocation_Select, "Auto");
+		passed = action.waitFor(Deallocate_Button, 2, true);
+
+		if (!raiseServiceCharge) {
+			if (action.countOf(SalesSignOff_CheckBox) == 1)
+				action.clickOn(SalesSignOff_CheckBox);
+		} else {
+			if (action.countOf(RaiseServiceCharge_CheckBox) == 1)
+				action.clickOn(RaiseServiceCharge_CheckBox);
+		}
+
+		passed = action.clickOn(CommonPanel.Accept_Button);
+
+		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 2, true);
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+
+		return passed;
+	}
+
+	public boolean ceaseService() {
+		By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
+		By SelectAllProduct_CheckBox = By.xpath("(//*[text()='Cease All']//following::input)[1]");
+		By CeaseWarning_Message = By.xpath("//*[text()='Entire Service will be ceased']");
+		
+		By CeaseReason_Select = By.xpath("//*[text()='Cease Reason:']//following::select[1]");
+		By SIMRetireReason_Select = By.xpath("//*[text()='SIM Retired Reason:']//following::select[1]");
+		
+		boolean passed = false;
+		//TODO
+		
+		passed = action.waitFor(Cease_ActionButton, 4, true);
+		if (!passed)
+			return passed;
+
+		action.moveMouseAwayFromScreen();
+
+		this.ServiceNumber = action.getTextFromPage(FirstServiceNumber_Value);
+
+		passed = action.clickOn(Cease_ActionButton);
+		passed = action.waitForClickable(CeaseService_ActionButton, 2);
+		passed = action.clickOn(CeaseService_ActionButton);
+
+		passed = action.waitFor(Department_Select, 4, true);
+
+		passed = action.selectByPartialText(Department_Select, "AQSAL");
+		passed = action.waitFor(SiteDisabled_Select, 2, false);
+		passed = action.selectByPartialText(Site_Select, "ANSQ");
+		
+		action.waitFor(1);
+		
+		passed = action.clickOn(Proceed_Button);
+		
+		passed = action.waitFor(SelectAllProduct_CheckBox, 4, true);
+		passed = action.clickOn(SelectAllProduct_CheckBox);
+		
+		action.waitFor(CeaseWarning_Message,4,true);
+		
+		passed = action.selectBy(CeaseReason_Select, 1);
+		passed = action.selectBy(SIMRetireReason_Select, 1);
+
+		passed = action.clickOn(CommonPanel.Accept_Button);
+		
+		return passed;
+	}
+	
+	public boolean raiseServiceCharge() {
+		boolean passed = false;
+
+		By RaiseSericeCharge_PanelHeader = By.xpath("//*[text()='Raise Service Charge']");
+		By ServiceChargeType_Select = By.xpath("//*[text()='Service Charge Type:']//following::select[1]");
+
+		passed = action.waitFor(RaiseSericeCharge_PanelHeader, 4, true);
+		passed = action.selectBy(ServiceChargeType_Select, 2);
+
+		action.waitFor(3);
+
+		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 2, true);
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
 
 		return passed;
 	}

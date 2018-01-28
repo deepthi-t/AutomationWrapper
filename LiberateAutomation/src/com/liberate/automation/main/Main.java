@@ -1,15 +1,15 @@
 package com.liberate.automation.main;
 
 import com.liberate.automation.testcases.CommonLogin;
-import com.liberate.automation.testcases.ServiceProvisioningTC;
+import com.liberate.automation.testcases.CustomerCareTC;
 
 public class Main {
 
 	public static void main(String[] args) {
-		ServiceProvisioningTC bso = new ServiceProvisioningTC();
+		CustomerCareTC testCase = new CustomerCareTC();
 
 		CommonLogin.navigateToURL();
-		bso.existingCustomerARN();
+		testCase.ceaseServiceNumberPCL();
 //		CommonLogin.endTesting();
 	}
 }
