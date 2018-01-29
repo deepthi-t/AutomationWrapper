@@ -107,6 +107,33 @@ public class CRServiceOperations {
 		return passed;
 	}
 
+	public boolean verifyProductsScreen() {
+		By Products_Tab = By.xpath("//td[text()='Products']");
+
+		/***
+		 * Append [count]//descendant::td[1] for Service Number<br>
+		 * Append [count]//descendant::td[2] for Product Code<br>
+		 * Append [count]//descendant::td[3] for Status<br>
+		 * Append [count]//descendant::td[4] for Description<br>
+		 */
+		By Products_Row = By.xpath(
+				"//tr[contains(@id,'customerServicesForm:serviceEnquiryTabs:0:productsTab:custServProductsResultTable_row_')]");
+
+		boolean passed = false;
+
+		passed = action.waitFor(Products_Tab, 4, true);
+		passed = action.clickOn(Products_Tab);
+
+		passed = action.waitFor(Products_Row, 4, true);
+		for (int i = 0; i < action.countOf(Products_Row); i++) {
+			for (int j = 0; j < 4; j++) {
+				action.log(action.getTextFromPage(By.xpath(action.getXpath(Products_Row)+"["+(i+1)+"]//descendant::td["+(j+1)+"]"))+ " ");
+			}
+		}
+
+		return passed;
+	}
+
 	public boolean transferService(String TargetAccount) {
 		boolean passed = false;
 
@@ -205,13 +232,13 @@ public class CRServiceOperations {
 		By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
 		By SelectAllProduct_CheckBox = By.xpath("(//*[text()='Cease All']//following::input)[1]");
 		By CeaseWarning_Message = By.xpath("//*[text()='Entire Service will be ceased']");
-		
+
 		By CeaseReason_Select = By.xpath("//*[text()='Cease Reason:']//following::select[1]");
 		By SIMRetireReason_Select = By.xpath("//*[text()='SIM Retired Reason:']//following::select[1]");
-		
+
 		boolean passed = false;
-		//TODO
-		
+		// TODO
+
 		passed = action.waitFor(Cease_ActionButton, 4, true);
 		if (!passed)
 			return passed;
@@ -229,24 +256,24 @@ public class CRServiceOperations {
 		passed = action.selectByPartialText(Department_Select, "AQSAL");
 		passed = action.waitFor(SiteDisabled_Select, 2, false);
 		passed = action.selectByPartialText(Site_Select, "ANSQ");
-		
+
 		action.waitFor(1);
-		
+
 		passed = action.clickOn(Proceed_Button);
-		
+
 		passed = action.waitFor(SelectAllProduct_CheckBox, 4, true);
 		passed = action.clickOn(SelectAllProduct_CheckBox);
-		
-		action.waitFor(CeaseWarning_Message,4,true);
-		
+
+		action.waitFor(CeaseWarning_Message, 4, true);
+
 		passed = action.selectBy(CeaseReason_Select, 1);
 		passed = action.selectBy(SIMRetireReason_Select, 1);
 
 		passed = action.clickOn(CommonPanel.Accept_Button);
-		
+
 		return passed;
 	}
-	
+
 	public boolean raiseServiceCharge() {
 		boolean passed = false;
 
