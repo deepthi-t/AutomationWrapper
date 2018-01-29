@@ -9,7 +9,7 @@ public class Main {
 		CustomerCareTC testCase = new CustomerCareTC();
 
 		CommonLogin.navigateToURL();
-		testCase.verifyServiceProducts();
+		testCase.createSubAccount();
 //		CommonLogin.endTesting();
 	}
 }

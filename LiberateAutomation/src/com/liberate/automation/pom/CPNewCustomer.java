@@ -81,7 +81,10 @@ public class CPNewCustomer {
 	// By AddressType_Input = By.xpath("(//*[text()='Billing
 	// Address']/following::input[contains(@class,'MandatoryTextBox')])"); //TODO
 	// count number of mandatory fields and fill all by adding '[<number>]'
-	By StandardAddressTown_Input = By.xpath("//*[text()='town:']/following::input[1]");
+	// By StandardAddressTown_Input =
+	// By.xpath("//*[text()='town:']//following::input[1]");
+	By StandardAddressTown_Input = By.xpath("//*[text()[contains(.,'town')]]//following::input[1]");
+
 	// TODO Fill Address Details
 
 	// Customer Classification
@@ -118,12 +121,12 @@ public class CPNewCustomer {
 	By ContactAccept_Button = By.xpath("//input[@value='Accept']");
 
 	// Billing Details
-	By BillFrequency_Select = By.xpath("//*[text()[contains(.,'Bill Frequency:')]]/following::select[1]");
-	By RentalPeriod_Select = By.xpath("//*[text()[contains(.,'Rental Period:')]]/following::select[1]");
-	By PrimaryDayOfBilling_Select = By.xpath("//*[text()[contains(.,'Primary Day Of Billing:')]]/following::select[1]");
-	By BillMedia_Select = By.xpath("//*[text()[contains(.,'Bill Media:')]]/following::select[1]");
-	By BillLanguage_Select = By.xpath("//*[text()[contains(.,'Bill Language')]]/following::select[1]");
-	By BillSortCode_Select = By.xpath("//*[text()[contains(.,'Bill Sort Code:')]]/following::select[1]");
+	By BillFrequency_Select = By.xpath("(//*[text()[contains(.,'Bill Frequency:')]]/following::select)[1]");
+	By RentalPeriod_Select = By.xpath("(//*[text()[contains(.,'Rental Period:')]]/following::select)[1]");
+	By PrimaryDayOfBilling_Select = By.xpath("(//*[text()[contains(.,'Primary Day Of Billing:')]]/following::select)[1]");
+	By BillMedia_Select = By.xpath("(//*[text()[contains(.,'Bill Media:')]]/following::select)[1]");
+	By BillLanguage_Select = By.xpath("(//*[text()[contains(.,'Bill Language')]]/following::select)[1]");
+	By BillSortCode_Select = By.xpath("(//*[text()[contains(.,'Bill Sort Code:')]]/following::select)[1]");
 	By BillReport_Select = By.xpath("(//*[text()[contains(.,'Bill Report:')]]/following::select)[1]");
 	By InterimBillReport_Select = By.xpath("(//*[text()[contains(.,'Interim Bill Report:')]]/following::select)[1]");
 
@@ -214,18 +217,27 @@ public class CPNewCustomer {
 		boolean passed = false;
 
 		passed = action.waitFor(Salutation_Dropdown, 4, true);
-		passed = action.selectBy(Salutation_Dropdown, 2);
+		if (action.countOf(Salutation_Dropdown) > 0)
+			passed = action.selectBy(Salutation_Dropdown, 2);
 
-		passed = action.sendDataTo(SurName_Input, random.nextString());
-		passed = action.sendDataTo(FirstName_Input, random.nextString());
-		passed = action.sendDataTo(MiddleName_Input, random.nextString());
+		if (action.countOf(SurName_Input) > 0)
+			passed = action.sendDataTo(SurName_Input, random.nextString());
+		if (action.countOf(FirstName_Input) > 0)
+			passed = action.sendDataTo(FirstName_Input, random.nextString());
+		if (action.countOf(MiddleName_Input) > 0)
+			passed = action.sendDataTo(MiddleName_Input, random.nextString());
+
 		passed = action.waitFor(1);
-		passed = action.typeDataTo(DOB_Date, "01/01/1991");
+		if (action.countOf(DOB_Date) > 0)
+			passed = action.typeDataTo(DOB_Date, "01/01/1991");
 		passed = action.waitFor(2);
 
-		passed = action.clickOn(GenderMale_Radio);
-		passed = action.selectBy(Nationality_DropDown, 2);
-		passed = action.clickOn(EmailNotificationNo_Radio);
+		if (action.countOf(GenderMale_Radio) > 0)
+			passed = action.clickOn(GenderMale_Radio);
+		if (action.countOf(Nationality_DropDown) > 0)
+			passed = action.selectBy(Nationality_DropDown, 2);
+		if (action.countOf(EmailNotificationNo_Radio) > 0)
+			passed = action.clickOn(EmailNotificationNo_Radio);
 
 		if (action.countOf(PrimaryEmailAddress_Input) == 1) {
 			if (action.countOf(PrimaryEmailAddressDisabled_Input) == 0)
@@ -263,9 +275,9 @@ public class CPNewCustomer {
 
 		passed = action.clickOn(BillStatusArea_SearchButton);
 		passed = action.waitFor(BillStatusArea_Option, 4, true);
-		
+
 		action.waitFor(2);
-		
+
 		passed = action.selectByPartialText(BillStatusArea_DropDown, "BOT");
 
 		return passed;

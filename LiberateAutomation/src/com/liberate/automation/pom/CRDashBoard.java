@@ -70,7 +70,7 @@ public class CRDashBoard {
 		action.log("Account Number : " + ACNumber);
 		action.log("Account Status : " + AccountStatus);
 		action.log("Customer Type : " + CustomerType);
-		action.log("Marketing Category: " + MarketingCategory_Value);
+		action.log("Marketing Category: " + MarketingCategory);
 
 		return passed;
 	}

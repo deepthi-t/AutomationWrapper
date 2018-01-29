@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -195,8 +196,7 @@ public class TestActions {
 	 *         element in WebPage
 	 */
 	public Boolean selectBy(By locator, int index) {
-		if(countOf(locator)==0)
-		{
+		if (countOf(locator) == 0) {
 			log("ERROR : Element located by '" + locator.toString() + "' is not available.");
 			try {
 				throw new TimeoutException();
@@ -294,7 +294,7 @@ public class TestActions {
 		String xpath = getXpath(locator);
 		String fullText = "";
 		xpath = xpath + "/descendant::option";
-		
+
 		try {
 			List<WebElement> options = driver.findElements(By.xpath(xpath));
 
@@ -575,7 +575,7 @@ public class TestActions {
 		}
 		return true;
 	}
-	
+
 	/***
 	 * Method that can be called to switch to newly opened Window/Tab.
 	 * 
@@ -586,7 +586,7 @@ public class TestActions {
 			log("Switching to New Window");
 			Set<String> WindowHandles = driver.getWindowHandles();
 			String[] Window = WindowHandles.toArray(new String[WindowHandles.size()]);
-			driver.switchTo().window(Window[Window.length-1]);
+			driver.switchTo().window(Window[Window.length - 1]);
 		} catch (Exception e) {
 			retry = handleException(e);
 			if (retry)
@@ -596,7 +596,7 @@ public class TestActions {
 		}
 		return true;
 	}
-	
+
 	/***
 	 * Method that is called to switch to default frame in the page.
 	 * 
@@ -787,6 +787,8 @@ public class TestActions {
 	 *         can stop execution.
 	 */
 	private boolean handleException(Exception e) {
+		// e.printStackTrace();
+
 		// This code block checks how many times the step is executed. If >
 		// retryCount, it will exit stopping execution of step.
 		executionCount = executionCount + 1;
@@ -806,6 +808,10 @@ public class TestActions {
 		} else if (e instanceof TimeoutException) {
 			log("WARNING : TimeoutException occured");
 			return false;
+		} else if (e instanceof InvalidElementStateException) {
+			log("WARNING : InvalidElementStateException occured");
+			waitFor(1);
+			return true;
 		} else if (e instanceof WebDriverException) {
 			log("WARNING : WebDriverException occured");
 			waitFor(1);
@@ -831,7 +837,7 @@ public class TestActions {
 	public void log(String message) {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-		
+
 		System.out.println(sdf.format(date) + " : " + message);
 	}
 }

@@ -5,7 +5,9 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.CRAccountDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
+import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceOperations;
 import com.liberate.automation.pom.CRServiceOrder;
 import com.liberate.automation.pom.InterimBillGeneration;
@@ -101,70 +103,67 @@ public class CustomerCareTC {
 		action.getScreenShot("restoreService");
 	}
 
-	public void alterServiceNumberPCL()
-	{
+	public void alterServiceNumberPCL() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceOperations cs = new CRServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CRServiceOrder serviceOrder = new CRServiceOrder(action);
-		
+
 		cr.navigate();
 		action.getScreenShot("alterServiceNumberPCL");
 		cr.searchByAccountNumber("270002280000");
 		action.getScreenShot("alterServiceNumberPCL");
-		
+
 		cs.navigate();
 		action.getScreenShot("alterServiceNumberPCL");
 		cs.alterServiceNumber(false);
 		action.getScreenShot("alterServiceNumberPCL");
-		
+
 		sales.verifySalesSignOff();
 		action.getScreenShot("alterServiceNumberPCL");
 		sales.signOff();
 		action.getScreenShot("alterServiceNumberPCL");
-		
+
 		assertEquals(serviceOrder.getSOCommand(), "ASN");
 		action.getScreenShot("alterServiceNumberPCL");
 
 	}
-	
-	public void alterServiceNumberPCLServiceCharge()
-	{
+
+	public void alterServiceNumberPCLServiceCharge() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceOperations cs = new CRServiceOperations(action);
 		CRServiceOrder serviceOrder = new CRServiceOrder(action);
-		
+
 		cr.navigate();
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
 		cr.searchByAccountNumber("270002280000");
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
-		
+
 		cs.navigate();
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
 		cs.alterServiceNumber(true);
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
 		cs.raiseServiceCharge();
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
-		
+
 		serviceOrder.navigate();
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
 		assertEquals(serviceOrder.getSOCommand(), "ASN");
 		action.getScreenShot("alterServiceNumberPCLServiceCharge");
 
 	}
-	
-	public void ceaseServiceNumberPCL()
-	{
+
+	public void ceaseServiceNumberPCL() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceOperations cs = new CRServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CRServiceOrder serviceOrder = new CRServiceOrder(action);
-		
+
 		cr.navigate();
 		action.getScreenShot("ceaseServiceNumberPCL");
 		cr.searchByAccountNumber("280000180000");
 		action.getScreenShot("ceaseServiceNumberPCL");
-		
+
 		cs.navigate();
 		action.getScreenShot("ceaseServiceNumberPCL");
 		cs.ceaseService();
@@ -174,23 +173,22 @@ public class CustomerCareTC {
 		action.getScreenShot("alterServiceNumberPCL");
 		sales.signOff();
 		action.getScreenShot("alterServiceNumberPCL");
-		
+
 		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
 		action.getScreenShot("alterServiceNumberPCL");
 	}
-	
-	public void ceaseServiceNumberPCLServiceCharge()
-	{
+
+	public void ceaseServiceNumberPCLServiceCharge() {
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations cs = new CRServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CRServiceOrder serviceOrder = new CRServiceOrder(action);
-		
+
 		search.navigate();
 		action.getScreenShot("ceaseServiceNumberPCL");
 		search.searchByAccountNumber("280000080000");
 		action.getScreenShot("ceaseServiceNumberPCL");
-		
+
 		cs.navigate();
 		action.getScreenShot("ceaseServiceNumberPCL");
 		cs.ceaseService();
@@ -202,13 +200,12 @@ public class CustomerCareTC {
 		action.getScreenShot("alterServiceNumberPCL");
 		sales.signOff();
 		action.getScreenShot("alterServiceNumberPCL");
-		
+
 		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
 		action.getScreenShot("alterServiceNumberPCL");
 	}
-	
-	public void verifyServiceProducts()
-	{
+
+	public void verifyServiceProducts() {
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
 
@@ -216,10 +213,73 @@ public class CustomerCareTC {
 		action.getScreenShot("verifyServiceProducts");
 		search.searchByAccountNumber("280000080000");
 		action.getScreenShot("verifyServiceProducts");
-		
+
 		service.navigate();
 		action.getScreenShot("verifyServiceProducts");
 		service.verifyProductsScreen();
 		action.getScreenShot("verifyServiceProducts");
+	}
+
+	public void cloneCustomer() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		CRDashBoard dashboard = new CRDashBoard(action);
+		CRAccountDetails accountDetails = new CRAccountDetails(action);
+		
+		search.navigate();
+		action.getScreenShot("cloneCustomer");
+		search.searchByAccountNumber("260002270000");
+		action.getScreenShot("cloneCustomer");
+		
+		dashboard.verifyDashBoard("260002270000");
+		action.getScreenShot("cloneCustomer");
+
+		accountDetails.navigate();
+		action.getScreenShot("cloneCustomer");
+		accountDetails.cloneCustomer();
+		action.getScreenShot("cloneCustomer");
+		accountDetails.verifySuccessMessage();
+		action.getScreenShot("cloneCustomer");
+	}
+	
+	public void cloneAccount() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		CRDashBoard dashboard = new CRDashBoard(action);
+		CRAccountDetails accountDetails = new CRAccountDetails(action);
+		
+		search.navigate();
+		action.getScreenShot("cloneAccount");
+		search.searchByAccountNumber("260002270000");
+		action.getScreenShot("cloneAccount");
+		
+		dashboard.verifyDashBoard("260002270000");
+		action.getScreenShot("cloneAccount");
+
+		accountDetails.navigate();
+		action.getScreenShot("cloneAccount");
+		accountDetails.cloneAccount();
+		action.getScreenShot("cloneAccount");
+		accountDetails.verifySuccessMessage();
+		action.getScreenShot("cloneAccount");
+	}
+	
+	public void createSubAccount() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		CRDashBoard dashboard = new CRDashBoard(action);
+		CRAccountDetails accountDetails = new CRAccountDetails(action);
+		
+		search.navigate();
+		action.getScreenShot("createSubAccount");
+		search.searchByAccountNumber("260002270000");
+		action.getScreenShot("createSubAccount");
+		
+		dashboard.verifyDashBoard("260002270000");
+		action.getScreenShot("createSubAccount");
+
+		accountDetails.navigate();
+		action.getScreenShot("createSubAccount");
+		accountDetails.createSubAccount();
+		action.getScreenShot("createSubAccount");
+		accountDetails.verifySuccessMessage();
+		action.getScreenShot("createSubAccount");
 	}
 }
