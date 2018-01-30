@@ -86,13 +86,16 @@ public class CommonPanel {
 	 */
 	public static class ServiceOrder {
 
-		static By department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
-		static By departmentDisabled_Select = By
+		static By Department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
+		static By DepartmentDisabled_Select = By
 				.xpath("//*[text()='Department:']/following::select[@disabled='disabled'][1]");
-		static By changeDepartment_Button = By.xpath("//input[@value='Change']");
-		static By serviceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
-		static By search_Button = By.xpath("//input[@value='Search']");
-
+		static By ChangeDepartment_Button = By.xpath("//input[@value='Change']");
+		static By ServiceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
+		static By Search_Button = By.xpath("//input[@value='Search']");
+		
+		static By SiteDisabled_Select = By.xpath("//*[text()='Site:']//following::select[@disabled='disabled'][1]");
+		static By Site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
+		
 		/***
 		 * XPath for Service Order List Header.
 		 */
@@ -138,9 +141,9 @@ public class CommonPanel {
 
 			passed = selectDepartment(action, department);
 
-			passed = action.sendDataTo(serviceOrder_Input, ServiceOrderNumber);
+			passed = action.sendDataTo(ServiceOrder_Input, ServiceOrderNumber);
 			passed = action.waitFor(1);
-			passed = action.clickOn(search_Button);
+			passed = action.clickOn(Search_Button);
 
 			return passed;
 		}
@@ -158,17 +161,36 @@ public class CommonPanel {
 		public static boolean selectDepartment(TestActions action, String department) {
 			boolean passed = false;
 
-			passed = action.waitFor(department_Select, 4, true);
+			passed = action.waitFor(Department_Select, 4, true);
 
-			if (!action.getSelectedOption(department_Select).contains(department)) {
-				passed = action.clickOn(changeDepartment_Button);
-				passed = action.waitFor(departmentDisabled_Select, 4, false);
+			if (!action.getSelectedOption(Department_Select).contains(department)) {
+				passed = action.clickOn(ChangeDepartment_Button);
+				passed = action.waitFor(DepartmentDisabled_Select, 4, false);
 
-				passed = action.selectByPartialText(department_Select, department);
-				passed = action.waitFor(departmentDisabled_Select, 4, true);
+				passed = action.selectByPartialText(Department_Select, department);
+				passed = action.waitFor(DepartmentDisabled_Select, 4, true);
 
 				passed = action.waitFor(1);
 			}
+
+			return passed;
+		}
+		
+		/***
+		 * Method to select Department and Site
+		 * @param action Action class which operates the Browser
+		 * @param Department Department that needs to be selected.
+		 * @param Site Site that needs to be selected.
+		 * @return True if selected successfully, else False.
+		 */
+		public static boolean selectDepartmentSite(TestActions action, String Department, String Site) {
+			boolean passed = false;
+
+			passed = action.waitFor(Department_Select, 4, true);
+			passed = action.selectByPartialText(Department_Select, Department);
+
+			passed = action.waitFor(SiteDisabled_Select, 4, false);
+			passed = action.selectByPartialText(Site_Select, Site);
 
 			return passed;
 		}

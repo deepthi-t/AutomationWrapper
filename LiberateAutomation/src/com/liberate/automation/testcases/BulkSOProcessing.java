@@ -11,7 +11,7 @@ public class BulkSOProcessing {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void bulkCancel() {
+	public static void bulkCancel() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
@@ -24,7 +24,7 @@ public class BulkSOProcessing {
 	}
 
 	@Test
-	public void bulkSuspend() {
+	public static void bulkSuspend() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
@@ -38,7 +38,7 @@ public class BulkSOProcessing {
 	}
 
 	@Test
-	public void bulkAccountSignOff() {
+	public static void bulkAccountSignOff() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
@@ -52,7 +52,7 @@ public class BulkSOProcessing {
 	}
 
 	@Test
-	public void bulkGeneralSignOff() {
+	public static void bulkGeneralSignOff() {
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);

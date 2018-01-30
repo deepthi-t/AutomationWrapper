@@ -71,7 +71,10 @@ public class CRServiceOperations {
 	By SalesSignOff_CheckBox = By.xpath("//*[text()='Perform Sales Sign Off:']/following::input[1]");
 	By TOSConfirmation_PopUp = By.xpath("//*[text()='TOS Confirmation']");
 	By RaisedServiceOrder_Value = By.xpath("//*[text()='Raised Service Order Number']//following::label[1]");
-
+	
+	//Products Tab
+	By ProvideCease_ActionButton = By.xpath("//span[text()='Provide/Cease Products']");
+	
 	public CRServiceOperations(TestActions action) {
 		this.action = action;
 	}
@@ -139,7 +142,53 @@ public class CRServiceOperations {
 
 		return passed;
 	}
-
+	
+	public boolean provideProduct(String Department, String Site, String Command)
+	{
+		By Command_Select = By.xpath("//*[text()='Command:']//following::select[1]");
+		By ProductsDisabled_Select = By.xpath("//*[text()='Products:']//following::select[@disabled ='disabled']");
+		By Products_Select = By.xpath("//*[text()='Products:']//following::select[1]");
+		By Add_Button = By.xpath("//input[@value='Add']");
+		By PerformSalesSignOff_CheckBox = By.xpath("//*[text()='Perform Sales Sign Off:']//following::input[1]");
+		
+		By OK_Button = By.xpath("//input[contains(@value,'OK')]");
+		
+		boolean passed = false;
+		
+		passed = action.waitFor(ProvideCease_ActionButton, 6, true);
+		passed = action.clickOn(ProvideCease_ActionButton);
+		
+		passed = CommonPanel.ServiceOrder.selectDepartmentSite(action, Department, Site);
+		
+		passed = action.selectByPartialText(Command_Select, Command);
+		passed = action.waitFor(ProductsDisabled_Select, 4, false);
+		passed = action.selectBy(Products_Select, 1);
+		
+		passed = action.clickOn(Add_Button);
+		
+		passed = action.waitFor(PerformSalesSignOff_CheckBox, 4, true);
+		passed = action.clickOn(PerformSalesSignOff_CheckBox);
+		
+		passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
+		passed = action.clickOn(CommonPanel.Accept_Button);
+		
+		action.waitFor(2);
+		
+		passed = action.waitFor(OK_Button, 4, true);
+		passed = action.clickOn(OK_Button);
+		
+		return passed;
+	}
+	
+	public boolean ceaseProduct()
+	{
+		boolean passed = false;
+		
+		
+		
+		return passed;
+	}
+	
 	public boolean transferService(String TargetAccount) {
 		boolean passed = false;
 

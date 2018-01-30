@@ -15,11 +15,13 @@ public class CreditControlTC {
 
 	@Test
 	public void serviceBAR() {
+		String ServiceNumber = "9177243";
+		
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot("serviceBAR");
-		creditControl.searchWithServiceNumber("9177243");
+		creditControl.searchWithServiceNumber(ServiceNumber);
 		action.getScreenShot("serviceBAR");
 		creditControl.serviceBAR();
 		action.getScreenShot("serviceBAR");
@@ -29,11 +31,13 @@ public class CreditControlTC {
 
 	@Test
 	public void serviceTOS() {
+		String ServiceNumber = "9177243";
+
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot("serviceTOS");
-		creditControl.searchWithServiceNumber("9177243");
+		creditControl.searchWithServiceNumber(ServiceNumber);
 		action.getScreenShot("serviceTOS");
 		creditControl.serviceTOS();
 		action.getScreenShot("serviceTOS");
