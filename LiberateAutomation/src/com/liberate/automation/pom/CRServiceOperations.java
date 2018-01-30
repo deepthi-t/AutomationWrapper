@@ -11,6 +11,7 @@ public class CRServiceOperations {
 
 	public String ServiceNumber = "";
 	public String RaisedServiceOrder = "";
+	public String ServiceStatus = "";
 
 	By ExcludeCeaseClosed_CheckBox = By.xpath("//*[text()='Exclude Closed/Ceased Accounts:']");
 
@@ -78,7 +79,7 @@ public class CRServiceOperations {
 	public boolean navigate() {
 		action.scrollUp();
 		action.waitFor(1);
-		
+
 		boolean passed = false;
 
 		if (action.countOf(ExcludeCeaseClosed_CheckBox) > 0) {
@@ -130,7 +131,9 @@ public class CRServiceOperations {
 		passed = action.waitFor(Products_Row, 4, true);
 		for (int i = 0; i < action.countOf(Products_Row); i++) {
 			for (int j = 0; j < 4; j++) {
-				action.log(action.getTextFromPage(By.xpath(action.getXpath(Products_Row)+"["+(i+1)+"]//descendant::td["+(j+1)+"]"))+ " ");
+				action.log(action.getTextFromPage(
+						By.xpath(action.getXpath(Products_Row) + "[" + (i + 1) + "]//descendant::td[" + (j + 1) + "]"))
+						+ " ");
 			}
 		}
 
@@ -349,6 +352,38 @@ public class CRServiceOperations {
 		passed = action.clickOn(ROS_ActionButton);
 
 		doTOSROS();
+
+		return passed;
+	}
+
+	public boolean verifyAudit() {
+		By Audit_Tab = By.xpath(
+				"//td[contains(@id,'customerServicesForm:serviceEnquiryTabs:')]//descendant::td[text()='Audit']");
+
+		boolean passed = false;
+
+		passed = action.waitFor(Audit_Tab, 4, true);
+		passed = action.clickOn(Audit_Tab);
+
+		return passed;
+	}
+
+	public boolean verifyAuditTOSHistory() {
+		By TOSHistory_Tab = By.xpath(
+				"//td[contains(@id,'customerServicesForm:serviceEnquiryTabs:')]//descendant::td[text()='TOS History']");
+		By TOSHistory_Table = By.xpath(
+				"//table[@id='customerServicesForm:serviceEnquiryTabs:0:auditsTab:serviceAuditTabManagerSet:0:tosHistoryTab:auditTosHisResultTable']");
+		By ServiceStatus_Value = By.xpath(
+				"//tr[@id='customerServicesForm:serviceEnquiryTabs:0:auditsTab:serviceAuditTabManagerSet:0:tosHistoryTab:auditTosHisResultTable:0']//td[2]//span");
+
+		boolean passed = false;
+
+		passed = action.waitFor(TOSHistory_Tab, 40, true);
+		passed = action.clickOn(TOSHistory_Tab);
+
+		passed = action.waitFor(TOSHistory_Table, 30, true);
+
+		this.ServiceStatus = action.getTextFromPage(ServiceStatus_Value).trim();
 
 		return passed;
 	}

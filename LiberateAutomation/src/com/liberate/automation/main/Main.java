@@ -1,15 +1,15 @@
 package com.liberate.automation.main;
 
 import com.liberate.automation.testcases.CommonLogin;
-import com.liberate.automation.testcases.CustomerCareTC;
+import com.liberate.automation.testcases.CreditControlTC;
 
 public class Main {
 
 	public static void main(String[] args) {
-		CustomerCareTC testCase = new CustomerCareTC();
+		CreditControlTC testCase = new CreditControlTC();
 
 		CommonLogin.navigateToURL();
-		testCase.createSubAccount();
+		testCase.serviceTOSVerifyAudit();
 //		CommonLogin.endTesting();
 	}
 }
