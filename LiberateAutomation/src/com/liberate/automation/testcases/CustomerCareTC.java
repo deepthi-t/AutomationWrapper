@@ -222,7 +222,7 @@ public class CustomerCareTC {
 
 	public static void provideProduct() {
 		String screenShotName = "provideProduct";
-		String ServiceNumber = "154015";
+		String ServiceNumber = "2581979";
 		String Department = "BGSAL";
 		String Site = "BUSG";
 		String Command = "PCA";
@@ -241,6 +241,34 @@ public class CustomerCareTC {
 		service.verifyProductsScreen();
 		action.getScreenShot(screenShotName);
 		service.provideProduct(Department, Site, Command);
+		action.getScreenShot(screenShotName);
+
+		sales.verifySalesSignOff();
+		action.getScreenShot(screenShotName);
+		sales.signOff();
+		action.getScreenShot(screenShotName);
+	}
+	
+	public static void ceaseProduct() {
+		String screenShotName = "provideProduct";
+		String ServiceNumber = "2581979";
+		String Department = "BGSAL";
+		String Site = "BUSG";
+		
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		CRServiceOperations service = new CRServiceOperations(action);
+		SalesSignOff sales = new SalesSignOff(action);
+		
+		search.navigate();
+		action.getScreenShot(screenShotName);
+		search.searchByServiceNumber(ServiceNumber);
+		action.getScreenShot(screenShotName);
+
+		service.navigate();
+		action.getScreenShot(screenShotName);
+		service.verifyProductsScreen();
+		action.getScreenShot(screenShotName);
+		service.ceaseProduct(Department, Site);
 		action.getScreenShot(screenShotName);
 
 		sales.verifySalesSignOff();

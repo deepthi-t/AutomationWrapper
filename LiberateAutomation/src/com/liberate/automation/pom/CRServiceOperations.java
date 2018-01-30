@@ -75,6 +75,18 @@ public class CRServiceOperations {
 	//Products Tab
 	By ProvideCease_ActionButton = By.xpath("//span[text()='Provide/Cease Products']");
 	
+	By Command_Select = By.xpath("//*[text()='Command:']//following::select[1]");
+	By ProductsDisabled_Select = By.xpath("//*[text()='Products:']//following::select[@disabled ='disabled']");
+	By Products_Select = By.xpath("//*[text()='Products:']//following::select[1]");
+	By Add_Button = By.xpath("//input[@value='Add']");
+	By PerformSalesSignOff_CheckBox = By.xpath("//*[text()='Perform Sales Sign Off:']//following::input[1]");
+	
+	By FistProduct_CheckBox = By.xpath("//*[@id='provideCeaseForm:ceaseProductTable:0:select']");
+	By CeaseReason_Select = By.xpath("(//*[text()='Cease Reason']//following::select)[1]");
+	By CeaseComments_TestArea = By.xpath("(//*[text()='Comments:']//following::textarea)[1]");
+	
+	By OK_Button = By.xpath("//input[contains(@value,'OK')]");
+	
 	public CRServiceOperations(TestActions action) {
 		this.action = action;
 	}
@@ -144,15 +156,7 @@ public class CRServiceOperations {
 	}
 	
 	public boolean provideProduct(String Department, String Site, String Command)
-	{
-		By Command_Select = By.xpath("//*[text()='Command:']//following::select[1]");
-		By ProductsDisabled_Select = By.xpath("//*[text()='Products:']//following::select[@disabled ='disabled']");
-		By Products_Select = By.xpath("//*[text()='Products:']//following::select[1]");
-		By Add_Button = By.xpath("//input[@value='Add']");
-		By PerformSalesSignOff_CheckBox = By.xpath("//*[text()='Perform Sales Sign Off:']//following::input[1]");
-		
-		By OK_Button = By.xpath("//input[contains(@value,'OK')]");
-		
+	{		
 		boolean passed = false;
 		
 		passed = action.waitFor(ProvideCease_ActionButton, 6, true);
@@ -166,6 +170,37 @@ public class CRServiceOperations {
 		
 		passed = action.clickOn(Add_Button);
 		
+		proceedProviceCeaseProduct();
+		
+		return passed;
+	}
+	
+	public boolean ceaseProduct(String Department, String Site)
+	{
+		boolean passed = false;
+		
+		passed = action.waitFor(ProvideCease_ActionButton, 6, true);
+		passed = action.clickOn(ProvideCease_ActionButton);
+		
+		passed = CommonPanel.ServiceOrder.selectDepartmentSite(action, Department, Site);
+		
+		passed = action.clickOn(FistProduct_CheckBox);
+		
+		passed = action.waitFor(CeaseComments_TestArea, 4, true);
+		
+		passed = action.selectBy(CeaseReason_Select, 1);
+		
+		action.waitFor(2);
+		
+		proceedProviceCeaseProduct();
+		
+		return passed;
+	}
+	
+	private boolean proceedProviceCeaseProduct()
+	{
+		boolean passed = false;
+
 		passed = action.waitFor(PerformSalesSignOff_CheckBox, 4, true);
 		passed = action.clickOn(PerformSalesSignOff_CheckBox);
 		
@@ -176,15 +211,6 @@ public class CRServiceOperations {
 		
 		passed = action.waitFor(OK_Button, 4, true);
 		passed = action.clickOn(OK_Button);
-		
-		return passed;
-	}
-	
-	public boolean ceaseProduct()
-	{
-		boolean passed = false;
-		
-		
 		
 		return passed;
 	}
@@ -292,7 +318,6 @@ public class CRServiceOperations {
 		By SIMRetireReason_Select = By.xpath("//*[text()='SIM Retired Reason:']//following::select[1]");
 
 		boolean passed = false;
-		// TODO
 
 		passed = action.waitFor(Cease_ActionButton, 4, true);
 		if (!passed)
