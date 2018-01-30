@@ -7,7 +7,7 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.common.TestData;
 import com.liberate.automation.core.TestActions;
 
-public class CCMaintainQuery {
+public class CRMaintainQuery {
 	TestActions action = null;
 
 	String QueryCode = "";
@@ -78,7 +78,7 @@ public class CCMaintainQuery {
 	By SignOff_ActionButton = By.xpath("//span[text()='Sign Off']");
 	By Resolution_Select = By.xpath("(//*[text()='Resolution:']//following::select)[last()]");
 
-	public CCMaintainQuery(TestActions action) {
+	public CRMaintainQuery(TestActions action) {
 		this.action = action;
 	}
 

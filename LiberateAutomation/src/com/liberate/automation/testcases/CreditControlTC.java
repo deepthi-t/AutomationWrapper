@@ -8,14 +8,14 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceOperations;
-import com.liberate.automation.pom.CreditControlService;
+import com.liberate.automation.pom.CCCreditControlService;
 
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test
 	public void serviceBAR() {
-		CreditControlService creditControl = new CreditControlService(action);
+		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot("serviceBAR");
@@ -29,7 +29,7 @@ public class CreditControlTC {
 
 	@Test
 	public void serviceTOS() {
-		CreditControlService creditControl = new CreditControlService(action);
+		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot("serviceTOS");
@@ -43,7 +43,7 @@ public class CreditControlTC {
 
 	@Test
 	public void serviceROS() {
-		CreditControlService creditControl = new CreditControlService(action);
+		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot("serviceROS");
@@ -62,7 +62,7 @@ public class CreditControlTC {
 		 */
 		String ServiceNumber = "9177243";
 
-		CreditControlService creditControl = new CreditControlService(action);
+		CCCreditControlService creditControl = new CCCreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRDashBoard dashboard = new CRDashBoard(action);
 		CRServiceOperations services = new CRServiceOperations(action);
@@ -101,7 +101,7 @@ public class CreditControlTC {
 		 */
 		String ServiceNumber = "9177243";
 
-		CreditControlService creditControl = new CreditControlService(action);
+		CCCreditControlService creditControl = new CCCreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRDashBoard dashboard = new CRDashBoard(action);
 		CRServiceOperations services = new CRServiceOperations(action);

@@ -8,7 +8,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class CreditControlService {
+public class CCCreditControlService {
 	TestActions action = null;
 	String RecentAction = "";
 
@@ -28,7 +28,7 @@ public class CreditControlService {
 	By ServiceStatus_Value = By.xpath(
 			"//tbody[@id='maintainccservicestatus:tosHistoryGrpOutDetails:tbody']/descendant::tr[1]//td[2]//span[1]");
 
-	public CreditControlService(TestActions action) {
+	public CCCreditControlService(TestActions action) {
 		this.action = action;
 	}
 
