@@ -33,6 +33,9 @@ public class PYPOSPayment {
 
 	public boolean navigate() {
 		action.scrollUp();
+		action.waitFor(1);
+		
+		action.scrollUp();
 
 		boolean passed = false;
 

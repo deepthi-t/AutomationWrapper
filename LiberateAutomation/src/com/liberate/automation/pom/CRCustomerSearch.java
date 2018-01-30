@@ -33,11 +33,13 @@ public class CRCustomerSearch {
 	By Reset_Button = By.xpath("//input[@value='Reset']");
 
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		action.scrollUp();
-		action.scrollUp();
-		action.waitFor(2);
+		action.waitFor(1);
 
 		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.CustomerCare);

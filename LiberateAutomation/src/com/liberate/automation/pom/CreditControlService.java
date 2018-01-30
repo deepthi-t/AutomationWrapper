@@ -33,6 +33,9 @@ public class CreditControlService {
 	}
 
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.CreditControl, 4, true);

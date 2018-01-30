@@ -39,6 +39,9 @@ public class PYSinglePayment {
 	}
 
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		action.waitFor(LiberateCommon.LevelOne.Payments, 4, true);

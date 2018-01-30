@@ -7,7 +7,7 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
 public class ManageFault {
-	TestActions ManageFaultAction = null;
+	TestActions action = null;
 
 	// ManageFault search Elements
 	By ManageFault_PanelHeader = By.xpath("//*[text()='Search']");
@@ -112,20 +112,23 @@ public class ManageFault {
 			.xpath("//input[@value='Accept']/following::input[@value='Cancel']");
 
 	public ManageFault(TestActions action) {
-		this.ManageFaultAction = action;
+		this.action = action;
 	}
 
 	/* Navigating to Manage fault Lefts screen */
 
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(LiberateCommon.LevelOne.Faults, 4, true);
-		passed = ManageFaultAction.clickOn(LiberateCommon.LevelOne.Faults);
-		passed = ManageFaultAction.waitFor(LiberateCommon.Faults.Faults, 4, true);
-		passed = ManageFaultAction.clickOn(LiberateCommon.Faults.Faults);
-		passed = ManageFaultAction.waitFor(LeftLink.Faults.ManageFault, 4, true);
-		passed = ManageFaultAction.clickOn(LeftLink.Faults.ManageFault);
+		passed = action.waitFor(LiberateCommon.LevelOne.Faults, 4, true);
+		passed = action.clickOn(LiberateCommon.LevelOne.Faults);
+		passed = action.waitFor(LiberateCommon.Faults.Faults, 4, true);
+		passed = action.clickOn(LiberateCommon.Faults.Faults);
+		passed = action.waitFor(LeftLink.Faults.ManageFault, 4, true);
+		passed = action.clickOn(LeftLink.Faults.ManageFault);
 
 		return passed;
 	}
@@ -134,8 +137,8 @@ public class ManageFault {
 	public boolean enterFaultNumber(String FaultNumberValue) {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(FaultNumber_Input, 4, true);
-		passed = ManageFaultAction.sendDataTo(FaultNumber_Input, FaultNumberValue);
+		passed = action.waitFor(FaultNumber_Input, 4, true);
+		passed = action.sendDataTo(FaultNumber_Input, FaultNumberValue);
 
 		return passed;
 	}
@@ -144,8 +147,8 @@ public class ManageFault {
 	public boolean clickonSearchbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(ManageFaultSearch_Button, 4, true);
-		passed = ManageFaultAction.clickOn(ManageFaultSearch_Button);
+		passed = action.waitFor(ManageFaultSearch_Button, 4, true);
+		passed = action.clickOn(ManageFaultSearch_Button);
 
 		return passed;
 	}
@@ -154,8 +157,8 @@ public class ManageFault {
 	public boolean clickonclearbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(ManageFaultClear_Button, 4, true);
-		passed = ManageFaultAction.clickOn(ManageFaultClear_Button);
+		passed = action.waitFor(ManageFaultClear_Button, 4, true);
+		passed = action.clickOn(ManageFaultClear_Button);
 
 		return passed;
 	}
@@ -166,8 +169,8 @@ public class ManageFault {
 	public boolean clickonMaintainFaultnotesactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(MaintainFaultNotes_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(MaintainFaultNotes_ActionButton);
+		passed = action.waitFor(MaintainFaultNotes_ActionButton, 4, true);
+		passed = action.clickOn(MaintainFaultNotes_ActionButton);
 
 		return passed;
 	}
@@ -176,8 +179,8 @@ public class ManageFault {
 	public boolean clickonAddNotesbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AddNotes_Button, 4, true);
-		passed = ManageFaultAction.clickOn(AddNotes_Button);
+		passed = action.waitFor(AddNotes_Button, 4, true);
+		passed = action.clickOn(AddNotes_Button);
 
 		return passed;
 	}
@@ -186,8 +189,8 @@ public class ManageFault {
 	public boolean clickonAddNotesCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(CancelNotes_Button, 4, true);
-		passed = ManageFaultAction.clickOn(CancelNotes_Button);
+		passed = action.waitFor(CancelNotes_Button, 4, true);
+		passed = action.clickOn(CancelNotes_Button);
 
 		return passed;
 	}
@@ -196,8 +199,8 @@ public class ManageFault {
 	public boolean enterDataInAddNotestextfield(String AddNotesData) {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(Addnotes_Input, 4, true);
-		passed = ManageFaultAction.sendDataTo(Addnotes_Input, AddNotesData);
+		passed = action.waitFor(Addnotes_Input, 4, true);
+		passed = action.sendDataTo(Addnotes_Input, AddNotesData);
 
 		return passed;
 	}
@@ -206,8 +209,8 @@ public class ManageFault {
 	public boolean clickonAddNotesApplybutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AddNotesApply_Button, 4, true);
-		passed = ManageFaultAction.clickOn(AddNotesApply_Button);
+		passed = action.waitFor(AddNotesApply_Button, 4, true);
+		passed = action.clickOn(AddNotesApply_Button);
 
 		return passed;
 	}
@@ -216,8 +219,8 @@ public class ManageFault {
 	public boolean clickonAddNotesClearbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AddNotesClear_Button, 4, true);
-		passed = ManageFaultAction.clickOn(AddNotesClear_Button);
+		passed = action.waitFor(AddNotesClear_Button, 4, true);
+		passed = action.clickOn(AddNotesClear_Button);
 
 		return passed;
 	}
@@ -226,8 +229,8 @@ public class ManageFault {
 	public boolean clickonAddNotesFaultNotesCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AddNotesCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(AddNotesCancel_Button);
+		passed = action.waitFor(AddNotesCancel_Button, 4, true);
+		passed = action.clickOn(AddNotesCancel_Button);
 
 		return passed;
 	}
@@ -236,7 +239,7 @@ public class ManageFault {
 	public int rowCountofAddNotes() {
 		int count = 0;
 
-		count = ManageFaultAction.countOf(IdentifyAddNotes_LineCount);
+		count = action.countOf(IdentifyAddNotes_LineCount);
 
 		return count;
 	}
@@ -247,8 +250,8 @@ public class ManageFault {
 	public boolean clickonAssignFaultactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AssignFault_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(AssignFault_ActionButton);
+		passed = action.waitFor(AssignFault_ActionButton, 4, true);
+		passed = action.clickOn(AssignFault_ActionButton);
 
 		return passed;
 	}
@@ -257,8 +260,8 @@ public class ManageFault {
 	public boolean selectDepartmentDropdown() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AssignFaultDepartment_DropDown, 4, true);
-		passed = ManageFaultAction.selectBy(AssignFaultDepartment_DropDown, "FLT-C-Cable Faults");
+		passed = action.waitFor(AssignFaultDepartment_DropDown, 4, true);
+		passed = action.selectBy(AssignFaultDepartment_DropDown, "FLT-C-Cable Faults");
 
 		return passed;
 	}
@@ -267,8 +270,8 @@ public class ManageFault {
 	public boolean clickonAssignFaultAssignbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AssignFaultAssign_Button, 4, true);
-		passed = ManageFaultAction.clickOn(AssignFaultAssign_Button);
+		passed = action.waitFor(AssignFaultAssign_Button, 4, true);
+		passed = action.clickOn(AssignFaultAssign_Button);
 
 		return passed;
 	}
@@ -277,8 +280,8 @@ public class ManageFault {
 	public boolean clickonAssignFaultCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(AssignFaultCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(AssignFaultCancel_Button);
+		passed = action.waitFor(AssignFaultCancel_Button, 4, true);
+		passed = action.clickOn(AssignFaultCancel_Button);
 
 		return passed;
 	}
@@ -287,7 +290,7 @@ public class ManageFault {
 	public int rowcountofAssignFault() {
 		int passed = 0;
 
-		passed = ManageFaultAction.countOf(IdentifyAssignmentDetails_LineCount);
+		passed = action.countOf(IdentifyAssignmentDetails_LineCount);
 
 		return passed;
 	}
@@ -298,8 +301,8 @@ public class ManageFault {
 	public boolean clickonSignOffactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SignOff_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(SignOff_ActionButton);
+		passed = action.waitFor(SignOff_ActionButton, 4, true);
+		passed = action.clickOn(SignOff_ActionButton);
 
 		return passed;
 	}
@@ -308,25 +311,25 @@ public class ManageFault {
 	public boolean selectSignoffDropDowns() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SignoffClearedBy_DropDown, 4, true);
-		passed = ManageFaultAction.selectByPartialText(SignoffClearedBy_DropDown, "99999-");
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.waitFor(SignoffClearedCode_DropDown, 4, true);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.selectBy(SignoffClearedCode_DropDown, 1);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.waitFor(SignoffLevel2_Dropdown, 4, true);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.selectBy(SignoffLevel2_Dropdown, 1);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.waitFor(SignoffLevel3_Dropdown, 4, true);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.selectBy(SignoffLevel3_Dropdown, 1);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.waitFor(SignoffClearAction_Dropdown, 4, true);
-		ManageFaultAction.waitFor(1);
-		passed = ManageFaultAction.selectBy(SignoffClearAction_Dropdown, 1);
-		ManageFaultAction.waitFor(1);
+		passed = action.waitFor(SignoffClearedBy_DropDown, 4, true);
+		passed = action.selectByPartialText(SignoffClearedBy_DropDown, "99999-");
+		action.waitFor(1);
+		passed = action.waitFor(SignoffClearedCode_DropDown, 4, true);
+		action.waitFor(1);
+		passed = action.selectBy(SignoffClearedCode_DropDown, 1);
+		action.waitFor(1);
+		passed = action.waitFor(SignoffLevel2_Dropdown, 4, true);
+		action.waitFor(1);
+		passed = action.selectBy(SignoffLevel2_Dropdown, 1);
+		action.waitFor(1);
+		passed = action.waitFor(SignoffLevel3_Dropdown, 4, true);
+		action.waitFor(1);
+		passed = action.selectBy(SignoffLevel3_Dropdown, 1);
+		action.waitFor(1);
+		passed = action.waitFor(SignoffClearAction_Dropdown, 4, true);
+		action.waitFor(1);
+		passed = action.selectBy(SignoffClearAction_Dropdown, 1);
+		action.waitFor(1);
 
 		return passed;
 	}
@@ -338,8 +341,8 @@ public class ManageFault {
 	public boolean clickonSignOffApplybutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SignoffApply_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SignoffApply_Button);
+		passed = action.waitFor(SignoffApply_Button, 4, true);
+		passed = action.clickOn(SignoffApply_Button);
 
 		return passed;
 	}
@@ -348,8 +351,8 @@ public class ManageFault {
 	public boolean clickonSignOffClearbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SignoffClear_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SignoffClear_Button);
+		passed = action.waitFor(SignoffClear_Button, 4, true);
+		passed = action.clickOn(SignoffClear_Button);
 
 		return passed;
 	}
@@ -358,8 +361,8 @@ public class ManageFault {
 	public boolean clickonSignOffCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SignoffCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SignoffCancel_Button);
+		passed = action.waitFor(SignoffCancel_Button, 4, true);
+		passed = action.clickOn(SignoffCancel_Button);
 
 		return passed;
 	}
@@ -368,8 +371,8 @@ public class ManageFault {
 	public String statusOfFaultNumber() {
 		String status = null;
 		
-		ManageFaultAction.waitFor(SignoffApply_Button, 4, false);
-		status = ManageFaultAction.getTextFromPage(FaultStatus_Value);
+		action.waitFor(SignoffApply_Button, 4, false);
+		status = action.getTextFromPage(FaultStatus_Value);
 		return status;
 	}
 	// ------------------------------------------
@@ -379,8 +382,8 @@ public class ManageFault {
 	public boolean clickonSuspendReleaseactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SuspendRelease_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(SuspendRelease_ActionButton);
+		passed = action.waitFor(SuspendRelease_ActionButton, 4, true);
+		passed = action.clickOn(SuspendRelease_ActionButton);
 
 		return passed;
 	}
@@ -389,8 +392,8 @@ public class ManageFault {
 	public boolean selectSuspensionReason() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SuspendReleaseSuspensionReason_DropDown, 4, true);
-		passed = ManageFaultAction.selectBy(SuspendReleaseSuspensionReason_DropDown, "01-No Access");
+		passed = action.waitFor(SuspendReleaseSuspensionReason_DropDown, 4, true);
+		passed = action.selectBy(SuspendReleaseSuspensionReason_DropDown, "01-No Access");
 
 		return passed;
 	}
@@ -399,8 +402,8 @@ public class ManageFault {
 	public boolean clickonSuspendbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SuspendReleaseSuspend_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SuspendReleaseSuspend_Button);
+		passed = action.waitFor(SuspendReleaseSuspend_Button, 4, true);
+		passed = action.clickOn(SuspendReleaseSuspend_Button);
 
 		return passed;
 	}
@@ -409,8 +412,8 @@ public class ManageFault {
 	public boolean clickonSuspendClearbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SuspendReleaseClear_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SuspendReleaseClear_Button);
+		passed = action.waitFor(SuspendReleaseClear_Button, 4, true);
+		passed = action.clickOn(SuspendReleaseClear_Button);
 
 		return passed;
 	}
@@ -419,8 +422,8 @@ public class ManageFault {
 	public boolean clickonSuspendCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SuspendReleaseCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SuspendReleaseCancel_Button);
+		passed = action.waitFor(SuspendReleaseCancel_Button, 4, true);
+		passed = action.clickOn(SuspendReleaseCancel_Button);
 
 		return passed;
 	}
@@ -429,8 +432,8 @@ public class ManageFault {
 	public boolean clickonReleasebutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(SuspendReleaseRelease_Button, 4, true);
-		passed = ManageFaultAction.clickOn(SuspendReleaseRelease_Button);
+		passed = action.waitFor(SuspendReleaseRelease_Button, 4, true);
+		passed = action.clickOn(SuspendReleaseRelease_Button);
 
 		return passed;
 	}
@@ -441,8 +444,8 @@ public class ManageFault {
 	public boolean clickonUpgradeFaultPriorityactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(UpgreadeFaultPriority_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(UpgreadeFaultPriority_ActionButton);
+		passed = action.waitFor(UpgreadeFaultPriority_ActionButton, 4, true);
+		passed = action.clickOn(UpgreadeFaultPriority_ActionButton);
 
 		return passed;
 	}
@@ -451,8 +454,8 @@ public class ManageFault {
 	public boolean selectNewPriorityDropdown() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(UgradeFaultPriorityNewPriority_DropDown, 4, true);
-		passed = ManageFaultAction.selectBy(UgradeFaultPriorityNewPriority_DropDown, "5-RESIDENTIAL");
+		passed = action.waitFor(UgradeFaultPriorityNewPriority_DropDown, 4, true);
+		passed = action.selectBy(UgradeFaultPriorityNewPriority_DropDown, "5-RESIDENTIAL");
 
 		return passed;
 	}
@@ -461,8 +464,8 @@ public class ManageFault {
 	public boolean clickonFaultPriorityAcceptbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(UgradeFaultPriorityAccept_Button, 4, true);
-		passed = ManageFaultAction.clickOn(UgradeFaultPriorityAccept_Button);
+		passed = action.waitFor(UgradeFaultPriorityAccept_Button, 4, true);
+		passed = action.clickOn(UgradeFaultPriorityAccept_Button);
 
 		return passed;
 	}
@@ -471,8 +474,8 @@ public class ManageFault {
 	public boolean clickonFaultPriorityCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(UpgradeFaultPriorityCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(UpgradeFaultPriorityCancel_Button);
+		passed = action.waitFor(UpgradeFaultPriorityCancel_Button, 4, true);
+		passed = action.clickOn(UpgradeFaultPriorityCancel_Button);
 
 		return passed;
 	}
@@ -483,8 +486,8 @@ public class ManageFault {
 	public boolean clickonRecordFaultTestactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultTest_actionButton, 4, true);
-		passed = ManageFaultAction.clickOn(RecordFaultTest_actionButton);
+		passed = action.waitFor(RecordFaultTest_actionButton, 4, true);
+		passed = action.clickOn(RecordFaultTest_actionButton);
 
 		return passed;
 	}
@@ -493,8 +496,8 @@ public class ManageFault {
 	public boolean selectRecordFaultTestDiagnosisDropDown() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordTestResultDiagnosis_DropDown, 4, true);
-		passed = ManageFaultAction.selectBy(RecordTestResultDiagnosis_DropDown, "1-TP Needs dropwire replaced");
+		passed = action.waitFor(RecordTestResultDiagnosis_DropDown, 4, true);
+		passed = action.selectBy(RecordTestResultDiagnosis_DropDown, "1-TP Needs dropwire replaced");
 
 		return passed;
 	}
@@ -503,8 +506,8 @@ public class ManageFault {
 	public boolean clickonRecordFaultTestApplybutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordTestResultApply_Button, 4, true);
-		passed = ManageFaultAction.clickOn(RecordTestResultApply_Button);
+		passed = action.waitFor(RecordTestResultApply_Button, 4, true);
+		passed = action.clickOn(RecordTestResultApply_Button);
 
 		return passed;
 	}
@@ -513,8 +516,8 @@ public class ManageFault {
 	public boolean clickonRecordFaultTestClearbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordTestResultCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(RecordTestResultCancel_Button);
+		passed = action.waitFor(RecordTestResultCancel_Button, 4, true);
+		passed = action.clickOn(RecordTestResultCancel_Button);
 
 		return passed;
 	}
@@ -525,8 +528,8 @@ public class ManageFault {
 	public boolean clickonPrintFaultDocketactionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(PrintFaultDocket_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(PrintFaultDocket_ActionButton);
+		passed = action.waitFor(PrintFaultDocket_ActionButton, 4, true);
+		passed = action.clickOn(PrintFaultDocket_ActionButton);
 
 		return passed;
 	}
@@ -535,8 +538,8 @@ public class ManageFault {
 	public boolean clickonPrintFaultDocketAcceptbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(PrintFaultDocketAccept_Button, 4, true);
-		passed = ManageFaultAction.clickOn(PrintFaultDocketAccept_Button);
+		passed = action.waitFor(PrintFaultDocketAccept_Button, 4, true);
+		passed = action.clickOn(PrintFaultDocketAccept_Button);
 
 		return passed;
 	}
@@ -545,8 +548,8 @@ public class ManageFault {
 	public boolean clickonPrintFaultDocketCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(PrintFaultDocketBack_Button, 4, true);
-		passed = ManageFaultAction.clickOn(PrintFaultDocketBack_Button);
+		passed = action.waitFor(PrintFaultDocketBack_Button, 4, true);
+		passed = action.clickOn(PrintFaultDocketBack_Button);
 
 		return passed;
 	}
@@ -557,8 +560,8 @@ public class ManageFault {
 	public boolean clickonRecordFaultActivityActionbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivity_ActionButton, 4, true);
-		passed = ManageFaultAction.clickOn(RecordFaultActivity_ActionButton);
+		passed = action.waitFor(RecordFaultActivity_ActionButton, 4, true);
+		passed = action.clickOn(RecordFaultActivity_ActionButton);
 
 		return passed;
 	}
@@ -567,8 +570,8 @@ public class ManageFault {
 	public boolean clickonRecordActivitybutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivitiesRecordActivity_Button, 4, true);
-		passed = ManageFaultAction.clickOn(RecordFaultActivitiesRecordActivity_Button);
+		passed = action.waitFor(RecordFaultActivitiesRecordActivity_Button, 4, true);
+		passed = action.clickOn(RecordFaultActivitiesRecordActivity_Button);
 
 		return passed;
 	}
@@ -577,8 +580,8 @@ public class ManageFault {
 	public boolean clickonRecordActivityCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivitiesCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(RecordFaultActivitiesCancel_Button);
+		passed = action.waitFor(RecordFaultActivitiesCancel_Button, 4, true);
+		passed = action.clickOn(RecordFaultActivitiesCancel_Button);
 
 		return passed;
 	}
@@ -587,11 +590,11 @@ public class ManageFault {
 	public boolean recordFaultActivitySelectActivityIDActivityNotes() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityID_Dropdown, 4, true);
-		passed = ManageFaultAction.selectBy(RecordFaultActivitiesActivityID_Dropdown, "Call Customer Care");
+		passed = action.waitFor(RecordFaultActivitiesActivityID_Dropdown, 4, true);
+		passed = action.selectBy(RecordFaultActivitiesActivityID_Dropdown, "Call Customer Care");
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityNotes_Input, 4, true);
-		passed = ManageFaultAction.sendDataTo(RecordFaultActivitiesActivityNotes_Input, "Test");
+		passed = action.waitFor(RecordFaultActivitiesActivityNotes_Input, 4, true);
+		passed = action.sendDataTo(RecordFaultActivitiesActivityNotes_Input, "Test");
 		return passed;
 	}
 
@@ -599,8 +602,8 @@ public class ManageFault {
 	public boolean recordFaultActivityRaiseActivityAceeptbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityAccept_Button, 4, true);
-		passed = ManageFaultAction.clickOn(RecordFaultActivitiesActivityAccept_Button);
+		passed = action.waitFor(RecordFaultActivitiesActivityAccept_Button, 4, true);
+		passed = action.clickOn(RecordFaultActivitiesActivityAccept_Button);
 
 		return passed;
 	}
@@ -609,8 +612,8 @@ public class ManageFault {
 	public boolean recordFaultActivityRaiseActivityCancelbutton() {
 		boolean passed = false;
 
-		passed = ManageFaultAction.waitFor(RecordFaultActivitiesActivityCancel_Button, 4, true);
-		passed = ManageFaultAction.clickOn(RecordFaultActivitiesActivityCancel_Button);
+		passed = action.waitFor(RecordFaultActivitiesActivityCancel_Button, 4, true);
+		passed = action.clickOn(RecordFaultActivitiesActivityCancel_Button);
 
 		return passed;
 	}

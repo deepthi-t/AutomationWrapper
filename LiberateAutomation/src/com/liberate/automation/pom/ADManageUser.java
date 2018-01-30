@@ -60,7 +60,7 @@ public class ADManageUser {
 
 	public boolean navigate() {
 		action.scrollUp();
-		action.scrollUp();
+		action.waitFor(1);
 
 		boolean passed = false;
 

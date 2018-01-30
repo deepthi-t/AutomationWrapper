@@ -38,6 +38,9 @@ public class CRDepositRequirement {
 	}
 	
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		if (action.countOf(ExcludeCeaseClosed_CheckBox) > 0) {
