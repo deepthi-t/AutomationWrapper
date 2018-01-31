@@ -4,14 +4,14 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.common.TestData;
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.CCMaintainQuery;
+import com.liberate.automation.pom.CRMaintainQuery;
 
 public class QueryManagement {
 	static TestActions action = CommonLogin.action;
 
 	@Test(priority = 1)
 	public void raiseQueryAccount() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
 		action.getScreenShot("raiseQueryAccount");
@@ -25,7 +25,7 @@ public class QueryManagement {
 
 	@Test(priority = 2)
 	public void amendQuery() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
 		action.getScreenShot("amendQuery");
@@ -41,7 +41,7 @@ public class QueryManagement {
 
 	@Test(priority = 3)
 	public void addNoteQuery() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
 		action.getScreenShot("addNoteQuery");
@@ -57,7 +57,7 @@ public class QueryManagement {
 
 	@Test(priority = 4)
 	public void progressQuery() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
 		action.getScreenShot("progressQuery");
@@ -65,31 +65,69 @@ public class QueryManagement {
 		action.getScreenShot("progressQuery");
 		mq.verifyQuery();
 		action.getScreenShot("progressQuery");
-		mq.progressQuery("ES");
+		mq.progressQuery("RE");
 		action.getScreenShot("progressQuery");
 		mq.verifyQuery();
 		action.getScreenShot("progressQuery");
 	}
 
-	@Test(enabled = false)
+	@Test
 	public void signOffQuery() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
-		action.getScreenShot("signOffQuery");
-		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A");
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.searchByAccount("260002260000");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.raiseAccountQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
 		mq.progressQuery("RE");
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
-		action.getScreenShot("signOffQuery");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.signOffQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");		
+	}
+	
+	@Test
+	public void raiseAndAuthoriseAdjustment()
+	{
+		CRMaintainQuery mq = new CRMaintainQuery(action);
+
+		mq.navigate();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.searchByAccount("260002260000");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.raiseAccountQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.progressQuery("RE");
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.raiseAdjustment();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		
+		mq.authoriseAdjustment();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
+		mq.verifyQuery();
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 	}
 
 	@Test(enabled = false)
 	public void verifyBills() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
 		action.getScreenShot("verifyBills");
@@ -107,7 +145,7 @@ public class QueryManagement {
 
 	@Test(priority = 5)
 	public void raiseQueryNonAccount() {
-		CCMaintainQuery mq = new CCMaintainQuery(action);
+		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
 		action.getScreenShot("raiseQueryNonAccount");

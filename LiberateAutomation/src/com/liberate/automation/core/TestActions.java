@@ -6,11 +6,13 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -31,9 +33,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TestActions {
 
 	public String classVersion = "0.9.0";
-
-	Date date = new Date();
-	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
 
 	Boolean retry = false;
 	int retryCount = 3;
@@ -153,7 +152,7 @@ public class TestActions {
 
 			for (int i = 0; i < data.length(); i++) {
 				driver.findElement(locator).sendKeys(Character.toString(dateChars[i]));
-				Thread.sleep(100);
+				Thread.sleep(200);
 			}
 		} catch (Exception e) {
 			handleException(e);
@@ -197,6 +196,15 @@ public class TestActions {
 	 *         element in WebPage
 	 */
 	public Boolean selectBy(By locator, int index) {
+		if (countOf(locator) == 0) {
+			log("ERROR : Element located by '" + locator.toString() + "' is not available.");
+			try {
+				throw new TimeoutException();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				retry = handleException(e);
+			}
+		}
 		try {
 			log("Selecting index '" + index + "' from '" + locator.toString() + "'");
 			select = new Select(driver.findElement(locator));
@@ -287,13 +295,19 @@ public class TestActions {
 		String fullText = "";
 		xpath = xpath + "/descendant::option";
 
-		List<WebElement> options = driver.findElements(By.xpath(xpath));
+		try {
+			List<WebElement> options = driver.findElements(By.xpath(xpath));
 
-		for (WebElement option : options) {
-			if (option.getText().contains(partialText)) {
-				fullText = option.getText();
-				break;
+			for (WebElement option : options) {
+				if (option.getText().contains(partialText)) {
+					fullText = option.getText();
+					log("Full Text : " + fullText);
+					break;
+				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			handleException(e);
 		}
 
 		return selectBy(locator, fullText);
@@ -550,12 +564,33 @@ public class TestActions {
 	 */
 	public Boolean switchToFrame(By locator) {
 		try {
-			log("Switching to fram '" + locator.toString() + "'");
+			log("Switching to frame '" + locator.toString() + "'");
 			driver.switchTo().frame(driver.findElement(locator));
 		} catch (Exception e) {
 			retry = handleException(e);
 			if (retry)
 				switchToFrame(locator);
+			else
+				return false;
+		}
+		return true;
+	}
+
+	/***
+	 * Method that can be called to switch to newly opened Window/Tab.
+	 * 
+	 * @return returns True, if able to switch else false.
+	 */
+	public Boolean switchToNewWindow() {
+		try {
+			log("Switching to New Window");
+			Set<String> WindowHandles = driver.getWindowHandles();
+			String[] Window = WindowHandles.toArray(new String[WindowHandles.size()]);
+			driver.switchTo().window(Window[Window.length - 1]);
+		} catch (Exception e) {
+			retry = handleException(e);
+			if (retry)
+				switchToNewWindow();
 			else
 				return false;
 		}
@@ -752,6 +787,8 @@ public class TestActions {
 	 *         can stop execution.
 	 */
 	private boolean handleException(Exception e) {
+		// e.printStackTrace();
+
 		// This code block checks how many times the step is executed. If >
 		// retryCount, it will exit stopping execution of step.
 		executionCount = executionCount + 1;
@@ -771,9 +808,12 @@ public class TestActions {
 		} else if (e instanceof TimeoutException) {
 			log("WARNING : TimeoutException occured");
 			return false;
+		} else if (e instanceof InvalidElementStateException) {
+			log("WARNING : InvalidElementStateException occured");
+			waitFor(1);
+			return true;
 		} else if (e instanceof WebDriverException) {
 			log("WARNING : WebDriverException occured");
-			e.printStackTrace();
 			waitFor(1);
 			if (countOf(By.xpath("//input[@value='OK']")) > 0) {
 				clickOn(By.xpath("(//input[@value='OK'])[last()]"));
@@ -788,7 +828,16 @@ public class TestActions {
 		}
 	}
 
+	/***
+	 * Class to log String Message
+	 * 
+	 * @param message
+	 *            String Message that needs to be logged.
+	 */
 	public void log(String message) {
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+
 		System.out.println(sdf.format(date) + " : " + message);
 	}
 }

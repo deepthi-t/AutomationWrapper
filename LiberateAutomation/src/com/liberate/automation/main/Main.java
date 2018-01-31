@@ -1,15 +1,14 @@
 package com.liberate.automation.main;
 
 import com.liberate.automation.testcases.CommonLogin;
-import com.liberate.automation.testcases.QueryManagement;
+import com.liberate.automation.testcases.CustomerCareTC;
 
 public class Main {
 
 	public static void main(String[] args) {
-		QueryManagement bso = new QueryManagement();
 
 		CommonLogin.navigateToURL();
-		bso.raiseQueryNonAccount();
-		CommonLogin.endTesting();
+		CustomerCareTC.provideProduct();
+//		CommonLogin.endTesting();
 	}
 }

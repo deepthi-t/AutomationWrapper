@@ -33,11 +33,13 @@ public class CRCustomerSearch {
 	By Reset_Button = By.xpath("//input[@value='Reset']");
 
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		action.scrollUp();
-		action.scrollUp();
-		action.waitFor(2);
+		action.waitFor(1);
 
 		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare, 4, true);
 		passed = action.clickOn(LiberateCommon.LevelOne.CustomerCare);
@@ -53,6 +55,8 @@ public class CRCustomerSearch {
 		passed = action.waitFor(1);
 		passed = action.clickOn(Search_Button);
 
+		searchVerify();
+
 		return passed;
 	}
 
@@ -63,6 +67,8 @@ public class CRCustomerSearch {
 		passed = action.sendDataTo(ServiceNumber_Input, serviceNumber);
 		passed = action.waitFor(1);
 		passed = action.clickOn(Search_Button);
+
+		searchVerify();
 
 		return passed;
 	}
@@ -79,6 +85,8 @@ public class CRCustomerSearch {
 
 		passed = action.clickOn(Search_Button);
 
+		searchVerify();
+
 		return passed;
 	}
 
@@ -93,6 +101,19 @@ public class CRCustomerSearch {
 		
 		passed = action.clickOn(Search_Button);
 		
+		searchVerify();
+		
 		return passed;
+	}
+	
+	private void searchVerify()
+	{
+		By FirstResult_Row = By.xpath("//tr[@id='customerSearchForm:customerSearchFBTabSet:0:customerSearchResults_row_0']");
+		
+		action.waitFor(2);
+		
+		if(action.countOf(FirstResult_Row)==1);
+			action.clickOn(FirstResult_Row);
+		
 	}
 }

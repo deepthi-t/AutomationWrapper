@@ -75,6 +75,9 @@ public class ManageSwitchRequest {
 	 * @return Returns true if able to navigate, else will return false.
 	 */
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.Orders, 4, true);

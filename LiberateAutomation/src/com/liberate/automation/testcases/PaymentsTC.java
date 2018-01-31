@@ -9,6 +9,7 @@ import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDepositRequirement;
 import com.liberate.automation.pom.PYBatchPayment;
+import com.liberate.automation.pom.PYPOSPayment;
 import com.liberate.automation.pom.PYSinglePayment;
 
 public class PaymentsTC {
@@ -179,5 +180,65 @@ public class PaymentsTC {
 		action.getScreenShot("payAndRefundDeposit");
 		cd.refundDeposit("10.00");
 		action.getScreenShot("payAndRefundDeposit");
+	}
+
+	@Test
+	public void depostitPaymentPOS()
+	{
+		CRCustomerSearch cr = new CRCustomerSearch(action);
+		CRDepositRequirement cd = new CRDepositRequirement(action);
+		BrowseServiceOrder bso = new BrowseServiceOrder(action);
+		PYPOSPayment pos = new PYPOSPayment(action);
+		
+		cr.navigate();
+		action.getScreenShot("depostitPaymentPOS");
+		cr.searchByAccountNumber("260002280000");
+		action.getScreenShot("depostitPaymentPOS");
+
+		cd.navigate();
+		action.getScreenShot("depostitPaymentPOS");
+		cd.verifyDepositRequirement();
+		action.getScreenShot("depostitPaymentPOS");
+		cd.addNewDepositRequirement("10.00");
+		action.getScreenShot("depostitPaymentPOS");
+		cd.verifyDepositRequirement();
+		action.getScreenShot("depostitPaymentPOS");
+		
+		bso.navigate();
+		action.getScreenShot("depostitPaymentPOS");
+		bso.selectDepartment("CASH2");
+		action.getScreenShot("depostitPaymentPOS");
+		
+		pos.navigate();
+		action.getScreenShot("depostitPaymentPOS");
+		pos.navigateToPOS();
+		action.getScreenShot("depostitPaymentPOS");
+		
+		pos.closePOSWindow();
+		action.getScreenShot("depostitPaymentPOS");
+	}
+	
+	@Test
+	public void paymentPOS()
+	{
+		BrowseServiceOrder bso = new BrowseServiceOrder(action);
+		PYPOSPayment pos = new PYPOSPayment(action);
+		
+		bso.navigate();
+		action.getScreenShot("depostitPaymentPOS");
+		bso.selectDepartment("CASH");
+		action.getScreenShot("depostitPaymentPOS");
+		
+		pos.navigate();
+		action.getScreenShot("depostitPaymentPOS");
+		pos.navigateToPOS();
+		action.getScreenShot("depostitPaymentPOS");
+		pos.searchWithAccountNumber("260002270000");
+		action.getScreenShot("depostitPaymentPOS");
+		pos.POSPayment();
+		action.getScreenShot("depostitPaymentPOS");
+		
+//		pos.closePOSWindow();
+//		action.getScreenShot("depostitPaymentPOS");
 	}
 }

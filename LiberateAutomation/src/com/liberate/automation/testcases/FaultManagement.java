@@ -12,7 +12,7 @@ public class FaultManagement {
 	static TestActions action = CommonLogin.action;
 	
 	@Test
-	public void raiseFault() {
+	public void raiseFault() {		
 		RaiseFault rf = new RaiseFault(action);
 
 		assertEquals(rf.navigate(), true);

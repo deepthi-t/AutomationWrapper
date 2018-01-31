@@ -42,6 +42,9 @@ public class PYBatchPayment {
 	
 	public boolean navigate()
 	{
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 		
 		passed = action.waitFor(LevelOne.Payments, 4, true);

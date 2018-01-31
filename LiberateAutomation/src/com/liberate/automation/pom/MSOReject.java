@@ -23,6 +23,9 @@ public class MSOReject {
 	}
 	
 	public boolean navigate() {
+		action.scrollUp();
+		action.waitFor(1);
+		
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.Orders, 4, true);
