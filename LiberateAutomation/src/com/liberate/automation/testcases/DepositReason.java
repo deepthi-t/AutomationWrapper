@@ -14,7 +14,7 @@ public class DepositReason {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void createNewDepositReason() {
+	public static void createNewDepositReason() {
 		RandomData random = new RandomData();
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
 
@@ -34,7 +34,7 @@ public class DepositReason {
 		System.out.println(x);
 	}
 
-	public void newDepositReasonCancel() {
+	public static void newDepositReasonCancel() {
 		RandomData random = new RandomData();
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
 
@@ -51,7 +51,7 @@ public class DepositReason {
 	}
 
 	@Test
-	public void amendDepositReason() {
+	public static void amendDepositReason() {
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
 
 		assertEquals(mdr.navigate(), true);
@@ -66,7 +66,7 @@ public class DepositReason {
 		action.getScreenShot("DepositReason");
 	}
 
-	public void amendDepositReasonCancel() {
+	public static void amendDepositReasonCancel() {
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
 
 		assertEquals(mdr.navigate(), true);

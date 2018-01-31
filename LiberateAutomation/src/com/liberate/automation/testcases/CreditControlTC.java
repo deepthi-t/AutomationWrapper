@@ -14,9 +14,9 @@ public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void serviceBAR() {
+	public static void serviceBAR() {
 		String ServiceNumber = "9177243";
-		
+
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
@@ -30,7 +30,7 @@ public class CreditControlTC {
 	}
 
 	@Test
-	public void serviceTOS() {
+	public static void serviceTOS() {
 		String ServiceNumber = "9177243";
 
 		CCCreditControlService creditControl = new CCCreditControlService(action);
@@ -46,7 +46,7 @@ public class CreditControlTC {
 	}
 
 	@Test
-	public void serviceROS() {
+	public static void serviceROS() {
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
@@ -60,7 +60,7 @@ public class CreditControlTC {
 	}
 
 	@Test
-	public void serviceTOSVerifyAudit() {
+	public static void serviceTOSVerifyAudit() {
 		/***
 		 * Working service number that needs to be TOSed
 		 */
@@ -99,7 +99,7 @@ public class CreditControlTC {
 	}
 
 	@Test
-	public void serviceROSVerifyAudit() {
+	public static void serviceROSVerifyAudit() {
 		/***
 		 * Working service number that needs to be TOSed
 		 */
@@ -110,7 +110,6 @@ public class CreditControlTC {
 		CRDashBoard dashboard = new CRDashBoard(action);
 		CRServiceOperations services = new CRServiceOperations(action);
 
-
 		creditControl.navigate();
 		action.getScreenShot("serviceROSVerifyAudit");
 		creditControl.searchWithServiceNumber(ServiceNumber);
@@ -119,7 +118,7 @@ public class CreditControlTC {
 		action.getScreenShot("serviceROSVerifyAudit");
 		creditControl.verifyServiceStatus();
 		action.getScreenShot("serviceROSVerifyAudit");
-		
+
 		search.navigate();
 		action.getScreenShot("serviceROSVerifyAudit");
 		search.searchByServiceNumber(ServiceNumber);

@@ -12,7 +12,7 @@ public class BadChequeProcessing {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void badCheckProcessing() {
+	public static void badCheckProcessing() {
 		PYBadCheckProcessing bcp = new PYBadCheckProcessing(action);
 
 		assertEquals(bcp.navigate(), true);

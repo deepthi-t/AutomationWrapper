@@ -24,7 +24,7 @@ public class ManageServiceOrder {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void soEnquiry() {
+	public static void soEnquiry() {
 		MSOEnquiry msr = new MSOEnquiry(action);
 		String serviceOrderNumber = "A00071A";
 
@@ -37,7 +37,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void addSpecialInstructions() {
+	public static void addSpecialInstructions() {
 		MSOAddSpecialInstructions mso = new MSOAddSpecialInstructions(action);
 		MSOEnquiry mse = new MSOEnquiry(action);
 
@@ -66,7 +66,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void addServiceCharge() {
+	public static void addServiceCharge() {
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
 		String serviceOrderNumber = "WH00477";
 
@@ -83,7 +83,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void removeServiceCharge() {
+	public static void removeServiceCharge() {
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
 		String serviceOrderNumber = "WH00477";
 
@@ -100,7 +100,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void cancelServiceOrder() {
+	public static void cancelServiceOrder() {
 		MSOCancelServiceOrder msc = new MSOCancelServiceOrder(action);
 		MSOEnquiry mse = new MSOEnquiry(action);
 
@@ -126,7 +126,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void generalSignOffServiceOrder() {
+	public static void generalSignOffServiceOrder() {
 		MSOSignoff mss = new MSOSignoff(action);
 
 		mss.navigate();
@@ -140,7 +140,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void accountSignOffServiceOrder() {
+	public static void accountSignOffServiceOrder() {
 		MSOSignoff mss = new MSOSignoff(action);
 
 		mss.navigate();
@@ -154,7 +154,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void rejectServiceOrder() {
+	public static void rejectServiceOrder() {
 		MSOReject mss = new MSOReject(action);
 
 		mss.navigate();
@@ -168,7 +168,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void releaseServiceOrder() {
+	public static void releaseServiceOrder() {
 		MSORelease mss = new MSORelease(action);
 
 		mss.navigate();
@@ -182,7 +182,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void waitlistServiceOrder() {
+	public static void waitlistServiceOrder() {
 		MSOWaitlist mss = new MSOWaitlist(action);
 
 		mss.navigate();
@@ -196,7 +196,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void manualWaitlistReleaseServiceOrder() {
+	public static void manualWaitlistReleaseServiceOrder() {
 		MSOManualWaitlistRelease mss = new MSOManualWaitlistRelease(action);
 
 		mss.navigate();
@@ -210,7 +210,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void suspendSeviceOrder() {
+	public static void suspendSeviceOrder() {
 		MSOSuspend mss = new MSOSuspend(action);
 
 		mss.navigate();
@@ -224,7 +224,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void splitServiceOrder() {
+	public static void splitServiceOrder() {
 		MSOSplit mss = new MSOSplit(action);
 
 		mss.navigate();
@@ -238,7 +238,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void assignServiceOrder() {
+	public static void assignServiceOrder() {
 		MSOAssign mss = new MSOAssign(action);
 
 		mss.navigate();
@@ -252,7 +252,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void browseSO() {
+	public static void browseSO() {
 		BrowseServiceOrder mss = new BrowseServiceOrder(action);
 
 		mss.navigate();
@@ -264,7 +264,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void redirectSO() {
+	public static void redirectSO() {
 		MSORedirect mss = new MSORedirect(action);
 
 		mss.navigate();
@@ -280,7 +280,7 @@ public class ManageServiceOrder {
 	}
 
 	@Test
-	public void allocateCopperRoute() {
+	public static void allocateCopperRoute() {
 		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
 
 		arso.navigate();
@@ -292,9 +292,9 @@ public class ManageServiceOrder {
 		arso.verifyAutoAllocateRoute();
 		action.getScreenShot("allocateCopperRoute");
 	}
-	
+
 	@Test
-	public void allocateFiberRoute() {
+	public static void allocateFiberRoute() {
 		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
 
 		arso.navigate();
