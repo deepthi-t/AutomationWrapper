@@ -11,7 +11,7 @@ import com.liberate.automation.pom.SalesSignOff;
 public class ServiceProvisioningTC {
 	static TestActions action = CommonLogin.action;
 
-	public void newCustomerPEL() {
+	public static void newCustomerPEL() {
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -67,7 +67,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("newCustomerPEL");
 	}
 
-	public void existingCustomerPEL() {
+	public static void existingCustomerPEL() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -105,8 +105,8 @@ public class ServiceProvisioningTC {
 		cso.getSOCommand();
 		action.getScreenShot("existingCustomerPEL");
 	}
-	
-	public void existingCustomerPCLPostpaid() {
+
+	public static void existingCustomerPCLPostpaid() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -118,7 +118,7 @@ public class ServiceProvisioningTC {
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
 		action.getScreenShot("existingCustomerPCLPostpaid");
 		ce.selectServicePackage("PCL", "LIME_POST");
-//		ce.selectServicePackage("PCL", "SOW-");
+		// ce.selectServicePackage("PCL", "SOW-");
 		action.getScreenShot("existingCustomerPCLPostpaid");
 		ce.processPricingPlanScreen();
 		action.getScreenShot("existingCustomerPCLPostpaid");
@@ -143,17 +143,17 @@ public class ServiceProvisioningTC {
 		cso.getSOCommand();
 		action.getScreenShot("existingCustomerPCLPostpaid");
 	}
-	
-	public void newCustomerPCLPostpaid() {
+
+	public static void newCustomerPCLPostpaid() {
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
-		
+
 		cp.navigate();
 		action.getScreenShot("newCustomerPEL");
-		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential, CommonData.CustomerType.Residential,
-				"PCL", "LIME_POST");
+		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
+				CommonData.CustomerType.Residential, "PCL", "LIME_POST");
 		action.getScreenShot("newCustomerPEL");
 
 		cp.fillResidentialCustomerDetails();
@@ -169,7 +169,7 @@ public class ServiceProvisioningTC {
 		cp.fillContactDetails();
 		action.getScreenShot("newCustomerPEL");
 		cp.verifyCreatedAccount();
-		
+
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
 		action.getScreenShot("existingCustomerPCLPostpaid");
 		ce.selectServicePackage("PCL", "SOW-");
@@ -197,17 +197,17 @@ public class ServiceProvisioningTC {
 		cso.getSOCommand();
 		action.getScreenShot("existingCustomerPCLPostpaid");
 	}
-	
-	public void newCustomerPCLCreditLimit() {
+
+	public static void newCustomerPCLCreditLimit() {
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
-		
+
 		cp.navigate();
 		action.getScreenShot("newCustomerPEL");
-		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential, CommonData.CustomerType.Residential,
-				"PCL", "SOW-");
+		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
+				CommonData.CustomerType.Residential, "PCL", "SOW-");
 		action.getScreenShot("newCustomerPEL");
 
 		cp.fillResidentialCustomerDetails();
@@ -223,7 +223,7 @@ public class ServiceProvisioningTC {
 		cp.fillContactDetails();
 		action.getScreenShot("newCustomerPEL");
 		cp.verifyCreatedAccount();
-		
+
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
 		action.getScreenShot("existingCustomerPCLPostpaid");
 		ce.selectServicePackage("PCL", "SOW-");
@@ -251,8 +251,8 @@ public class ServiceProvisioningTC {
 		cso.getSOCommand();
 		action.getScreenShot("existingCustomerPCLPostpaid");
 	}
-	
-	public void existingCustomerPDL() {
+
+	public static void existingCustomerPDL() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -285,7 +285,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPDL");
 	}
 
-	public void existingCustomerPTV() {
+	public static void existingCustomerPTV() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -320,7 +320,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPEL");
 	}
 
-	public void existingCustomerIPTV() {
+	public static void existingCustomerIPTV() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -355,7 +355,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPEL");
 	}
 
-	public void existingCustomerARN() {
+	public static void existingCustomerARN() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -368,7 +368,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPEL");
 		ce.selectNonPackage("ARN");
 		action.getScreenShot("existingCustomerPEL");
-		
+
 		ce.processServiceNoScreen("510370");
 		action.getScreenShot("existingCustomerPEL");
 		ce.processServiceProductsScreen();
@@ -389,8 +389,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPEL");
 	}
 
-	
-	public void newCustomerPELandPDL() {
+	public static void newCustomerPELandPDL() {
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -434,8 +433,8 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("newCustomerPELandPDL");
 		ce.provideADSL();
 		action.getScreenShot("newCustomerPELandPDL");
-		
-		//PDL Part
+
+		// PDL Part
 		ce.selectServicePackage("PDL", "ADSL_PACK");
 		action.getScreenShot("existingCustomerPDL");
 		ce.processPricingPlanScreen();
@@ -458,7 +457,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("existingCustomerPDL");
 	}
 
-	public void addMorePELandPDL() {
+	public static void addMorePELandPDL() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -491,11 +490,11 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("addMorePELandPDL");
 		sso.addMore();
 		action.getScreenShot("addMorePELandPDL");
-		
+
 		addmore.addADSL();
 		action.getScreenShot("addMorePELandPDL");
-		
-		//PDL Part
+
+		// PDL Part
 		ce.selectServicePackage("PDL", "ADSL_PACK");
 		action.getScreenShot("addMorePELandPDL");
 		ce.processPricingPlanScreen();
@@ -518,12 +517,12 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("addMorePELandPDL");
 	}
 
-	public void addMorePELandPCL() {
+	public static void addMorePELandPCL() {
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 		AddMore addmore = new AddMore(action);
-		
+
 		ce.navigate();
 		action.getScreenShot("addMorePELandPCL");
 		ce.searchWithAccount("280000710000");
@@ -551,13 +550,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot("addMorePELandPCL");
 		sso.addMore();
 		action.getScreenShot("addMorePELandPCL");
-		
+
 		addmore.addServicePackage();
 		action.getScreenShot("addMorePELandPCL");
-		
+
 		action.getScreenShot("addMorePELandPCL");
 		ce.selectServicePackage("PCL", "LIME_POST");
-//		ce.selectServicePackage("PCL", "SOW-");
+		// ce.selectServicePackage("PCL", "SOW-");
 		action.getScreenShot("addMorePELandPCL");
 		ce.processPricingPlanScreen();
 		action.getScreenShot("addMorePELandPCL");

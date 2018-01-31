@@ -10,7 +10,7 @@ public class QueryManagement {
 	static TestActions action = CommonLogin.action;
 
 	@Test(priority = 1)
-	public void raiseQueryAccount() {
+	public static void raiseQueryAccount() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -24,7 +24,7 @@ public class QueryManagement {
 	}
 
 	@Test(priority = 2)
-	public void amendQuery() {
+	public static void amendQuery() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -40,7 +40,7 @@ public class QueryManagement {
 	}
 
 	@Test(priority = 3)
-	public void addNoteQuery() {
+	public static void addNoteQuery() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -56,7 +56,7 @@ public class QueryManagement {
 	}
 
 	@Test(priority = 4)
-	public void progressQuery() {
+	public static void progressQuery() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -72,7 +72,7 @@ public class QueryManagement {
 	}
 
 	@Test
-	public void signOffQuery() {
+	public static void signOffQuery() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -83,21 +83,20 @@ public class QueryManagement {
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
-		
+
 		mq.progressQuery("RE");
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
-		
+
 		mq.signOffQuery();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
-		action.getScreenShot("raiseAndAuthoriseAdjustment");		
+		action.getScreenShot("raiseAndAuthoriseAdjustment");
 	}
-	
+
 	@Test
-	public void raiseAndAuthoriseAdjustment()
-	{
+	public static void raiseAndAuthoriseAdjustment() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -108,17 +107,17 @@ public class QueryManagement {
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
-		
+
 		mq.progressQuery("RE");
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
-		
+
 		mq.raiseAdjustment();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
-		
+
 		mq.authoriseAdjustment();
 		action.getScreenShot("raiseAndAuthoriseAdjustment");
 		mq.verifyQuery();
@@ -126,7 +125,7 @@ public class QueryManagement {
 	}
 
 	@Test(enabled = false)
-	public void verifyBills() {
+	public static void verifyBills() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -144,7 +143,7 @@ public class QueryManagement {
 	}
 
 	@Test(priority = 5)
-	public void raiseQueryNonAccount() {
+	public static void raiseQueryNonAccount() {
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();

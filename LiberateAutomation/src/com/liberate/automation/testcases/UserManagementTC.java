@@ -10,7 +10,7 @@ public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void amendUser() {
+	public static void amendUser() {
 		ADManageUser adm = new ADManageUser(action);
 
 		adm.navigate();
@@ -24,7 +24,7 @@ public class UserManagementTC {
 	}
 
 	@Test
-	public void deleteUser() {
+	public static void deleteUser() {
 		ADManageUser adm = new ADManageUser(action);
 
 		adm.navigate();
@@ -36,9 +36,9 @@ public class UserManagementTC {
 		adm.verifyDelete();
 		action.getScreenShot("deleteUser");
 	}
-	
+
 	@Test
-	public void copyUser() {
+	public static void copyUser() {
 		ADManageUser adm = new ADManageUser(action);
 
 		adm.navigate();
@@ -52,16 +52,16 @@ public class UserManagementTC {
 		adm.verifyUserDetails();
 		action.getScreenShot("copyUser");
 	}
-	
+
 	@Test
-	public void createUser() {
+	public static void createUser() {
 		ADManageUser adm = new ADManageUser(action);
 		ADMaintainEmployee ade = new ADMaintainEmployee(action);
-		
+
 		ade.navigate();
 		ade.searchWithStaffNumber("999908");
 		ade.createNewEmployee();
-		
+
 		adm.navigate();
 		action.getScreenShot("createUser");
 		adm.searchByUserName("");

@@ -12,12 +12,14 @@ public class BadChequeProcessing {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void badCheckProcessing() {
+	public static void badCheckProcessing() {
+		String PaymentNumber = "9264886";
+
 		PYBadCheckProcessing bcp = new PYBadCheckProcessing(action);
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot("BadCheckProcessing");
-		assertEquals(bcp.SearchWithPaymentNumber("9264886"), true);
+		assertEquals(bcp.SearchWithPaymentNumber(PaymentNumber), true);
 		action.getScreenShot("BadCheckProcessing");
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot("BadCheckProcessing");

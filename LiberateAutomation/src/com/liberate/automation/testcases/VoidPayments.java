@@ -12,7 +12,7 @@ public class VoidPayments {
 	static TestActions action = CommonLogin.action;
 
 	@Test
-	public void voidPayment() {
+	public static void voidPayment() {
 		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
@@ -26,7 +26,7 @@ public class VoidPayments {
 		action.getScreenShot("VoidPayment");
 	}
 
-	public void voidPaymentReset() {
+	public static void voidPaymentReset() {
 		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
@@ -38,7 +38,7 @@ public class VoidPayments {
 
 	}
 
-	public void newVoidPaymentCancel() {
+	public static void newVoidPaymentCancel() {
 
 		PYVoidPayment vp = new PYVoidPayment(action);
 

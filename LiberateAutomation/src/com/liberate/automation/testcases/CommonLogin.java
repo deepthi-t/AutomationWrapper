@@ -13,7 +13,7 @@ public class CommonLogin {
 
 	@BeforeSuite
 	public static void navigateToURL() {
-//		action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
+		// action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
 		action.gotoURL("http://172.21.73.80:8083/liberate-LONI02-S06/");
 
 		Login login = new Login(action);
