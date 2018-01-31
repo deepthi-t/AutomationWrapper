@@ -14,6 +14,8 @@ public class SwitchRequest {
 
 	@Test(enabled = false)
 	public static void MonitorNewSwitchRequest() {
+		String EmployeeID = "99999";
+		String Time = "23:30";
 
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
 
@@ -21,7 +23,7 @@ public class SwitchRequest {
 		action.getScreenShot("MonitorNewSwitchRequest");
 		assertEquals(msr.selectMonitorNewSwitchRequests(), true);
 		action.getScreenShot("MonitorNewSwitchRequest");
-		assertEquals(msr.monitorNewSwitchRequests_Search("99999", "23:30"), true);
+		assertEquals(msr.monitorNewSwitchRequests_Search(EmployeeID, Time), true);
 		action.getScreenShot("MonitorNewSwitchRequest");
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot("MonitorNewSwitchRequest");
@@ -29,6 +31,8 @@ public class SwitchRequest {
 
 	@Test
 	public static void SwitchRequestFailureQueries() {
+		// No Need to change Data
+
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
 		Login login = new Login(action);
 

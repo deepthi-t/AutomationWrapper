@@ -10,9 +10,9 @@ import com.liberate.automation.pom.RaiseFault;
 
 public class FaultManagement {
 	static TestActions action = CommonLogin.action;
-	
+
 	@Test
-	public void raiseFault() {		
+	public static void raiseFault() {
 		RaiseFault rf = new RaiseFault(action);
 
 		assertEquals(rf.navigate(), true);
@@ -29,9 +29,9 @@ public class FaultManagement {
 		assertEquals(rf.raisedFaultNumber(), true);
 		action.getScreenShot("raiseNewFault");
 	}
-	
+
 	@Test
-	public void manageFaultAddNotes() {
+	public static void manageFaultAddNotes() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -54,7 +54,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void assignFault_ManageFault() {
+	public static void assignFault_ManageFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -74,7 +74,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void signoffFault() {
+	public static void signoffFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -96,7 +96,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void suspendRelease_ManageFault() {
+	public static void suspendRelease_ManageFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -116,7 +116,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void upgradeFaultPriority_ManageFault() {
+	public static void upgradeFaultPriority_ManageFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -136,7 +136,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void recordFaultTest_ManageFault() {
+	public static void recordFaultTest_ManageFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -156,7 +156,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void printFaultDocket_ManageFault() {
+	public static void printFaultDocket_ManageFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);
@@ -174,7 +174,7 @@ public class FaultManagement {
 	}
 
 	@Test
-	public void recordFaultActivity_ManageFault() {
+	public static void recordFaultActivity_ManageFault() {
 		ManageFault mf = new ManageFault(action);
 
 		assertEquals(mf.navigate(), true);

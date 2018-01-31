@@ -15,13 +15,15 @@ public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test(priority = 1)
-	public void verifyCustomerEnquiry() {
+	public static void verifyCustomerEnquiry() {
+		String AccountNumber = "260002260000";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
 		cr.navigate();
 		action.getScreenShot("verifyCustomerEnquiry");
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(AccountNumber);
 		action.getScreenShot("verifyCustomerEnquiry");
 		cd.navigate();
 		action.getScreenShot("verifyCustomerEnquiry");
@@ -30,7 +32,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void customerEnquiryWithID() {
+	public static void customerEnquiryWithID() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
@@ -45,7 +47,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void customerEnquiryWithSurname() {
+	public static void customerEnquiryWithSurname() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
@@ -60,7 +62,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test(priority = 2)
-	public void amendAccountDetails() {
+	public static void amendAccountDetails() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
@@ -80,7 +82,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test(priority = 3)
-	public void amendDayOfBilling() {
+	public static void amendDayOfBilling() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRCustomerDetails cu = new CRCustomerDetails(action);
 
@@ -100,7 +102,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void raiseAdjustment() {
+	public static void raiseAdjustment() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
 
@@ -118,7 +120,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void verifyAdjustment() {
+	public static void verifyAdjustment() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
 
@@ -134,7 +136,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void addServiceCharge() {
+	public static void addServiceCharge() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
 
@@ -153,7 +155,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void verifySericeChargeServiceNumber() {
+	public static void verifySericeChargeServiceNumber() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
 
@@ -171,7 +173,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void verifySericeChargeAccount() {
+	public static void verifySericeChargeAccount() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
 
@@ -187,7 +189,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void verifyBills() {
+	public static void verifyBills() {
 		// Should be executed in S10
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
@@ -205,7 +207,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void addNominatedNumPricingPlan() {
+	public static void addNominatedNumPricingPlan() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
 
@@ -225,7 +227,7 @@ public class CustomerEnquiryTC {
 	}
 
 	@Test
-	public void addCUGPricingPlan() {
+	public static void addCUGPricingPlan() {
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
 
