@@ -55,8 +55,6 @@ public class CRCustomerSearch {
 		passed = action.waitFor(1);
 		passed = action.clickOn(Search_Button);
 
-		searchVerify();
-
 		return passed;
 	}
 

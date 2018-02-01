@@ -13,6 +13,8 @@ public class Login {
 	By PassWord = By.xpath("//*[@id='login:userPassword']");
 	By LoginButton = By.xpath("//*[@id='login:loginButtonImg']");
 	
+	By Logout = By.xpath("//*[text()='Logout']");
+	
 	By LiberateFrame = By.xpath("//iframe[@id='liberate']");
 	
 	public Login(TestActions action) {
@@ -35,7 +37,18 @@ public class Login {
 			action.switchToFrame(LiberateFrame);
 		}
 		
-		passed = action.waitFor(LiberateCommon.LevelOne.Home, 4, true);
+		passed = action.waitFor(LiberateCommon.LevelOne.Home, 10, true);
+		
+		return passed;
+	}
+	
+	public boolean logout()
+	{
+		boolean passed = false;
+
+		passed = action.waitFor(Logout, 4, true);
+		passed = action.clickOn(Logout);
+		passed = action.waitFor(Logout, 4, false);
 		
 		return passed;
 	}

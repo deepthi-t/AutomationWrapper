@@ -53,7 +53,7 @@ public class CRMaintainQuery {
 
 	By Add_Button = By.xpath("//input[@value='Add']");
 	By Back_Button = By.xpath("//input[@value='<< Back']");
-	By Cancel_Button = By.xpath("Cancel_Button");
+	By Cancel_Button = By.xpath("//input[@value='Cancel']");
 
 	By Progress_ActionButton = By.xpath("//span[text()='Progress']");
 	By ProgressStatus_PanelHeader = By.xpath("//*[text()='Change Progress Status']");
@@ -61,7 +61,7 @@ public class CRMaintainQuery {
 
 	By Bills_ActionButton = By.xpath("//span[text()='Bills']");
 	By ListOfBills_PanelHeader = By.xpath("//*[text()='List of Bills']");
-	By Bills_Row = By.xpath("//*[text()='List of Bills']/following::tr[@class='ui-datatable-even']");
+	By Bills_Row = By.xpath("(//*[text()='List of Bills']//following::tr[contains(@class,'ui-datatable-even')])[1]");
 	By BillView_Panel = By.xpath("//*[text()='ViewBill']");
 
 	By RaiseAdjustment_ActionButton = By.xpath("//span[text() = 'Raise Adjustment']");
@@ -366,7 +366,7 @@ public class CRMaintainQuery {
 		passed = action.waitFor(Bills_Row, 2, true);
 		passed = action.clickOn(Bills_Row);
 
-		passed = action.waitFor(BillView_Panel, 4, true);
+		passed = action.waitFor(BillView_Panel, 20, true);
 
 		return passed;
 	}
