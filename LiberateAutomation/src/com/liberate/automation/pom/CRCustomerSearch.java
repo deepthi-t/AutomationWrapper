@@ -27,15 +27,17 @@ public class CRCustomerSearch {
 
 	By CustomerDetails_Tab = By.xpath("//*[text()='Customer Details Search']");
 	By SurName_Input = By.xpath("//*[text()='Surname:']/following::input[1]");
-	
+
 	// Buttons
 	By Search_Button = By.xpath("//input[@value='Search']");
 	By Reset_Button = By.xpath("//input[@value='Reset']");
 
+	By QuickSearch_PanelHeader = By.xpath("//*[text()='Quick Search']");
+
 	public boolean navigate() {
 		action.scrollUp();
 		action.waitFor(1);
-		
+
 		boolean passed = false;
 
 		action.scrollUp();
@@ -90,28 +92,29 @@ public class CRCustomerSearch {
 
 	public boolean searchBySurname(String Surname) {
 		boolean passed = false;
-		
+
 		passed = action.waitFor(CustomerDetails_Tab, 4, true);
 		passed = action.clickOn(CustomerDetails_Tab);
-		
+
 		passed = action.waitFor(SurName_Input, 4, true);
 		passed = action.sendDataTo(SurName_Input, Surname);
-		
+
 		passed = action.clickOn(Search_Button);
-		
+
 		searchVerify();
-		
+
 		return passed;
 	}
-	
-	private void searchVerify()
-	{
-		By FirstResult_Row = By.xpath("//tr[@id='customerSearchForm:customerSearchFBTabSet:0:customerSearchResults_row_0']");
-		
+
+	private void searchVerify() {
+		By FirstResult_Row = By
+				.xpath("//tr[@id='customerSearchForm:customerSearchFBTabSet:0:customerSearchResults_row_0']");
+
 		action.waitFor(2);
-		
-		if(action.countOf(FirstResult_Row)==1);
-			action.clickOn(FirstResult_Row);
-		
+
+		if (action.countOf(QuickSearch_PanelHeader) > 0) {
+			if (action.countOf(FirstResult_Row) == 1)
+				action.clickOn(FirstResult_Row);
+		}
 	}
 }
