@@ -151,51 +151,51 @@ public class ServiceProvisioningTC {
 		CRServiceOrder cso = new CRServiceOrder(action);
 
 		cp.navigate();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
 				CommonData.CustomerType.Residential, "PCL", "LIME_POST");
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 
 		cp.fillResidentialCustomerDetails();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.fillStandardAddress();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.fillCustomerClassification();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.fillBillingDetails();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.fillCustomerID();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.fillContactDetails();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cp.verifyCreatedAccount();
 
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot("existingCustomerPCLPostpaid");
-		ce.selectServicePackage("PCL", "SOW-");
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
+		ce.selectServicePackage("PCL", "LIME_POST");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		ce.processPricingPlanScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		ce.processServiceProductsScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		ce.processProductFieldsScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		ce.processISPFieldsScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		ce.provideContractDetails();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 
 		sso.verifySalesSignOff();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		sso.signOff();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 
 		cso.getSONumber();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 		cso.getSOCommand();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLPostpaid");
 	}
 
 	public static void newCustomerPCLCreditLimit() {
@@ -205,51 +205,49 @@ public class ServiceProvisioningTC {
 		CRServiceOrder cso = new CRServiceOrder(action);
 
 		cp.navigate();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
-				CommonData.CustomerType.Residential, "PCL", "SOW-");
-		action.getScreenShot("newCustomerPEL");
+				CommonData.CustomerType.Residential, "PCL", "LIME_POST");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 
 		cp.fillResidentialCustomerDetails();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.fillStandardAddress();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.fillCustomerClassification();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.fillBillingDetails();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.fillCustomerID();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.fillContactDetails();
-		action.getScreenShot("newCustomerPEL");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cp.verifyCreatedAccount();
 
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot("existingCustomerPCLPostpaid");
-		ce.selectServicePackage("PCL", "SOW-");
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
+		ce.selectServicePackage("PCL", "LIME_POST");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		ce.processPricingPlanScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		ce.processServiceProductsScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		ce.processProductFieldsScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
-		ce.processISPFieldsScreen();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		ce.provideContractDetails();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 
 		sso.verifySalesSignOff();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		sso.signOff();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 
 		cso.getSONumber();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 		cso.getSOCommand();
-		action.getScreenShot("existingCustomerPCLPostpaid");
+		action.getScreenShot("newCustomerPCLCreditLimit");
 	}
 
 	public static void existingCustomerPDL() {

@@ -59,7 +59,7 @@ public class CPExistingCustomer {
 	By ServiceNumber_Select = By.xpath("//*[text()='Service Number:']//following::select[1]");
 	By ServiceNumber_Input = By.xpath("//*[text()='Service Number:']//following::input[1]");
 
-	By Deallocate_Button = By.xpath("//input[@value='Deallocate']");
+	By Deallocate_Button = By.xpath("//input[@value='Deallocate' and @class='iceCmdBtn cmdBtn']");
 	By Find_Button = By.xpath("//input[@value='Find']");
 
 	By ServiceUsage_Select = By.xpath("//*[text()='Service Usage:']//following::select[1]");
@@ -86,7 +86,7 @@ public class CPExistingCustomer {
 	public boolean navigate() {
 		action.scrollUp();
 		action.waitFor(1);
-		
+
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare, 4, true);
