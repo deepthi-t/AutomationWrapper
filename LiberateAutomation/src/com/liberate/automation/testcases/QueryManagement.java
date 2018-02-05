@@ -29,7 +29,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot("amendQuery");
-		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A");
+		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A"); 
 		action.getScreenShot("amendQuery");
 		mq.verifyQuery();
 		action.getScreenShot("amendQuery");

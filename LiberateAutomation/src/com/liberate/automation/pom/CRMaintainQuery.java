@@ -82,7 +82,7 @@ public class CRMaintainQuery {
 		this.action = action;
 	}
 
-	public boolean navigate() {
+	public boolean navigate() { 
 		action.scrollUp();
 		action.waitFor(1);
 		
