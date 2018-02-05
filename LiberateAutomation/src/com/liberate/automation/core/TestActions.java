@@ -2,7 +2,10 @@ package com.liberate.automation.core;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -837,7 +840,31 @@ public class TestActions {
 	public void log(String message) {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+		String Log = sdf.format(date) + " : " + message;
 
-		System.out.println(sdf.format(date) + " : " + message);
+		System.out.println(Log);
+		logToFile(sdf.format(date).split("")[0].replace("/", "_").trim(), Log);
+	}
+
+	private void logToFile(String FileName, String Log) {
+
+		BufferedWriter bw = null;
+
+		try {
+			// APPEND MODE SET HERE
+			bw = new BufferedWriter(new FileWriter(FileName + "_log.txt", true));
+			bw.write(Log);
+			bw.newLine();
+			bw.flush();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} finally {
+			if (bw != null)
+				try {
+					bw.close();
+				} catch (IOException ioe2) {
+				}
+		}
+
 	}
 }
