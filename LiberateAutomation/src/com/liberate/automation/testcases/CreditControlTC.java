@@ -15,52 +15,60 @@ public class CreditControlTC {
 
 	@Test
 	public static void serviceBAR() {
+		String TestCase = "CreditControlTC_serviceBAR";
+		
 		String ServiceNumber = "9177243";
 
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
-		action.getScreenShot("serviceBAR");
+		action.getScreenShot(TestCase);
 		creditControl.searchWithServiceNumber(ServiceNumber);
-		action.getScreenShot("serviceBAR");
+		action.getScreenShot(TestCase);
 		creditControl.serviceBAR();
-		action.getScreenShot("serviceBAR");
+		action.getScreenShot(TestCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot("serviceBAR");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void serviceTOS() {
+		String TestCase = "CreditControlTC_serviceTOS";
+
 		String ServiceNumber = "9177243";
 
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
-		action.getScreenShot("serviceTOS");
+		action.getScreenShot(TestCase);
 		creditControl.searchWithServiceNumber(ServiceNumber);
-		action.getScreenShot("serviceTOS");
+		action.getScreenShot(TestCase);
 		creditControl.serviceTOS();
-		action.getScreenShot("serviceTOS");
+		action.getScreenShot(TestCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot("serviceTOS");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void serviceROS() {
+		String TestCase = "CreditControlTC_serviceROS";
+
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
-		action.getScreenShot("serviceROS");
+		action.getScreenShot(TestCase);
 		creditControl.searchWithServiceNumber("9177243");
-		action.getScreenShot("serviceROS");
+		action.getScreenShot(TestCase);
 		creditControl.serviceROS();
-		action.getScreenShot("serviceROS");
+		action.getScreenShot(TestCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot("serviceROS");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void serviceTOSVerifyAudit() {
+		String TestCase = "CreditControlTC_serviceTOSVerifyAudit";
+
 		/***
 		 * Working service number that needs to be TOSed
 		 */
@@ -72,34 +80,36 @@ public class CreditControlTC {
 		CRServiceOperations services = new CRServiceOperations(action);
 
 		creditControl.navigate();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		creditControl.searchWithServiceNumber(ServiceNumber);
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		creditControl.serviceTOS();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 
 		search.navigate();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		search.searchByServiceNumber(ServiceNumber);
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		dashboard.verifyDashBoard("");
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 
 		services.navigate();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		services.verifyServicesScreen();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		services.verifyAudit();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		services.verifyAuditTOSHistory();
-		action.getScreenShot("serviceTOSVerifyAudit");
+		action.getScreenShot(TestCase);
 		assertEquals(services.ServiceNumber, "T");
 	}
 
 	@Test
 	public static void serviceROSVerifyAudit() {
+		String TestCase = "CreditControlTC_serviceROSVerifyAudit";
+
 		/***
 		 * Working service number that needs to be TOSed
 		 */
@@ -111,29 +121,29 @@ public class CreditControlTC {
 		CRServiceOperations services = new CRServiceOperations(action);
 
 		creditControl.navigate();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		creditControl.searchWithServiceNumber(ServiceNumber);
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		creditControl.serviceROS();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 
 		search.navigate();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		search.searchByServiceNumber(ServiceNumber);
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		dashboard.verifyDashBoard("");
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 
 		services.navigate();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		services.verifyServicesScreen();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		services.verifyAudit();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		services.verifyAuditTOSHistory();
-		action.getScreenShot("serviceROSVerifyAudit");
+		action.getScreenShot(TestCase);
 		assertEquals(services.ServiceStatus, "W");
 	}
 }

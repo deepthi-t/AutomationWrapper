@@ -25,285 +25,321 @@ public class ManageServiceOrder {
 
 	@Test
 	public static void soEnquiry() {
+		String TestCase = "ManageServiceOrder_soEnquiry";
+
 		MSOEnquiry msr = new MSOEnquiry(action);
 		String serviceOrderNumber = "A00071A";
 
 		msr.navigate();
-		action.getScreenShot("soEnquiry");
+		action.getScreenShot(TestCase);
 		msr.searchServiceOrder(serviceOrderNumber);
-		action.getScreenShot("soEnquiry");
+		action.getScreenShot(TestCase);
 		msr.verifyServiceOrderDetails(serviceOrderNumber);
-		action.getScreenShot("soEnquiry");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void addSpecialInstructions() {
+		String TestCase = "ManageServiceOrder_addSpecialInstructions";
+
 		MSOAddSpecialInstructions mso = new MSOAddSpecialInstructions(action);
 		MSOEnquiry mse = new MSOEnquiry(action);
 
 		String serviceOrderNumber = "A00071A";
 
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mso.navigate();
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mso.searchServiceOrder(serviceOrderNumber);
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mso.verifyServiceOrderDetails();
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mso.addSpecialInstruction();
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mso.clickOnOKpopup();
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 
 		mse.navigate();
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mse.searchServiceOrder(serviceOrderNumber);
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mse.verifyServiceOrderDetails(serviceOrderNumber);
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 		mse.verifySepcialInstructions(mso.SpecialInstruction);
-		action.getScreenShot("addSpecialInstructions");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void addServiceCharge() {
+		String TestCase = "ManageServiceOrder_addServiceCharge";
+
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
 		String serviceOrderNumber = "WH00477";
 
 		msr.navigate();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.searchServiceOrder("RSNET", serviceOrderNumber);
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.verifyServiceOrderDetails();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.addServiceCharge();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.verifyServiceCharge(msr.ServiceCharge, true);
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void removeServiceCharge() {
+		String TestCase = "ManageServiceOrder_removeServiceCharge";
+
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
 		String serviceOrderNumber = "WH00477";
 
 		msr.navigate();
-		action.getScreenShot("removeServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.searchServiceOrder("RSNET", serviceOrderNumber);
-		action.getScreenShot("removeServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.verifyServiceOrderDetails();
-		action.getScreenShot("removeServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.deleteServiceCharge();
-		action.getScreenShot("removeServiceCharge");
+		action.getScreenShot(TestCase);
 		msr.verifyServiceCharge(msr.ServiceCharge, false);
-		action.getScreenShot("removeServiceCharge");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void cancelServiceOrder() {
+		String TestCase = "ManageServiceOrder_cancelServiceOrder";
+
 		MSOCancelServiceOrder msc = new MSOCancelServiceOrder(action);
 		MSOEnquiry mse = new MSOEnquiry(action);
 
 		msc.navigate();
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		msc.searchServiceOrder("", "");
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		msc.verifyServiceOrdeDetails(msc.ServiceOrderNumber);
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		msc.cancelServiceOrder();
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		msc.clickOnOKButton();
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 
 		mse.navigate();
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		mse.searchServiceOrder(msc.ServiceOrderNumber);
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		mse.verifyDepartmentCirculation();
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 		mse.getCurrentServiceOrderStatus();
-		action.getScreenShot("cancelServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void generalSignOffServiceOrder() {
+		String TestCase = "ManageServiceOrder_generalSignOffServiceOrder";
+
 		MSOSignoff mss = new MSOSignoff(action);
 
 		mss.navigate();
-		action.getScreenShot("generalSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("BGINS", "WI00720");
-		action.getScreenShot("generalSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("generalSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.generalSignOff();
-		action.getScreenShot("generalSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void accountSignOffServiceOrder() {
+		String TestCase = "ManageServiceOrder_accountSignOffServiceOrder";
+
 		MSOSignoff mss = new MSOSignoff(action);
 
 		mss.navigate();
-		action.getScreenShot("accountSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("AQSOF", "ZF00009");
-		action.getScreenShot("accountSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("accountSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.accountSignOff();
-		action.getScreenShot("accountSignOffServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void rejectServiceOrder() {
+		String TestCase = "ManageServiceOrder_rejectServiceOrder";
+
 		MSOReject mss = new MSOReject(action);
 
 		mss.navigate();
-		action.getScreenShot("rejectServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("BGSOF", "ZG00127");
-		action.getScreenShot("rejectServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("rejectServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.reject();
-		action.getScreenShot("rejectServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void releaseServiceOrder() {
+		String TestCase = "ManageServiceOrder_releaseServiceOrder";
+
 		MSORelease mss = new MSORelease(action);
 
 		mss.navigate();
-		action.getScreenShot("releaseServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("AQSOF", "A00173B");
-		action.getScreenShot("releaseServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("releaseServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.releaseServiceOrder();
-		action.getScreenShot("releaseServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void waitlistServiceOrder() {
+		String TestCase = "ManageServiceOrder_waitlistServiceOrder";
+
 		MSOWaitlist mss = new MSOWaitlist(action);
 
 		mss.navigate();
-		action.getScreenShot("waitlistServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("AQSOF", "YC00265");
-		action.getScreenShot("waitlistServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("waitlistServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.waitlistServiceOrder();
-		action.getScreenShot("waitlistServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void manualWaitlistReleaseServiceOrder() {
+		String TestCase = "ManageServiceOrder_manualWaitlistReleaseServiceOrder";
+
 		MSOManualWaitlistRelease mss = new MSOManualWaitlistRelease(action);
 
 		mss.navigate();
-		action.getScreenShot("manualWaitlistReleaseServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("RSNET", "ZC00213");
-		action.getScreenShot("manualWaitlistReleaseServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("manualWaitlistReleaseServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.manualWaitlistRelease();
-		action.getScreenShot("manualWaitlistReleaseServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void suspendSeviceOrder() {
+		String TestCase = "ManageServiceOrder_suspendSeviceOrder";
+
 		MSOSuspend mss = new MSOSuspend(action);
 
 		mss.navigate();
-		action.getScreenShot("suspendSeviceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("AQSOF", "YE00194");
-		action.getScreenShot("suspendSeviceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("suspendSeviceOrder");
+		action.getScreenShot(TestCase);
 		mss.suspendServiceOrder();
-		action.getScreenShot("suspendSeviceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void splitServiceOrder() {
+		String TestCase = "ManageServiceOrder_splitServiceOrder";
+
 		MSOSplit mss = new MSOSplit(action);
 
 		mss.navigate();
-		action.getScreenShot("splitServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("CRCL", "WI00204");
-		action.getScreenShot("splitServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("splitServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.splitServiceOrder();
-		action.getScreenShot("splitServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void assignServiceOrder() {
+		String TestCase = "ManageServiceOrder_assignServiceOrder";
+
 		MSOAssign mss = new MSOAssign(action);
 
 		mss.navigate();
-		action.getScreenShot("assignServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("RSNET", "ZA00103");
-		action.getScreenShot("assignServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("assignServiceOrder");
+		action.getScreenShot(TestCase);
 		mss.assignServiceOrder();
-		action.getScreenShot("assignServiceOrder");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void browseSO() {
+		String TestCase = "ManageServiceOrder_browseSO";
+
 		BrowseServiceOrder mss = new BrowseServiceOrder(action);
 
 		mss.navigate();
-		action.getScreenShot("browseSO");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("RSNET", "ZA00103");
-		action.getScreenShot("browseSO");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("browseSO");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void redirectSO() {
+		String TestCase = "ManageServiceOrder_redirectSO";
+
 		MSORedirect mss = new MSORedirect(action);
 
 		mss.navigate();
-		action.getScreenShot("redirectSO");
+		action.getScreenShot(TestCase);
 		mss.searchServiceOrder("BGCNG", "WI00650");
-		action.getScreenShot("redirectSO");
+		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
-		action.getScreenShot("redirectSO");
+		action.getScreenShot(TestCase);
 		mss.redirectServiceOrder();
-		action.getScreenShot("redirectSO");
+		action.getScreenShot(TestCase);
 		mss.validateMessage();
-		action.getScreenShot("redirectSO");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void allocateCopperRoute() {
+		String TestCase = "ManageServiceOrder_allocateCopperRoute";
+
 		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
 
 		arso.navigate();
-		action.getScreenShot("allocateCopperRoute");
+		action.getScreenShot(TestCase);
 		arso.searchServiceOrder("BGNET", "A00528F");
-		action.getScreenShot("allocateCopperRoute");
+		action.getScreenShot(TestCase);
 		arso.allocateAuto(CommonData.PlantItemType.CopperDP, "DP100");
-		action.getScreenShot("allocateCopperRoute");
+		action.getScreenShot(TestCase);
 		arso.verifyAutoAllocateRoute();
-		action.getScreenShot("allocateCopperRoute");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void allocateFiberRoute() {
+		String TestCase = "ManageServiceOrder_allocateFiberRoute";
+
 		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
 
 		arso.navigate();
-		action.getScreenShot("allocateFiberRoute");
+		action.getScreenShot(TestCase);
 		arso.searchServiceOrder("BGNET", "A00528F");
-		action.getScreenShot("allocateFiberRoute");
+		action.getScreenShot(TestCase);
 		arso.allocateAuto(CommonData.PlantItemType.FiberDP, "FDP2");
-		action.getScreenShot("allocateFiberRoute");
+		action.getScreenShot(TestCase);
 		arso.verifyAutoAllocateRoute();
-		action.getScreenShot("allocateFiberRoute");
+		action.getScreenShot(TestCase);
 	}
 }

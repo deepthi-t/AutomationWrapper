@@ -17,6 +17,8 @@ public class PaymentsTC {
 
 	@Test(priority = 3)
 	public static void batchPayment() {
+		String TestCase = "PaymentsTC_batchPayment";
+
 		ArrayList<String> accountNumber = new ArrayList<String>();
 
 		accountNumber.add("260002230000");
@@ -27,215 +29,231 @@ public class PaymentsTC {
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
-		action.getScreenShot("batchPayment");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH4");
-		action.getScreenShot("batchPayment");
+		action.getScreenShot(TestCase);
 
 		bp.navigate();
-		action.getScreenShot("batchPayment");
+		action.getScreenShot(TestCase);
 		bp.providePaymentDetails(accountNumber);
-		action.getScreenShot("batchPayment");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(priority = 1)
 	public static void verifyCashDrawer() {
+		String TestCase = "PaymentsTC_verifyCashDrawer";
+
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
-		action.getScreenShot("verifyCashDrawer");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH6");
-		action.getScreenShot("verifyCashDrawer");
+		action.getScreenShot(TestCase);
 
 		sp.navigate();
-		action.getScreenShot("verifyCashDrawer");
+		action.getScreenShot(TestCase);
 		sp.verifyCashDrawer();
-		action.getScreenShot("verifyCashDrawer");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(priority = 2)
 	public static void singlePaymentAccountNumber() {
+		String TestCase = "PaymentsTC_singlePaymentAccountNumber";
+
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
-		action.getScreenShot("singlePaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH4");
-		action.getScreenShot("singlePaymentAccountNumber");
+		action.getScreenShot(TestCase);
 
 		sp.navigate();
-		action.getScreenShot("singlePaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		sp.searchWithAccountNumber("260002230000");
-		action.getScreenShot("singlePaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		sp.doSinglePayment("10.00");
-		action.getScreenShot("singlePaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
-		action.getScreenShot("singlePaymentAccountNumber");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(enabled = false)
 	public static void depositPaymentAccountNumber() {
+		String TestCase = "PaymentsTC_depositPaymentAccountNumber";
+
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
-		action.getScreenShot("depositPaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH4");
-		action.getScreenShot("depositPaymentAccountNumber");
+		action.getScreenShot(TestCase);
 
 		sp.navigate();
-		action.getScreenShot("depositPaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		sp.searchWithAccountNumber("260002230000");
-		action.getScreenShot("depositPaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		sp.doDepositPayment("10.00");
-		action.getScreenShot("depositPaymentAccountNumber");
+		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
-		action.getScreenShot("depositPaymentAccountNumber");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(priority = 3)
 	public static void singlePaymentServicetNumber() {
+		String TestCase = "PaymentsTC_singlePaymentServicetNumber";
+
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
-		action.getScreenShot("singlePaymentServicetNumber");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH4");
-		action.getScreenShot("singlePaymentServicetNumber");
+		action.getScreenShot(TestCase);
 
 		sp.navigate();
-		action.getScreenShot("singlePaymentServicetNumber");
+		action.getScreenShot(TestCase);
 		sp.searchWithServiceNumber("4747623");
-		action.getScreenShot("singlePaymentServicetNumber");
+		action.getScreenShot(TestCase);
 		sp.doSinglePayment("10.00");
-		action.getScreenShot("singlePaymentServicetNumber");
+		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
-		action.getScreenShot("singlePaymentServicetNumber");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(enabled = false)
 	public static void depositPaymentServiceNumber() {
+		String TestCase = "PaymentsTC_depositPaymentServiceNumber";
+
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 
 		bso.navigate();
-		action.getScreenShot("depositPaymentServiceNumber");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH4");
-		action.getScreenShot("depositPaymentServiceNumber");
+		action.getScreenShot(TestCase);
 
 		sp.navigate();
-		action.getScreenShot("depositPaymentServiceNumber");
+		action.getScreenShot(TestCase);
 		sp.searchWithServiceNumber("556166");
-		action.getScreenShot("depositPaymentServiceNumber");
+		action.getScreenShot(TestCase);
 		sp.doDepositPayment("10.00");
-		action.getScreenShot("depositPaymentServiceNumber");
+		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
-		action.getScreenShot("depositPaymentServiceNumber");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(priority = 4)
 	public static void payAndRefundDeposit() {
+		String TestCase = "PaymentsTC_payAndRefundDeposit";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDepositRequirement cd = new CRDepositRequirement(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYSinglePayment sp = new PYSinglePayment(action);
 
 		cr.navigate();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002280000");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 
 		cd.navigate();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cd.verifyDepositRequirement();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cd.addNewDepositRequirement("10.00");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cd.verifyDepositRequirement();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 
 		bso.navigate();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH4");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 
 		sp.navigate();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		sp.searchWithAccountNumber("260002280000");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		sp.doDepositPayment("10.00");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 
 		cr.navigate();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002280000");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 
 		cd.navigate();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cd.verifyDepositRequirement();
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 		cd.refundDeposit("10.00");
-		action.getScreenShot("payAndRefundDeposit");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void depostitPaymentPOS() {
+		String TestCase = "PaymentsTC_depostitPaymentPOS";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDepositRequirement cd = new CRDepositRequirement(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYPOSPayment pos = new PYPOSPayment(action);
 
 		cr.navigate();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002280000");
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 
 		cd.navigate();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		cd.verifyDepositRequirement();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		cd.addNewDepositRequirement("10.00");
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		cd.verifyDepositRequirement();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 
 		bso.navigate();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH2");
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 
 		pos.navigate();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		pos.navigateToPOS();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 
 		pos.closePOSWindow();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void paymentPOS() {
+		String TestCase = "PaymentsTC_paymentPOS";
+
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYPOSPayment pos = new PYPOSPayment(action);
 
 		bso.navigate();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		bso.selectDepartment("CASH");
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 
 		pos.navigate();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		pos.navigateToPOS();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		pos.searchWithAccountNumber("260002270000");
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 		pos.POSPayment();
-		action.getScreenShot("depostitPaymentPOS");
+		action.getScreenShot(TestCase);
 
 		// pos.closePOSWindow();
-		// action.getScreenShot("depostitPaymentPOS");
+		// action.getScreenShot(TestCase);
 	}
 }

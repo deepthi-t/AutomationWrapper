@@ -13,43 +13,50 @@ public class VoidPayments {
 
 	@Test
 	public static void voidPayment() {
+		String TestCase = "VoidPayments_voidPayment";
+
 		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.PaymentNumber("9320148"), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.Search(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.EnterVoidReason("3"), true);
 		assertEquals(vp.Accept(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 	}
-
+	
+	@Test(enabled = false)
 	public static void voidPaymentReset() {
+		String TestCase = "VoidPayments_voidPaymentReset";
+
 		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.PaymentNumber("9320150"), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.Reset(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 
 	}
-
+	
+	@Test(enabled = false)
 	public static void newVoidPaymentCancel() {
+		String TestCase = "VoidPayments_newVoidPaymentCancel";
 
 		PYVoidPayment vp = new PYVoidPayment(action);
 
 		assertEquals(vp.navigate(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.PaymentNumber("9320150"), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.Search(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 		assertEquals(vp.Cancel(), true);
-		action.getScreenShot("VoidPayment");
+		action.getScreenShot(TestCase);
 	}
 
 }
