@@ -12,56 +12,64 @@ public class BulkSOProcessing {
 
 	@Test
 	public static void bulkCancel() {
+		String TestCase = "BulkSOProcessing_bulkCancel";
+
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
-		action.getScreenShot("bulkCancel");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.selectMultipleServiceOrder("BGNET", 2),true);
-		action.getScreenShot("bulkCancel");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.bulkCancel(),true);
-		action.getScreenShot("bulkCancel");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyBulkProcessing(),true);
 	}
 
 	@Test
 	public static void bulkSuspend() {
+		String TestCase = "BulkSOProcessing_bulkSuspend";
+
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
-		action.getScreenShot("bulkSuspend");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.selectMultipleServiceOrder("BGNET", 2),true);
-		action.getScreenShot("bulkSuspend");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.bulkSuspend(),true);
-		action.getScreenShot("bulkSuspend");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyBulkProcessing(),true);
-		action.getScreenShot("bulkSuspend");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void bulkAccountSignOff() {
+		String TestCase = "BulkSOProcessing_bulkAccountSignOff";
+
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
-		action.getScreenShot("bulkAccountSignOff");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.selectMultipleServiceOrder("AQSOF", 2),true);
-		action.getScreenShot("bulkAccountSignOff");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.bulkSignOff(),true);
-		action.getScreenShot("bulkAccountSignOff");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyBulkProcessing(),true);
-		action.getScreenShot("bulkAccountSignOff");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void bulkGeneralSignOff() {
+		String TestCase = "BulkSOProcessing_bulkGeneralSignOff";
+
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(),true);
-		action.getScreenShot("bulkGeneralSignOff");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.selectMultipleServiceOrder("BGINS", 2),true);
-		action.getScreenShot("bulkGeneralSignOff");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.bulkSignOff(),true);
-		action.getScreenShot("bulkGeneralSignOff");
+		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyBulkProcessing(),true);
-		action.getScreenShot("bulkGeneralSignOff");
+		action.getScreenShot(TestCase);
 	}
 }

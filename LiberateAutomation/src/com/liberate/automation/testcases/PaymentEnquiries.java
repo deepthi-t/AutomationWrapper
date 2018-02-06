@@ -13,16 +13,18 @@ public class PaymentEnquiries {
 
 	@Test
 	public static void searchWithAccountNumber() {
+		String TestCase = "PaymentEnquiries_searchWithAccountNumber";
+
 		PYPaymentEnquiriesPOM pe = new PYPaymentEnquiriesPOM(action);
 
-		action.getScreenShot("PaymentEnquiries");
+		action.getScreenShot(TestCase);
 		assertEquals(pe.navigate(), true);
-		action.getScreenShot("PaymentEnquiries");
+		action.getScreenShot(TestCase);
 		assertEquals(pe.paymentEnquiryWithAccountNumber("260002280000"), true);
-		action.getScreenShot("PaymentEnquiries");
+		action.getScreenShot(TestCase);
 		String acctnum = action
 				.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]"));
-		action.getScreenShot("PaymentEnquiries");
+		action.getScreenShot(TestCase);
 		System.out.println("Searched Account number is" + " " + acctnum);
 		if (acctnum.equals("260002280000")) {
 			System.out.println("Test passed");
@@ -34,35 +36,35 @@ public class PaymentEnquiries {
 	 * @Test public static void searchWithPaymentNumber() { PaymentEnquiriesPOM
 	 * pe=new PaymentEnquiriesPOM(action);
 	 * 
-	 * action.getScreenShot("PaymentEnquiries"); assertEquals(pe.navigate(),true);
-	 * action.getScreenShot("PaymentEnquiries");
+	 * action.getScreenShot(TestCase); assertEquals(pe.navigate(),true);
+	 * action.getScreenShot(TestCase);
 	 * assertEquals(pe.paymentEnquiryWithPaymentNo("9320150"),true);
-	 * action.getScreenShot("PaymentEnquiries"); String paymntnum =
+	 * action.getScreenShot(TestCase); String paymntnum =
 	 * action.getTextFromPage(By.xpath(
 	 * "//*[@class='icePnlGrp']/div[2]/div[2]/table[1]/tbody[1]/tr[2]/td[2]/span"));
-	 * action.getScreenShot("PaymentEnquiries");
+	 * action.getScreenShot(TestCase);
 	 * System.out.println("Searched Payment number is"+" "+paymntnum); }
 	 * 
 	 * 
 	 * @Test public static void SearchWithServiceOrderNumber() { PaymentEnquiriesPOM
 	 * pe=new PaymentEnquiriesPOM(action);
 	 * 
-	 * action.getScreenShot("PaymentEnquiries"); assertEquals(pe.navigate(),true);
-	 * action.getScreenShot("PaymentEnquiries");
+	 * action.getScreenShot(TestCase); assertEquals(pe.navigate(),true);
+	 * action.getScreenShot(TestCase);
 	 * assertEquals(pe.paymentEnquiryWithServiceOrderNo(""),true);
-	 * action.getScreenShot("PaymentEnquiries"); }
+	 * action.getScreenShot(TestCase); }
 	 * 
 	 * @Test public static void accountDetailsForSearchedPayment() {
 	 * PaymentEnquiriesPOM pe=new PaymentEnquiriesPOM(action);
 	 * 
-	 * action.getScreenShot("PaymentEnquiries"); assertEquals(pe.navigate(),true);
-	 * action.getScreenShot("PaymentEnquiries");
+	 * action.getScreenShot(TestCase); assertEquals(pe.navigate(),true);
+	 * action.getScreenShot(TestCase);
 	 * assertEquals(pe.paymentEnquiryWithPaymentNo("9320150"),true);
-	 * action.getScreenShot("PaymentEnquiries"); String acctDetailsPanelName =
+	 * action.getScreenShot(TestCase); String acctDetailsPanelName =
 	 * action.getTextFromPage(By.xpath("//*[text()='Account Payment Details']"));
 	 * String customerdetail =
 	 * action.getTextFromPage(By.xpath("//*[text()='Account Payment Details']"));
-	 * action.getScreenShot("PaymentEnquiries");
+	 * action.getScreenShot(TestCase);
 	 * System.out.println(acctDetailsPanelName+" "+customerdetail);
 	 * 
 	 * }

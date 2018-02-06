@@ -13,17 +13,19 @@ public class BadChequeProcessing {
 
 	@Test
 	public static void badCheckProcessing() {
+		String TestCase = "BadChequeProcessing_badCheckProcessing";
+
 		PYBadCheckProcessing bcp = new PYBadCheckProcessing(action);
 
 		assertEquals(bcp.navigate(), true);
-		action.getScreenShot("BadCheckProcessing");
+		action.getScreenShot(TestCase);
 		assertEquals(bcp.SearchWithPaymentNumber("9264886"), true);
-		action.getScreenShot("BadCheckProcessing");
+		action.getScreenShot(TestCase);
 		assertEquals(bcp.openChequeDetails(), true);
-		action.getScreenShot("BadCheckProcessing");
+		action.getScreenShot(TestCase);
 		assertEquals(bcp.provideChequeCardDetails(), true);
-		action.getScreenShot("BadCheckProcessing");
+		action.getScreenShot(TestCase);
 		assertEquals(bcp.acceptBadChequeProcessing(), true);
-		action.getScreenShot("BadCheckProcessing");
+		action.getScreenShot(TestCase);
 	}
 }

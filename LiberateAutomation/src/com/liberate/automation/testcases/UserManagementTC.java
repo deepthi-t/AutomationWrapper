@@ -11,50 +11,58 @@ public class UserManagementTC {
 
 	@Test
 	public static void amendUser() {
+		String TestCase = "UserManagementTC_amendUser";
+
 		ADManageUser adm = new ADManageUser(action);
 
 		adm.navigate();
-		action.getScreenShot("amendUser");
+		action.getScreenShot(TestCase);
 		adm.searchByUserName("ASDASEXC.DSFSDFSDF");
-		action.getScreenShot("amendUser");
+		action.getScreenShot(TestCase);
 		adm.amendUser();
-		action.getScreenShot("amendUser");
+		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
-		action.getScreenShot("amendUser");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void deleteUser() {
+		String TestCase = "UserManagementTC_deleteUser";
+
 		ADManageUser adm = new ADManageUser(action);
 
 		adm.navigate();
-		action.getScreenShot("deleteUser");
+		action.getScreenShot(TestCase);
 		adm.searchByUserName("COM3_CRUSHER");
-		action.getScreenShot("deleteUser");
+		action.getScreenShot(TestCase);
 		adm.deleteUser();
-		action.getScreenShot("deleteUser");
+		action.getScreenShot(TestCase);
 		adm.verifyDelete();
-		action.getScreenShot("deleteUser");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void copyUser() {
+		String TestCase = "UserManagementTC_copyUser";
+
 		ADManageUser adm = new ADManageUser(action);
 
 		adm.navigate();
-		action.getScreenShot("copyUser");
+		action.getScreenShot(TestCase);
 		adm.searchByUserName("ASDASEXC.DSFSDFSDF");
-		action.getScreenShot("copyUser");
+		action.getScreenShot(TestCase);
 		adm.copyUser("99999");
-		action.getScreenShot("copyUser");
+		action.getScreenShot(TestCase);
 		adm.verifyCopyUser();
-		action.getScreenShot("copyUser");
+		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
-		action.getScreenShot("copyUser");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void createUser() {
+		String TestCase = "UserManagementTC_createUser";
+
 		ADManageUser adm = new ADManageUser(action);
 		ADMaintainEmployee ade = new ADMaintainEmployee(action);
 
@@ -63,12 +71,12 @@ public class UserManagementTC {
 		ade.createNewEmployee();
 
 		adm.navigate();
-		action.getScreenShot("createUser");
+		action.getScreenShot(TestCase);
 		adm.searchByUserName("");
-		action.getScreenShot("createUser");
+		action.getScreenShot(TestCase);
 		adm.createUser(ade.EmployeeID, ade.VMSUserName);
-		action.getScreenShot("createUser");
+		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
-		action.getScreenShot("createUser");
+		action.getScreenShot(TestCase);
 	}
 }

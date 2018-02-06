@@ -16,231 +16,256 @@ public class CustomerEnquiryTC {
 
 	@Test(priority = 1)
 	public static void verifyCustomerEnquiry() {
+		String TestCase = "CustomerEnquiryTC_verifyCustomerEnquiry";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot("verifyCustomerEnquiry");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("verifyCustomerEnquiry");
+		action.getScreenShot(TestCase);
 		cd.navigate();
-		action.getScreenShot("verifyCustomerEnquiry");
+		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("260002260000");
-		action.getScreenShot("verifyCustomerEnquiry");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void customerEnquiryWithID() {
+		String TestCase = "CustomerEnquiryTC_customerEnquiryWithID";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot("customerEnquiryWithID");
+		action.getScreenShot(TestCase);
 		cr.searchByID("NI", "FN9ONJ2S3RPN ");
-		action.getScreenShot("customerEnquiryWithID");
+		action.getScreenShot(TestCase);
 		cd.navigate();
-		action.getScreenShot("customerEnquiryWithID");
+		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("");
-		action.getScreenShot("customerEnquiryWithID");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void customerEnquiryWithSurname() {
+		String TestCase = "CustomerEnquiryTC_customerEnquiryWithSurname";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot("customerEnquiryWithSurname");
+		action.getScreenShot(TestCase);
 		cr.searchBySurname("bmv8h36pneou");
-		action.getScreenShot("customerEnquiryWithSurname");
+		action.getScreenShot(TestCase);
 		cd.navigate();
-		action.getScreenShot("customerEnquiryWithSurname");
+		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("");
-		action.getScreenShot("customerEnquiryWithSurname");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(priority = 2)
 	public static void amendAccountDetails() {
+		String TestCase = "CustomerEnquiryTC_amendAccountDetails";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot("amendAccountDetails");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002270000");
-		action.getScreenShot("amendAccountDetails");
+		action.getScreenShot(TestCase);
 		cd.navigate();
-		action.getScreenShot("amendAccountDetails");
+		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("260002270000");
-		action.getScreenShot("amendAccountDetails");
+		action.getScreenShot(TestCase);
 
 		cd.amendAccount();
-		action.getScreenShot("amendAccountDetails");
+		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("260002270000");
-		action.getScreenShot("amendAccountDetails");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test(priority = 3)
 	public static void amendDayOfBilling() {
+		String TestCase = "CustomerEnquiryTC_amendDayOfBilling";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRCustomerDetails cu = new CRCustomerDetails(action);
 
 		cr.navigate();
-		action.getScreenShot("amendDayOfBilling");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002320000");
-		action.getScreenShot("amendDayOfBilling");
+		action.getScreenShot(TestCase);
 
 		cu.navigate();
-		action.getScreenShot("amendDayOfBilling");
+		action.getScreenShot(TestCase);
 		cu.validateGeneralDetails();
-		action.getScreenShot("amendDayOfBilling");
+		action.getScreenShot(TestCase);
 		cu.amendDayOfBilling();
-		action.getScreenShot("amendDayOfBilling");
+		action.getScreenShot(TestCase);
 		cu.validatedayOfBilling();
-		action.getScreenShot("amendDayOfBilling");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void raiseAdjustment() {
+		String TestCase = "CustomerEnquiryTC_raiseAdjustment";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
 
 		cr.navigate();
-		action.getScreenShot("addAdjustment");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("addAdjustment");
+		action.getScreenShot(TestCase);
 
 		ad.navigate();
-		action.getScreenShot("addAdjustment");
+		action.getScreenShot(TestCase);
 		ad.raiseAjustment();
-		action.getScreenShot("addAdjustment");
+		action.getScreenShot(TestCase);
 		ad.verifyRaiseAdjustment();
-		action.getScreenShot("addAdjustment");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void verifyAdjustment() {
+		String TestCase = "CustomerEnquiryTC_verifyAdjustment";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
 
 		cr.navigate();
-		action.getScreenShot("verifyAdjustment");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("verifyAdjustment");
+		action.getScreenShot(TestCase);
 
 		ad.navigate();
-		action.getScreenShot("verifyAdjustment");
+		action.getScreenShot(TestCase);
 		ad.verifyAdjustmenst();
-		action.getScreenShot("verifyAdjustment");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void addServiceCharge() {
+		String TestCase = "CustomerEnquiryTC_addServiceCharge";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
 
 		cr.navigate();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 
 		ad.navigate();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		ad.addServiceCharge();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 		ad.verifyRaisedServiceCharge();
-		action.getScreenShot("addServiceCharge");
+		action.getScreenShot(TestCase);
 
 	}
 
 	@Test
 	public static void verifySericeChargeServiceNumber() {
+		String TestCase = "CustomerEnquiryTC_verifySericeChargeServiceNumber";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
 
 		cr.navigate();
-		action.getScreenShot("verifySericeChargeServiceNumber");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("verifySericeChargeServiceNumber");
+		action.getScreenShot(TestCase);
 
 		ad.navigate();
-		action.getScreenShot("verifySericeChargeServiceNumber");
+		action.getScreenShot(TestCase);
 		ad.searchWithServiceNumber();
-		action.getScreenShot("verifySericeChargeServiceNumber");
+		action.getScreenShot(TestCase);
 		ad.verifyServiceCharge();
-		action.getScreenShot("verifySericeChargeServiceNumber");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void verifySericeChargeAccount() {
+		String TestCase = "CustomerEnquiryTC_verifySericeChargeAccount";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
 
 		cr.navigate();
-		action.getScreenShot("verifySericeChargeAccount");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("verifySericeChargeAccount");
+		action.getScreenShot(TestCase);
 
 		ad.navigate();
-		action.getScreenShot("verifySericeChargeAccount");
+		action.getScreenShot(TestCase);
 		ad.verifyServiceCharge();
-		action.getScreenShot("verifySericeChargeAccount");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void verifyBills() {
 		// Should be executed in S10
+		String TestCase = "CustomerEnquiryTC_verifyBills";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRBills cb = new CRBills(action);
 
 		cr.navigate();
-		action.getScreenShot("verifyBills");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("150303960000");
-		action.getScreenShot("verifyBills");
+		action.getScreenShot(TestCase);
 
 		cb.navigate();
-		action.getScreenShot("verifyBills");
+		action.getScreenShot(TestCase);
 		cb.verifyBill();
-		action.getScreenShot("verifyBills");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void addNominatedNumPricingPlan() {
+		String TestCase = "CustomerEnquiryTC_addNominatedNumPricingPlan";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
 
 		cr.navigate();
-		action.getScreenShot("addNominatedNumPricingPlan");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("260002260000");
-		action.getScreenShot("addNominatedNumPricingPlan");
+		action.getScreenShot(TestCase);
 
 		cp.navigate();
-		action.getScreenShot("addNominatedNumPricingPlan");
+		action.getScreenShot(TestCase);
 		cp.searchPricingPlan("AC+NN");
-		action.getScreenShot("addNominatedNumPricingPlan");
+		action.getScreenShot(TestCase);
 		cp.addPricingPlan();
-		action.getScreenShot("addNominatedNumPricingPlan");
+		action.getScreenShot(TestCase);
 		cp.validatePricingPlan();
-		action.getScreenShot("addNominatedNumPricingPlan");
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void addCUGPricingPlan() {
+		String TestCase = "CustomerEnquiryTC_addCUGPricingPlan";
+
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
 
 		cr.navigate();
-		action.getScreenShot("addCUGPricingPlan");
+		action.getScreenShot(TestCase);
 		cr.searchByAccountNumber("280000380000");
-		action.getScreenShot("addCUGPricingPlan");
+		action.getScreenShot(TestCase);
 
 		cp.navigate();
-		action.getScreenShot("addCUGPricingPlan");
+		action.getScreenShot(TestCase);
 		cp.searchPricingPlan("CUG");
-		action.getScreenShot("addCUGPricingPlan");
+		action.getScreenShot(TestCase);
 		cp.addPricingPlan();
-		action.getScreenShot("addCUGPricingPlan");
+		action.getScreenShot(TestCase);
 		cp.validatePricingPlan();
-		action.getScreenShot("addCUGPricingPlan");
+		action.getScreenShot(TestCase);
 	}
 }
