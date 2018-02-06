@@ -19,7 +19,7 @@ public class PYBadCheckProcessing {
 	By Cancel_Button = By.xpath("//input[@value = 'Cancel']");
 
 	By ChequeCard_Input = By.xpath("//*[text()='Cheque/Card:']/following::input[1]");
-	//If Desabled skip editing.
+	// If Desabled skip editing.
 	By ChequeCardDisabled_Input = By.xpath("//*[text()='Cheque/Card:']/following::input[@disabled='true']");
 
 	By Reason_DropDowmn = By.xpath("//*[text()='Reason:']/following::select[1]");
@@ -44,7 +44,7 @@ public class PYBadCheckProcessing {
 	public boolean navigate() {
 		action.scrollUp();
 		action.waitFor(1);
-		
+
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.Orders, 4, true);
@@ -68,7 +68,7 @@ public class PYBadCheckProcessing {
 		passed = action.waitFor(PaymentNumber_Input, 4, true);
 		passed = action.sendDataTo(PaymentNumber_Input, PaymentNumber);
 		passed = action.clickOn(Search_Button);
-		
+
 		return passed;
 	}
 
@@ -87,31 +87,44 @@ public class PYBadCheckProcessing {
 	}
 
 	public boolean provideChequeCardDetails() {
+		String Amount = "";
+
+		/***
+		 * Append by [count]//td[4]//span for Apportion Amount Append by
+		 * [count]//td[5]//input for Apportion Input
+		 */
+		By Apportion_Table = By.xpath("//tbody[@id='badChequeProcessing:paymentChequeDetails:tbody']//tr");
+
 		boolean passed = false;
 
 		passed = action.waitFor(Reason_DropDowmn, 2, true);
-		
-		if(action.countOf(ChequeCardDisabled_Input)==0)
-		{
+
+		if (action.countOf(ChequeCardDisabled_Input) == 0) {
 			passed = action.sendDataTo(ChequeCard_Input, "3123342242124124");
 		}
+
 		passed = action.selectBy(Reason_DropDowmn, 1);
 		action.waitFor(1);
+
+		for (int i = 0; i < action.countOf(Apportion_Table); i++) {
+			Amount = action
+					.getTextFromPage(By.xpath(action.getXpath(Apportion_Table) + "[" + (i + 1) + "]//td[4]//span"));
+			action.sendDataTo(By.xpath(action.getXpath(Apportion_Table) + "[" + (i + 1) + "]//td[5]//input"), Amount);
+		}
+
 		passed = action.clickOn(Accept_Button);
-		
+
 		return passed;
 	}
 
-	public  boolean acceptBadChequeProcessing()
-	{
+	public boolean acceptBadChequeProcessing() {
 		boolean passed = false;
-		
+
 		passed = action.waitFor(ReasonDisabled_DropDown, 3, true);
 		action.waitFor(2);
 		passed = action.clickOn(Accept_Button);
-		
+
 		return passed;
 	}
-	
 
 }

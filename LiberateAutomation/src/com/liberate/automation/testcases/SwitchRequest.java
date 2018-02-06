@@ -16,7 +16,7 @@ public class SwitchRequest {
 	@Test(enabled = false)
 	public static void MonitorNewSwitchRequest() {
 		String TestCase = "SwitchRequest_MonitorNewSwitchRequest";
-		
+
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
 
 		assertEquals(msr.navigate(), true);
@@ -27,7 +27,7 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);
-		
+
 		ReportGenerator.generateReport(TestCase);
 	}
 
@@ -70,7 +70,7 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);
-		
+
 		ReportGenerator.generateReport(TestCase);
 	}
 
@@ -92,7 +92,7 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);
-		
+
 		ReportGenerator.generateReport(TestCase);
 	}
 }

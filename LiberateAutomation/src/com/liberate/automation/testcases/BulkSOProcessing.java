@@ -23,6 +23,7 @@ public class BulkSOProcessing {
 		assertEquals(msr.bulkCancel(),true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyBulkProcessing(),true);
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
