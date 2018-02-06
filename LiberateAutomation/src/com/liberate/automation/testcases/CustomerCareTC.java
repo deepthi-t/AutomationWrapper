@@ -56,7 +56,9 @@ public class CustomerCareTC {
 	@Test
 	public static void suspendService() {
 		String TestCase = "CustomerCareTC_suspendService";
-
+		
+		String ServiceOrderNumber = "";
+		
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -79,11 +81,18 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 		assertEquals(cso.getSOCommand(), "TOS");
 		action.getScreenShot(TestCase);
+		
+		ServiceOrderNumber = cso.getSONumber();
+		
+		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
+		action.getScreenShot(TestCase);
 	}
 
 	@Test
 	public static void restoreService() {
 		String TestCase = "CustomerCareTC_restoreService";
+		
+		String ServiceOrderNumber = "";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
@@ -108,6 +117,11 @@ public class CustomerCareTC {
 		serviceOrder.filterByServiceOrder(service.RaisedServiceOrder);
 		action.getScreenShot(TestCase);
 		assertEquals(serviceOrder.getSOCommand(), "ROS");
+		action.getScreenShot(TestCase);
+		
+		ServiceOrderNumber = serviceOrder.getSONumber();
+		
+		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 	}
 

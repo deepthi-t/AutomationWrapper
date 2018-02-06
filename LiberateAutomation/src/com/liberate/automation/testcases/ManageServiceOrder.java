@@ -1,8 +1,12 @@
 package com.liberate.automation.testcases;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 import com.liberate.automation.common.CommonData;
+import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AllocateRouteServiceOrder;
 import com.liberate.automation.pom.BrowseServiceOrder;
@@ -341,5 +345,25 @@ public class ManageServiceOrder {
 		action.getScreenShot(TestCase);
 		arso.verifyAutoAllocateRoute();
 		action.getScreenShot(TestCase);
+	}
+
+	public static void signOffCompletely(String ServiceOrder)
+	{
+		List<String> Department = new ArrayList<String>();
+		
+		MSOEnquiry enquiry = new MSOEnquiry(action);
+		MSOSignoff signoff = new MSOSignoff(action);
+		
+		enquiry.navigate();
+		enquiry.searchServiceOrder(ServiceOrder);
+		enquiry.verifyDepartmentCirculation();
+		Department = enquiry.getCurrentDepartments();
+		
+		signoff.navigate();
+		for(int i = 0; i < Department.size(); i++)
+		{
+			CommonPanel.ServiceOrder.Search(action, Department.get(i), ServiceOrder);
+			signoff.accountSignOff();
+		}
 	}
 }

@@ -138,7 +138,9 @@ public class CommonPanel {
 		 */
 		public static boolean Search(TestActions action, String department, String ServiceOrderNumber) {
 			boolean passed = false;
-
+			
+			passed = action.waitFor(ServiceOrder_Input, 5, true);
+			
 			passed = selectDepartment(action, department);
 
 			passed = action.sendDataTo(ServiceOrder_Input, ServiceOrderNumber);
