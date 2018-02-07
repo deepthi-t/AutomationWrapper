@@ -15,7 +15,7 @@ import com.liberate.automation.pom.SalesSignOff;
 
 public class CustomerCareTC {
 	static TestActions action = CommonLogin.action;
-	
+
 	@Test
 	public static void generateInterimBill() {
 		String TestCase = "CustomerCareTC_generateInterimBill";
@@ -56,9 +56,9 @@ public class CustomerCareTC {
 	@Test
 	public static void suspendService() {
 		String TestCase = "CustomerCareTC_suspendService";
-		
+
 		String ServiceOrderNumber = "";
-		
+
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
@@ -81,9 +81,9 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 		assertEquals(cso.getSOCommand(), "TOS");
 		action.getScreenShot(TestCase);
-		
+
 		ServiceOrderNumber = cso.getSONumber();
-		
+
 		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 	}
@@ -91,7 +91,7 @@ public class CustomerCareTC {
 	@Test
 	public static void restoreService() {
 		String TestCase = "CustomerCareTC_restoreService";
-		
+
 		String ServiceOrderNumber = "";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
@@ -118,13 +118,14 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 		assertEquals(serviceOrder.getSOCommand(), "ROS");
 		action.getScreenShot(TestCase);
-		
+
 		ServiceOrderNumber = serviceOrder.getSONumber();
-		
+
 		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void alterServiceNumberPCL() {
 		String TestCase = "CustomerCareTC_alterServiceNumberPCL";
 
@@ -153,6 +154,7 @@ public class CustomerCareTC {
 
 	}
 
+	@Test
 	public static void alterServiceNumberPCLServiceCharge() {
 		String TestCase = "CustomerCareTC_alterServiceNumberPCLServiceCharge";
 
@@ -179,6 +181,7 @@ public class CustomerCareTC {
 
 	}
 
+	@Test
 	public static void ceaseServiceNumberPCL() {
 		String TestCase = "CustomerCareTC_ceaseServiceNumberPCL";
 
@@ -206,6 +209,7 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void ceaseServiceNumberPCLServiceCharge() {
 		String TestCase = "CustomerCareTC_ceaseServiceNumberPCLServiceCharge";
 
@@ -252,6 +256,7 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void provideProduct() {
 		String TestCase = "CustomerCareTC_provideProduct";
 
@@ -259,11 +264,11 @@ public class CustomerCareTC {
 		String Department = "BGSAL";
 		String Site = "BUSG";
 		String Command = "PCA";
-		
+
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
-		
+
 		search.navigate();
 		action.getScreenShot(TestCase);
 		search.searchByServiceNumber(ServiceNumber);
@@ -281,18 +286,19 @@ public class CustomerCareTC {
 		sales.signOff();
 		action.getScreenShot(TestCase);
 	}
-	
+
+	@Test
 	public static void ceaseProduct() {
 		String TestCase = "CustomerCareTC_ceaseProduct";
 
 		String ServiceNumber = "2581979";
 		String Department = "BGSAL";
 		String Site = "BUSG";
-		
+
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
-		
+
 		search.navigate();
 		action.getScreenShot(TestCase);
 		search.searchByServiceNumber(ServiceNumber);
@@ -310,19 +316,19 @@ public class CustomerCareTC {
 		sales.signOff();
 		action.getScreenShot(TestCase);
 	}
-	
+
 	public static void cloneCustomer() {
 		String TestCase = "CustomerCareTC_cloneCustomer";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRDashBoard dashboard = new CRDashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
-		
+
 		search.navigate();
 		action.getScreenShot(TestCase);
 		search.searchByAccountNumber("260002270000");
 		action.getScreenShot(TestCase);
-		
+
 		dashboard.verifyDashBoard("260002270000");
 		action.getScreenShot(TestCase);
 
@@ -333,19 +339,20 @@ public class CustomerCareTC {
 		accountDetails.verifySuccessMessage();
 		action.getScreenShot(TestCase);
 	}
-	
+
+	@Test
 	public static void cloneAccount() {
 		String TestCase = "CustomerCareTC_cloneAccount";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRDashBoard dashboard = new CRDashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
-		
+
 		search.navigate();
 		action.getScreenShot(TestCase);
 		search.searchByAccountNumber("260002270000");
 		action.getScreenShot(TestCase);
-		
+
 		dashboard.verifyDashBoard("260002270000");
 		action.getScreenShot(TestCase);
 
@@ -356,19 +363,20 @@ public class CustomerCareTC {
 		accountDetails.verifySuccessMessage();
 		action.getScreenShot(TestCase);
 	}
-	
+
+	@Test
 	public static void createSubAccount() {
 		String TestCase = "CustomerCareTC_createSubAccount";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRDashBoard dashboard = new CRDashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
-		
+
 		search.navigate();
 		action.getScreenShot(TestCase);
 		search.searchByAccountNumber("260002270000");
 		action.getScreenShot(TestCase);
-		
+
 		dashboard.verifyDashBoard("260002270000");
 		action.getScreenShot(TestCase);
 

@@ -1,5 +1,7 @@
 package com.liberate.automation.testcases;
 
+import org.testng.annotations.Test;
+
 import com.liberate.automation.common.CommonData;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AddMore;
@@ -11,6 +13,7 @@ import com.liberate.automation.pom.SalesSignOff;
 public class ServiceProvisioningTC {
 	static TestActions action = CommonLogin.action;
 
+	@Test
 	public static void newCustomerPEL() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPEL";
 
@@ -69,6 +72,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void existingCustomerPEL() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPEL";
 
@@ -110,6 +114,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void existingCustomerPCLPostpaid() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
 
@@ -150,6 +155,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void newCustomerPCLPostpaid() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
 
@@ -206,6 +212,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void newCustomerPCLCreditLimit() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
 
@@ -260,6 +267,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void existingCustomerPDL() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPDL";
 
@@ -295,6 +303,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void existingCustomerPTV() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPTV";
 
@@ -332,6 +341,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void existingCustomerIPTV() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerIPTV";
 
@@ -369,6 +379,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void existingCustomerARN() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerARN";
 
@@ -405,6 +416,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void newCustomerPELandPDL() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPELandPDL";
 
@@ -475,6 +487,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void addMorePELandPDL() {
 		String TestCase = "ServiceProvisioningTC_addMorePELandPDL";
 
@@ -537,6 +550,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 	}
 
+	@Test
 	public static void addMorePELandPCL() {
 		String TestCase = "ServiceProvisioningTC_addMorePELandPCL";
 
