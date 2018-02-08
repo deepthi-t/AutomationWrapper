@@ -226,6 +226,7 @@ public class ManageSwitchRequest {
 
 		passed = action.typeDataTo(StartDate_Input, StartDate);
 		passed = action.typeDataTo(EndDate_Input, EndDate);
+		action.clickOn(StartDate_Input);
 
 		passed = action.clickOn(SearchButton);
 
