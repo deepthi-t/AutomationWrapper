@@ -2,9 +2,11 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.BrowseServiceOrder;
 
 public class BulkSOProcessing {
@@ -13,6 +15,13 @@ public class BulkSOProcessing {
 	static String networkDepartment = "BGNET";
 	static String generalDepartment = "BGINS";
 	static String accountDepartment = "AQSOF";
+
+	@BeforeClass
+	public static void loadData() {
+		networkDepartment = TestData.getData("networkDepartment");
+		generalDepartment = TestData.getData("generalDepartment");
+		accountDepartment = TestData.getData("accountDepartment");
+	}
 
 	@Test
 	public static void bulkCancel() {
