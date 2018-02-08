@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceOperations;
@@ -13,7 +14,7 @@ import com.liberate.automation.pom.CCCreditControlService;
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 	
-	static String serviceNumber = "9174085";
+	static String creditControlServiceNumber = TestData.getData("creditControlServiceNumber");;
 	
 	@Test(priority = 0)
 	public static void serviceBAR() {
@@ -23,7 +24,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(serviceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceBAR();
 		action.getScreenShot(TestCase);
@@ -39,7 +40,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(serviceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceTOS();
 		action.getScreenShot(TestCase);
@@ -55,7 +56,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(serviceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceROS();
 		action.getScreenShot(TestCase);
@@ -74,7 +75,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(serviceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceTOS();
 		action.getScreenShot(TestCase);
@@ -83,7 +84,7 @@ public class CreditControlTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByServiceNumber(serviceNumber);
+		search.searchByServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		dashboard.verifyDashBoard("");
 		action.getScreenShot(TestCase);
@@ -110,7 +111,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(serviceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceROS();
 		action.getScreenShot(TestCase);
@@ -119,7 +120,7 @@ public class CreditControlTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByServiceNumber(serviceNumber);
+		search.searchByServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		dashboard.verifyDashBoard("");
 		action.getScreenShot(TestCase);

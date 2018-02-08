@@ -2,19 +2,29 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.ManageSwitchRequest;
 
 public class SwitchRequest {
 	static TestActions action = CommonLogin.action;
 
-	static String employeeID = "99999";
-	static String time = "23:30";
-	static String accountNumber = "260002430000";
+	static String employeeID = "";
+	static String switchRequestTime = "";
+	static String switchRequestAccountNumber = "";
 
+	@BeforeClass
+	public static void loadTestData()
+	{
+		SwitchRequest.employeeID = TestData.getData("employeeID");;
+		SwitchRequest.switchRequestTime = TestData.getData("switchRequestTime");
+		SwitchRequest.switchRequestAccountNumber = TestData.getData("switchRequestAccountNumber");
+	}
+	
 	@Test
 	public static void MonitorNewSwitchRequest() {
 		String TestCase = "SwitchRequest_MonitorNewSwitchRequest";
@@ -26,7 +36,7 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 		assertEquals(msr.selectMonitorNewSwitchRequests(), true);
 		action.getScreenShot(TestCase);
-		assertEquals(msr.monitorNewSwitchRequests_Search(employeeID, time), true);
+		assertEquals(msr.monitorNewSwitchRequests_Search(employeeID, switchRequestTime), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);
@@ -67,7 +77,7 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 		assertEquals(msr.selectQuerybyAcctServiceOrderServiceCommand(), true);
 		action.getScreenShot(TestCase);
-		assertEquals(msr.queryByCustomerDetails(accountNumber, "", "", ""), true);
+		assertEquals(msr.queryByCustomerDetails(switchRequestAccountNumber, "", "", ""), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);

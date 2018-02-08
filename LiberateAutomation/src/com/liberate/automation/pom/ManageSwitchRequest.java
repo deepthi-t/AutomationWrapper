@@ -2,7 +2,6 @@ package com.liberate.automation.pom;
 
 import org.openqa.selenium.By;
 
-import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
@@ -84,8 +83,6 @@ public class ManageSwitchRequest {
 		passed = action.clickOn(LiberateCommon.LevelOne.Orders);
 		passed = action.waitFor(LiberateCommon.Orders.SwitchRequests, 4, true);
 		passed = action.clickOn(LiberateCommon.Orders.SwitchRequests);
-		passed = action.waitFor(LeftLink.SwitchRequests.ManageSwitchRequest, 4, true);
-		passed = action.clickOn(LeftLink.SwitchRequests.ManageSwitchRequest);
 
 		return passed;
 	}
