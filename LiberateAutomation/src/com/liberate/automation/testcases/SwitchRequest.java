@@ -6,16 +6,19 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.Login;
 import com.liberate.automation.pom.ManageSwitchRequest;
 
 public class SwitchRequest {
-
 	static TestActions action = CommonLogin.action;
 
-	@Test(enabled = false)
+	static String employeeID = "99999";
+	static String time = "23:30";
+	static String accountNumber = "260002430000";
+
+	@Test
 	public static void MonitorNewSwitchRequest() {
 		String TestCase = "SwitchRequest_MonitorNewSwitchRequest";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
 
@@ -23,23 +26,22 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 		assertEquals(msr.selectMonitorNewSwitchRequests(), true);
 		action.getScreenShot(TestCase);
-		assertEquals(msr.monitorNewSwitchRequests_Search("99999", "23:30"), true);
+		assertEquals(msr.monitorNewSwitchRequests_Search(employeeID, time), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);
 
 		ReportGenerator.generateReport(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void SwitchRequestFailureQueries() {
 		String TestCase = "SwitchRequest_SwitchRequestFailureQueries";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
-		action.getScreenShot(TestCase);
 		assertEquals(msr.navigate(), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.selectFailureQueries(), true);
@@ -51,38 +53,36 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 
 		ReportGenerator.generateReport(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void queryByAccountNumber() {
 		String TestCase = "SwitchRequest_queryByAccountNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
-		action.getScreenShot(TestCase);
 		assertEquals(msr.navigate(), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.selectQuerybyAcctServiceOrderServiceCommand(), true);
 		action.getScreenShot(TestCase);
-		assertEquals(msr.queryByCustomerDetails("260002430000", "", "", ""), true);
+		assertEquals(msr.queryByCustomerDetails(accountNumber, "", "", ""), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.verifyResults(), true);
 		action.getScreenShot(TestCase);
 
 		ReportGenerator.generateReport(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void generateSwitchRequest() {
 		String TestCase = "SwitchRequest_generateSwitchRequest";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageSwitchRequest msr = new ManageSwitchRequest(action);
-		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
-		action.getScreenShot(TestCase);
 		assertEquals(msr.navigate(), true);
 		action.getScreenShot(TestCase);
 		assertEquals(msr.selectGeneralQueryOnNewRequests(), true);
@@ -94,5 +94,7 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 
 		ReportGenerator.generateReport(TestCase);
+
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

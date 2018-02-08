@@ -10,7 +10,9 @@ import com.liberate.automation.pom.PYBadCheckProcessing;
 public class BadChequeProcessing {
 
 	static TestActions action = CommonLogin.action;
-
+	
+	static String paymentNumber = "9264886";
+	
 	@Test
 	public static void badCheckProcessing() {
 		String TestCase = "BadChequeProcessing_badCheckProcessing";
@@ -19,7 +21,7 @@ public class BadChequeProcessing {
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot(TestCase);
-		assertEquals(bcp.SearchWithPaymentNumber("9264886"), true);
+		assertEquals(bcp.SearchWithPaymentNumber(paymentNumber), true);
 		action.getScreenShot(TestCase);
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot(TestCase);

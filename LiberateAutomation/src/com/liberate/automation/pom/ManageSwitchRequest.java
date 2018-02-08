@@ -332,7 +332,7 @@ public class ManageSwitchRequest {
 
 		System.out.println("Number of switch requests :" + countOfResults);
 
-		System.out.print(action.getTestStatus(passed));
+		System.out.println(action.getTestStatus(passed));
 
 		return passed;
 	}
