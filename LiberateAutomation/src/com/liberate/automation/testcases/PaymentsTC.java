@@ -1,5 +1,7 @@
 package com.liberate.automation.testcases;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.ArrayList;
 
 import org.testng.annotations.Test;
@@ -11,6 +13,7 @@ import com.liberate.automation.pom.CRDepositRequirement;
 import com.liberate.automation.pom.PYBatchPayment;
 import com.liberate.automation.pom.PYPOSPayment;
 import com.liberate.automation.pom.PYSinglePayment;
+import com.liberate.automation.pom.PYVoidPayment;
 
 public class PaymentsTC {
 	static TestActions action = CommonLogin.action;
@@ -194,8 +197,25 @@ public class PaymentsTC {
 		cd.refundDeposit("10.00");
 		action.getScreenShot(TestCase);
 	}
-
+	
 	@Test
+	public static void voidPayment() {
+		String TestCase = "VoidPayments_voidPayment";
+
+		PYVoidPayment vp = new PYVoidPayment(action);
+
+		assertEquals(vp.navigate(), true);
+		action.getScreenShot(TestCase);
+		assertEquals(vp.PaymentNumber("9320148"), true);
+		action.getScreenShot(TestCase);
+		assertEquals(vp.Search(), true);
+		action.getScreenShot(TestCase);
+		assertEquals(vp.EnterVoidReason("3"), true);
+		assertEquals(vp.Accept(), true);
+		action.getScreenShot(TestCase);
+	}
+
+	@Test(enabled = false)
 	public static void depostitPaymentPOS() {
 		String TestCase = "PaymentsTC_depostitPaymentPOS";
 
@@ -232,7 +252,7 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void paymentPOS() {
 		String TestCase = "PaymentsTC_paymentPOS";
 

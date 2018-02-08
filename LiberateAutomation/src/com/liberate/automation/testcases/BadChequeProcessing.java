@@ -2,15 +2,25 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.PYBadCheckProcessing;
 
 public class BadChequeProcessing {
 
 	static TestActions action = CommonLogin.action;
-
+	
+	static String badChequePaymentNumber = "";
+	
+	@BeforeClass
+	public static void loadData()
+	{
+		badChequePaymentNumber = TestData.getData("badChequePaymentNumber");
+	}
+	
 	@Test
 	public static void badCheckProcessing() {
 		String TestCase = "BadChequeProcessing_badCheckProcessing";
@@ -19,7 +29,7 @@ public class BadChequeProcessing {
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot(TestCase);
-		assertEquals(bcp.SearchWithPaymentNumber("9264886"), true);
+		assertEquals(bcp.SearchWithPaymentNumber(badChequePaymentNumber), true);
 		action.getScreenShot(TestCase);
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot(TestCase);

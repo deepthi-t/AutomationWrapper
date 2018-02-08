@@ -452,7 +452,7 @@ public class CRServiceOperations {
 
 		boolean passed = false;
 
-		passed = action.waitFor(TOSHistory_Tab, 40, true);
+		passed = action.waitFor(TOSHistory_Tab, 140, true);
 		passed = action.clickOn(TOSHistory_Tab);
 
 		passed = action.waitFor(TOSHistory_Table, 30, true);

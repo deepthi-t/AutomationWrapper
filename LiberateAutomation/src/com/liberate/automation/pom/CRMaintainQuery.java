@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LiberateCommon;
-import com.liberate.automation.common.TestData;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 
 public class CRMaintainQuery {
 	TestActions action = null;

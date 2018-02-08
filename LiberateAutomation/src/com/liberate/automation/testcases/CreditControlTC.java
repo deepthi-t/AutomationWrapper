@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceOperations;
@@ -12,18 +13,18 @@ import com.liberate.automation.pom.CCCreditControlService;
 
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
-
-	@Test
+	
+	static String creditControlServiceNumber = TestData.getData("creditControlServiceNumber");;
+	
+	@Test(priority = 0)
 	public static void serviceBAR() {
 		String TestCase = "CreditControlTC_serviceBAR";
 		
-		String ServiceNumber = "9177243";
-
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(ServiceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceBAR();
 		action.getScreenShot(TestCase);
@@ -31,17 +32,15 @@ public class CreditControlTC {
 		action.getScreenShot(TestCase);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void serviceTOS() {
 		String TestCase = "CreditControlTC_serviceTOS";
-
-		String ServiceNumber = "9177243";
 
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(ServiceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceTOS();
 		action.getScreenShot(TestCase);
@@ -49,7 +48,7 @@ public class CreditControlTC {
 		action.getScreenShot(TestCase);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void serviceROS() {
 		String TestCase = "CreditControlTC_serviceROS";
 
@@ -57,7 +56,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber("9177243");
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceROS();
 		action.getScreenShot(TestCase);
@@ -65,14 +64,9 @@ public class CreditControlTC {
 		action.getScreenShot(TestCase);
 	}
 
-	@Test
+	@Test(priority = 1)
 	public static void serviceTOSVerifyAudit() {
 		String TestCase = "CreditControlTC_serviceTOSVerifyAudit";
-
-		/***
-		 * Working service number that needs to be TOSed
-		 */
-		String ServiceNumber = "9177243";
 
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
@@ -81,7 +75,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(ServiceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceTOS();
 		action.getScreenShot(TestCase);
@@ -90,7 +84,7 @@ public class CreditControlTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByServiceNumber(ServiceNumber);
+		search.searchByServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		dashboard.verifyDashBoard("");
 		action.getScreenShot(TestCase);
@@ -103,17 +97,12 @@ public class CreditControlTC {
 		action.getScreenShot(TestCase);
 		services.verifyAuditTOSHistory();
 		action.getScreenShot(TestCase);
-		assertEquals(services.ServiceNumber, "T");
+		assertEquals(services.ServiceStatus, "T");
 	}
 
-	@Test
+	@Test(priority = 2)
 	public static void serviceROSVerifyAudit() {
 		String TestCase = "CreditControlTC_serviceROSVerifyAudit";
-
-		/***
-		 * Working service number that needs to be TOSed
-		 */
-		String ServiceNumber = "9177243";
 
 		CCCreditControlService creditControl = new CCCreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
@@ -122,7 +111,7 @@ public class CreditControlTC {
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
-		creditControl.searchWithServiceNumber(ServiceNumber);
+		creditControl.searchWithServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		creditControl.serviceROS();
 		action.getScreenShot(TestCase);
@@ -131,7 +120,7 @@ public class CreditControlTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByServiceNumber(ServiceNumber);
+		search.searchByServiceNumber(creditControlServiceNumber);
 		action.getScreenShot(TestCase);
 		dashboard.verifyDashBoard("");
 		action.getScreenShot(TestCase);

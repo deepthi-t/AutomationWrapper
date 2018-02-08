@@ -2,8 +2,8 @@ package com.liberate.automation.testcases;
 
 import org.testng.annotations.Test;
 
-import com.liberate.automation.common.TestData;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRMaintainQuery;
 
 public class QueryManagement {
@@ -33,7 +33,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot(TestCase);
-		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A"); 
+		mq.searchByQueryNumber(TestData.QueryNumber);
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
@@ -51,7 +51,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot(TestCase);
-		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A");
+		mq.searchByQueryNumber(TestData.QueryNumber);
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
@@ -69,7 +69,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot(TestCase);
-		mq.searchByQueryNumber(TestData.QueryNumber);// "B00006A");
+		mq.searchByQueryNumber(TestData.QueryNumber);
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);

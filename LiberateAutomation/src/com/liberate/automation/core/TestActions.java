@@ -643,7 +643,7 @@ public class TestActions {
 	}
 
 	public String getTestStatus(Boolean passed) {
-		return ((passed) ? "Passed" : "Failed");
+		return ((passed) ? "PASSED" : "FAILED");
 	}
 
 	/***
