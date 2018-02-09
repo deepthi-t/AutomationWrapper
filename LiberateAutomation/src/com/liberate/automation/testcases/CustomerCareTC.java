@@ -82,7 +82,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test
+	@Test(priority = 1)
 	public static void suspendService() {
 		String TestCase = "CustomerCareTC_suspendService";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -121,7 +121,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test
+	@Test(priority = 2)
 	public static void restoreService() {
 		String TestCase = "CustomerCareTC_restoreService";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -161,7 +161,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 3)
 	public static void alterServiceNumberPCL() {
 		String TestCase = "CustomerCareTC_alterServiceNumberPCL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -193,7 +193,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 4)
 	public static void alterServiceNumberPCLServiceCharge() {
 		String TestCase = "CustomerCareTC_alterServiceNumberPCLServiceCharge";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -225,7 +225,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-//	@Test(priority = 3)
+//	@Test(priority = 5)
 	public static void ceaseServiceNumberPCL() {
 		String TestCase = "CustomerCareTC_ceaseServiceNumberPCL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -289,7 +289,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 8)
 	public static void verifyServiceProducts() {
 		String TestCase = "CustomerCareTC_verifyServiceProducts";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -310,7 +310,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 7)
 	public static void provideProduct() {
 		String TestCase = "CustomerCareTC_provideProduct";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -344,7 +344,7 @@ public class CustomerCareTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 9)
 	public static void ceaseProduct() {
 		String TestCase = "CustomerCareTC_ceaseProduct";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
