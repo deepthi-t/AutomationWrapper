@@ -8,6 +8,6 @@ public class Main {
 	public static void main(String[] args) {
 		CommonLogin.navigateToURL();
 		CustomerCareTC.loadData();
-		CustomerCareTC.createSubAccount();
+		CustomerCareTC.restoreService();
 	}
 }

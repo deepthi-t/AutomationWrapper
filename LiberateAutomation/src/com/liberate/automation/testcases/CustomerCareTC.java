@@ -95,13 +95,12 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByAccountNumber(transferToAccount);
+		search.searchByServiceNumber(suspendedService);
 		action.getScreenShot(TestCase);
 
 		service.navigate();
 		action.getScreenShot(TestCase);
 		service.suspendService();
-		TestData.suspendedService = service.ServiceNumber;
 		action.getScreenShot(TestCase);
 		service.verifyServicesScreen();
 		action.getScreenShot(TestCase);
@@ -134,12 +133,10 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByAccountNumber(transferToAccount);
+		search.searchByServiceNumber(suspendedService);
 		action.getScreenShot(TestCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
-		service.searchByService(suspendedService);
 		action.getScreenShot(TestCase);
 		service.restoreService();
 		action.getScreenShot(TestCase);
