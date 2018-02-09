@@ -33,7 +33,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot(TestCase);
-		mq.searchByQueryNumber(TestData.QueryNumber);
+		mq.searchByQueryNumber(TestData.queryNumber);
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
@@ -51,7 +51,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot(TestCase);
-		mq.searchByQueryNumber(TestData.QueryNumber);
+		mq.searchByQueryNumber(TestData.queryNumber);
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
@@ -69,7 +69,7 @@ public class QueryManagement {
 
 		mq.navigate();
 		action.getScreenShot(TestCase);
-		mq.searchByQueryNumber(TestData.QueryNumber);
+		mq.searchByQueryNumber(TestData.queryNumber);
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);

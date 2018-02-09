@@ -20,9 +20,9 @@ public class SwitchRequest {
 	@BeforeClass
 	public static void loadTestData()
 	{
-		SwitchRequest.employeeID = TestData.getData("employeeID");;
-		SwitchRequest.switchRequestTime = TestData.getData("switchRequestTime");
-		SwitchRequest.switchRequestAccountNumber = TestData.getData("switchRequestAccountNumber");
+		SwitchRequest.employeeID = TestData.employeeID;
+		SwitchRequest.switchRequestTime = TestData.switchRequestTime;
+		SwitchRequest.switchRequestAccountNumber = TestData.switchRequestAccountNumber;
 	}
 	
 	@Test

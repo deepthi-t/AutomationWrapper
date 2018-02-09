@@ -12,15 +12,15 @@ import com.liberate.automation.pom.BrowseServiceOrder;
 public class BulkSOProcessing {
 	static TestActions action = CommonLogin.action;
 
-	static String networkDepartment = "BGNET";
-	static String generalDepartment = "BGINS";
-	static String accountDepartment = "AQSOF";
+	static String networkDepartment = "";
+	static String generalDepartment = "";
+	static String accountDepartment = "";
 
 	@BeforeClass
 	public static void loadData() {
-		networkDepartment = TestData.getData("networkDepartment");
-		generalDepartment = TestData.getData("generalDepartment");
-		accountDepartment = TestData.getData("accountDepartment");
+		networkDepartment = TestData.networkDepartment;
+		generalDepartment = TestData.generalDepartment;
+		accountDepartment = TestData.accountDepartment;
 	}
 
 	@Test

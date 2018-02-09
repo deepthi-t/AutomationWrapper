@@ -18,7 +18,7 @@ public class BadChequeProcessing {
 	@BeforeClass
 	public static void loadData()
 	{
-		badChequePaymentNumber = TestData.getData("badChequePaymentNumber");
+		badChequePaymentNumber = TestData.badChequePaymentNumber;
 	}
 	
 	@Test

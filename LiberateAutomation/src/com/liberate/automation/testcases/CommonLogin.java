@@ -6,19 +6,32 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.Login;
 
 public class CommonLogin {
 	public static TestActions action = new TestActions();
 
+	public static String userName = "";
+	public static String passWord = "";
+	public static String autURL = "";
+	
+	public static void loadData() {
+		userName = TestData.userName;
+		passWord = TestData.passWord;
+		autURL = TestData.autURL;
+	}
+
 	@BeforeSuite
 	public static void navigateToURL() {
-		action.gotoURL("http://172.21.73.80:8081/liberate-LONI01-S10/");
-//		action.gotoURL("http://172.21.73.80:8083/liberate-LONI02-S06/");
+		TestData.loadTestData();
+		CommonLogin.loadData();
+		
+		action.gotoURL(autURL);
 
 		Login login = new Login(action);
 
-		assertEquals(login.login("libadmin", "Ic3cr34m!"), true);
+		assertEquals(login.login(userName, passWord), true);
 	}
 
 	public static void logout() {
