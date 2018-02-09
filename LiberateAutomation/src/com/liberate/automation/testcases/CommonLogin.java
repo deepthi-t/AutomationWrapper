@@ -15,7 +15,7 @@ public class CommonLogin {
 	public static String userName = "";
 	public static String passWord = "";
 	public static String autURL = "";
-	
+
 	public static void loadData() {
 		userName = TestData.userName;
 		passWord = TestData.passWord;
@@ -25,8 +25,9 @@ public class CommonLogin {
 	@BeforeSuite
 	public static void navigateToURL() {
 		TestData.loadTestData();
+
 		CommonLogin.loadData();
-		
+
 		action.gotoURL(autURL);
 
 		Login login = new Login(action);

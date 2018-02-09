@@ -52,7 +52,7 @@ public class InterimBillGeneration {
 		passed = action.waitFor(CreateInterimBill_Button, 4, true);
 		passed = action.clickOn(CreateInterimBill_Button);
 		
-		passed = action.waitFor(Close_Button, 10, true);
+		passed = action.waitFor(Close_Button, 180, true);
 		passed = action.clickOn(Close_Button);
 		
 		return passed;

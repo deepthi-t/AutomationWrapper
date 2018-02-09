@@ -82,5 +82,10 @@ public class CRServiceOrder {
 		action.waitFor(ServiceOrderFilter_Input, 4, true);
 		return (action.getTextFromPage(By.xpath(action.getXpath(ServiceOrder_Row) + "[1]//td[2]//span")).trim());
 	}
+	
+	public String getServiceONumber() {
+		action.waitFor(ServiceOrderFilter_Input, 4, true);
+		return (action.getTextFromPage(By.xpath(action.getXpath(ServiceOrder_Row) + "[1]//td[3]//span")).trim());
+	}
 
 }
