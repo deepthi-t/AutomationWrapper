@@ -1,8 +1,10 @@
 package com.liberate.automation.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRAccountPricingPlans;
 import com.liberate.automation.pom.CRAdjustments;
 import com.liberate.automation.pom.CRBills;
@@ -14,6 +16,17 @@ import com.liberate.automation.pom.CRServiceCharges;
 public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
 
+	public static String accountNumber = "";
+	public static String surName = "";
+	public static String pricingPlanAccount = "";
+	
+	@BeforeClass
+	public static void loadData() {
+		accountNumber = TestData.accountNumber;
+		surName = TestData.surName;
+		pricingPlanAccount = TestData.pricingPlanAccount;
+	}
+
 	@Test(priority = 1)
 	public static void verifyCustomerEnquiry() {
 		String TestCase = "CustomerEnquiryTC_verifyCustomerEnquiry";
@@ -23,11 +36,11 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 		cd.navigate();
 		action.getScreenShot(TestCase);
-		cd.verifyDashBoard("260002260000");
+		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
 	}
 
@@ -57,7 +70,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchBySurname("bmv8h36pneou");
+		cr.searchBySurname(surName);
 		action.getScreenShot(TestCase);
 		cd.navigate();
 		action.getScreenShot(TestCase);
@@ -74,16 +87,16 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002270000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 		cd.navigate();
 		action.getScreenShot(TestCase);
-		cd.verifyDashBoard("260002270000");
+		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
 
 		cd.amendAccount();
 		action.getScreenShot(TestCase);
-		cd.verifyDashBoard("260002270000");
+		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
 	}
 
@@ -96,7 +109,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002320000");
+		cr.searchByAccountNumber("260002330000");
 		action.getScreenShot(TestCase);
 
 		cu.navigate();
@@ -118,7 +131,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 
 		ad.navigate();
@@ -138,7 +151,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 
 		ad.navigate();
@@ -156,7 +169,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 
 		ad.navigate();
@@ -177,7 +190,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 
 		ad.navigate();
@@ -197,7 +210,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(accountNumber);
 		action.getScreenShot(TestCase);
 
 		ad.navigate();
@@ -234,7 +247,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("260002260000");
+		cr.searchByAccountNumber(pricingPlanAccount);
 		action.getScreenShot(TestCase);
 
 		cp.navigate();
@@ -256,7 +269,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
-		cr.searchByAccountNumber("280000380000");
+		cr.searchByAccountNumber(pricingPlanAccount);
 		action.getScreenShot(TestCase);
 
 		cp.navigate();
