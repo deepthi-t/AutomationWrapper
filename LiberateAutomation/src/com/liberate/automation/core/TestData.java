@@ -21,7 +21,15 @@ public class TestData {
 	public static String networkDepartment = "";
 	public static String generalDepartment = "";
 	public static String accountDepartment = "";
-
+	public static String accountNumber = "";
+	public static String salesDepartment = "";
+	public static String site = "";
+	public static String transferToAccount = "";
+	public static String transferFromAccount = "";
+	public static String suspendedService = "";
+	public static String serviceASNCease = "";
+	public static String serviceCease = "";
+	
 	static String FileName = "TestData.properties";
 
 	static Properties properties = new Properties();
@@ -41,6 +49,14 @@ public class TestData {
 		properties.setProperty("networkDepartment", networkDepartment);
 		properties.setProperty("generalDepartment", generalDepartment);
 		properties.setProperty("accountDepartment", accountDepartment);
+		properties.setProperty("accountNumber", accountDepartment);
+		properties.setProperty("salesDepartment", accountDepartment);
+		properties.setProperty("site", accountDepartment);
+		properties.setProperty("transferToAccount", transferToAccount);
+		properties.setProperty("transferFromAccount", transferFromAccount);
+		properties.setProperty("suspendedService", suspendedService);
+		properties.setProperty("serviceASNCease", serviceASNCease);
+		properties.setProperty("serviceCease", serviceCease);
 
 		try {
 			properties.store(new FileOutputStream(FileName), null);
@@ -61,7 +77,7 @@ public class TestData {
 		}
 		String data = properties.getProperty(dataName);
 
-		System.out.println(data);
+		System.out.println(dataName + " : " + data);
 
 		return data;
 	}
@@ -79,6 +95,14 @@ public class TestData {
 		badChequePaymentNumber = getData("badChequePaymentNumber");
 		networkDepartment = getData("networkDepartment");
 		generalDepartment = getData("generalDepartment");
-		generalDepartment = getData("generalDepartment");
+		accountDepartment = getData("accountDepartment");
+		accountNumber = getData("accountNumber");
+		salesDepartment = getData("salesDepartment");
+		site = getData("site");
+		transferToAccount = getData("transferToAccount");
+		transferFromAccount = getData("transferFromAccount");
+		suspendedService = getData("suspendedService");
+		serviceASNCease = getData("serviceASNCease");
+		serviceCease = getData("serviceCease");
 	}
 }

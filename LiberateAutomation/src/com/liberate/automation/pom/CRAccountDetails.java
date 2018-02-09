@@ -117,6 +117,7 @@ public class CRAccountDetails {
 		
 		action.clickOn(SurName_Input);
 		action.waitFor(2);
+		action.clickOn(SurName_Input);
 		action.sendDataTo(SurName_Input, random.nextString());
 		
 		action.selectBy(Location_Select, 1);
