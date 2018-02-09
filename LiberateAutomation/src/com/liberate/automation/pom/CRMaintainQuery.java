@@ -210,8 +210,8 @@ public class CRMaintainQuery {
 
 		passed = action.waitFor(QueryDetails_PanelHeader, 4, true);
 
-		TestData.QueryNumber = action.getTextFromPage(QueryNumber_Value);
-		passed = TestData.QueryNumber.equals("") ? false : true;
+		TestData.queryNumber = action.getTextFromPage(QueryNumber_Value);
+		passed = TestData.queryNumber.equals("") ? false : true;
 
 		passed = action.getTextFromPage(QueryType_Value).substring(0, 4).equals(QueryCode);
 

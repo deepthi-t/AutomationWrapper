@@ -14,7 +14,7 @@ import com.liberate.automation.pom.CCCreditControlService;
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 	
-	static String creditControlServiceNumber = TestData.getData("creditControlServiceNumber");;
+	static String creditControlServiceNumber = TestData.creditControlServiceNumber;
 	
 	@Test(priority = 0)
 	public static void serviceBAR() {
