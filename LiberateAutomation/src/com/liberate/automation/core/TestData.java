@@ -31,7 +31,9 @@ public class TestData {
 	public static String serviceCease = "";
 	public static String surName = "";
 	public static String pricingPlanAccount = "";
-	
+	public static String employeeUserName = "";
+	public static String newUserID = "";
+
 	static String FileName = "TestData.properties";
 
 	static Properties properties = new Properties();
@@ -61,6 +63,8 @@ public class TestData {
 		properties.setProperty("serviceCease", serviceCease);
 		properties.setProperty("surName", surName);
 		properties.setProperty("pricingPlanAccount", pricingPlanAccount);
+		properties.setProperty("employeeUserName", employeeUserName);
+		properties.setProperty("newUserID", newUserID);
 		
 		try {
 			properties.store(new FileOutputStream(FileName), null);
@@ -110,5 +114,7 @@ public class TestData {
 		serviceCease = getData("serviceCease");
 		surName = getData("surName");
 		pricingPlanAccount = getData("pricingPlanAccount");
+		employeeUserName = getData("employeeUserName");
+		newUserID = getData("newUserID");
 	}
 }
