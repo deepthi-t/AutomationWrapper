@@ -21,6 +21,7 @@ public class PaymentsTC {
 	@Test(priority = 3)
 	public static void batchPayment() {
 		String TestCase = "PaymentsTC_batchPayment";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ArrayList<String> accountNumber = new ArrayList<String>();
 
@@ -40,11 +41,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		bp.providePaymentDetails(accountNumber);
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 1)
 	public static void verifyCashDrawer() {
 		String TestCase = "PaymentsTC_verifyCashDrawer";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -58,11 +61,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		sp.verifyCashDrawer();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 2)
 	public static void singlePaymentAccountNumber() {
 		String TestCase = "PaymentsTC_singlePaymentAccountNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -80,11 +85,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(enabled = false)
 	public static void depositPaymentAccountNumber() {
 		String TestCase = "PaymentsTC_depositPaymentAccountNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -102,11 +109,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 3)
 	public static void singlePaymentServicetNumber() {
 		String TestCase = "PaymentsTC_singlePaymentServicetNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -124,11 +133,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(enabled = false)
 	public static void depositPaymentServiceNumber() {
 		String TestCase = "PaymentsTC_depositPaymentServiceNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYSinglePayment sp = new PYSinglePayment(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
@@ -146,11 +157,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		sp.verifySuccessMessage();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 4)
 	public static void payAndRefundDeposit() {
 		String TestCase = "PaymentsTC_payAndRefundDeposit";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDepositRequirement cd = new CRDepositRequirement(action);
@@ -196,11 +209,13 @@ public class PaymentsTC {
 		action.getScreenShot(TestCase);
 		cd.refundDeposit("10.00");
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 	
 	@Test
 	public static void voidPayment() {
 		String TestCase = "VoidPayments_voidPayment";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYVoidPayment vp = new PYVoidPayment(action);
 
@@ -213,11 +228,13 @@ public class PaymentsTC {
 		assertEquals(vp.EnterVoidReason("3"), true);
 		assertEquals(vp.Accept(), true);
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(enabled = false)
 	public static void depostitPaymentPOS() {
 		String TestCase = "PaymentsTC_depostitPaymentPOS";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDepositRequirement cd = new CRDepositRequirement(action);
@@ -250,11 +267,13 @@ public class PaymentsTC {
 
 		pos.closePOSWindow();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(enabled = false)
 	public static void paymentPOS() {
 		String TestCase = "PaymentsTC_paymentPOS";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYPOSPayment pos = new PYPOSPayment(action);
@@ -275,5 +294,6 @@ public class PaymentsTC {
 
 		// pos.closePOSWindow();
 		// action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }
