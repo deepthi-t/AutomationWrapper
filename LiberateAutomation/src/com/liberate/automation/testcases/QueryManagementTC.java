@@ -6,7 +6,7 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRMaintainQuery;
 
-public class QueryManagement {
+public class QueryManagementTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test(priority = 1)
