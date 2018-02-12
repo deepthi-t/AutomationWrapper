@@ -1,15 +1,27 @@
 package com.liberate.automation.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.ADMaintainEmployee;
 import com.liberate.automation.pom.ADManageUser;
 
 public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
-
-	@Test
+	
+	static String employeeUserName = "";
+	static String newUserID = "";
+	
+	@BeforeClass
+	public static void loadData()
+	{
+		employeeUserName = TestData.employeeUserName;
+		newUserID = TestData.newUserID;
+	}
+	
+	@Test(priority = 1)
 	public static void amendUser() {
 		String TestCase = "UserManagementTC_amendUser";
 
@@ -17,31 +29,15 @@ public class UserManagementTC {
 
 		adm.navigate();
 		action.getScreenShot(TestCase);
-		adm.searchByUserName("ASDASEXC.DSFSDFSDF");
+		adm.searchByUserName(employeeUserName);
 		action.getScreenShot(TestCase);
 		adm.amendUser();
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
 	}
-
-	@Test
-	public static void deleteUser() {
-		String TestCase = "UserManagementTC_deleteUser";
-
-		ADManageUser adm = new ADManageUser(action);
-
-		adm.navigate();
-		action.getScreenShot(TestCase);
-		adm.searchByUserName("COM3_CRUSHER");
-		action.getScreenShot(TestCase);
-		adm.deleteUser();
-		action.getScreenShot(TestCase);
-		adm.verifyDelete();
-		action.getScreenShot(TestCase);
-	}
-
-	@Test
+	
+	@Test(priority = 2)
 	public static void copyUser() {
 		String TestCase = "UserManagementTC_copyUser";
 
@@ -49,7 +45,7 @@ public class UserManagementTC {
 
 		adm.navigate();
 		action.getScreenShot(TestCase);
-		adm.searchByUserName("ASDASEXC.DSFSDFSDF");
+		adm.searchByUserName(employeeUserName);
 		action.getScreenShot(TestCase);
 		adm.copyUser("99999");
 		action.getScreenShot(TestCase);
@@ -58,8 +54,8 @@ public class UserManagementTC {
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
 	}
-
-	@Test
+	
+	@Test(priority = 3)
 	public static void createUser() {
 		String TestCase = "UserManagementTC_createUser";
 
@@ -67,7 +63,7 @@ public class UserManagementTC {
 		ADMaintainEmployee ade = new ADMaintainEmployee(action);
 
 		ade.navigate();
-		ade.searchWithStaffNumber("999908");
+		ade.searchWithStaffNumber(newUserID);
 		ade.createNewEmployee();
 
 		adm.navigate();
@@ -79,4 +75,22 @@ public class UserManagementTC {
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
 	}
+	
+	@Test(priority = 4)
+	public static void deleteUser() {
+		String TestCase = "UserManagementTC_deleteUser";
+
+		ADManageUser adm = new ADManageUser(action);
+
+		adm.navigate();
+		action.getScreenShot(TestCase);
+		adm.searchByUserIS(newUserID);
+		action.getScreenShot(TestCase);
+		adm.deleteUser();
+		action.getScreenShot(TestCase);
+		adm.verifyDelete();
+		action.getScreenShot(TestCase);
+	}
+
+
 }

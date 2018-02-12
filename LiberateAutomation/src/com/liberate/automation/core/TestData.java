@@ -29,7 +29,11 @@ public class TestData {
 	public static String suspendedService = "";
 	public static String serviceASNCease = "";
 	public static String serviceCease = "";
-	
+	public static String surName = "";
+	public static String pricingPlanAccount = "";
+	public static String employeeUserName = "";
+	public static String newUserID = "";
+
 	static String FileName = "TestData.properties";
 
 	static Properties properties = new Properties();
@@ -57,7 +61,11 @@ public class TestData {
 		properties.setProperty("suspendedService", suspendedService);
 		properties.setProperty("serviceASNCease", serviceASNCease);
 		properties.setProperty("serviceCease", serviceCease);
-
+		properties.setProperty("surName", surName);
+		properties.setProperty("pricingPlanAccount", pricingPlanAccount);
+		properties.setProperty("employeeUserName", employeeUserName);
+		properties.setProperty("newUserID", newUserID);
+		
 		try {
 			properties.store(new FileOutputStream(FileName), null);
 		} catch (FileNotFoundException e) {
@@ -104,5 +112,9 @@ public class TestData {
 		suspendedService = getData("suspendedService");
 		serviceASNCease = getData("serviceASNCease");
 		serviceCease = getData("serviceCease");
+		surName = getData("surName");
+		pricingPlanAccount = getData("pricingPlanAccount");
+		employeeUserName = getData("employeeUserName");
+		newUserID = getData("newUserID");
 	}
 }

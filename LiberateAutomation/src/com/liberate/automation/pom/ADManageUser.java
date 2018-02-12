@@ -15,6 +15,7 @@ public class ADManageUser {
 	boolean CopyUser = false;
 
 	String UserName = "";
+	String userID = "";
 	String FirstName = "";
 	String CISUserName = "";
 
@@ -79,6 +80,18 @@ public class ADManageUser {
 
 		passed = action.waitFor(UserName_Input, 4, true);
 		passed = action.sendDataTo(UserName_Input, UserName);
+		passed = action.clickOn(CommonPanel.Search_Button);
+
+		return passed;
+	}
+	
+	public boolean searchByUserIS(String userID) {
+		boolean passed = false;
+
+		this.userID = userID;
+
+		passed = action.waitFor(EmployeeID_Input, 4, true);
+		passed = action.sendDataTo(EmployeeID_Input, userID);
 		passed = action.clickOn(CommonPanel.Search_Button);
 
 		return passed;
