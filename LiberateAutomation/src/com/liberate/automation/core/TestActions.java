@@ -201,12 +201,7 @@ public class TestActions {
 	public Boolean selectBy(By locator, int index) {
 		if (countOf(locator) == 0) {
 			log("ERROR : Element located by '" + locator.toString() + "' is not available.");
-			try {
-				throw new TimeoutException();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				retry = handleException(e);
-			}
+			return false;
 		}
 		try {
 			log("Selecting index '" + index + "' from '" + locator.toString() + "'");
@@ -795,7 +790,7 @@ public class TestActions {
 		// This code block checks how many times the step is executed. If >
 		// retryCount, it will exit stopping execution of step.
 		executionCount = executionCount + 1;
-		if (executionCount > retryCount) {
+		if (executionCount >= retryCount) {
 			executionCount = 0;
 			log("ERROR : UAVOIDABLE ERROR OCCURED.");
 			e.printStackTrace();
