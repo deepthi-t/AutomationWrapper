@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="LiberateAutomation">
-	<test name="QueryManagementTC">
+	<test name="CustomerEnquiryTC">
 		<classes>
 			<class name="com.liberate.automation.testcases.CommonLogin" />
-			<class name="com.liberate.automation.testcases.QueryManagementTC" />
+			<class name="com.liberate.automation.testcases.CustomerEnquiryTC" />
 		</classes>
 	</test>
 </suite>

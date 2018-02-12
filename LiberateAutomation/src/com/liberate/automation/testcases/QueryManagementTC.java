@@ -12,7 +12,8 @@ public class QueryManagementTC {
 	@Test(priority = 1)
 	public static void raiseQueryAccount() {
 		String TestCase = "QueryManagement_raiseQueryAccount";
-		
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
 		mq.navigate();
@@ -23,11 +24,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 2)
 	public static void amendQuery() {
 		String TestCase = "QueryManagement_amendQuery";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -41,11 +44,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 3)
 	public static void addNoteQuery() {
 		String TestCase = "QueryManagement_addNoteQuery";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -59,11 +64,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 4)
 	public static void progressQuery() {
 		String TestCase = "QueryManagement_progressQuery";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -77,11 +84,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void signOffQuery() {
 		String TestCase = "QueryManagement_signOffQuery";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -103,11 +112,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void raiseAndAuthoriseAdjustment() {
 		String TestCase = "QueryManagement_raiseAndAuthoriseAdjustment";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -134,11 +145,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(enabled = false)
 	public static void verifyBills() {
 		String TestCase = "QueryManagement_verifyBills";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -154,11 +167,13 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 5)
 	public static void raiseQueryNonAccount() {
 		String TestCase = "QueryManagement_raiseQueryNonAccount";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRMaintainQuery mq = new CRMaintainQuery(action);
 
@@ -168,5 +183,6 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }
