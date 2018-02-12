@@ -839,11 +839,11 @@ public class TestActions {
 	 */
 	public void log(String message) {
 		Date date = new Date();
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-		
+
 		String d = sdf.format(date);
-		
+
 		String Log = d + " : " + message;
 
 		System.out.println(Log);

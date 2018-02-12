@@ -16,6 +16,7 @@ public class ServiceProvisioningTC {
 	@Test
 	public static void newCustomerPEL() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPEL";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
@@ -70,11 +71,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void existingCustomerPEL() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPEL";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -112,11 +115,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void existingCustomerPCLPostpaid() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -153,11 +158,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void newCustomerPCLPostpaid() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
@@ -210,11 +217,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void newCustomerPCLCreditLimit() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
@@ -265,11 +274,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void existingCustomerPDL() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPDL";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -301,11 +312,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void existingCustomerPTV() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPTV";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -339,11 +352,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void existingCustomerIPTV() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerIPTV";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -377,11 +392,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void existingCustomerARN() {
 		String TestCase = "ServiceProvisioningTC_existingCustomerARN";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -414,11 +431,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void newCustomerPELandPDL() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPELandPDL";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPNewCustomer cp = new CPNewCustomer(action);
 		CPExistingCustomer ce = new CPExistingCustomer(action);
@@ -485,11 +504,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addMorePELandPDL() {
 		String TestCase = "ServiceProvisioningTC_addMorePELandPDL";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -548,11 +569,13 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addMorePELandPCL() {
 		String TestCase = "ServiceProvisioningTC_addMorePELandPCL";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CPExistingCustomer ce = new CPExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -616,5 +639,6 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		cso.getSOCommand();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }
