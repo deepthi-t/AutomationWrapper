@@ -16,6 +16,7 @@ public class DepositReasonTC {
 	@Test
 	public static void createNewDepositReason() {
 		String TestCase = "DepositReason_createNewDepositReason";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		RandomData random = new RandomData();
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
@@ -34,5 +35,6 @@ public class DepositReasonTC {
 		String x = action.getTextFromPage(By.xpath("//span[@class='iceMsgInfo']"));
 		action.getScreenShot(TestCase);
 		System.out.println(x);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }
