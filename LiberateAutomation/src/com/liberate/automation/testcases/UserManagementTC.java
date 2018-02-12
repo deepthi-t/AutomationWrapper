@@ -10,20 +10,20 @@ import com.liberate.automation.pom.ADManageUser;
 
 public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
-	
+
 	static String employeeUserName = "";
 	static String newUserID = "";
-	
+
 	@BeforeClass
-	public static void loadData()
-	{
+	public static void loadData() {
 		employeeUserName = TestData.employeeUserName;
 		newUserID = TestData.newUserID;
 	}
-	
+
 	@Test(priority = 1)
 	public static void amendUser() {
 		String TestCase = "UserManagementTC_amendUser";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ADManageUser adm = new ADManageUser(action);
 
@@ -35,11 +35,13 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test(priority = 2)
 	public static void copyUser() {
 		String TestCase = "UserManagementTC_copyUser";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ADManageUser adm = new ADManageUser(action);
 
@@ -53,11 +55,13 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test(priority = 3)
 	public static void createUser() {
 		String TestCase = "UserManagementTC_createUser";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ADManageUser adm = new ADManageUser(action);
 		ADMaintainEmployee ade = new ADMaintainEmployee(action);
@@ -74,11 +78,13 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test(priority = 4)
 	public static void deleteUser() {
 		String TestCase = "UserManagementTC_deleteUser";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ADManageUser adm = new ADManageUser(action);
 
@@ -90,7 +96,7 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyDelete();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
-
 
 }

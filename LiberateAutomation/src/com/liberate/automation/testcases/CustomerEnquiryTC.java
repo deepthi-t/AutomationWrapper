@@ -19,7 +19,7 @@ public class CustomerEnquiryTC {
 	public static String accountNumber = "";
 	public static String surName = "";
 	public static String pricingPlanAccount = "";
-	
+
 	@BeforeClass
 	public static void loadData() {
 		accountNumber = TestData.accountNumber;
@@ -30,6 +30,7 @@ public class CustomerEnquiryTC {
 	@Test(priority = 1)
 	public static void verifyCustomerEnquiry() {
 		String TestCase = "CustomerEnquiryTC_verifyCustomerEnquiry";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -42,11 +43,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void customerEnquiryWithID() {
 		String TestCase = "CustomerEnquiryTC_customerEnquiryWithID";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -59,11 +62,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("");
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void customerEnquiryWithSurname() {
 		String TestCase = "CustomerEnquiryTC_customerEnquiryWithSurname";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -76,11 +81,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("");
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 2)
 	public static void amendAccountDetails() {
 		String TestCase = "CustomerEnquiryTC_amendAccountDetails";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRDashBoard cd = new CRDashBoard(action);
@@ -98,11 +105,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 3)
 	public static void amendDayOfBilling() {
 		String TestCase = "CustomerEnquiryTC_amendDayOfBilling";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRCustomerDetails cu = new CRCustomerDetails(action);
@@ -120,11 +129,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cu.validatedayOfBilling();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void raiseAdjustment() {
 		String TestCase = "CustomerEnquiryTC_raiseAdjustment";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
@@ -140,11 +151,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyRaiseAdjustment();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void verifyAdjustment() {
 		String TestCase = "CustomerEnquiryTC_verifyAdjustment";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
@@ -158,11 +171,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyAdjustmenst();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addServiceCharge() {
 		String TestCase = "CustomerEnquiryTC_addServiceCharge";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
@@ -179,11 +194,13 @@ public class CustomerEnquiryTC {
 		ad.verifyRaisedServiceCharge();
 		action.getScreenShot(TestCase);
 
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void verifySericeChargeServiceNumber() {
 		String TestCase = "CustomerEnquiryTC_verifySericeChargeServiceNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
@@ -199,11 +216,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyServiceCharge();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void verifySericeChargeAccount() {
 		String TestCase = "CustomerEnquiryTC_verifySericeChargeAccount";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRServiceCharges ad = new CRServiceCharges(action);
@@ -217,12 +236,14 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyServiceCharge();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void verifyBills() {
 		// Should be executed in S10
 		String TestCase = "CustomerEnquiryTC_verifyBills";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRBills cb = new CRBills(action);
@@ -236,11 +257,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cb.verifyBill();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addNominatedNumPricingPlan() {
 		String TestCase = "CustomerEnquiryTC_addNominatedNumPricingPlan";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
@@ -258,11 +281,13 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cp.validatePricingPlan();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addCUGPricingPlan() {
 		String TestCase = "CustomerEnquiryTC_addCUGPricingPlan";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
@@ -280,5 +305,6 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cp.validatePricingPlan();
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

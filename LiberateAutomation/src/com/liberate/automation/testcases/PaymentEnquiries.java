@@ -14,6 +14,7 @@ public class PaymentEnquiries {
 	@Test
 	public static void searchWithAccountNumber() {
 		String TestCase = "PaymentEnquiries_searchWithAccountNumber";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYPaymentEnquiriesPOM pe = new PYPaymentEnquiriesPOM(action);
 
@@ -31,7 +32,8 @@ public class PaymentEnquiries {
 		} else {
 			System.out.println("Test failed");
 		}
-	}
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+}
 	/*
 	 * @Test public static void searchWithPaymentNumber() { PaymentEnquiriesPOM
 	 * pe=new PaymentEnquiriesPOM(action);
