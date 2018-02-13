@@ -1,9 +1,13 @@
 package com.liberate.automation.testcases;
 
+import static org.testng.Assert.assertTrue;
+
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.common.CommonData;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.AddMore;
 import com.liberate.automation.pom.CPExistingCustomer;
 import com.liberate.automation.pom.CPNewCustomer;
@@ -12,6 +16,13 @@ import com.liberate.automation.pom.SalesSignOff;
 
 public class ServiceProvisioningTC {
 	static TestActions action = CommonLogin.action;
+
+	static String arnServiceNumber = "";
+
+	@BeforeClass
+	public static void loadData() {
+		arnServiceNumber = TestData.arnServiceNumber;
+	}
 
 	@Test
 	public static void newCustomerPEL() {
@@ -23,29 +34,29 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		cp.navigate();
+		assertTrue(cp.navigate());
 		action.getScreenShot(TestCase);
-		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
-				"PEL", "ETFT");
+		assertTrue(cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential,
+				CommonData.CustomerType.Residential, "PEL", "ETFT"));
 		action.getScreenShot(TestCase);
 
-		cp.fillResidentialCustomerDetails();
+		assertTrue(cp.fillResidentialCustomerDetails());
 		action.getScreenShot(TestCase);
-		cp.fillStandardAddress();
+		assertTrue(cp.fillStandardAddress());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerClassification();
+		assertTrue(cp.fillCustomerClassification());
 		action.getScreenShot(TestCase);
-		cp.fillBillingDetails();
+		assertTrue(cp.fillBillingDetails());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerID();
+		assertTrue(cp.fillCustomerID());
 		action.getScreenShot(TestCase);
 		cp.fillContactDetails();
 		action.getScreenShot(TestCase);
-		cp.verifyCreatedAccount();
+		assertTrue(cp.verifyCreatedAccount());
 
-		ce.selectDepartmentSite("BGSAL", "BUSG");
+		assertTrue(ce.selectDepartmentSite("BGSAL", "BUSG"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PEL", "ETFT");
+		assertTrue(ce.selectServicePackage("PEL", "ETFT"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -55,14 +66,14 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 		ce.skipADSL();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
 		sso.signOff();
 		action.getScreenShot(TestCase);
@@ -83,15 +94,15 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("BGSAL", "BUSG");
+		assertTrue(ce.selectDepartmentSite("BGSAL", "BUSG"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PEL", "ETFT");
+		assertTrue(ce.selectServicePackage("PEL", "ETFT"));
 		action.getScreenShot(TestCase);
-		ce.processPricingPlanScreen();
+		assertTrue(ce.processPricingPlanScreen());
 		action.getScreenShot(TestCase);
 		ce.processServiceProductsScreen();
 		action.getScreenShot(TestCase);
@@ -99,14 +110,14 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 		ce.skipADSL();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
 		sso.signOff();
 		action.getScreenShot(TestCase);
@@ -127,13 +138,13 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		assertTrue(ce.selectDepartmentSite("AQSAL", "ANSQ"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PCL", "LIME_POST");
+		assertTrue(ce.selectServicePackage("PCL", "LIME_POST"));
 		// ce.selectServicePackage("PCL", "SOW-");
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
@@ -144,12 +155,12 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("MSCA", "SMPO");
+		assertTrue(ce.provideServiceDetailsScreen("MSCA", "SMPO"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
 		sso.signOff();
 		action.getScreenShot(TestCase);
@@ -171,29 +182,29 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		cp.navigate();
+		assertTrue(cp.navigate());
 		action.getScreenShot(TestCase);
-		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
-				CommonData.CustomerType.Residential, "PCL", "LIME_POST");
+		assertTrue(cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
+				CommonData.CustomerType.Residential, "PCL", "LIME_POST"));
 		action.getScreenShot(TestCase);
 
-		cp.fillResidentialCustomerDetails();
+		assertTrue(cp.fillResidentialCustomerDetails());
 		action.getScreenShot(TestCase);
-		cp.fillStandardAddress();
+		assertTrue(cp.fillStandardAddress());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerClassification();
+		assertTrue(cp.fillCustomerClassification());
 		action.getScreenShot(TestCase);
-		cp.fillBillingDetails();
+		assertTrue(cp.fillBillingDetails());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerID();
+		assertTrue(cp.fillCustomerID());
 		action.getScreenShot(TestCase);
-		cp.fillContactDetails();
+		assertTrue(cp.fillContactDetails());
 		action.getScreenShot(TestCase);
-		cp.verifyCreatedAccount();
+		assertTrue(cp.verifyCreatedAccount());
 
-		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		assertTrue(ce.selectDepartmentSite("AQSAL", "ANSQ"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PCL", "LIME_POST");
+		assertTrue(ce.selectServicePackage("PCL", "LIME_POST"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -203,12 +214,12 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("MSCA", "SMPO");
+		assertTrue(ce.provideServiceDetailsScreen("MSCA", "SMPO"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
 		sso.signOff();
 		action.getScreenShot(TestCase);
@@ -230,29 +241,29 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		cp.navigate();
+		assertTrue(cp.navigate());
 		action.getScreenShot(TestCase);
-		cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
-				CommonData.CustomerType.Residential, "PCL", "LIME_POST");
+		assertTrue(cp.fillApplicationDetails(CommonData.ApplicationForm.MobilepostpaidResidential,
+				CommonData.CustomerType.Residential, "PCL", "LIME_POST"));
 		action.getScreenShot(TestCase);
 
-		cp.fillResidentialCustomerDetails();
+		assertTrue(cp.fillResidentialCustomerDetails());
 		action.getScreenShot(TestCase);
-		cp.fillStandardAddress();
+		assertTrue(cp.fillStandardAddress());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerClassification();
+		assertTrue(cp.fillCustomerClassification());
 		action.getScreenShot(TestCase);
-		cp.fillBillingDetails();
+		assertTrue(cp.fillBillingDetails());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerID();
+		assertTrue(cp.fillCustomerID());
 		action.getScreenShot(TestCase);
-		cp.fillContactDetails();
+		assertTrue(cp.fillContactDetails());
 		action.getScreenShot(TestCase);
-		cp.verifyCreatedAccount();
+		assertTrue(cp.verifyCreatedAccount());
 
-		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		assertTrue(ce.selectDepartmentSite("AQSAL", "ANSQ"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PCL", "LIME_POST");
+		assertTrue(ce.selectServicePackage("PCL", "LIME_POST"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -260,12 +271,12 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processProductFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("MSCA", "SMPO");
+		assertTrue(ce.provideServiceDetailsScreen("MSCA", "SMPO"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
 		sso.signOff();
 		action.getScreenShot(TestCase);
@@ -286,26 +297,26 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		assertTrue(ce.selectDepartmentSite("AQSAL", "ANSQ"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PDL", "ADSL_PACK");
+		assertTrue(ce.selectServicePackage("PDL", "ADSL_PACK"));
 		action.getScreenShot(TestCase);
-		ce.processPricingPlanScreen();
+		assertTrue(ce.processPricingPlanScreen());
 		action.getScreenShot(TestCase);
-		ce.processServiceProductsScreen();
+		assertTrue(ce.processServiceProductsScreen());
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();
@@ -324,13 +335,13 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("BGSAL", "BUSG");
+		assertTrue(ce.selectDepartmentSite("BGSAL", "BUSG"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PTV - ", "CableTV");
+		assertTrue(ce.selectServicePackage("PTV - ", "CableTV"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -338,14 +349,14 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();
@@ -364,13 +375,13 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("BGSAL", "BUSG");
+		assertTrue(ce.selectDepartmentSite("BGSAL", "BUSG"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PTI - ", "IPTVBasic");
+		assertTrue(ce.selectServicePackage("PTI - ", "IPTVBasic"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -378,14 +389,14 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();
@@ -404,27 +415,27 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("260002270000");
+		assertTrue(ce.searchWithAccount("260002270000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		assertTrue(ce.selectDepartmentSite("AQSAL", "ANSQ"));
 		action.getScreenShot(TestCase);
-		ce.selectNonPackage("ARN");
+		assertTrue(ce.selectNonPackage("ARN"));
 		action.getScreenShot(TestCase);
 
-		ce.processServiceNoScreen("510370");
+		assertTrue(ce.processServiceNoScreen(arnServiceNumber));
 		action.getScreenShot(TestCase);
 		ce.processServiceProductsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();
@@ -444,29 +455,30 @@ public class ServiceProvisioningTC {
 		SalesSignOff sso = new SalesSignOff(action);
 		CRServiceOrder cso = new CRServiceOrder(action);
 
-		cp.navigate();
+		assertTrue(cp.navigate());
 		action.getScreenShot(TestCase);
-		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
-				"PEL", "ETFT");
+		assertTrue(cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential,
+				CommonData.CustomerType.Residential, "PEL", "ETFT"));
 		action.getScreenShot(TestCase);
 
-		cp.fillResidentialCustomerDetails();
+		assertTrue(cp.fillResidentialCustomerDetails());
 		action.getScreenShot(TestCase);
-		cp.fillStandardAddress();
+		assertTrue(cp.fillStandardAddress());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerClassification();
+		assertTrue(cp.fillCustomerClassification());
 		action.getScreenShot(TestCase);
-		cp.fillBillingDetails();
+		assertTrue(cp.fillBillingDetails());
 		action.getScreenShot(TestCase);
-		cp.fillCustomerID();
+		assertTrue(cp.fillCustomerID());
 		action.getScreenShot(TestCase);
 		cp.fillContactDetails();
 		action.getScreenShot(TestCase);
-		cp.verifyCreatedAccount();
-
-		ce.selectDepartmentSite("BGSAL", "BUSG");
+		assertTrue(cp.verifyCreatedAccount());
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PEL", "ETFT");
+
+		assertTrue(ce.selectDepartmentSite("BGSAL", "BUSG"));
+		action.getScreenShot(TestCase);
+		assertTrue(ce.selectServicePackage("PEL", "ETFT"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -476,28 +488,28 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
-		ce.provideADSL();
+		assertTrue(ce.provideADSL());
 		action.getScreenShot(TestCase);
 
 		// PDL Part
-		ce.selectServicePackage("PDL", "ADSL_PACK");
+		assertTrue(ce.selectServicePackage("PDL", "ADSL_PACK"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
 		ce.processServiceProductsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();
@@ -517,13 +529,13 @@ public class ServiceProvisioningTC {
 		CRServiceOrder cso = new CRServiceOrder(action);
 		AddMore addmore = new AddMore(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("BGSAL", "BUSG");
+		assertTrue(ce.selectDepartmentSite("BGSAL", "BUSG"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PEL", "ETFT");
+		assertTrue(ce.selectServicePackage("PEL", "ETFT"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -533,36 +545,36 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 		ce.skipADSL();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.addMore();
+		assertTrue(sso.addMore());
 		action.getScreenShot(TestCase);
 
 		addmore.addADSL();
 		action.getScreenShot(TestCase);
 
 		// PDL Part
-		ce.selectServicePackage("PDL", "ADSL_PACK");
+		assertTrue(ce.selectServicePackage("PDL", "ADSL_PACK"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
 		ce.processServiceProductsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();
@@ -582,13 +594,13 @@ public class ServiceProvisioningTC {
 		CRServiceOrder cso = new CRServiceOrder(action);
 		AddMore addmore = new AddMore(action);
 
-		ce.navigate();
+		assertTrue(ce.navigate());
 		action.getScreenShot(TestCase);
-		ce.searchWithAccount("280000710000");
+		assertTrue(ce.searchWithAccount("280000710000"));
 		action.getScreenShot(TestCase);
-		ce.selectDepartmentSite("AQSAL", "ANSQ");
+		assertTrue(ce.selectDepartmentSite("AQSAL", "ANSQ"));
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PEL", "ETFT");
+		assertTrue(ce.selectServicePackage("PEL", "ETFT"));
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(TestCase);
@@ -598,23 +610,23 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("BOT", "BODD");
+		assertTrue(ce.provideServiceDetailsScreen("BOT", "BODD"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 		ce.skipADSL();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.addMore();
-		action.getScreenShot(TestCase);
-
-		addmore.addServicePackage();
+		assertTrue(sso.addMore());
 		action.getScreenShot(TestCase);
 
+		assertTrue(addmore.addServicePackage());
 		action.getScreenShot(TestCase);
-		ce.selectServicePackage("PCL", "LIME_POST");
+
+		action.getScreenShot(TestCase);
+		assertTrue(ce.selectServicePackage("PCL", "LIME_POST"));
 		// ce.selectServicePackage("PCL", "SOW-");
 		action.getScreenShot(TestCase);
 		ce.processPricingPlanScreen();
@@ -625,14 +637,14 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(TestCase);
 		ce.processISPFieldsScreen();
 		action.getScreenShot(TestCase);
-		ce.provideServiceDetailsScreen("MSCA", "SMPO");
+		assertTrue(ce.provideServiceDetailsScreen("MSCA", "SMPO"));
 		action.getScreenShot(TestCase);
 		ce.provideContractDetails();
 		action.getScreenShot(TestCase);
 
-		sso.verifySalesSignOff();
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(TestCase);
-		sso.signOff();
+		assertTrue(sso.signOff());
 		action.getScreenShot(TestCase);
 
 		cso.getSONumber();

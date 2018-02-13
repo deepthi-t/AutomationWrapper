@@ -33,6 +33,7 @@ public class TestData {
 	public static String pricingPlanAccount = "";
 	public static String employeeUserName = "";
 	public static String newUserID = "";
+	public static String arnServiceNumber = "";
 
 	static String FileName = "TestData.properties";
 
@@ -65,6 +66,7 @@ public class TestData {
 		properties.setProperty("pricingPlanAccount", pricingPlanAccount);
 		properties.setProperty("employeeUserName", employeeUserName);
 		properties.setProperty("newUserID", newUserID);
+		properties.setProperty("arnServiceNumber", arnServiceNumber);
 		
 		try {
 			properties.store(new FileOutputStream(FileName), null);
@@ -116,5 +118,6 @@ public class TestData {
 		pricingPlanAccount = getData("pricingPlanAccount");
 		employeeUserName = getData("employeeUserName");
 		newUserID = getData("newUserID");
+		arnServiceNumber = getData("arnServiceNumber");
 	}
 }
