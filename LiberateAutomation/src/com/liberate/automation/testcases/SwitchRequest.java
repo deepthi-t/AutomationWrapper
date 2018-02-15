@@ -104,7 +104,6 @@ public class SwitchRequest {
 		action.getScreenShot(TestCase);
 
 		ReportGenerator.generateReport(TestCase);
-
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

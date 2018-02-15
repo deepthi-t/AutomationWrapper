@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.RandomData;
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.MaintainDepositReason;
 
@@ -16,6 +17,7 @@ public class DepositReasonTC {
 	@Test
 	public static void createNewDepositReason() {
 		String TestCase = "DepositReason_createNewDepositReason";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		RandomData random = new RandomData();
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
@@ -34,5 +36,8 @@ public class DepositReasonTC {
 		String x = action.getTextFromPage(By.xpath("//span[@class='iceMsgInfo']"));
 		action.getScreenShot(TestCase);
 		System.out.println(x);
+
+		ReportGenerator.generateReport(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }
