@@ -822,6 +822,7 @@ public class TestActions {
 			log("ERROR");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+			
 			return false;
 		}
 	}

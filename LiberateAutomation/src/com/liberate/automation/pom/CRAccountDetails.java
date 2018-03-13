@@ -69,6 +69,7 @@ public class CRAccountDetails {
 	public boolean cloneCustomer() {
 		boolean passed = false;
 
+		passed = action.waitFor(CloneCustomer_ActionButton, 8, true);
 		passed = action.clickOn(CloneCustomer_ActionButton);
 
 		passed = action.waitFor(CustomerType_Select, 4, true);

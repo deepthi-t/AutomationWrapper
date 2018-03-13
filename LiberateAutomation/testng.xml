@@ -5,11 +5,7 @@
 	<test name="Regression">
 		<classes>
 			<class name="com.liberate.automation.testcases.CommonLogin" />
-			<class name="com.liberate.automation.testcases.SwitchRequest" />
-			<class name="com.liberate.automation.testcases.UserManagementTC" />
 			<class name="com.liberate.automation.testcases.QueryManagementTC" />
-			<class name="com.liberate.automation.testcases.CustomerEnquiryTC" />
-			<class name="com.liberate.automation.testcases.DepositReasonTC" />
 		</classes>
 	</test>
 </suite>
