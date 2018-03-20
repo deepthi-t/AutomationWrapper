@@ -10,9 +10,10 @@ import com.liberate.automation.core.TestData;
 public class CRMaintainQuery {
 	TestActions action = null;
 
-	String QueryCode = "";
-	String QueryStatus = "";
-	String SelectedQueryStatus = "";
+	public String QueryCode = "";
+	public String QueryStatus = "";
+	public String QueryNumber = "";
+	public String SelectedQueryStatus = "";
 
 	By SearchBy_Select = By.xpath("//*[text()='Search By:']/following::select[1]");
 	By SearchText_Input = By.xpath("//*[text()='Search By:']/following::input[1]");
@@ -218,7 +219,8 @@ public class CRMaintainQuery {
 		action.log("Raised Query Code    : " + QueryCode);
 
 		action.log("Query Code in Screen : " + action.getTextFromPage(QueryType_Value).substring(0, 4));
-
+		
+		this.QueryNumber = action.getTextFromPage(QueryNumber_Value).trim();
 		this.QueryStatus = action.getTextFromPage(QueryStatus_Value).trim();
 
 		return passed;
