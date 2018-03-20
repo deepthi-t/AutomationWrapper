@@ -9,7 +9,9 @@ import com.liberate.automation.pom.CRMaintainQuery;
 
 public class QueryManagementTC {
 	static TestActions action = CommonLogin.action;
-
+	
+	static String nonAccountQuery = "";
+	
 	@Test(priority = 1)
 	public static void raiseQueryAccount() {
 		String TestCase = "QueryManagement_raiseQueryAccount";
@@ -197,9 +199,63 @@ public class QueryManagementTC {
 		mq.raiseNonAccountQuery("Test Name", "mail", "test@cwc.com");
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
+		nonAccountQuery = mq.QueryNumber;
 		action.getScreenShot(TestCase);
 
 		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
+
+	@Test(priority = 10)
+	public static void amendQueryNonAccount() {
+		String TestCase = "QueryManagement_amendQuery";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+
+		CRMaintainQuery mq = new CRMaintainQuery(action);
+
+		mq.navigate();
+		action.getScreenShot(TestCase);
+		mq.searchByQueryNumber(nonAccountQuery);
+		action.getScreenShot(TestCase);
+		mq.verifyQuery();
+		action.getScreenShot(TestCase);
+		mq.amendQuery();
+		action.getScreenShot(TestCase);
+		mq.verifyQuery();
+		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+	}
+
+	@Test(priority = 11)
+	public static void signOffQueryNonAccount() {
+		String TestCase = "QueryManagement_signOffQuery";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+
+		CRMaintainQuery mq = new CRMaintainQuery(action);
+
+		mq.navigate();
+		action.getScreenShot(TestCase);
+		mq.searchByQueryNumber(nonAccountQuery);
+		action.getScreenShot(TestCase);
+		mq.raiseAccountQuery();
+		action.getScreenShot(TestCase);
+		mq.verifyQuery();
+		action.getScreenShot(TestCase);
+
+		mq.progressQuery("RE");
+		action.getScreenShot(TestCase);
+		mq.verifyQuery();
+		action.getScreenShot(TestCase);
+
+		mq.signOffQuery();
+		action.getScreenShot(TestCase);
+		mq.verifyQuery();
+		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+	}
+
 }
