@@ -2,11 +2,15 @@ package com.liberate.automation.testcases;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections4.map.HashedMap;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.common.CommonData;
 import com.liberate.automation.common.CommonPanel;
+import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AllocateRouteServiceOrder;
 import com.liberate.automation.pom.BrowseServiceOrder;
@@ -27,19 +31,57 @@ import com.liberate.automation.pom.MSOWaitlist;
 public class ManageServiceOrder {
 	static TestActions action = CommonLogin.action;
 
+	static Map<String, String> dataMap = new HashedMap<>();
+
+	static String SOEnquire;
+	static String SalesDepartment;
+	static String GeneralDepartment;
+	static String AccountsDepartment;
+	static String RouteSO;
+	static String RedirectSO;
+	static String BrowseSO;
+	static String AssignSO;
+	static String SplitSO;
+	static String SuspendSO;
+	static String ManualWaitlistSO;
+	static String WaitlistSO;
+	static String RejectSO;
+	static String AccountSO;
+	static String GeneralSO;
+
+	@BeforeClass
+	public static void loadData() {
+		dataMap = ExcelDataDriver.loadData();
+
+		SOEnquire = dataMap.get("SOEnquire");
+		SalesDepartment = dataMap.get("SalesDepartment");
+		GeneralDepartment = dataMap.get("GeneralDepartment");
+		AccountsDepartment = dataMap.get("AccountsDepartment");
+		RouteSO = dataMap.get("RouteSO");
+		RedirectSO = dataMap.get("RedirectSO");
+		BrowseSO = dataMap.get("BrowseSO");
+		AssignSO = dataMap.get("AssignSO");
+		SplitSO = dataMap.get("SplitSO");
+		SuspendSO = dataMap.get("SuspendSO");
+		ManualWaitlistSO = dataMap.get("ManualWaitlistSO");
+		WaitlistSO = dataMap.get("WaitlistSO");
+		RejectSO = dataMap.get("RejectSO");
+		AccountSO = dataMap.get("AccountSO");
+		GeneralSO = dataMap.get("GeneralSO");
+	}
+
 	@Test
 	public static void soEnquiry() {
 		String TestCase = "ManageServiceOrder_soEnquiry";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		MSOEnquiry msr = new MSOEnquiry(action);
-		String serviceOrderNumber = "A00071A";
 
 		msr.navigate();
 		action.getScreenShot(TestCase);
-		msr.searchServiceOrder(serviceOrderNumber);
+		msr.searchServiceOrder(SOEnquire);
 		action.getScreenShot(TestCase);
-		msr.verifyServiceOrderDetails(serviceOrderNumber);
+		msr.verifyServiceOrderDetails(SOEnquire);
 		action.getScreenShot(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
@@ -52,12 +94,10 @@ public class ManageServiceOrder {
 		MSOAddSpecialInstructions mso = new MSOAddSpecialInstructions(action);
 		MSOEnquiry mse = new MSOEnquiry(action);
 
-		String serviceOrderNumber = "A00071A";
-
 		action.getScreenShot(TestCase);
 		mso.navigate();
 		action.getScreenShot(TestCase);
-		mso.searchServiceOrder(serviceOrderNumber);
+		mso.searchServiceOrder(SOEnquire);
 		action.getScreenShot(TestCase);
 		mso.verifyServiceOrderDetails();
 		action.getScreenShot(TestCase);
@@ -68,9 +108,9 @@ public class ManageServiceOrder {
 
 		mse.navigate();
 		action.getScreenShot(TestCase);
-		mse.searchServiceOrder(serviceOrderNumber);
+		mse.searchServiceOrder(SOEnquire);
 		action.getScreenShot(TestCase);
-		mse.verifyServiceOrderDetails(serviceOrderNumber);
+		mse.verifyServiceOrderDetails(SOEnquire);
 		action.getScreenShot(TestCase);
 		mse.verifySepcialInstructions(mso.SpecialInstruction);
 		action.getScreenShot(TestCase);
@@ -83,11 +123,10 @@ public class ManageServiceOrder {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
-		String serviceOrderNumber = "WH00477";
 
 		msr.navigate();
 		action.getScreenShot(TestCase);
-		msr.searchServiceOrder("RSNET", serviceOrderNumber);
+		msr.searchServiceOrder("RSNET", SOEnquire);
 		action.getScreenShot(TestCase);
 		msr.verifyServiceOrderDetails();
 		action.getScreenShot(TestCase);
@@ -104,11 +143,10 @@ public class ManageServiceOrder {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
-		String serviceOrderNumber = "WH00477";
 
 		msr.navigate();
 		action.getScreenShot(TestCase);
-		msr.searchServiceOrder("RSNET", serviceOrderNumber);
+		msr.searchServiceOrder("RSNET", SOEnquire);
 		action.getScreenShot(TestCase);
 		msr.verifyServiceOrderDetails();
 		action.getScreenShot(TestCase);
@@ -158,7 +196,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("BGINS", "WI00720");
+		mss.searchServiceOrder("BGINS", GeneralSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -176,7 +214,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("AQSOF", "ZF00009");
+		mss.searchServiceOrder(AccountsDepartment, AccountSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -194,7 +232,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("BGSOF", "ZG00127");
+		mss.searchServiceOrder(AccountsDepartment, RejectSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -203,7 +241,7 @@ public class ManageServiceOrder {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test
+	@Test(priority=11)
 	public static void releaseServiceOrder() {
 		String TestCase = "ManageServiceOrder_releaseServiceOrder";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -212,7 +250,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("AQSOF", "A00173B");
+		mss.searchServiceOrder(AccountsDepartment, WaitlistSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -221,7 +259,7 @@ public class ManageServiceOrder {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test
+	@Test(priority=10)
 	public static void waitlistServiceOrder() {
 		String TestCase = "ManageServiceOrder_waitlistServiceOrder";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
@@ -230,7 +268,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("AQSOF", "YC00265");
+		mss.searchServiceOrder(AccountsDepartment, WaitlistSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -248,7 +286,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("RSNET", "ZC00213");
+		mss.searchServiceOrder(GeneralDepartment, ManualWaitlistSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -266,7 +304,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("AQSOF", "YE00194");
+		mss.searchServiceOrder(AccountsDepartment, SuspendSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -284,7 +322,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("CRCL", "WI00204");
+		mss.searchServiceOrder(AccountsDepartment, SplitSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -302,7 +340,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("RSNET", "ZA00103");
+		mss.searchServiceOrder(GeneralDepartment, AssignSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -320,7 +358,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("RSNET", "ZA00103");
+		mss.searchServiceOrder(GeneralDepartment, BrowseSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -336,7 +374,7 @@ public class ManageServiceOrder {
 
 		mss.navigate();
 		action.getScreenShot(TestCase);
-		mss.searchServiceOrder("BGCNG", "WI00650");
+		mss.searchServiceOrder("BGCNG", RedirectSO);
 		action.getScreenShot(TestCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(TestCase);
@@ -356,7 +394,7 @@ public class ManageServiceOrder {
 
 		arso.navigate();
 		action.getScreenShot(TestCase);
-		arso.searchServiceOrder("BGNET", "A00528F");
+		arso.searchServiceOrder("BGNET", RouteSO);
 		action.getScreenShot(TestCase);
 		arso.allocateAuto(CommonData.PlantItemType.CopperDP, "DP100");
 		action.getScreenShot(TestCase);
@@ -374,7 +412,7 @@ public class ManageServiceOrder {
 
 		arso.navigate();
 		action.getScreenShot(TestCase);
-		arso.searchServiceOrder("BGNET", "A00528F");
+		arso.searchServiceOrder("BGNET", RouteSO);
 		action.getScreenShot(TestCase);
 		arso.allocateAuto(CommonData.PlantItemType.FiberDP, "FDP2");
 		action.getScreenShot(TestCase);
