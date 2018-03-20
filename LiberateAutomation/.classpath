@@ -1,59 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
 		<attributes>
-			<attribute name="module" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="Reference/cglib-nodep-3.2.4.jar"/>
-	<classpathentry kind="lib" path="Reference/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="Reference/commons-exec-1.3.jar"/>
-	<classpathentry kind="lib" path="Reference/commons-io-2.5.jar"/>
-	<classpathentry kind="lib" path="Reference/commons-lang3-3.5.jar"/>
-	<classpathentry kind="lib" path="Reference/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="Reference/cssparser-0.9.22.jar"/>
-	<classpathentry kind="lib" path="Reference/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="Reference/htmlunit-2.26.jar"/>
-	<classpathentry kind="lib" path="Reference/htmlunit-core-js-2.26.jar"/>
-	<classpathentry kind="lib" path="Reference/htmlunit-driver-2.26.jar"/>
-	<classpathentry kind="lib" path="Reference/httpclient-4.5.3.jar"/>
-	<classpathentry kind="lib" path="Reference/httpcore-4.4.6.jar"/>
-	<classpathentry kind="lib" path="Reference/httpmime-4.5.3.jar"/>
-	<classpathentry kind="lib" path="Reference/javax.servlet-api-3.1.0.jar"/>
-	<classpathentry kind="lib" path="Reference/jetty-io-9.4.1.v20170120.jar"/>
-	<classpathentry kind="lib" path="Reference/jetty-util-9.4.1.v20170120.jar"/>
-	<classpathentry kind="lib" path="Reference/jna-4.1.0.jar"/>
-	<classpathentry kind="lib" path="Reference/jna-platform-4.1.0.jar"/>
-	<classpathentry kind="lib" path="Reference/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="Reference/neko-htmlunit-2.25.jar"/>
-	<classpathentry kind="lib" path="Reference/phantomjsdriver-1.4.0.jar"/>
-	<classpathentry kind="lib" path="Reference/sac-1.3.jar"/>
-	<classpathentry kind="lib" path="Reference/serializer-2.7.2.jar"/>
-	<classpathentry kind="lib" path="Reference/websocket-api-9.4.3.v20170317.jar"/>
-	<classpathentry kind="lib" path="Reference/websocket-client-9.4.3.v20170317.jar"/>
-	<classpathentry kind="lib" path="Reference/websocket-common-9.4.3.v20170317.jar"/>
-	<classpathentry kind="lib" path="Reference/xalan-2.7.2.jar"/>
-	<classpathentry kind="lib" path="Reference/xercesImpl-2.11.0.jar"/>
-	<classpathentry kind="lib" path="Reference/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry kind="lib" path="Reference/commons-collections4-4.1.jar"/>
-	<classpathentry kind="lib" path="Reference/cucumber-java-1.0.11-javadoc.jar"/>
-	<classpathentry kind="lib" path="Reference/cucumber-java-1.0.11.jar"/>
-	<classpathentry kind="lib" path="Reference/curvesapi-1.04.jar"/>
-	<classpathentry kind="lib" path="Reference/poi-3.16.jar"/>
-	<classpathentry kind="lib" path="Reference/poi-excelant-3.16.jar"/>
-	<classpathentry kind="lib" path="Reference/poi-ooxml-3.16.jar"/>
-	<classpathentry kind="lib" path="Reference/poi-ooxml-schemas-3.16.jar"/>
-	<classpathentry kind="lib" path="Reference/poi-scratchpad-3.16.jar"/>
-	<classpathentry kind="lib" path="Reference/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="Reference/testng-6.11.jar"/>
-	<classpathentry kind="lib" path="Reference/byte-buddy-1.7.9.jar"/>
-	<classpathentry kind="lib" path="Reference/client-combined-3.9.1-sources.jar"/>
-	<classpathentry kind="lib" path="Reference/client-combined-3.9.1.jar" sourcepath="Reference/client-combined-3.9.1-sources.jar"/>
-	<classpathentry kind="lib" path="Reference/gson-2.8.2.jar"/>
-	<classpathentry kind="lib" path="Reference/guava-23.6-jre.jar"/>
-	<classpathentry kind="lib" path="Reference/okhttp-3.9.1.jar"/>
-	<classpathentry kind="lib" path="Reference/okio-1.13.0.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
