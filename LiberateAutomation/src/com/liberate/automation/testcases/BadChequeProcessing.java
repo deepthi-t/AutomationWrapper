@@ -12,18 +12,18 @@ import com.liberate.automation.pom.PYBadCheckProcessing;
 public class BadChequeProcessing {
 
 	static TestActions action = CommonLogin.action;
-	
+
 	static String badChequePaymentNumber = "";
-	
+
 	@BeforeClass
-	public static void loadData()
-	{
+	public static void loadData() {
 		badChequePaymentNumber = TestData.badChequePaymentNumber;
 	}
-	
+
 	@Test
 	public static void badCheckProcessing() {
 		String TestCase = "BadChequeProcessing_badCheckProcessing";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		PYBadCheckProcessing bcp = new PYBadCheckProcessing(action);
 
@@ -37,5 +37,6 @@ public class BadChequeProcessing {
 		action.getScreenShot(TestCase);
 		assertEquals(bcp.acceptBadChequeProcessing(), true);
 		action.getScreenShot(TestCase);
+		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

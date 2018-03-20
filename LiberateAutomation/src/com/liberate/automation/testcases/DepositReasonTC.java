@@ -36,7 +36,6 @@ public class DepositReasonTC {
 		String x = action.getTextFromPage(By.xpath("//span[@class='iceMsgInfo']"));
 		action.getScreenShot(TestCase);
 		System.out.println(x);
-
 		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
