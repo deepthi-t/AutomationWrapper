@@ -2,6 +2,7 @@ package com.liberate.automation.testcases;
 
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRMaintainQuery;
@@ -24,6 +25,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -44,6 +47,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -64,6 +69,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -84,6 +91,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -112,6 +121,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -145,6 +156,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -167,6 +180,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -183,6 +198,8 @@ public class QueryManagementTC {
 		action.getScreenShot(TestCase);
 		mq.verifyQuery();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

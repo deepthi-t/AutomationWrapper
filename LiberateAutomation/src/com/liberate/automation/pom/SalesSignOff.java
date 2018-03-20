@@ -145,6 +145,10 @@ public class SalesSignOff {
 			else if (action.countOf(CommonPanel.popUp.popUpOK_Button) > 0) {
 				CommonPanel.popUp.clickOK(action);
 			}
+			else
+			{
+				return false;
+			}
 		}
 		if (action.countOf(MacAddressConfirmation_Message) > 0) {
 			action.waitFor(2);

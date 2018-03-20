@@ -282,7 +282,7 @@ public class CRServiceOperations {
 		passed = action.waitForClickable(ASN_ActionButton, 2);
 		passed = action.clickOn(ASN_ActionButton);
 
-		passed = action.waitFor(Department_Select, 4, true);
+		passed = action.waitFor(Department_Select, 150, true);
 
 		passed = action.selectByPartialText(Department_Select, "AQSAL");
 		passed = action.waitFor(SiteDisabled_Select, 2, false);
@@ -331,7 +331,7 @@ public class CRServiceOperations {
 		passed = action.waitForClickable(CeaseService_ActionButton, 2);
 		passed = action.clickOn(CeaseService_ActionButton);
 
-		passed = action.waitFor(Department_Select, 4, true);
+		passed = action.waitFor(Department_Select, 150, true);
 
 		passed = action.selectByPartialText(Department_Select, "AQSAL");
 		passed = action.waitFor(SiteDisabled_Select, 2, false);

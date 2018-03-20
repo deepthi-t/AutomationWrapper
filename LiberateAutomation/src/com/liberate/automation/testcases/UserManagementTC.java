@@ -3,6 +3,7 @@ package com.liberate.automation.testcases;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.ADMaintainEmployee;
@@ -35,6 +36,8 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -55,6 +58,8 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -78,6 +83,8 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyUserDetails();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -96,6 +103,8 @@ public class UserManagementTC {
 		action.getScreenShot(TestCase);
 		adm.verifyDelete();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 

@@ -3,6 +3,7 @@ package com.liberate.automation.testcases;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRAccountPricingPlans;
@@ -43,6 +44,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -62,6 +65,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("");
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -81,6 +86,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard("");
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -105,6 +112,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -129,6 +138,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cu.validatedayOfBilling();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -151,6 +162,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyRaiseAdjustment();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -171,6 +184,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyAdjustmenst();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -194,6 +209,7 @@ public class CustomerEnquiryTC {
 		ad.verifyRaisedServiceCharge();
 		action.getScreenShot(TestCase);
 
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -216,6 +232,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyServiceCharge();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -236,6 +254,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		ad.verifyServiceCharge();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -257,6 +277,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cb.verifyBill();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -281,6 +303,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cp.validatePricingPlan();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
@@ -305,6 +329,8 @@ public class CustomerEnquiryTC {
 		action.getScreenShot(TestCase);
 		cp.validatePricingPlan();
 		action.getScreenShot(TestCase);
+
+		ReportGenerator.generateReport(TestCase);
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

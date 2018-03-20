@@ -424,6 +424,9 @@ public class TestActions {
 		for (int i = 0; i < locators.length; i++) {
 			waitElements = waitElements + getXpath(locators[0]);
 		}
+		
+//		WebDriverWait wait = new WebDriverWait(driver, 20);
+		
 		throw new NotImplementedException("This methos is not yet implemented");
 	}
 
@@ -822,6 +825,7 @@ public class TestActions {
 			log("ERROR");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+			
 			return false;
 		}
 	}
