@@ -21,7 +21,7 @@ public class FaultManagement {
 		assertEquals(rf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(rf.enterServiceNumber("510284"), true);
+		assertEquals(rf.enterServiceNumber("551002"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(rf.clickonRaiseFaultbutton(), true);
 		action.getScreenShot(TestCase);
@@ -44,7 +44,7 @@ public class FaultManagement {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(mf.enterFaultNumber("C00003A"), true);
+		assertEquals(mf.enterFaultNumber("C00005C"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(TestCase);
@@ -95,7 +95,7 @@ public class FaultManagement {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(mf.enterFaultNumber("C00010A"), true);
+		assertEquals(mf.enterFaultNumber("C00005C"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(TestCase);
@@ -121,7 +121,7 @@ public class FaultManagement {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(mf.enterFaultNumber("C00003A"), true);
+		assertEquals(mf.enterFaultNumber("C00005C"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(TestCase);
@@ -145,7 +145,7 @@ public class FaultManagement {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(mf.enterFaultNumber("C00003A"), true);
+		assertEquals(mf.enterFaultNumber("C00005C"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(TestCase);
@@ -169,7 +169,7 @@ public class FaultManagement {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(mf.enterFaultNumber("C00003A"), true);
+		assertEquals(mf.enterFaultNumber("C00005C"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(TestCase);
@@ -193,7 +193,7 @@ public class FaultManagement {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(TestCase);
 
-		assertEquals(mf.enterFaultNumber("C00003A"), true);
+		assertEquals(mf.enterFaultNumber("C00005C"), true);
 		action.getScreenShot(TestCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(TestCase);

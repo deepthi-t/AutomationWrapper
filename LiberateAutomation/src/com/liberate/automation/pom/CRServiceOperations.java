@@ -51,7 +51,11 @@ public class CRServiceOperations {
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Change')]]//following::span[text()='ROS']");
 	By CeaseService_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Cease Service')]]");
-
+	
+	By AlterSIMCard_ActionButton = By.xpath(
+			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Change SIM Card')]]");
+	
+	
 	By Summary_Tab = By.xpath("//*[text()='Summary']");
 
 	By SelectedService_Value = By.xpath(
@@ -125,7 +129,18 @@ public class CRServiceOperations {
 
 		return passed;
 	}
-
+	
+	public void alterSIMCard() {
+		action.moveMouseAwayFromScreen();
+		action.waitFor(Change_ActionButton, 5, true);
+		action.clickOn(Change_ActionButton);
+		action.waitFor(1);
+		
+		action.waitFor(AlterSIMCard_ActionButton, 5, true);
+		action.clickOn(AlterSIMCard_ActionButton);
+		action.waitFor(5);
+	}
+	
 	public boolean verifyProductsScreen() {
 		By Products_Tab = By.xpath("//td[text()='Products']");
 
