@@ -7,23 +7,29 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.pom.AlterSIMCard;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRServiceOperations;
+import com.liberate.automation.pom.CRServiceOrder;
+import com.liberate.automation.pom.SalesSignOff;
 
 public class AlterServiceTestCase {
 	static TestActions action = CommonLogin.action;
 	static String TestCase;
 	static String TestStatus;
 	
-	static String alterSIMService = "1116341";
+	static String alterSIMService = "9291476";
 	
 	@Test
-	public void alterSIMCard() {
+	public static void alterSIMCard() {
 		TestCase = "Alter SIM Card";
 		
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		CRServiceOperations service = new CRServiceOperations(action);
-		
+		AlterSIMCard alterSim = new AlterSIMCard(action);
+		SalesSignOff sales = new SalesSignOff(action);
+		CRServiceOrder order = new CRServiceOrder(action);
+
 		search.navigate();
 		action.getScreenShot(TestCase);
 		search.searchByServiceNumber(alterSIMService);
@@ -34,6 +40,21 @@ public class AlterServiceTestCase {
 		service.verifyServicesScreen();
 		action.getScreenShot(TestCase);
 		service.alterSIMCard();
+		action.getScreenShot(TestCase);
+		
+		alterSim.selectDepartmentSite("AQSAL", "ANSQ");
+		action.getScreenShot(TestCase);
+		alterSim.updateSIMCard();
+		action.getScreenShot(TestCase);
+		
+		sales.verifySalesSignOff();
+		action.getScreenShot(TestCase);
+		sales.signOff();
+		action.getScreenShot(TestCase);
+
+		order.getSONumber();
+		action.getScreenShot(TestCase);
+		order.getSOCommand();
 		action.getScreenShot(TestCase);
 	}
 	
