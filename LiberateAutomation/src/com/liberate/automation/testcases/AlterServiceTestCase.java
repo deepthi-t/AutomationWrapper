@@ -23,6 +23,9 @@ public class AlterServiceTestCase {
 	static String TestStatus;
 	
 	static String alterSIMService;
+	static String department;
+	static String site;
+	
 	static Map<String, String> data = new HashedMap<>();  
 	
 	@Test
@@ -47,7 +50,7 @@ public class AlterServiceTestCase {
 		service.alterSIMCard();
 		action.getScreenShot(TestCase);
 		
-		alterSim.selectDepartmentSite("AQSAL", "ANSQ");
+		alterSim.selectDepartmentSite(department, site);
 		action.getScreenShot(TestCase);
 		alterSim.updateSIMCard();
 		action.getScreenShot(TestCase);
@@ -67,6 +70,8 @@ public class AlterServiceTestCase {
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
 		alterSIMService = data.get("alterSIMService");
+		department = data.get("SalesDepartment");
+		site = data.get("Site");
 	}
 	
 	@AfterMethod
