@@ -1,10 +1,14 @@
 package com.liberate.automation.testcases;
 
+import java.util.Map;
+
+import org.apache.commons.collections4.map.HashedMap;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AlterSIMCard;
@@ -18,7 +22,8 @@ public class AlterServiceTestCase {
 	static String TestCase;
 	static String TestStatus;
 	
-	static String alterSIMService = "9291476";
+	static String alterSIMService;
+	static Map<String, String> data = new HashedMap<>();  
 	
 	@Test
 	public static void alterSIMCard() {
@@ -60,7 +65,8 @@ public class AlterServiceTestCase {
 	
 	@BeforeClass
 	public static void loadData() {
-		
+		data = ExcelDataDriver.loadData();
+		alterSIMService = data.get("alterSIMService");
 	}
 	
 	@AfterMethod
