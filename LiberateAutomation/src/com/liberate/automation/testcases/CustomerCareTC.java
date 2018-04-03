@@ -119,7 +119,7 @@ public class CustomerCareTC {
 
 		ServiceOrderNumber = cso.getSONumber();
 
-		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
+		ManageServiceOrderTC.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
@@ -157,7 +157,7 @@ public class CustomerCareTC {
 
 		ServiceOrderNumber = serviceOrder.getSONumber();
 
-		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
+		ManageServiceOrderTC.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
@@ -222,7 +222,7 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 		serviceASNCease = serviceOrder.getServiceONumber();
 
-		ManageServiceOrder.signOffCompletely(serviceOrder.getSONumber());
+		ManageServiceOrderTC.signOffCompletely(serviceOrder.getSONumber());
 
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}

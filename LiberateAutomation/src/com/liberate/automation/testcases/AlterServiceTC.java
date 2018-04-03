@@ -22,7 +22,7 @@ import com.liberate.automation.pom.SalesSignOff;
  * @author Nikhil
  *
  */
-public class AlterServiceTestCase {
+public class AlterServiceTC {
 	static TestActions action = CommonLogin.action;
 	static String TestCase;
 	static String TestStatus;

@@ -14,7 +14,7 @@ import com.liberate.automation.pom.BrowseServiceOrder;
  * @author Nikhil
  *
  */
-public class BulkSOProcessing {
+public class BulkSOProcessingTC {
 	static TestActions action = CommonLogin.action;
 
 	static String networkDepartment = "";

@@ -33,7 +33,7 @@ import com.liberate.automation.pom.MSOWaitlist;
  * @author Nikhil
  *
  */
-public class ManageServiceOrder {
+public class ManageServiceOrderTC {
 	static TestActions action = CommonLogin.action;
 
 	static Map<String, String> dataMap = new HashedMap<>();

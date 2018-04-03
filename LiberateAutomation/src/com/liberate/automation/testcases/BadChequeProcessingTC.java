@@ -14,7 +14,7 @@ import com.liberate.automation.pom.PYBadCheckProcessing;
  * @author Nikhil
  *
  */
-public class BadChequeProcessing {
+public class BadChequeProcessingTC {
 
 	static TestActions action = CommonLogin.action;
 

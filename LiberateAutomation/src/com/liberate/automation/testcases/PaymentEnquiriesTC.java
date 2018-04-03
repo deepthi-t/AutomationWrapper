@@ -13,7 +13,7 @@ import com.liberate.automation.pom.PYPaymentEnquiriesPOM;
  * @author Nikhil
  *
  */
-public class PaymentEnquiries {
+public class PaymentEnquiriesTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test

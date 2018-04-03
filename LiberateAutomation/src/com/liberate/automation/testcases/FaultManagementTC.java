@@ -13,7 +13,7 @@ import com.liberate.automation.pom.RaiseFault;
  * @author Nikhil
  *
  */
-public class FaultManagement {
+public class FaultManagementTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test
