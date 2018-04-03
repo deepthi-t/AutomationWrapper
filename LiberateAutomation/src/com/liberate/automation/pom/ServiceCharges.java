@@ -6,7 +6,7 @@ import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.core.TestActions;
 
-public class CRServiceCharges {
+public class ServiceCharges {
 	TestActions action = null;
 
 	String SelectedServiceCharge = "";
@@ -49,7 +49,7 @@ public class CRServiceCharges {
 	By RaisedDate_Value = By.xpath("//tr[@id='serviceChargesForm:serviceChargesList:0']//td[1]");
 	By ServiceChargeType_Value = By.xpath("//tr[@id='serviceChargesForm:serviceChargesList:0']//td[2]");
 
-	public CRServiceCharges(TestActions action) {
+	public ServiceCharges(TestActions action) {
 		this.action = action;
 	}
 

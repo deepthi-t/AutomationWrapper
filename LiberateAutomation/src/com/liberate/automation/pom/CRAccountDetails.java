@@ -133,7 +133,7 @@ public class CRAccountDetails {
 	private boolean fillCustomerDetails() {
 		boolean passed = false;
 
-		CPNewCustomer address = new CPNewCustomer(action);
+		NewCustomer address = new NewCustomer(action);
 		
 		if (action.getSelectedOption(BillStatusArea_Select).contains("Select"))
 			action.selectByPartialText(BillStatusArea_Select, "BOT");

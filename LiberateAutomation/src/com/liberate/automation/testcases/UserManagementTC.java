@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
-import com.liberate.automation.pom.ADMaintainEmployee;
-import com.liberate.automation.pom.ADManageUser;
+import com.liberate.automation.pom.MaintainEmployee;
+import com.liberate.automation.pom.ManageUser;
 
 /***
  * Class with all User Management Test Cases
@@ -31,7 +31,7 @@ public class UserManagementTC {
 		String TestCase = "UserManagementTC_amendUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		ADManageUser adm = new ADManageUser(action);
+		ManageUser adm = new ManageUser(action);
 
 		adm.navigate();
 		action.getScreenShot(TestCase);
@@ -51,7 +51,7 @@ public class UserManagementTC {
 		String TestCase = "UserManagementTC_copyUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		ADManageUser adm = new ADManageUser(action);
+		ManageUser adm = new ManageUser(action);
 
 		adm.navigate();
 		action.getScreenShot(TestCase);
@@ -73,8 +73,8 @@ public class UserManagementTC {
 		String TestCase = "UserManagementTC_createUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		ADManageUser adm = new ADManageUser(action);
-		ADMaintainEmployee ade = new ADMaintainEmployee(action);
+		ManageUser adm = new ManageUser(action);
+		MaintainEmployee ade = new MaintainEmployee(action);
 
 		ade.navigate();
 		ade.searchWithStaffNumber(newUserID);
@@ -98,7 +98,7 @@ public class UserManagementTC {
 		String TestCase = "UserManagementTC_deleteUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		ADManageUser adm = new ADManageUser(action);
+		ManageUser adm = new ManageUser(action);
 
 		adm.navigate();
 		action.getScreenShot(TestCase);

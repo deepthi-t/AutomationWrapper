@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.core.TestActions;
 
-public class CRServiceOrder {
+public class CustomerServiceOrder {
 	TestActions action = null;
 
 	By ExcludeCeaseClosed_CheckBox = By.xpath("//*[text()='Exclude Closed/Ceased Accounts:']");
@@ -34,7 +34,7 @@ public class CRServiceOrder {
 	 */
 	By ServiceOrder_Row = By.xpath("//tr[@id[contains(.,'serviceOrderForm:serviceOrdersTabSet:0:')]]");
 
-	public CRServiceOrder(TestActions action) {
+	public CustomerServiceOrder(TestActions action) {
 		this.action = action;
 	}
 

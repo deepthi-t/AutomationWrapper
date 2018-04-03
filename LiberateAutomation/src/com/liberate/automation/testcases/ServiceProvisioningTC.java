@@ -9,9 +9,9 @@ import com.liberate.automation.common.CommonData;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.AddMore;
-import com.liberate.automation.pom.CPExistingCustomer;
-import com.liberate.automation.pom.CPNewCustomer;
-import com.liberate.automation.pom.CRServiceOrder;
+import com.liberate.automation.pom.ExistingCustomer;
+import com.liberate.automation.pom.NewCustomer;
+import com.liberate.automation.pom.CustomerServiceOrder;
 import com.liberate.automation.pom.SalesSignOff;
 
 /***
@@ -34,10 +34,10 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_newCustomerPEL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPNewCustomer cp = new CPNewCustomer(action);
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		NewCustomer cp = new NewCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
 		action.getScreenShot(TestCase);
@@ -95,9 +95,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPEL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
 		action.getScreenShot(TestCase);
@@ -139,9 +139,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
 		action.getScreenShot(TestCase);
@@ -182,10 +182,10 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPNewCustomer cp = new CPNewCustomer(action);
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		NewCustomer cp = new NewCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
 		action.getScreenShot(TestCase);
@@ -241,10 +241,10 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPNewCustomer cp = new CPNewCustomer(action);
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		NewCustomer cp = new NewCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
 		action.getScreenShot(TestCase);
@@ -298,9 +298,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPDL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
 		action.getScreenShot(TestCase);
@@ -336,9 +336,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_existingCustomerPTV";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
 		action.getScreenShot(TestCase);
@@ -376,9 +376,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_existingCustomerIPTV";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
 		action.getScreenShot(TestCase);
@@ -416,9 +416,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_existingCustomerARN";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
 		action.getScreenShot(TestCase);
@@ -455,10 +455,10 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_newCustomerPELandPDL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPNewCustomer cp = new CPNewCustomer(action);
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		NewCustomer cp = new NewCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
 		action.getScreenShot(TestCase);
@@ -529,9 +529,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_addMorePELandPDL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 		AddMore addmore = new AddMore(action);
 
 		ce.navigate();
@@ -594,9 +594,9 @@ public class ServiceProvisioningTC {
 		String TestCase = "ServiceProvisioningTC_addMorePELandPCL";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CPExistingCustomer ce = new CPExistingCustomer(action);
+		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 		AddMore addmore = new AddMore(action);
 
 		ce.navigate();

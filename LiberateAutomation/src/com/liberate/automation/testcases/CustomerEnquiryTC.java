@@ -11,8 +11,8 @@ import com.liberate.automation.pom.CRAdjustments;
 import com.liberate.automation.pom.CRBills;
 import com.liberate.automation.pom.CRCustomerDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
-import com.liberate.automation.pom.CRDashBoard;
-import com.liberate.automation.pom.CRServiceCharges;
+import com.liberate.automation.pom.DashBoard;
+import com.liberate.automation.pom.ServiceCharges;
 
 /***
  * Class with Customer Enquiry Test Case
@@ -39,7 +39,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDashBoard cd = new CRDashBoard(action);
+		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
@@ -60,7 +60,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDashBoard cd = new CRDashBoard(action);
+		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
@@ -81,7 +81,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDashBoard cd = new CRDashBoard(action);
+		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
@@ -102,7 +102,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDashBoard cd = new CRDashBoard(action);
+		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
@@ -200,7 +200,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRServiceCharges ad = new CRServiceCharges(action);
+		ServiceCharges ad = new ServiceCharges(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
@@ -224,7 +224,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRServiceCharges ad = new CRServiceCharges(action);
+		ServiceCharges ad = new ServiceCharges(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);
@@ -248,7 +248,7 @@ public class CustomerEnquiryTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRServiceCharges ad = new CRServiceCharges(action);
+		ServiceCharges ad = new ServiceCharges(action);
 
 		cr.navigate();
 		action.getScreenShot(TestCase);

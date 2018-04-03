@@ -6,7 +6,7 @@ import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.core.TestActions;
 
-public class CRServiceOperations {
+public class ServiceOperations {
 	TestActions action = null;
 
 	public String ServiceNumber = "";
@@ -91,7 +91,7 @@ public class CRServiceOperations {
 	
 	By OK_Button = By.xpath("//input[contains(@value,'OK')]");
 	
-	public CRServiceOperations(TestActions action) {
+	public ServiceOperations(TestActions action) {
 		this.action = action;
 	}
 

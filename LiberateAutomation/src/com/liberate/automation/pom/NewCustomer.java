@@ -9,11 +9,11 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
 
-public class CPNewCustomer {
+public class NewCustomer {
 	TestActions action = null;
 	RandomData random = new RandomData();
 
-	public CPNewCustomer(TestActions action) {
+	public NewCustomer(TestActions action) {
 		this.action = action;
 	}
 
