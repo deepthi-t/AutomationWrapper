@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.apache.commons.collections4.map.HashedMap;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -39,30 +40,37 @@ public class ExcelDataDriver {
 
 	public static Map<String, String> loadData() {
 		Map<String, String> dataMap = new HashedMap<>();
-		
+
 		String key, value;
 		int count = 0;
-		
+
 		sheet = workBook.getSheet("DataSheet");
-		
-		while(true)
-		{
+
+		while (true) {
 			try {
-			key = sheet.getRow(count).getCell(0).toString().trim();
-			value = sheet.getRow(count).getCell(1).toString().trim();
+				sheet.getRow(count).getCell(0).setCellType(CellType.STRING);
+				key = sheet.getRow(count).getCell(0).getStringCellValue().trim();
+			} catch (NumberFormatException ex) {
+				key = sheet.getRow(count).getCell(0).getNumericCellValue() + "";
+			} catch (Exception e) {
+				key = "";
+			}
+			try {
+				sheet.getRow(count).getCell(1).setCellType(CellType.STRING);
+				value = sheet.getRow(count).getCell(1).getStringCellValue().trim();
+			} catch (NumberFormatException ex) {
+				value = sheet.getRow(count).getCell(1).getNumericCellValue() + "";
+			} catch (Exception e) {
+				value = "";
+			}
+
 			count++;
-			if(key.equals("")||value.equals(""))
+			if (key.equals(""))
 				break;
 			else
 				dataMap.put(key, value);
-			}
-			catch (Exception e) {
-				e.printStackTrace();
-				break;
-			}
-
 		}
-		
+
 		return dataMap;
 	}
 }
