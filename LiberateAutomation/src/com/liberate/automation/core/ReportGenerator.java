@@ -12,8 +12,18 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
+/***
+ * Class that handles report generation
+ * @author Nikhil
+ *
+ */
 public class ReportGenerator {
-
+	
+	/***
+	 * Method to create screenshot document.
+	 * @param FileName The Filename with which the doc should be saved without extension.
+	 * The screenshots with same Filename will be added to the document
+	 */
 	public static void generateReport(String FileName) {
 		XWPFDocument doc = new XWPFDocument();
 
