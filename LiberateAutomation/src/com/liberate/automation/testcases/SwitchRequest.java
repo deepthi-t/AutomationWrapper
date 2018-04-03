@@ -10,6 +10,11 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.ManageSwitchRequest;
 
+/***
+ * Class with all Switch Request Test Cases
+ * @author Nikhil
+ *
+ */
 public class SwitchRequest {
 	static TestActions action = CommonLogin.action;
 

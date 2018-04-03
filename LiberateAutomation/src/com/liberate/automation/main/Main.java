@@ -6,7 +6,7 @@ import com.liberate.automation.testcases.CommonLogin;
 public class Main {
 
 	public static void main(String[] args) {
-		CommonLogin.navigateToURL();
+		CommonLogin.login();
 		AlterServiceTestCase.loadData();
 		AlterServiceTestCase.alterSIMCard();
 	}

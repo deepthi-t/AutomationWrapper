@@ -9,6 +9,11 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.PYBadCheckProcessing;
 
+/***
+ * Class with Bad Cheque Processing Test Cases
+ * @author Nikhil
+ *
+ */
 public class BadChequeProcessing {
 
 	static TestActions action = CommonLogin.action;

@@ -9,6 +9,11 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.Login;
 
+/***
+ * Class with Login funttionality
+ * @author Nikhil
+ *
+ */
 public class CommonLogin {
 	public static TestActions action = new TestActions();
 
@@ -23,7 +28,7 @@ public class CommonLogin {
 	}
 
 	@BeforeSuite
-	public static void navigateToURL() {
+	public static void login() {
 		TestData.loadTestData();
 
 		CommonLogin.loadData();

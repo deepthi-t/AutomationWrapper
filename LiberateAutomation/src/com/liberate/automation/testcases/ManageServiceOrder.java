@@ -28,6 +28,11 @@ import com.liberate.automation.pom.MSOSplit;
 import com.liberate.automation.pom.MSOSuspend;
 import com.liberate.automation.pom.MSOWaitlist;
 
+/***
+ * Class with Manage Service Order Test Case
+ * @author Nikhil
+ *
+ */
 public class ManageServiceOrder {
 	static TestActions action = CommonLogin.action;
 

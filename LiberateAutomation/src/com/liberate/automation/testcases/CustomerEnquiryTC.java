@@ -14,6 +14,11 @@ import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceCharges;
 
+/***
+ * Class with Customer Enquiry Test Case
+ * @author Nikhil
+ *
+ */
 public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
 

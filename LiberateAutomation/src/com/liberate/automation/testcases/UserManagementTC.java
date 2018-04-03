@@ -9,6 +9,11 @@ import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.ADMaintainEmployee;
 import com.liberate.automation.pom.ADManageUser;
 
+/***
+ * Class with all User Management Test Cases
+ * @author Nikhil
+ *
+ */
 public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
 

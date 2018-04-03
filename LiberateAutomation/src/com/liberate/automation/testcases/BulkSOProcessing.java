@@ -9,6 +9,11 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.BrowseServiceOrder;
 
+/***
+ * Class with Bulk Service Order processing Test Cases
+ * @author Nikhil
+ *
+ */
 public class BulkSOProcessing {
 	static TestActions action = CommonLogin.action;
 

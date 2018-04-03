@@ -14,6 +14,11 @@ import com.liberate.automation.pom.CPNewCustomer;
 import com.liberate.automation.pom.CRServiceOrder;
 import com.liberate.automation.pom.SalesSignOff;
 
+/***
+ * Class with Service Provisioning Test Cases
+ * @author Nikhil
+ *
+ */
 public class ServiceProvisioningTC {
 	static TestActions action = CommonLogin.action;
 

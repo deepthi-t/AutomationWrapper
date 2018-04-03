@@ -12,6 +12,11 @@ import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRDashBoard;
 import com.liberate.automation.pom.CRServiceOperations;
 
+/***
+ * Class with Credit Control Test Case
+ * @author Nikhil
+ *
+ */
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 

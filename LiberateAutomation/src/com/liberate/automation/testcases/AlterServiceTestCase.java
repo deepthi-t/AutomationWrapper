@@ -17,6 +17,11 @@ import com.liberate.automation.pom.CRServiceOperations;
 import com.liberate.automation.pom.CRServiceOrder;
 import com.liberate.automation.pom.SalesSignOff;
 
+/***
+ * Class contains all Alter Service Test Cases
+ * @author Nikhil
+ *
+ */
 public class AlterServiceTestCase {
 	static TestActions action = CommonLogin.action;
 	static String TestCase;

@@ -15,6 +15,11 @@ import com.liberate.automation.pom.CRServiceOrder;
 import com.liberate.automation.pom.InterimBillGeneration;
 import com.liberate.automation.pom.SalesSignOff;
 
+/***
+ * Class with Customer Care Test Case
+ * @author Nikhil
+ *
+ */
 public class CustomerCareTC {
 	static TestActions action = CommonLogin.action;
 

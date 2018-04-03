@@ -8,6 +8,11 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.ManageFault;
 import com.liberate.automation.pom.RaiseFault;
 
+/***
+ * Test Case with Fault Management Test Case
+ * @author Nikhil
+ *
+ */
 public class FaultManagement {
 	static TestActions action = CommonLogin.action;
 

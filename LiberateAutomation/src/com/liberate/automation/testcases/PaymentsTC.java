@@ -15,6 +15,11 @@ import com.liberate.automation.pom.PYPOSPayment;
 import com.liberate.automation.pom.PYSinglePayment;
 import com.liberate.automation.pom.PYVoidPayment;
 
+/***
+ * Class with Payment Test Cases
+ * @author Nikhil
+ *
+ */
 public class PaymentsTC {
 	static TestActions action = CommonLogin.action;
 
