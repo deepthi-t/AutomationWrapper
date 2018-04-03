@@ -6,6 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/***
+ * Class that has all the test data.
+ * @author Nikhil
+ *
+ */
 public class TestData {
 
 	public static String queryNumber = "";
@@ -78,7 +83,12 @@ public class TestData {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/***
+	 * Method to retrieve Data
+	 * @param dataName Name of the data to be retrieved
+	 * @return Data as string
+	 */
 	private static String getData(String dataName) {
 		try {
 			properties.load(new FileInputStream(FileName));
@@ -91,7 +101,10 @@ public class TestData {
 
 		return data;
 	}
-
+	
+	/***
+	 * Method to load TestData
+	 */
 	public static void loadTestData() {
 		queryNumber = getData("queryNumber");
 		faultNumber = getData("faultNumber");
