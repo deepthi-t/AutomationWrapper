@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.JavascriptExecutor;
@@ -24,7 +23,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -413,19 +411,6 @@ public class TestActions {
 		return true;
 	}
 
-	public By waitForAny(By[] locators) {
-		// TODO Complete this function
-		String waitElements = getXpath(locators[0]);
-
-		for (int i = 0; i < locators.length; i++) {
-			waitElements = waitElements + getXpath(locators[0]);
-		}
-		
-//		WebDriverWait wait = new WebDriverWait(driver, 20);
-		
-		throw new NotImplementedException("This methos is not yet implemented");
-	}
-
 	/**
 	 * Method that can be used to wait for passed value of seconds
 	 * 
@@ -689,32 +674,6 @@ public class TestActions {
 		}
 	}
 
-	public boolean moveMouseToElement(By ParentElement, By Subelement) {
-		WebElement element = driver.findElement(ParentElement);
-		WebElement subElement = driver.findElement(Subelement);
-
-		try {
-			Actions action = new Actions(driver);
-
-			action.moveToElement(element).perform();
-
-			action.moveToElement(subElement);
-
-			action.click();
-
-			action.perform();
-
-		} catch (Exception e) {
-			retry = handleException(e);
-			if (retry)
-				moveMouseToElement(ParentElement, Subelement);
-			else
-				return false;
-		}
-
-		return true;
-	}
-
 	/***
 	 * Simple method that can be called to scroll Up
 	 */
@@ -816,7 +775,12 @@ public class TestActions {
 		System.out.println(Log);
 		logToFile(d.split(" ")[0].replace("/", "_").trim(), Log);
 	}
-
+	
+	/***
+	 * Method to add the log to a file
+	 * @param FileName Name of the file
+	 * @param Log Message to be logged
+	 */
 	private void logToFile(String FileName, String Log) {
 
 		BufferedWriter bw = null;
