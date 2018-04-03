@@ -10,14 +10,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -28,9 +26,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestActions {
@@ -667,34 +663,6 @@ public class TestActions {
 	 */
 	public void quit() {
 		driver.quit();
-	}
-
-	/**
-	 * Method that can be called to wait till an element is available or not
-	 * available in page.
-	 * 
-	 * @param locator
-	 *            The locator of the element.
-	 * @param timeout
-	 *            The max wait time.
-	 * @param pooling
-	 *            The pooling time, will check on every interval based on pooling.
-	 * @param visilbility
-	 *            Indicator check whether to wait till element is available or not
-	 *            available. True - Wait till available, False - Wait till element
-	 *            not available.
-	 * 
-	 */
-	@SuppressWarnings("unchecked")
-	public void waitByPolling(By locator, int timeout, int pooling, boolean visilbility) {
-		@SuppressWarnings("rawtypes")
-		Wait wait = new FluentWait(driver).withTimeout(timeout, TimeUnit.SECONDS)
-				.pollingEvery(pooling, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-
-		if (visilbility)
-			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
-		else
-			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(locator)));
 	}
 
 	/***
