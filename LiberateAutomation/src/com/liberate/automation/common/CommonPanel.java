@@ -16,6 +16,10 @@ public class CommonPanel {
 	public static By Apply_Button = By.xpath("//*[@value = 'Apply']");
 	public static By Search_Button = By.xpath("//*[@value = 'Search']");
 
+	
+	static private By Department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
+	static private By SiteDisabled_Select = By.xpath("//*[text()='Site:']//following::select[@disabled='disabled'][1]");
+	static private By Site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
 	/***
 	 * Class which holds information about Liberate Header
 	 * 
@@ -196,5 +200,24 @@ public class CommonPanel {
 
 			return passed;
 		}
+	}
+	
+	/***
+	 * Method to select Department and Site
+	 * @param action Action class which operates the Browser
+	 * @param Department Department that needs to be selected.
+	 * @param Site Site that needs to be selected.
+	 * @return True if selected successfully, else False.
+	 */
+	public static boolean selectDepartmentSite(TestActions action, String Department, String Site) {
+		boolean passed = false;
+
+		passed = action.waitFor(Department_Select, 180, true);
+		passed = action.selectByPartialText(Department_Select, Department);
+
+		passed = action.waitFor(SiteDisabled_Select, 4, false);
+		passed = action.selectByPartialText(Site_Select, Site);
+
+		return passed;
 	}
 }

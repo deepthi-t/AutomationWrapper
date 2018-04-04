@@ -9,6 +9,7 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRAccountDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
+import com.liberate.automation.pom.Cease;
 import com.liberate.automation.pom.DashBoard;
 import com.liberate.automation.pom.ServiceOperations;
 import com.liberate.automation.pom.CustomerServiceOrder;
@@ -234,6 +235,7 @@ public class CustomerCareTC {
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
+		Cease cease = new Cease(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
@@ -244,7 +246,12 @@ public class CustomerCareTC {
 
 		service.navigate();
 		action.getScreenShot(TestCase);
-		service.ceaseService();
+		service.clickOnCeaseService();
+		action.getScreenShot(TestCase);
+		
+		cease.selectDepartmentSite(salesDepartment, site);
+		action.getScreenShot(TestCase);
+		cease.ceaseService();
 		action.getScreenShot(TestCase);
 
 		sales.verifySalesSignOff();
@@ -275,7 +282,7 @@ public class CustomerCareTC {
 
 		service.navigate();
 		action.getScreenShot(TestCase);
-		service.ceaseService();
+		service.clickOnCeaseService();
 		action.getScreenShot(TestCase);
 
 		sales.verifySalesSignOff();

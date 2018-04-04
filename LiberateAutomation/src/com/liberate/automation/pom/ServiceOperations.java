@@ -324,14 +324,7 @@ public class ServiceOperations {
 		return passed;
 	}
 
-	public boolean ceaseService() {
-		By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
-		By SelectAllProduct_CheckBox = By.xpath("(//*[text()='Cease All']//following::input)[1]");
-		By CeaseWarning_Message = By.xpath("//*[text()='Entire Service will be ceased']");
-
-		By CeaseReason_Select = By.xpath("//*[text()='Cease Reason:']//following::select[1]");
-		By SIMRetireReason_Select = By.xpath("//*[text()='SIM Retired Reason:']//following::select[1]");
-
+	public boolean clickOnCeaseService() {
 		boolean passed = false;
 
 		passed = action.waitFor(Cease_ActionButton, 4, true);
@@ -345,26 +338,6 @@ public class ServiceOperations {
 		passed = action.clickOn(Cease_ActionButton);
 		passed = action.waitForClickable(CeaseService_ActionButton, 2);
 		passed = action.clickOn(CeaseService_ActionButton);
-
-		passed = action.waitFor(Department_Select, 150, true);
-
-		passed = action.selectByPartialText(Department_Select, "AQSAL");
-		passed = action.waitFor(SiteDisabled_Select, 2, false);
-		passed = action.selectByPartialText(Site_Select, "ANSQ");
-
-		action.waitFor(1);
-
-		passed = action.clickOn(Proceed_Button);
-
-		passed = action.waitFor(SelectAllProduct_CheckBox, 4, true);
-		passed = action.clickOn(SelectAllProduct_CheckBox);
-
-		action.waitFor(CeaseWarning_Message, 4, true);
-
-		passed = action.selectBy(CeaseReason_Select, 1);
-		passed = action.selectBy(SIMRetireReason_Select, 1);
-
-		passed = action.clickOn(CommonPanel.Accept_Button);
 
 		return passed;
 	}
