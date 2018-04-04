@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
+import com.liberate.automation.pom.AlterServiceNumber;
 import com.liberate.automation.pom.CRAccountDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CeaseService;
@@ -171,6 +172,7 @@ public class CustomerCareTC {
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
+		AlterServiceNumber asn = new AlterServiceNumber(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
@@ -181,7 +183,12 @@ public class CustomerCareTC {
 
 		service.navigate();
 		action.getScreenShot(TestCase);
-		service.alterServiceNumber(false);
+		service.clickOnAlterServiceNumber();
+		action.getScreenShot(TestCase);
+		
+		asn.selectDepartmentSite(salesDepartment, site);
+		action.getScreenShot(TestCase);
+		asn.alterServiceNumber(false);
 		action.getScreenShot(TestCase);
 
 		sales.verifySalesSignOff();
@@ -203,6 +210,7 @@ public class CustomerCareTC {
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
+		AlterServiceNumber asn = new AlterServiceNumber(action);
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
@@ -212,8 +220,14 @@ public class CustomerCareTC {
 
 		service.navigate();
 		action.getScreenShot(TestCase);
-		service.alterServiceNumber(true);
+		service.clickOnAlterServiceNumber();
 		action.getScreenShot(TestCase);
+		
+		asn.selectDepartmentSite(salesDepartment, site);
+		action.getScreenShot(TestCase);
+		asn.alterServiceNumber(false);
+		action.getScreenShot(TestCase);
+		
 		service.raiseServiceCharge();
 		action.getScreenShot(TestCase);
 
