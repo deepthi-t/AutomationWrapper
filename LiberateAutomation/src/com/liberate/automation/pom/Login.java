@@ -30,14 +30,14 @@ public class Login {
 		passed = action.sendDataTo(UserName, username);
 		passed = action.sendDataTo(PassWord, password);
 		passed = action.clickOn(LoginButton);
-		passed = action.waitFor(LoginButton, 5, false);
+		passed = action.waitFor(LoginButton, 30, false);
 		
 		if(action.countOf(LiberateFrame)>0)
 		{
 			action.switchToFrame(LiberateFrame);
 		}
 		
-		passed = action.waitFor(LiberateCommon.LevelOne.Home, 10, true);
+		passed = action.waitFor(LiberateCommon.LevelOne.Home, 60, true);
 		
 		return passed;
 	}
