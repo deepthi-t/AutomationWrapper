@@ -28,7 +28,12 @@ import com.liberate.automation.pom.MSOSplit;
 import com.liberate.automation.pom.MSOSuspend;
 import com.liberate.automation.pom.MSOWaitlist;
 
-public class ManageServiceOrder {
+/***
+ * Class with Manage Service Order Test Case
+ * @author Nikhil
+ *
+ */
+public class ManageServiceOrderTC {
 	static TestActions action = CommonLogin.action;
 
 	static Map<String, String> dataMap = new HashedMap<>();

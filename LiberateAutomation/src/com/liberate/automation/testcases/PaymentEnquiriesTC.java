@@ -8,7 +8,12 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.PYPaymentEnquiriesPOM;
 
-public class PaymentEnquiries {
+/***
+ * Class with Payment Enquiries Test Cases
+ * @author Nikhil
+ *
+ */
+public class PaymentEnquiriesTC {
 	static TestActions action = CommonLogin.action;
 
 	@Test

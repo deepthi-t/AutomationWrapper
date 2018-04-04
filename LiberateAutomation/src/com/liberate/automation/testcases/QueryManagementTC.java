@@ -7,6 +7,11 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRMaintainQuery;
 
+/***
+ * Class with all Query Management Test Cases
+ * @author Nikhil
+ *
+ */
 public class QueryManagementTC {
 	static TestActions action = CommonLogin.action;
 	

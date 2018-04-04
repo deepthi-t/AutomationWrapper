@@ -85,12 +85,7 @@ public class LeftLink {
 	 *
 	 */
 	public static class MaintainQuery {
-		public static final By NewCustomer = getLeftLink("New Customer");
-		public static final By ExistingCustomer = getLeftLink("Existing Customer");
-		public static final By AmendServiceOrderInSales = getLeftLink("Amend Service Order In Sales");
-		public static final By MobileServicePaymentModeConversion = getLeftLink(
-				"Mobile Service Payment Mode Conversion");
-		public static final By ProvisionPrepaidCorporateCUG = getLeftLink("Provision Prepaid Corporate CUG");
+
 	}
 
 	/***

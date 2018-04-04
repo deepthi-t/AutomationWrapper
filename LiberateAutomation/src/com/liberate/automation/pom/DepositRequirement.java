@@ -6,7 +6,7 @@ import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.core.TestActions;
 
-public class CRDepositRequirement {
+public class DepositRequirement {
 	TestActions action = null;
 	
 	String DepositReason = "";
@@ -33,7 +33,7 @@ public class CRDepositRequirement {
 
 	By RefundOK_Button = By.xpath("//a[text()='OK']");
 
-	public CRDepositRequirement(TestActions action) {
+	public DepositRequirement(TestActions action) {
 		this.action = action;
 	}
 	

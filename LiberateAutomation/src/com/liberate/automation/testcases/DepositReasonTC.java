@@ -10,6 +10,11 @@ import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.MaintainDepositReason;
 
+/***
+ * Class with Deposit Reason Test Cases
+ * @author Nikhil
+ *
+ */
 public class DepositReasonTC {
 
 	static TestActions action = CommonLogin.action;

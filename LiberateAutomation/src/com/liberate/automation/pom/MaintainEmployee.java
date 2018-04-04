@@ -8,7 +8,7 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
 
-public class ADMaintainEmployee {
+public class MaintainEmployee {
 	TestActions action = null;
 	RandomData random = new RandomData();
 
@@ -28,7 +28,7 @@ public class ADMaintainEmployee {
 	
 	By Success_Message = By.xpath("//*[text()[contains(.,'Operation Successfully Completed')]]");
 	
-	public ADMaintainEmployee(TestActions action) {
+	public MaintainEmployee(TestActions action) {
 		this.action = action;
 	}
 

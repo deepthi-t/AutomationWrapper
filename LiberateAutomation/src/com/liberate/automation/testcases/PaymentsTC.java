@@ -9,12 +9,17 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.CRCustomerSearch;
-import com.liberate.automation.pom.CRDepositRequirement;
+import com.liberate.automation.pom.DepositRequirement;
 import com.liberate.automation.pom.PYBatchPayment;
 import com.liberate.automation.pom.PYPOSPayment;
 import com.liberate.automation.pom.PYSinglePayment;
 import com.liberate.automation.pom.PYVoidPayment;
 
+/***
+ * Class with Payment Test Cases
+ * @author Nikhil
+ *
+ */
 public class PaymentsTC {
 	static TestActions action = CommonLogin.action;
 
@@ -166,7 +171,7 @@ public class PaymentsTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDepositRequirement cd = new CRDepositRequirement(action);
+		DepositRequirement cd = new DepositRequirement(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYSinglePayment sp = new PYSinglePayment(action);
 
@@ -237,7 +242,7 @@ public class PaymentsTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
-		CRDepositRequirement cd = new CRDepositRequirement(action);
+		DepositRequirement cd = new DepositRequirement(action);
 		BrowseServiceOrder bso = new BrowseServiceOrder(action);
 		PYPOSPayment pos = new PYPOSPayment(action);
 

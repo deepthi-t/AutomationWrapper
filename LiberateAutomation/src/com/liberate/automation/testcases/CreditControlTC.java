@@ -7,11 +7,16 @@ import org.testng.annotations.Test;
 
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
-import com.liberate.automation.pom.CCCreditControlService;
+import com.liberate.automation.pom.CreditControlService;
 import com.liberate.automation.pom.CRCustomerSearch;
-import com.liberate.automation.pom.CRDashBoard;
-import com.liberate.automation.pom.CRServiceOperations;
+import com.liberate.automation.pom.DashBoard;
+import com.liberate.automation.pom.ServiceOperations;
 
+/***
+ * Class with Credit Control Test Case
+ * @author Nikhil
+ *
+ */
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 
@@ -27,7 +32,7 @@ public class CreditControlTC {
 		String TestCase = "CreditControlTC_serviceBAR";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CCCreditControlService creditControl = new CCCreditControlService(action);
+		CreditControlService creditControl = new CreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
@@ -45,7 +50,7 @@ public class CreditControlTC {
 		String TestCase = "CreditControlTC_serviceTOS";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CCCreditControlService creditControl = new CCCreditControlService(action);
+		CreditControlService creditControl = new CreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
@@ -63,7 +68,7 @@ public class CreditControlTC {
 		String TestCase = "CreditControlTC_serviceROS";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CCCreditControlService creditControl = new CCCreditControlService(action);
+		CreditControlService creditControl = new CreditControlService(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
@@ -81,10 +86,10 @@ public class CreditControlTC {
 		String TestCase = "CreditControlTC_serviceTOSVerifyAudit";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CCCreditControlService creditControl = new CCCreditControlService(action);
+		CreditControlService creditControl = new CreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRDashBoard dashboard = new CRDashBoard(action);
-		CRServiceOperations services = new CRServiceOperations(action);
+		DashBoard dashboard = new DashBoard(action);
+		ServiceOperations services = new ServiceOperations(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);
@@ -119,10 +124,10 @@ public class CreditControlTC {
 		String TestCase = "CreditControlTC_serviceROSVerifyAudit";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CCCreditControlService creditControl = new CCCreditControlService(action);
+		CreditControlService creditControl = new CreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRDashBoard dashboard = new CRDashBoard(action);
-		CRServiceOperations services = new CRServiceOperations(action);
+		DashBoard dashboard = new DashBoard(action);
+		ServiceOperations services = new ServiceOperations(action);
 
 		creditControl.navigate();
 		action.getScreenShot(TestCase);

@@ -9,12 +9,17 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRAccountDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
-import com.liberate.automation.pom.CRDashBoard;
-import com.liberate.automation.pom.CRServiceOperations;
-import com.liberate.automation.pom.CRServiceOrder;
+import com.liberate.automation.pom.DashBoard;
+import com.liberate.automation.pom.ServiceOperations;
+import com.liberate.automation.pom.CustomerServiceOrder;
 import com.liberate.automation.pom.InterimBillGeneration;
 import com.liberate.automation.pom.SalesSignOff;
 
+/***
+ * Class with Customer Care Test Case
+ * @author Nikhil
+ *
+ */
 public class CustomerCareTC {
 	static TestActions action = CommonLogin.action;
 
@@ -62,7 +67,7 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -90,8 +95,8 @@ public class CustomerCareTC {
 		String ServiceOrderNumber = "";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
-		CRServiceOrder cso = new CRServiceOrder(action);
+		ServiceOperations service = new ServiceOperations(action);
+		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -114,7 +119,7 @@ public class CustomerCareTC {
 
 		ServiceOrderNumber = cso.getSONumber();
 
-		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
+		ManageServiceOrderTC.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
@@ -128,8 +133,8 @@ public class CustomerCareTC {
 		String ServiceOrderNumber = "";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
-		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		ServiceOperations service = new ServiceOperations(action);
+		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -152,7 +157,7 @@ public class CustomerCareTC {
 
 		ServiceOrderNumber = serviceOrder.getSONumber();
 
-		ManageServiceOrder.signOffCompletely(ServiceOrderNumber);
+		ManageServiceOrderTC.signOffCompletely(ServiceOrderNumber);
 		action.getScreenShot(TestCase);
 
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
@@ -164,9 +169,9 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
-		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -196,8 +201,8 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
-		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		ServiceOperations service = new ServiceOperations(action);
+		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -217,7 +222,7 @@ public class CustomerCareTC {
 		action.getScreenShot(TestCase);
 		serviceASNCease = serviceOrder.getServiceONumber();
 
-		ManageServiceOrder.signOffCompletely(serviceOrder.getSONumber());
+		ManageServiceOrderTC.signOffCompletely(serviceOrder.getSONumber());
 
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
@@ -228,9 +233,9 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
-		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -259,9 +264,9 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
-		CRServiceOrder serviceOrder = new CRServiceOrder(action);
+		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -292,7 +297,7 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);
@@ -318,7 +323,7 @@ public class CustomerCareTC {
 		String Command = "PCA";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
 
 		search.navigate();
@@ -351,7 +356,7 @@ public class CustomerCareTC {
 		String Site = site;
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
 
 		search.navigate();
@@ -379,7 +384,7 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRDashBoard dashboard = new CRDashBoard(action);
+		DashBoard dashboard = new DashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
 
 		search.navigate();
@@ -406,7 +411,7 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRDashBoard dashboard = new CRDashBoard(action);
+		DashBoard dashboard = new DashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
 
 		search.navigate();
@@ -433,7 +438,7 @@ public class CustomerCareTC {
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRDashBoard dashboard = new CRDashBoard(action);
+		DashBoard dashboard = new DashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
 
 		search.navigate();

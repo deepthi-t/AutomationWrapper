@@ -6,7 +6,7 @@ import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.core.TestActions;
 
-public class CRDashBoard {
+public class DashBoard {
 	TestActions action = null;
 
 	String MarketingCategory = "";
@@ -29,7 +29,7 @@ public class CRDashBoard {
 	By Location_Select = By.xpath("//*[text()='Location:']/following::select[1]");
 	By MarketingCategory_Select = By.xpath("//*[text()='Marketing Category:']/following::select[1]");
 
-	public CRDashBoard(TestActions action) {
+	public DashBoard(TestActions action) {
 		this.action = action;
 	}
 

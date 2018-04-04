@@ -10,7 +10,12 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.ManageSwitchRequest;
 
-public class SwitchRequest {
+/***
+ * Class with all Switch Request Test Cases
+ * @author Nikhil
+ *
+ */
+public class SwitchRequestTC {
 	static TestActions action = CommonLogin.action;
 
 	static String employeeID = "";
@@ -20,9 +25,9 @@ public class SwitchRequest {
 	@BeforeClass
 	public static void loadTestData()
 	{
-		SwitchRequest.employeeID = TestData.employeeID;
-		SwitchRequest.switchRequestTime = TestData.switchRequestTime;
-		SwitchRequest.switchRequestAccountNumber = TestData.switchRequestAccountNumber;
+		SwitchRequestTC.employeeID = TestData.employeeID;
+		SwitchRequestTC.switchRequestTime = TestData.switchRequestTime;
+		SwitchRequestTC.switchRequestAccountNumber = TestData.switchRequestAccountNumber;
 	}
 	
 	@Test

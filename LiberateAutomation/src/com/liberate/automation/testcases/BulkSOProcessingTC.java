@@ -9,7 +9,12 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.BrowseServiceOrder;
 
-public class BulkSOProcessing {
+/***
+ * Class with Bulk Service Order processing Test Cases
+ * @author Nikhil
+ *
+ */
+public class BulkSOProcessingTC {
 	static TestActions action = CommonLogin.action;
 
 	static String networkDepartment = "";

@@ -8,7 +8,7 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
 
-public class ADManageUser {
+public class ManageUser {
 	TestActions action = null;
 	RandomData random = new RandomData();
 
@@ -55,7 +55,7 @@ public class ADManageUser {
 	By CreateUserSuccess_Message = By.xpath("//*[text()='User creation successfully completed']");
 	By NewUser_ActionButton = By.xpath("//span[text()[contains(.,'New User')]]");
 
-	public ADManageUser(TestActions action) {
+	public ManageUser(TestActions action) {
 		this.action = action;
 	}
 

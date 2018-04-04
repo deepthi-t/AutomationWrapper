@@ -60,7 +60,7 @@ public class CommonData {
 	 * @author Nikhil
 	 *
 	 */
-	public static class CreditControlServiceStatus {
+	public static class CreditControlServiceStatusValues {
 		public final static String ROS = "ROS";
 		public final static String BAR = "BAR";
 		public final static String TOS = "TOS";

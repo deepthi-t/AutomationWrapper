@@ -13,11 +13,16 @@ import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AlterSIMCard;
 import com.liberate.automation.pom.CRCustomerSearch;
-import com.liberate.automation.pom.CRServiceOperations;
-import com.liberate.automation.pom.CRServiceOrder;
+import com.liberate.automation.pom.ServiceOperations;
+import com.liberate.automation.pom.CustomerServiceOrder;
 import com.liberate.automation.pom.SalesSignOff;
 
-public class AlterServiceTestCase {
+/***
+ * Class contains all Alter Service Test Cases
+ * @author Nikhil
+ *
+ */
+public class AlterServiceTC {
 	static TestActions action = CommonLogin.action;
 	static String TestCase;
 	static String TestStatus;
@@ -33,10 +38,10 @@ public class AlterServiceTestCase {
 		TestCase = "Alter SIM Card";
 		
 		CRCustomerSearch search = new CRCustomerSearch(action);
-		CRServiceOperations service = new CRServiceOperations(action);
+		ServiceOperations service = new ServiceOperations(action);
 		AlterSIMCard alterSim = new AlterSIMCard(action);
 		SalesSignOff sales = new SalesSignOff(action);
-		CRServiceOrder order = new CRServiceOrder(action);
+		CustomerServiceOrder order = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(TestCase);

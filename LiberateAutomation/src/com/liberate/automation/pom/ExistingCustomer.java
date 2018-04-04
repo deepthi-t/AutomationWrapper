@@ -8,7 +8,7 @@ import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.RandomData;
 import com.liberate.automation.core.TestActions;
 
-public class CPExistingCustomer {
+public class ExistingCustomer {
 	TestActions action = null;
 	RandomData random = new RandomData();
 
@@ -79,7 +79,7 @@ public class CPExistingCustomer {
 
 	By Submit_Button = By.xpath("//input[@value='Submit']");
 
-	public CPExistingCustomer(TestActions action) {
+	public ExistingCustomer(TestActions action) {
 		this.action = action;
 	}
 

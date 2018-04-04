@@ -8,7 +8,7 @@ import com.liberate.automation.common.LeftLink;
 import com.liberate.automation.common.LiberateCommon;
 import com.liberate.automation.core.TestActions;
 
-public class CCCreditControlService {
+public class CreditControlService {
 	TestActions action = null;
 	String RecentAction = "";
 
@@ -28,7 +28,7 @@ public class CCCreditControlService {
 	By ServiceStatus_Value = By.xpath(
 			"//tbody[@id='maintainccservicestatus:tosHistoryGrpOutDetails:tbody']/descendant::tr[1]//td[2]//span[1]");
 
-	public CCCreditControlService(TestActions action) {
+	public CreditControlService(TestActions action) {
 		this.action = action;
 	}
 
@@ -58,7 +58,7 @@ public class CCCreditControlService {
 	}
 
 	public boolean serviceBAR() {
-		this.RecentAction = CommonData.CreditControlServiceStatus.BAR;
+		this.RecentAction = CommonData.CreditControlServiceStatusValues.BAR;
 
 		boolean passed = false;
 
@@ -80,7 +80,7 @@ public class CCCreditControlService {
 	}
 
 	public boolean serviceTOS() {
-		this.RecentAction = CommonData.CreditControlServiceStatus.TOS;
+		this.RecentAction = CommonData.CreditControlServiceStatusValues.TOS;
 
 		boolean passed = false;
 
@@ -102,7 +102,7 @@ public class CCCreditControlService {
 	}
 
 	public boolean serviceROS() {
-		this.RecentAction = CommonData.CreditControlServiceStatus.ROS;
+		this.RecentAction = CommonData.CreditControlServiceStatusValues.ROS;
 
 		boolean passed = false;
 
@@ -130,11 +130,11 @@ public class CCCreditControlService {
 
 		passed = action.waitFor(Accept_Button, 4, false);
 
-		if (RecentAction.equals(CommonData.CreditControlServiceStatus.ROS)) {
+		if (RecentAction.equals(CommonData.CreditControlServiceStatusValues.ROS)) {
 			passed = action.getTextFromPage(ServiceStatus_Value).trim().equals("W") ? true : false;
-		} else if (RecentAction.equals(CommonData.CreditControlServiceStatus.TOS)) {
+		} else if (RecentAction.equals(CommonData.CreditControlServiceStatusValues.TOS)) {
 			passed = action.getTextFromPage(ServiceStatus_Value).trim().equals("T") ? true : false;
-		} else if (RecentAction.equals(CommonData.CreditControlServiceStatus.BAR)) {
+		} else if (RecentAction.equals(CommonData.CreditControlServiceStatusValues.BAR)) {
 			passed = action.getTextFromPage(ServiceStatus_Value).trim().equals("B") ? true : false;
 		}
 
