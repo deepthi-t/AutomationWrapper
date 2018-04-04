@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.core.TestActions;
 
-public class Cease {
+public class CeaseService {
 	TestActions action;
 	
 	By Proceed_Button = By.xpath("//input[contains(@value,'Proceed')]");
@@ -15,7 +15,7 @@ public class Cease {
 	By CeaseReason_Select = By.xpath("//*[text()='Cease Reason:']//following::select[1]");
 	By SIMRetireReason_Select = By.xpath("//*[text()='SIM Retired Reason:']//following::select[1]");
 	
-	public Cease(TestActions action) {
+	public CeaseService(TestActions action) {
 		this.action = action;
 	}
 	

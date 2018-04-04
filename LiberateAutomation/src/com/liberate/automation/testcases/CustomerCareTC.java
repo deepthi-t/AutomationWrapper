@@ -9,7 +9,7 @@ import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CRAccountDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
-import com.liberate.automation.pom.Cease;
+import com.liberate.automation.pom.CeaseService;
 import com.liberate.automation.pom.DashBoard;
 import com.liberate.automation.pom.ServiceOperations;
 import com.liberate.automation.pom.CustomerServiceOrder;
@@ -235,7 +235,7 @@ public class CustomerCareTC {
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
-		Cease cease = new Cease(action);
+		CeaseService cease = new CeaseService(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
