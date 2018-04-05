@@ -18,7 +18,7 @@ import com.liberate.automation.core.TestActions;
  * @author nthottup
  *
  */
-public abstract class ActualTC {
+public class ActualTC {
 	/***
 	 * All Test Case class should have a TestActions object, and should hold the
 	 * value from CommonLogin.action. This is to make sure that entire steps are

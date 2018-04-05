@@ -2,7 +2,7 @@ package com.liberate.automation.pom;
 
 import com.liberate.automation.core.TestActions;
 
-public abstract class ActualPOM {
+public class ActualPOM {
 	/***
 	 * All Test Page Object Repository class must have an object assigned to the
 	 * local action variable. The value should be assigned via the Constructor of the
@@ -12,7 +12,7 @@ public abstract class ActualPOM {
 
 	/***
 	 * All Page Object Repository class must have a constructor to accept a
-	 * TestAction Class
+	 * TestAction object
 	 */
 	public ActualPOM(TestActions action) {
 		/***
@@ -24,5 +24,7 @@ public abstract class ActualPOM {
 	/***
 	 * Page Object Repository class must have a navigate method if it is possible to navigate to the screen using left link. 
 	 */
-	public abstract void navigate();
+	public void navigate() {
+		
+	};
 }
