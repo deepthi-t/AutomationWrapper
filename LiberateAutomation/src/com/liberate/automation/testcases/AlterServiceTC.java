@@ -12,6 +12,7 @@ import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AlterSIMCard;
+import com.liberate.automation.pom.AmendProductISPFields;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.ServiceOperations;
 import com.liberate.automation.pom.CustomerServiceOrder;
@@ -69,6 +70,27 @@ public class AlterServiceTC {
 		action.getScreenShot(TestCase);
 		order.getSOCommand();
 		action.getScreenShot(TestCase);
+	}
+	
+	public static void amendProductISPField() {
+		TestCase = "Amend Product ISP fields";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+
+		CRCustomerSearch CS =new CRCustomerSearch(action);
+		CS.navigate();
+		CS.searchByServiceNumber("23781");
+		
+		ServiceOperations service = new ServiceOperations(action);
+		service.navigate();
+		service.verifyServicesScreen();
+		service.navigateToProductsScreen();
+		
+		AmendProductISPFields AmendISP= new AmendProductISPFields(action);
+		AmendISP.clickOnProductRecord();
+		AmendISP.clickOnAmendProductISPfields();
+		AmendISP.enterdatatoUsername();
+		AmendISP.clickOnGeneratePassword();
+		AmendISP.clickOnAccept();
 	}
 	
 	@BeforeClass
