@@ -12,6 +12,7 @@ import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AlterSIMCard;
+import com.liberate.automation.pom.AmendProductISPFields;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.ServiceOperations;
 import com.liberate.automation.pom.CustomerServiceOrder;
@@ -30,7 +31,8 @@ public class AlterServiceTC {
 	static String alterSIMService;
 	static String department;
 	static String site;
-	
+	static String ispSerciceNumber;
+
 	static Map<String, String> data = new HashedMap<>();  
 	
 	@Test
@@ -71,12 +73,41 @@ public class AlterServiceTC {
 		action.getScreenShot(TestCase);
 	}
 	
+	public static void amendProductISPField() {
+		TestCase = "Amend Product ISP fields";
+		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+
+		CRCustomerSearch search =new CRCustomerSearch(action);
+		ServiceOperations service = new ServiceOperations(action);
+		AmendProductISPFields amendISP= new AmendProductISPFields(action);
+
+		search.navigate();
+		action.getScreenShot(TestCase);
+		search.searchByServiceNumber(ispSerciceNumber);
+		action.getScreenShot(TestCase);
+
+		service.navigate();
+		action.getScreenShot(TestCase);
+		service.verifyServicesScreen();
+		action.getScreenShot(TestCase);
+		service.navigateToProductsScreen();
+		action.getScreenShot(TestCase);
+
+		amendISP.clickOnProductRecord();
+		amendISP.clickOnAmendProductISPfields();
+		amendISP.enterdatatoUsername();
+		amendISP.clickOnGeneratePassword();
+		amendISP.clickOnAccept();
+	}
+	
 	@BeforeClass
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
 		alterSIMService = data.get("alterSIMService");
 		department = data.get("SalesDepartment");
 		site = data.get("Site");
+		ispSerciceNumber = data.get("ispSerciceNumber");
+
 	}
 	
 	@AfterMethod
