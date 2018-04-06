@@ -127,11 +127,12 @@ public class ServiceOperations {
 	}
 	
 	public boolean navigateToProductsScreen() {
-		By Products_Tab = By.xpath("//td[text()='Products']");
+		By Products_Tab = By.xpath("//a[@class='icePnlTbLblLnk']//descendant::td[text()[contains(.,'Products')]]");
 
 		boolean passed = false;
 
 		passed = action.waitFor(Products_Tab, 4, true);
+		action.waitFor(1);
 		passed = action.clickOn(Products_Tab);
 
 		return passed;

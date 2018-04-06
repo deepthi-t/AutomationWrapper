@@ -31,7 +31,8 @@ public class AlterServiceTC {
 	static String alterSIMService;
 	static String department;
 	static String site;
-	
+	static String ispSerciceNumber;
+
 	static Map<String, String> data = new HashedMap<>();  
 	
 	@Test
@@ -76,21 +77,27 @@ public class AlterServiceTC {
 		TestCase = "Amend Product ISP fields";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
-		CRCustomerSearch CS =new CRCustomerSearch(action);
-		CS.navigate();
-		CS.searchByServiceNumber("23781");
-		
+		CRCustomerSearch search =new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
+		AmendProductISPFields amendISP= new AmendProductISPFields(action);
+
+		search.navigate();
+		action.getScreenShot(TestCase);
+		search.searchByServiceNumber(ispSerciceNumber);
+		action.getScreenShot(TestCase);
+
 		service.navigate();
+		action.getScreenShot(TestCase);
 		service.verifyServicesScreen();
+		action.getScreenShot(TestCase);
 		service.navigateToProductsScreen();
-		
-		AmendProductISPFields AmendISP= new AmendProductISPFields(action);
-		AmendISP.clickOnProductRecord();
-		AmendISP.clickOnAmendProductISPfields();
-		AmendISP.enterdatatoUsername();
-		AmendISP.clickOnGeneratePassword();
-		AmendISP.clickOnAccept();
+		action.getScreenShot(TestCase);
+
+		amendISP.clickOnProductRecord();
+		amendISP.clickOnAmendProductISPfields();
+		amendISP.enterdatatoUsername();
+		amendISP.clickOnGeneratePassword();
+		amendISP.clickOnAccept();
 	}
 	
 	@BeforeClass
@@ -99,6 +106,8 @@ public class AlterServiceTC {
 		alterSIMService = data.get("alterSIMService");
 		department = data.get("SalesDepartment");
 		site = data.get("Site");
+		ispSerciceNumber = data.get("ispSerciceNumber");
+
 	}
 	
 	@AfterMethod

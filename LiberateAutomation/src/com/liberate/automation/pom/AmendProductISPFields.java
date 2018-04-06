@@ -10,7 +10,7 @@ public class AmendProductISPFields {
 
 	By selectproduct_record = By.xpath(
 			"//tr[@id='customerServicesForm:serviceEnquiryTabs:0:productsTab:custServProductsResultTable_row_0']");
-	By AmendProductISPFields = By.xpath("//span[@id='customerServicesForm:j_idt117:j_idt193:out']");
+	By AmendProductISPFields = By.xpath("//span[text()='Amend Product & ISP Fields']");
 	By ISPUsername_Textfield = By.xpath("//input[@id='amendProductsForm:userNameId']");
 	By ISPPassword_Textfield = By.id("amendProductsForm:pwdId");
 	By GeneratePassword_Textfield = By.xpath("//*[@value='Generate Password']");
@@ -23,8 +23,9 @@ public class AmendProductISPFields {
 
 	public boolean clickOnProductRecord() {
 		boolean passed = false;
-
+		
 		passed = action.waitFor(selectproduct_record, 4, true);
+		action.waitFor(1);
 		passed = action.clickOn(selectproduct_record);
 
 		return passed;
@@ -34,6 +35,7 @@ public class AmendProductISPFields {
 		boolean passed = false;
 
 		passed = action.waitFor(AmendProductISPFields, 4, true);
+		action.waitFor(2);
 		passed = action.clickOn(AmendProductISPFields);
 
 		return passed;
