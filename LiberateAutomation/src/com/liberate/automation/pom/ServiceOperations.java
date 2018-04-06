@@ -34,6 +34,8 @@ public class ServiceOperations {
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Copy/Move')]]");
 	By Products_ActionButton = By
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Products')]]");
+	
+	By Alter_Products_ActionButton = By.xpath("//*[text()='Alter products']");
 	By Cease_ActionButton = By
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Cease')]]");
 	By RaiseFault_ActionButton = By
@@ -127,18 +129,27 @@ public class ServiceOperations {
 	}
 	
 	public boolean navigateToProductsScreen() {
-		By Products_Tab = By.xpath("//a[@class='icePnlTbLblLnk']//descendant::td[text()[contains(.,'Products')]]");
-
 		boolean passed = false;
 
-		passed = action.waitFor(Products_Tab, 4, true);
+		By Products_Tab = By.xpath("//a[@class='icePnlTbLblLnk']//descendant::td[text()[contains(.,'Products')]]");
+		
+		passed = action.waitFor(Products_Tab, 6, true);
 		action.waitFor(1);
 		passed = action.clickOn(Products_Tab);
-
+		
 		return passed;
 	}
 	
-	
+	public void alterProduct() {
+		action.moveMouseAwayFromScreen();
+		action.waitFor(Products_ActionButton, 5, true);
+		action.clickOn(Products_ActionButton);
+		action.waitFor(1);
+		
+		action.waitFor(Alter_Products_ActionButton, 5, true);
+		action.clickOn(Alter_Products_ActionButton);
+		action.waitFor(5);
+	}	
 	
 	public boolean transferService(String TargetAccount) {
 		boolean passed = false;
