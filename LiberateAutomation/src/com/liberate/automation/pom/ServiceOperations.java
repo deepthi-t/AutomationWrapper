@@ -34,7 +34,7 @@ public class ServiceOperations {
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Copy/Move')]]");
 	By Products_ActionButton = By
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Products')]]");
-	
+
 	By Alter_Products_ActionButton = By.xpath("//*[text()='Alter products']");
 	By Cease_ActionButton = By
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Cease')]]");
@@ -53,11 +53,10 @@ public class ServiceOperations {
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Change')]]//following::span[text()='ROS']");
 	By CeaseService_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Cease Service')]]");
-	
+
 	By AlterSIMCard_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Change SIM Card')]]");
-	
-	
+
 	By Summary_Tab = By.xpath("//*[text()='Summary']");
 
 	By SelectedService_Value = By.xpath(
@@ -77,7 +76,7 @@ public class ServiceOperations {
 	By SalesSignOff_CheckBox = By.xpath("//*[text()='Perform Sales Sign Off:']/following::input[1]");
 	By TOSConfirmation_PopUp = By.xpath("//*[text()='TOS Confirmation']");
 	By RaisedServiceOrder_Value = By.xpath("//*[text()='Raised Service Order Number']//following::label[1]");
-	
+
 	public ServiceOperations(TestActions action) {
 		this.action = action;
 	}
@@ -116,41 +115,41 @@ public class ServiceOperations {
 
 		return passed;
 	}
-	
+
 	public void alterSIMCard() {
 		action.moveMouseAwayFromScreen();
 		action.waitFor(Change_ActionButton, 5, true);
 		action.clickOn(Change_ActionButton);
 		action.waitFor(1);
-		
+
 		action.waitFor(AlterSIMCard_ActionButton, 5, true);
 		action.clickOn(AlterSIMCard_ActionButton);
 		action.waitFor(5);
 	}
-	
+
 	public boolean navigateToProductsScreen() {
 		boolean passed = false;
 
 		By Products_Tab = By.xpath("//a[@class='icePnlTbLblLnk']//descendant::td[text()[contains(.,'Products')]]");
-		
+
 		passed = action.waitFor(Products_Tab, 6, true);
 		action.waitFor(1);
 		passed = action.clickOn(Products_Tab);
-		
+
 		return passed;
 	}
-	
+
 	public void alterProduct() {
 		action.moveMouseAwayFromScreen();
 		action.waitFor(Products_ActionButton, 5, true);
 		action.clickOn(Products_ActionButton);
 		action.waitFor(1);
-		
+
 		action.waitFor(Alter_Products_ActionButton, 5, true);
 		action.clickOn(Alter_Products_ActionButton);
 		action.waitFor(5);
-	}	
-	
+	}
+
 	public boolean transferService(String TargetAccount) {
 		boolean passed = false;
 
@@ -211,7 +210,7 @@ public class ServiceOperations {
 		passed = action.clickOn(Change_ActionButton);
 		passed = action.waitForClickable(ASN_ActionButton, 2);
 		passed = action.clickOn(ASN_ActionButton);
-		
+
 		return passed;
 	}
 
@@ -231,6 +230,19 @@ public class ServiceOperations {
 		passed = action.clickOn(CeaseService_ActionButton);
 
 		return passed;
+	}
+
+	public void clickOnProvideSetTopBox() {
+
+		By ProvideSetTopBox_ActionButton = By.xpath("//*[text()='Provide Set Top Box ']");
+
+		action.moveMouseAwayFromScreen();
+		action.waitFor(Provide_ActionButton, 5, true);
+		action.clickOn(Provide_ActionButton);
+		action.waitFor(1);
+		action.waitFor(ProvideSetTopBox_ActionButton, 5, true);
+		action.clickOn(ProvideSetTopBox_ActionButton);
+		action.waitFor(5);
 	}
 
 	public boolean raiseServiceCharge() {
