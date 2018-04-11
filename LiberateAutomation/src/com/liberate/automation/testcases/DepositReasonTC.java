@@ -22,7 +22,7 @@ public class DepositReasonTC {
 	static TestActions action = CommonLogin.action;
 	static String testCase;
 	static String testStatus;
-	
+
 	/**
 	 * Private constructor to disable creation of object
 	 */
@@ -37,30 +37,27 @@ public class DepositReasonTC {
 		action.log("Test Status : " + testStatus);
 		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test
 	public static void createNewDepositReason() {
-		String TestCase = "DepositReason_createNewDepositReason";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "DepositReason_createNewDepositReason";
 
 		RandomData random = new RandomData();
 		MaintainDepositReason mdr = new MaintainDepositReason(action);
 
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(mdr.navigate(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(mdr.clickNewButton(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(mdr.provideDepositReasonDetailsNewCreation(random.nextString().substring(4), "TestingAutomation",
 				"Y", "4"), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(mdr.clickAcceptButton(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		action.waitFor(By.xpath("//span[@class='iceMsgInfo']"), 2, true);
 		String x = action.getTextFromPage(By.xpath("//span[@class='iceMsgInfo']"));
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		System.out.println(x);
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }

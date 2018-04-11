@@ -19,6 +19,7 @@ import com.liberate.automation.pom.SalesSignOff;
 
 /***
  * Class with Service Provisioning Test Cases
+ * 
  * @author Nikhil
  *
  */
@@ -26,20 +27,20 @@ public class ServiceProvisioningTC {
 	static TestActions action = CommonLogin.action;
 	static String testCase;
 	static String testStatus;
-	
+
 	static String arnServiceNumber = "";
-	
+
 	/**
 	 * Private constructor to disable creation of object
 	 */
 	private ServiceProvisioningTC() {
 	}
-	
+
 	@BeforeClass
 	public static void loadData() {
 		arnServiceNumber = TestData.arnServiceNumber;
 	}
-	
+
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
 		ReportGenerator.generateReport(testCase);
@@ -48,11 +49,10 @@ public class ServiceProvisioningTC {
 		action.log("Test Status : " + testStatus);
 		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test
 	public static void newCustomerPEL() {
-		String TestCase = "ServiceProvisioningTC_newCustomerPEL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_newCustomerPEL";
 
 		NewCustomer cp = new NewCustomer(action);
 		ExistingCustomer ce = new ExistingCustomer(action);
@@ -60,147 +60,141 @@ public class ServiceProvisioningTC {
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
 				"PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillStandardAddress();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerClassification();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillBillingDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerID();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillContactDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertTrue(cp.verifyCreatedAccount());
 
 		ce.selectDepartmentSite("BGSAL", "BUSG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.skipADSL();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void existingCustomerPEL() {
-		String TestCase = "ServiceProvisioningTC_existingCustomerPEL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_existingCustomerPEL";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("BGSAL", "BUSG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.skipADSL();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void existingCustomerPCLPostpaid() {
-		String TestCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PCL", "LIME_POST");
 		// ce.selectServicePackage("PCL", "SOW-");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void newCustomerPCLPostpaid() {
-		String TestCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
 
 		NewCustomer cp = new NewCustomer(action);
 		ExistingCustomer ce = new ExistingCustomer(action);
@@ -208,58 +202,56 @@ public class ServiceProvisioningTC {
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
 				"PCL", "LIME_POST");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillStandardAddress();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerClassification();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillBillingDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerID();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillContactDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertTrue(cp.verifyCreatedAccount());
 
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PCL", "LIME_POST");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void newCustomerPCLCreditLimit() {
-		String TestCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
 
 		NewCustomer cp = new NewCustomer(action);
 		ExistingCustomer ce = new ExistingCustomer(action);
@@ -267,213 +259,203 @@ public class ServiceProvisioningTC {
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
 				"PCL", "LIME_POST");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillStandardAddress();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerClassification();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillBillingDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerID();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillContactDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertTrue(cp.verifyCreatedAccount());
 
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PCL", "LIME_POST");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void existingCustomerPDL() {
-		String TestCase = "ServiceProvisioningTC_existingCustomerPDL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_existingCustomerPDL";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PDL", "ADSL_PACK");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void existingCustomerPTV() {
-		String TestCase = "ServiceProvisioningTC_existingCustomerPTV";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_existingCustomerPTV";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("BGSAL", "BUSG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PTV - ", "CableTV");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void existingCustomerIPTV() {
-		String TestCase = "ServiceProvisioningTC_existingCustomerIPTV";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_existingCustomerIPTV";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("BGSAL", "BUSG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PTI - ", "IPTVBasic");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(enabled = false)
 	public static void existingCustomerARN() {
-		String TestCase = "ServiceProvisioningTC_existingCustomerARN";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_existingCustomerARN";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("260002270000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectNonPackage("ARN");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ce.processServiceNoScreen(arnServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void newCustomerPELandPDL() {
-		String TestCase = "ServiceProvisioningTC_newCustomerPELandPDL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_newCustomerPELandPDL";
 
 		NewCustomer cp = new NewCustomer(action);
 		ExistingCustomer ce = new ExistingCustomer(action);
@@ -481,73 +463,71 @@ public class ServiceProvisioningTC {
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		cp.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
 				"PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillStandardAddress();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerClassification();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillBillingDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillCustomerID();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.fillContactDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertTrue(cp.verifyCreatedAccount());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ce.selectDepartmentSite("BGSAL", "BUSG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideADSL();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		// PDL Part
 		ce.selectServicePackage("PDL", "ADSL_PACK");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void addMorePELandPDL() {
-		String TestCase = "ServiceProvisioningTC_addMorePELandPDL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_addMorePELandPDL";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -555,64 +535,62 @@ public class ServiceProvisioningTC {
 		AddMore addmore = new AddMore(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("BGSAL", "BUSG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.skipADSL();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.addMore();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		addmore.addADSL();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		// PDL Part
 		ce.selectServicePackage("PDL", "ADSL_PACK");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void addMorePELandPCL() {
-		String TestCase = "ServiceProvisioningTC_addMorePELandPCL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "ServiceProvisioningTC_addMorePELandPCL";
 
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
@@ -620,62 +598,61 @@ public class ServiceProvisioningTC {
 		AddMore addmore = new AddMore(action);
 
 		ce.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.searchWithAccount("280000710000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("AQSAL", "ANSQ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PEL", "ETFT");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("BOT", "BODD");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.skipADSL();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.addMore();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		addmore.addServicePackage();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.selectServicePackage("PCL", "LIME_POST");
 		// ce.selectServicePackage("PCL", "SOW-");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processServiceProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processProductFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.processISPFieldsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ce.provideContractDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertTrue(sso.verifySalesSignOff());
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sso.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.getSOCommand();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 }

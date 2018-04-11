@@ -25,6 +25,7 @@ import com.liberate.automation.pom.PYVoidPayment;
 
 /***
  * Class with Payment Test Cases
+ * 
  * @author Nikhil
  *
  */
@@ -32,16 +33,16 @@ public class PaymentsTC {
 	static TestActions action = CommonLogin.action;
 	static String testCase;
 	static String testStatus;
-	
+
 	static Map<String, String> data = new HashedMap<>();
 	static String badChequePaymentNumber = "";
-	
+
 	/**
 	 * Private constructor to disable creation of object
 	 */
 	private PaymentsTC() {
 	}
-	
+
 	@BeforeClass
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
@@ -235,7 +236,7 @@ public class PaymentsTC {
 		cd.refundDeposit("10.00");
 		action.getScreenShot(testCase);
 	}
-	
+
 	@Test
 	public static void voidPayment() {
 		testCase = "VoidPayments_voidPayment";
@@ -313,7 +314,7 @@ public class PaymentsTC {
 
 		action.log("*****ENDING '" + testCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test
 	public static void badCheckProcessing() {
 		testCase = "BadChequeProcessing_badCheckProcessing";

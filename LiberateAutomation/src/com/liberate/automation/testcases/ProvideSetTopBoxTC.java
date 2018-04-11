@@ -17,32 +17,28 @@ import com.liberate.automation.pom.ProvideSetTopBox;
 import com.liberate.automation.pom.SalesSignOff;
 import com.liberate.automation.pom.ServiceOperations;
 
-public class ProvideSetTopBoxTC 
-{
+public class ProvideSetTopBoxTC {
 	static TestActions action = CommonLogin.action;
 	static String testCase;
 	static String testStatus;
-		
-	static String TestCase;
-	static String TestStatus;
+
 	static String setTopBoxService;
 	static String setTopBoxProduct;
 	static String SalesDepartment;
 	static String Site;
 
 	static Map<String, String> data = new HashedMap<>();
-	
+
 	/**
 	 * Private constructor to disable creation of object
 	 */
 	private ProvideSetTopBoxTC() {
 	}
-	
+
 	@BeforeClass
-	public void loadData() 
-	{
+	public void loadData() {
 		data = ExcelDataDriver.loadData();
-		
+
 		setTopBoxService = data.get("setTopBoxService");
 		setTopBoxProduct = data.get("setTopBoxProduct");
 		SalesDepartment = data.get("SalesDepartment");
@@ -57,47 +53,46 @@ public class ProvideSetTopBoxTC
 		action.log("Test Status : " + testStatus);
 		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test
-	public static void provideSetTopBox() 
-	{
-		TestCase = "provideSetTopBox";
-		
+	public static void provideSetTopBox() {
+		testCase = "provideSetTopBox";
+
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
 		ProvideSetTopBox setTopBox = new ProvideSetTopBox(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CustomerServiceOrder order = new CustomerServiceOrder(action);
-		
+
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(setTopBoxService);
-		action.getScreenShot(TestCase);
-		
+		action.getScreenShot(testCase);
+
 		service.navigate();
-		action.getScreenShot(TestCase);
-		service.verifyServicesScreen();		
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
+		service.verifyServicesScreen();
+		action.getScreenShot(testCase);
 		service.clickOnProvideSetTopBox();
-		action.getScreenShot(TestCase);
-		
+		action.getScreenShot(testCase);
+
 		setTopBox.selectDeptSite(SalesDepartment, Site);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		setTopBox.clickonProceed();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		setTopBox.allocateMACAddress(setTopBoxProduct);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		setTopBox.clickonAccept();
-		action.getScreenShot(TestCase);
-		
+		action.getScreenShot(testCase);
+
 		sales.verifySalesSignOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sales.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		order.getSONumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		order.getSOCommand();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 	}
 }
