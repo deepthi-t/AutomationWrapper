@@ -2,9 +2,12 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.CreditControlService;
@@ -20,16 +23,28 @@ import com.liberate.automation.pom.ServiceOperations;
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 
+	static String TestCase;
+	static String TestStatus;
+	
 	static String creditControlServiceNumber = "";
 
 	@BeforeClass
 	public static void loadData() {
 		creditControlServiceNumber = TestData.creditControlServiceNumber;
 	}
+	
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(TestCase);
+		TestStatus = result.getStatus()==ITestResult.SUCCESS?"PASSED":"FAILED";
+		
+		action.log("Test Status : " + TestStatus);
+		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+	}
 
 	@Test(priority = 0)
 	public static void serviceBAR() {
-		String TestCase = "CreditControlTC_serviceBAR";
+		TestCase = "CreditControlTC_serviceBAR";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CreditControlService creditControl = new CreditControlService(action);
@@ -47,7 +62,7 @@ public class CreditControlTC {
 
 	@Test(enabled = false)
 	public static void serviceTOS() {
-		String TestCase = "CreditControlTC_serviceTOS";
+		TestCase = "CreditControlTC_serviceTOS";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CreditControlService creditControl = new CreditControlService(action);
@@ -65,7 +80,7 @@ public class CreditControlTC {
 
 	@Test(enabled = false)
 	public static void serviceROS() {
-		String TestCase = "CreditControlTC_serviceROS";
+		TestCase = "CreditControlTC_serviceROS";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CreditControlService creditControl = new CreditControlService(action);
@@ -81,9 +96,9 @@ public class CreditControlTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 11)
 	public static void serviceTOSVerifyAudit() {
-		String TestCase = "CreditControlTC_serviceTOSVerifyAudit";
+		TestCase = "CreditControlTC_serviceTOSVerifyAudit";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CreditControlService creditControl = new CreditControlService(action);
@@ -119,9 +134,9 @@ public class CreditControlTC {
 		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 12)
 	public static void serviceROSVerifyAudit() {
-		String TestCase = "CreditControlTC_serviceROSVerifyAudit";
+		TestCase = "CreditControlTC_serviceROSVerifyAudit";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		CreditControlService creditControl = new CreditControlService(action);
