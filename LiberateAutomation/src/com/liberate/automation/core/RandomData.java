@@ -29,7 +29,7 @@ public class RandomData {
 		return new String(buf);
 	}
 
-	public RandomData(int length, Random random, String symbols) {
+	private RandomData(int length, Random random, String symbols) {
 		if (length < 1)
 			throw new IllegalArgumentException();
 		if (symbols.length() < 2)
@@ -42,14 +42,14 @@ public class RandomData {
 	/**
 	 * Create an alphanumeric string generator.
 	 */
-	public RandomData(int length, Random random) {
+	private RandomData(int length, Random random) {
 		this(length, random, alphanum);
 	}
 
 	/**
 	 * Create an alphanumeric strings from a secure generator.
 	 */
-	public RandomData(int length) {
+	private RandomData(int length) {
 		this(length, new SecureRandom());
 	}
 
