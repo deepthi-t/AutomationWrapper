@@ -7,7 +7,6 @@ import com.liberate.automation.core.TestActions;
 public class AmendProductISPFields {
 
 	public TestActions action = null;
-	static String unsernametext;
 		
 	By product_Row= By.xpath("//div[@id='customerServicesForm:serviceEnquiryTabs:0:productsTab:custServProductsResultTable']/div[2]/table/tbody/tr");
 	
@@ -45,11 +44,11 @@ public class AmendProductISPFields {
 		return passed;
 	}
 
-	public boolean enterdatatoUsernamePwd() {
+	public boolean enterdatatoUsernamePwd(String ispUserName) {
 		boolean passed = false;
 
 		passed = action.waitFor(ISPUsername_Textfield, 4, true);
-		passed = action.sendDataTo(ISPUsername_Textfield, unsernametext);
+		passed = action.sendDataTo(ISPUsername_Textfield, ispUserName);
 		passed = action.waitFor(GeneratePassword_Textfield, 4, true);
 		passed = action.clickOn(GeneratePassword_Textfield);
 
@@ -64,11 +63,11 @@ public class AmendProductISPFields {
 
 		return passed;
 	}
-	public boolean vlidate_output()	{
+	public boolean vlidate_output(String ispUserName)	{
 		boolean passed = false;
 
 		passed = action.waitFor(outputvalidation_Text, 4, true);
-		if(action.getXpath(outputvalidation_Text)==unsernametext)
+		if(action.getXpath(outputvalidation_Text)==ispUserName)
 			passed=true;
 		else
 			passed= false;

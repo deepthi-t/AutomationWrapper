@@ -32,7 +32,8 @@ public class AlterServiceTC {
 	static String department;
 	static String site;
 	static String ispSerciceNumber;
-	
+	static String ispUsername;
+		
 	static Map<String, String> data = new HashedMap<>();  
 	
 	@Test
@@ -94,12 +95,12 @@ public class AlterServiceTC {
 		action.getScreenShot(TestCase);
 
 		amendISP.clickOnProductRecord();
-		amendISP.enterdatatoUsernamePwd();
+		amendISP.enterdatatoUsernamePwd(ispUsername);
 		action.getScreenShot(TestCase);
 		amendISP.clickOnAccept();
 		action.getScreenShot(TestCase);
 		action.scrollDown();
-		amendISP.vlidate_output();
+		amendISP.vlidate_output(ispUsername);
 		action.getScreenShot(TestCase);
 	}
 	
@@ -110,7 +111,7 @@ public class AlterServiceTC {
 		department = data.get("SalesDepartment");
 		site = data.get("Site");
 		ispSerciceNumber = data.get("ispSerciceNumber");
-
+		ispUsername = data.get("ispUsername");
 	}
 	
 	@AfterMethod
