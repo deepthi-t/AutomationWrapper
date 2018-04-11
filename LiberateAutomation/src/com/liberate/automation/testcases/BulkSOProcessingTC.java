@@ -2,24 +2,40 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.Map;
+
+import org.apache.commons.collections4.map.HashedMap;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.BrowseServiceOrder;
 
 /***
  * Class with Bulk Service Order processing Test Cases
+ * 
  * @author Nikhil
  *
  */
 public class BulkSOProcessingTC {
 	static TestActions action = CommonLogin.action;
+	static String testCase;
+	static String testStatus;
 
+	static Map<String, String> data = new HashedMap<>();
 	static String networkDepartment = "";
 	static String generalDepartment = "";
 	static String accountDepartment = "";
+
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private BulkSOProcessingTC() {
+	}
 
 	@BeforeClass
 	public static void loadData() {
@@ -28,75 +44,76 @@ public class BulkSOProcessingTC {
 		accountDepartment = TestData.accountDepartment;
 	}
 
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+	}
+
 	@Test
 	public static void bulkCancel() {
-		String TestCase = "BulkSOProcessing_bulkCancel";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "BulkSOProcessing_bulkCancel";
 
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.selectMultipleServiceOrder(generalDepartment, 2), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.bulkCancel(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.verifyBulkProcessing(), true);
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void bulkSuspend() {
-		String TestCase = "BulkSOProcessing_bulkSuspend";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "BulkSOProcessing_bulkSuspend";
 
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.selectMultipleServiceOrder(generalDepartment, 2), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.bulkSuspend(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.verifyBulkProcessing(), true);
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void bulkAccountSignOff() {
-		String TestCase = "BulkSOProcessing_bulkAccountSignOff";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "BulkSOProcessing_bulkAccountSignOff";
 
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.selectMultipleServiceOrder(accountDepartment, 2), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.bulkSignOff(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.verifyBulkProcessing(), true);
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void bulkGeneralSignOff() {
-		String TestCase = "BulkSOProcessing_bulkGeneralSignOff";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "BulkSOProcessing_bulkGeneralSignOff";
 
 		BrowseServiceOrder msr = new BrowseServiceOrder(action);
 
 		assertEquals(msr.navigate(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.selectMultipleServiceOrder(generalDepartment, 2), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.bulkSignOff(), true);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(msr.verifyBulkProcessing(), true);
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 }

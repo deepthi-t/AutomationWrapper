@@ -13,79 +13,76 @@ import com.liberate.automation.pom.ManageUser;
 
 /***
  * Class with all User Management Test Cases
+ * 
  * @author Nikhil
  *
  */
 public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
-	
-	static String TestCase;
-	static String TestStatus;
-	
+	static String testCase;
+	static String testStatus;
+
 	static String employeeUserName = "";
 	static String newUserID = "";
+
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private UserManagementTC() {
+	}
 
 	@BeforeClass
 	public static void loadData() {
 		employeeUserName = TestData.employeeUserName;
 		newUserID = TestData.newUserID;
 	}
-	
+
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus()==ITestResult.SUCCESS?"PASSED":"FAILED";
-		
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test(priority = 1)
 	public static void amendUser() {
-		TestCase = "UserManagementTC_amendUser";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "UserManagementTC_amendUser";
 
 		ManageUser adm = new ManageUser(action);
 
 		adm.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.searchByUserName(employeeUserName);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.amendUser();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.verifyUserDetails();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 2)
 	public static void copyUser() {
-		TestCase = "UserManagementTC_copyUser";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "UserManagementTC_copyUser";
 
 		ManageUser adm = new ManageUser(action);
 
 		adm.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.searchByUserName(employeeUserName);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.copyUser("99999");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.verifyCopyUser();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.verifyUserDetails();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 3)
 	public static void createUser() {
-		TestCase = "UserManagementTC_createUser";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "UserManagementTC_createUser";
 
 		ManageUser adm = new ManageUser(action);
 		MaintainEmployee ade = new MaintainEmployee(action);
@@ -95,36 +92,29 @@ public class UserManagementTC {
 		ade.createNewEmployee();
 
 		adm.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.searchByUserName("");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.createUser(ade.EmployeeID, ade.VMSUserName);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.verifyUserDetails();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 4)
 	public static void deleteUser() {
-		TestCase = "UserManagementTC_deleteUser";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "UserManagementTC_deleteUser";
 
 		ManageUser adm = new ManageUser(action);
 
 		adm.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.searchByUserIS(newUserID);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.deleteUser();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		adm.verifyDelete();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 }

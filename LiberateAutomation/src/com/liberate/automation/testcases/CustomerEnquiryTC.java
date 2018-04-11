@@ -1,5 +1,7 @@
 package com.liberate.automation.testcases;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,15 +18,24 @@ import com.liberate.automation.pom.ServiceCharges;
 
 /***
  * Class with Customer Enquiry Test Case
+ * 
  * @author Nikhil
  *
  */
 public class CustomerEnquiryTC {
 	static TestActions action = CommonLogin.action;
+	static String testCase;
+	static String testStatus;
 
-	public static String accountNumber = "";
-	public static String surName = "";
-	public static String pricingPlanAccount = "";
+	public static String accountNumber;
+	public static String surName;
+	public static String pricingPlanAccount;
+
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private CustomerEnquiryTC() {
+	}
 
 	@BeforeClass
 	public static void loadData() {
@@ -33,309 +44,266 @@ public class CustomerEnquiryTC {
 		pricingPlanAccount = TestData.pricingPlanAccount;
 	}
 
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+	}
+
 	@Test(priority = 1)
 	public static void verifyCustomerEnquiry() {
-		String TestCase = "CustomerEnquiryTC_verifyCustomerEnquiry";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_verifyCustomerEnquiry";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.verifyDashBoard(accountNumber);
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void customerEnquiryWithID() {
-		String TestCase = "CustomerEnquiryTC_customerEnquiryWithID";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_customerEnquiryWithID";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByID("NI", "FN9ONJ2S3RPN ");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.verifyDashBoard("");
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void customerEnquiryWithSurname() {
-		String TestCase = "CustomerEnquiryTC_customerEnquiryWithSurname";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_customerEnquiryWithSurname";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchBySurname(surName);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.verifyDashBoard("");
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 2)
 	public static void amendAccountDetails() {
-		String TestCase = "CustomerEnquiryTC_amendAccountDetails";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_amendAccountDetails";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		DashBoard cd = new DashBoard(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.verifyDashBoard(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cd.amendAccount();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cd.verifyDashBoard(accountNumber);
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 3)
 	public static void amendDayOfBilling() {
-		String TestCase = "CustomerEnquiryTC_amendDayOfBilling";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_amendDayOfBilling";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRCustomerDetails cu = new CRCustomerDetails(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber("260002330000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cu.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cu.validateGeneralDetails();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cu.amendDayOfBilling();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cu.validatedayOfBilling();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void raiseAdjustment() {
-		String TestCase = "CustomerEnquiryTC_raiseAdjustment";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_raiseAdjustment";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ad.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.raiseAjustment();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.verifyRaiseAdjustment();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void verifyAdjustment() {
-		String TestCase = "CustomerEnquiryTC_verifyAdjustment";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_verifyAdjustment";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAdjustments ad = new CRAdjustments(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ad.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.verifyAdjustmenst();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void addServiceCharge() {
-		String TestCase = "CustomerEnquiryTC_addServiceCharge";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_addServiceCharge";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		ServiceCharges ad = new ServiceCharges(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ad.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.addServiceCharge();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.verifyRaisedServiceCharge();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void verifySericeChargeServiceNumber() {
-		String TestCase = "CustomerEnquiryTC_verifySericeChargeServiceNumber";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_verifySericeChargeServiceNumber";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		ServiceCharges ad = new ServiceCharges(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ad.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.searchWithServiceNumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.verifyServiceCharge();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void verifySericeChargeAccount() {
-		String TestCase = "CustomerEnquiryTC_verifySericeChargeAccount";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_verifySericeChargeAccount";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		ServiceCharges ad = new ServiceCharges(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ad.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		ad.verifyServiceCharge();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void verifyBills() {
 		// Should be executed in S10
-		String TestCase = "CustomerEnquiryTC_verifyBills";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_verifyBills";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRBills cb = new CRBills(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber("150303960000");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cb.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cb.verifyBill();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void addNominatedNumPricingPlan() {
-		String TestCase = "CustomerEnquiryTC_addNominatedNumPricingPlan";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_addNominatedNumPricingPlan";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(pricingPlanAccount);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cp.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.searchPricingPlan("AC+NN");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.addPricingPlan();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.validatePricingPlan();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void addCUGPricingPlan() {
-		String TestCase = "CustomerEnquiryTC_addCUGPricingPlan";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerEnquiryTC_addCUGPricingPlan";
 
 		CRCustomerSearch cr = new CRCustomerSearch(action);
 		CRAccountPricingPlans cp = new CRAccountPricingPlans(action);
 
 		cr.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cr.searchByAccountNumber(pricingPlanAccount);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cp.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.searchPricingPlan("CUG");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.addPricingPlan();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cp.validatePricingPlan();
-		action.getScreenShot(TestCase);
-
-		ReportGenerator.generateReport(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 }

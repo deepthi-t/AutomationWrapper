@@ -17,89 +17,89 @@ import com.liberate.automation.pom.ServiceOperations;
 
 /***
  * Class with Credit Control Test Case
+ * 
  * @author Nikhil
  *
  */
 public class CreditControlTC {
 	static TestActions action = CommonLogin.action;
 
-	static String TestCase;
-	static String TestStatus;
-	
+	static String testCase;
+	static String testStatus;
+
 	static String creditControlServiceNumber = "";
+
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private CreditControlTC() {
+	}
 
 	@BeforeClass
 	public static void loadData() {
 		creditControlServiceNumber = TestData.creditControlServiceNumber;
 	}
-	
+
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus()==ITestResult.SUCCESS?"PASSED":"FAILED";
-		
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 0)
 	public static void serviceBAR() {
-		TestCase = "CreditControlTC_serviceBAR";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CreditControlTC_serviceBAR";
 
 		CreditControlService creditControl = new CreditControlService(action);
 
 		creditControl.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.searchWithServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.serviceBAR();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(enabled = false)
 	public static void serviceTOS() {
-		TestCase = "CreditControlTC_serviceTOS";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CreditControlTC_serviceTOS";
 
 		CreditControlService creditControl = new CreditControlService(action);
 
 		creditControl.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.searchWithServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.serviceTOS();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(enabled = false)
 	public static void serviceROS() {
-		TestCase = "CreditControlTC_serviceROS";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CreditControlTC_serviceROS";
 
 		CreditControlService creditControl = new CreditControlService(action);
 
 		creditControl.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.searchWithServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.serviceROS();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 11)
 	public static void serviceTOSVerifyAudit() {
-		TestCase = "CreditControlTC_serviceTOSVerifyAudit";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CreditControlTC_serviceTOSVerifyAudit";
 
 		CreditControlService creditControl = new CreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
@@ -107,37 +107,35 @@ public class CreditControlTC {
 		ServiceOperations services = new ServiceOperations(action);
 
 		creditControl.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.searchWithServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.serviceTOS();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		dashboard.verifyDashBoard("");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		services.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		services.verifyServicesScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		services.verifyAudit();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		services.verifyAuditTOSHistory();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(services.ServiceStatus, "T");
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 12)
 	public static void serviceROSVerifyAudit() {
-		TestCase = "CreditControlTC_serviceROSVerifyAudit";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CreditControlTC_serviceROSVerifyAudit";
 
 		CreditControlService creditControl = new CreditControlService(action);
 		CRCustomerSearch search = new CRCustomerSearch(action);
@@ -145,30 +143,29 @@ public class CreditControlTC {
 		ServiceOperations services = new ServiceOperations(action);
 
 		creditControl.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.searchWithServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.serviceROS();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		creditControl.verifyServiceStatus();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(creditControlServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		dashboard.verifyDashBoard("");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		services.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		services.verifyServicesScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		services.verifyAudit();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		services.verifyAuditTOSHistory();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(services.ServiceStatus, "W");
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 }
