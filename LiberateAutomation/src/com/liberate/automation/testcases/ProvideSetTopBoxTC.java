@@ -18,27 +18,34 @@ import com.liberate.automation.pom.ProvideSetTopBox;
 import com.liberate.automation.pom.SalesSignOff;
 import com.liberate.automation.pom.ServiceOperations;
 
-public class ProvideSetTopBoxTC {
+public class ProvideSetTopBoxTC 
+{
 	static TestActions action = CommonLogin.action;
 	
 	static String TestCase;
 	static String TestStatus;
+	static String setTopBoxService;
+	static String setTopBoxProduct;
+	static String SalesDepartment;
+	static String Site;
 
 	static Map<String, String> data = new HashedMap<>();
 	
-	static String setTopBoxService;
-	static String setTopBoxProduct;
 	
 	@BeforeClass
-	public void loadData() {
+	public void loadData() 
+	{
 		data = ExcelDataDriver.loadData();
 		
 		setTopBoxService = data.get("setTopBoxService");
 		setTopBoxProduct = data.get("setTopBoxProduct");
+		SalesDepartment = data.get("SalesDepartment");
+		Site = data.get("Site");
 	}
 
 	@AfterMethod
-	public static void logTestResult(ITestResult result) {
+	public static void logTestResult(ITestResult result) 
+	{
 		ReportGenerator.generateReport(TestCase);
 		TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
 
@@ -69,7 +76,7 @@ public class ProvideSetTopBoxTC {
 		service.clickOnProvideSetTopBox();
 		action.getScreenShot(TestCase);
 		
-		setTopBox.selectDeptSite("AQSAL", "ANSQ");
+		setTopBox.selectDeptSite(SalesDepartment, Site);
 		action.getScreenShot(TestCase);
 		setTopBox.clickonProceed();
 		action.getScreenShot(TestCase);
