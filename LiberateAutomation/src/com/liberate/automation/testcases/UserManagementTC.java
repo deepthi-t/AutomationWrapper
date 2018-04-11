@@ -1,5 +1,7 @@
 package com.liberate.automation.testcases;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,7 +18,10 @@ import com.liberate.automation.pom.ManageUser;
  */
 public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
-
+	
+	static String TestCase;
+	static String TestStatus;
+	
 	static String employeeUserName = "";
 	static String newUserID = "";
 
@@ -25,10 +30,19 @@ public class UserManagementTC {
 		employeeUserName = TestData.employeeUserName;
 		newUserID = TestData.newUserID;
 	}
-
+	
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(TestCase);
+		TestStatus = result.getStatus()==ITestResult.SUCCESS?"PASSED":"FAILED";
+		
+		action.log("Test Status : " + TestStatus);
+		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+	}
+	
 	@Test(priority = 1)
 	public static void amendUser() {
-		String TestCase = "UserManagementTC_amendUser";
+		TestCase = "UserManagementTC_amendUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageUser adm = new ManageUser(action);
@@ -48,7 +62,7 @@ public class UserManagementTC {
 
 	@Test(priority = 2)
 	public static void copyUser() {
-		String TestCase = "UserManagementTC_copyUser";
+		TestCase = "UserManagementTC_copyUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageUser adm = new ManageUser(action);
@@ -70,7 +84,7 @@ public class UserManagementTC {
 
 	@Test(priority = 3)
 	public static void createUser() {
-		String TestCase = "UserManagementTC_createUser";
+		TestCase = "UserManagementTC_createUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageUser adm = new ManageUser(action);
@@ -95,7 +109,7 @@ public class UserManagementTC {
 
 	@Test(priority = 4)
 	public static void deleteUser() {
-		String TestCase = "UserManagementTC_deleteUser";
+		TestCase = "UserManagementTC_deleteUser";
 		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		ManageUser adm = new ManageUser(action);
