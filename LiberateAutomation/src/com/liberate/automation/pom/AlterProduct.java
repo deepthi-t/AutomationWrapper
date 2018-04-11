@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import com.liberate.automation.core.TestActions;
 
-public class AlterProductTC {
+public class AlterProduct {
 
 	TestActions action = null;
 
@@ -17,7 +17,7 @@ public class AlterProductTC {
 	By Product_dropdown = By.xpath("//select[@id = \"alterProductsDetailsForm:changedProduct\"]");
 	By Accept_button = By.xpath("//*[@value=\"Accept\"]");
 
-	public AlterProductTC(TestActions action) {
+	public AlterProduct(TestActions action) {
 		this.action = action;
 	}
 

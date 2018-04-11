@@ -11,13 +11,13 @@ import org.testng.annotations.Test;
 import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
-import com.liberate.automation.pom.AlterProductTC;
+import com.liberate.automation.pom.AlterProduct;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CustomerServiceOrder;
 import com.liberate.automation.pom.SalesSignOff;
 import com.liberate.automation.pom.ServiceOperations;
 
-public class AlterProduct {
+public class AlterProductTC {
 
 	static TestActions action = CommonLogin.action;
 
@@ -32,7 +32,7 @@ public class AlterProduct {
 		TestCase = "alterProduct";
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
-		AlterProductTC alterProduct = new AlterProductTC(action);
+		AlterProduct alterProduct = new AlterProduct(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CustomerServiceOrder order = new CustomerServiceOrder(action);
 
