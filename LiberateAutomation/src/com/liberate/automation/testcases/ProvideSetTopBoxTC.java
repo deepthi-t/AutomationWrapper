@@ -20,7 +20,9 @@ import com.liberate.automation.pom.ServiceOperations;
 public class ProvideSetTopBoxTC 
 {
 	static TestActions action = CommonLogin.action;
-	
+	static String testCase;
+	static String testStatus;
+		
 	static String TestCase;
 	static String TestStatus;
 	static String setTopBoxService;
@@ -30,6 +32,11 @@ public class ProvideSetTopBoxTC
 
 	static Map<String, String> data = new HashedMap<>();
 	
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private ProvideSetTopBoxTC() {
+	}
 	
 	@BeforeClass
 	public void loadData() 
@@ -43,13 +50,12 @@ public class ProvideSetTopBoxTC
 	}
 
 	@AfterMethod
-	public static void logTestResult(ITestResult result) 
-	{
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
 
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
 	
 	@Test

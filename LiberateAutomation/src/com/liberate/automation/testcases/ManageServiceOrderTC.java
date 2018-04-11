@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.collections4.map.HashedMap;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.common.CommonData;
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.core.ExcelDataDriver;
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.pom.AllocateRouteServiceOrder;
 import com.liberate.automation.pom.BrowseServiceOrder;
@@ -35,7 +38,9 @@ import com.liberate.automation.pom.MSOWaitlist;
  */
 public class ManageServiceOrderTC {
 	static TestActions action = CommonLogin.action;
-
+	static String testCase;
+	static String testStatus;
+	
 	static Map<String, String> dataMap = new HashedMap<>();
 
 	static String SOEnquire;
@@ -53,7 +58,13 @@ public class ManageServiceOrderTC {
 	static String RejectSO;
 	static String AccountSO;
 	static String GeneralSO;
-
+	
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private ManageServiceOrderTC() {
+	}
+	
 	@BeforeClass
 	public static void loadData() {
 		dataMap = ExcelDataDriver.loadData();
@@ -74,11 +85,19 @@ public class ManageServiceOrderTC {
 		AccountSO = dataMap.get("AccountSO");
 		GeneralSO = dataMap.get("GeneralSO");
 	}
+	
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+	}
 
 	@Test
 	public static void soEnquiry() {
 		String TestCase = "ManageServiceOrder_soEnquiry";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		MSOEnquiry msr = new MSOEnquiry(action);
 
@@ -88,13 +107,11 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(TestCase);
 		msr.verifyServiceOrderDetails(SOEnquire);
 		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addSpecialInstructions() {
 		String TestCase = "ManageServiceOrder_addSpecialInstructions";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		MSOAddSpecialInstructions mso = new MSOAddSpecialInstructions(action);
 		MSOEnquiry mse = new MSOEnquiry(action);
@@ -119,13 +136,11 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(TestCase);
 		mse.verifySepcialInstructions(mso.SpecialInstruction);
 		action.getScreenShot(TestCase);
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test
 	public static void addServiceCharge() {
 		String TestCase = "ManageServiceOrder_addServiceCharge";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
 
 		MSOAddRemoveServiceCharge msr = new MSOAddRemoveServiceCharge(action);
 

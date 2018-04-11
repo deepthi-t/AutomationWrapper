@@ -11,6 +11,7 @@ import com.liberate.automation.pom.Login;
 
 /***
  * Class with Login funttionality
+ * 
  * @author Nikhil
  *
  */
@@ -43,6 +44,12 @@ public class CommonLogin {
 	public static void logout() {
 		Login login = new Login(action);
 		login.logout();
+	}
+
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private CommonLogin() {
 	}
 
 	@AfterSuite

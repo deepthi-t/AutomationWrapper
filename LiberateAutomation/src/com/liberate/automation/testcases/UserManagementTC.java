@@ -18,13 +18,21 @@ import com.liberate.automation.pom.ManageUser;
  */
 public class UserManagementTC {
 	static TestActions action = CommonLogin.action;
-	
+	static String testCase;
+	static String testStatus;
+		
 	static String TestCase;
 	static String TestStatus;
 	
 	static String employeeUserName = "";
 	static String newUserID = "";
-
+	
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private UserManagementTC() {
+	}
+	
 	@BeforeClass
 	public static void loadData() {
 		employeeUserName = TestData.employeeUserName;
@@ -33,11 +41,11 @@ public class UserManagementTC {
 	
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus()==ITestResult.SUCCESS?"PASSED":"FAILED";
-		
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
 	
 	@Test(priority = 1)

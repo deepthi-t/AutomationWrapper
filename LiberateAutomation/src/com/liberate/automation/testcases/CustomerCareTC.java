@@ -29,10 +29,10 @@ import com.liberate.automation.pom.ServiceProductsTab;
  */
 public class CustomerCareTC {
 	static TestActions action = CommonLogin.action;
-	
-	static String TestCase;
-	static String TestStatus;
-	
+
+	static String testCase;
+	static String testStatus;
+
 	static String accountNumber = "";
 	static String salesDepartment = "";
 	static String site = "";
@@ -41,6 +41,12 @@ public class CustomerCareTC {
 	static String suspendedService = "";
 	static String serviceASNCease = "";
 	static String serviceCease = "";
+
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private CustomerCareTC() {
+	}
 
 	@BeforeClass
 	public static void loadData() {
@@ -54,91 +60,91 @@ public class CustomerCareTC {
 		serviceCease = TestData.serviceCease;
 	}
 
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+	}
+
 	@Test
 	public static void generateInterimBill() {
-		TestCase = "CustomerCareTC_generateInterimBill";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_generateInterimBill";
 
 		InterimBillGeneration bill = new InterimBillGeneration(action);
 
 		bill.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		bill.searchWithCustomerAccount(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		bill.createInterimBill();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void transferService() {
-		TestCase = "CustomerCareTC_transferService";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_transferService";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByAccountNumber(transferFromAccount);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.verifyServicesScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.transferService(transferToAccount);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.verifyTransferService(transferToAccount);
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 1)
 	public static void suspendService() {
-		TestCase = "CustomerCareTC_suspendService";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_suspendService";
 
-		String ServiceOrderNumber = "";
+		String serviceOrderNumber = "";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(suspendedService);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.suspendService();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.verifyServicesScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cso.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cso.filterByServiceOrder(service.RaisedServiceOrder);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(cso.getSOCommand(), "TOS");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
-		ServiceOrderNumber = cso.getSONumber();
+		serviceOrderNumber = cso.getSONumber();
 
-		ManageServiceOrderTC.signOffCompletely(ServiceOrderNumber);
-		action.getScreenShot(TestCase);
+		ManageServiceOrderTC.signOffCompletely(serviceOrderNumber);
+		action.getScreenShot(testCase);
 
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	@Test(priority = 2)
 	public static void restoreService() {
-		TestCase = "CustomerCareTC_restoreService";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_restoreService";
 
 		String ServiceOrderNumber = "";
 
@@ -147,36 +153,33 @@ public class CustomerCareTC {
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(suspendedService);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.restoreService();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.verifyServicesScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		serviceOrder.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		serviceOrder.filterByServiceOrder(service.RaisedServiceOrder);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(serviceOrder.getSOCommand(), "ROS");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		ServiceOrderNumber = serviceOrder.getSONumber();
 
 		ManageServiceOrderTC.signOffCompletely(ServiceOrderNumber);
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 3)
 	public static void alterServiceNumberPCL() {
-		TestCase = "CustomerCareTC_alterServiceNumberPCL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_alterServiceNumberPCL";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
@@ -185,36 +188,33 @@ public class CustomerCareTC {
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(serviceASNCease);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.clickOnAlterServiceNumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		asn.selectDepartmentSite(salesDepartment, site);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		asn.alterServiceNumber(false);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		sales.verifySalesSignOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		serviceASNCease = sales.ServiceNumber;
 		sales.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertEquals(serviceOrder.getSOCommand(), "ASN");
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 4)
 	public static void alterServiceNumberPCLServiceCharge() {
-		TestCase = "CustomerCareTC_alterServiceNumberPCLServiceCharge";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_alterServiceNumberPCLServiceCharge";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
@@ -222,38 +222,35 @@ public class CustomerCareTC {
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(serviceASNCease);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.clickOnAlterServiceNumber();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		asn.selectDepartmentSite(salesDepartment, site);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		asn.alterServiceNumber(false);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.raiseServiceCharge();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		serviceOrder.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		assertEquals(serviceOrder.getSOCommand(), "ASN");
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		serviceASNCease = serviceOrder.getServiceONumber();
 
 		ManageServiceOrderTC.signOffCompletely(serviceOrder.getSONumber());
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
 	}
 
 	// @Test(priority = 5)
 	public static void ceaseServiceNumberPCL() {
-		TestCase = "CustomerCareTC_ceaseServiceNumberPCL";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_ceaseServiceNumberPCL";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
@@ -262,35 +259,32 @@ public class CustomerCareTC {
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(serviceASNCease);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.clickOnCeaseService();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		cease.selectDepartmentSite(salesDepartment, site);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		cease.ceaseService();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		sales.verifySalesSignOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sales.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	// @Test(priority = 0)
 	public static void ceaseServiceNumberPCLServiceCharge() {
-		TestCase = "CustomerCareTC_ceaseServiceNumberPCLServiceCharge";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_ceaseServiceNumberPCLServiceCharge";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
@@ -298,62 +292,56 @@ public class CustomerCareTC {
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByServiceNumber(serviceCease);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.clickOnCeaseService();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		sales.verifySalesSignOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sales.addServiceCharge();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sales.signOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 8)
 	public static void verifyServiceProducts() {
-		TestCase = "CustomerCareTC_verifyServiceProducts";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_verifyServiceProducts";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
 		ServiceProductsTab products = new ServiceProductsTab(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByAccountNumber(transferToAccount);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.navigateToProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		products.verifyProductsScreen();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 7)
 	public static void provideProduct() {
-		TestCase = "CustomerCareTC_provideProduct";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_provideProduct";
 
-		String ServiceNumber = "2050587";
-		String Department = "BGSAL";
-		String Site = "BUSG";
-		String Command = "PCA";
+		String serviceNumber = "2050587";
+		String department = "BGSAL";
+		String site = "BUSG";
+		String command = "PCA";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
@@ -361,36 +349,31 @@ public class CustomerCareTC {
 		SalesSignOff sales = new SalesSignOff(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
-		search.searchByServiceNumber(ServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
+		search.searchByServiceNumber(serviceNumber);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.navigateToProductsScreen();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		products.verifyProductsScreen();
-		action.getScreenShot(TestCase);
-		products.provideProduct(Department, Site, Command);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
+		products.provideProduct(department, site, command);
+		action.getScreenShot(testCase);
 
 		sales.verifySalesSignOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sales.signOff();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test(priority = 9)
 	public static void ceaseProduct() {
-		TestCase = "CustomerCareTC_ceaseProduct";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_ceaseProduct";
 
-		String ServiceNumber = "2050587";
-		String Department = salesDepartment;
-		String Site = site;
+		String serviceNumber = "2050587";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations service = new ServiceOperations(action);
@@ -398,114 +381,94 @@ public class CustomerCareTC {
 		SalesSignOff sales = new SalesSignOff(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
-		search.searchByServiceNumber(ServiceNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
+		search.searchByServiceNumber(serviceNumber);
+		action.getScreenShot(testCase);
 
 		service.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		service.navigateToProductsScreen();
-		action.getScreenShot(TestCase);
-		
+		action.getScreenShot(testCase);
+
 		products.verifyProductsScreen();
-		action.getScreenShot(TestCase);
-		products.ceaseProduct(Department, Site);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
+		products.ceaseProduct(salesDepartment, site);
+		action.getScreenShot(testCase);
 
 		sales.verifySalesSignOff();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		sales.signOff();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	public static void cloneCustomer() {
-		TestCase = "CustomerCareTC_cloneCustomer";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_cloneCustomer";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		DashBoard dashboard = new DashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		dashboard.verifyDashBoard(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		accountDetails.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		accountDetails.cloneCustomer();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		accountDetails.verifySuccessMessage();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void cloneAccount() {
-		TestCase = "CustomerCareTC_cloneAccount";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_cloneAccount";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		DashBoard dashboard = new DashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		dashboard.verifyDashBoard(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		accountDetails.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		accountDetails.cloneAccount();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		accountDetails.verifySuccessMessage();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 
 	@Test
 	public static void createSubAccount() {
-		TestCase = "CustomerCareTC_createSubAccount";
-		action.log("*****STARTING '" + TestCase + "' EXECUTION*****");
+		testCase = "CustomerCareTC_createSubAccount";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		DashBoard dashboard = new DashBoard(action);
 		CRAccountDetails accountDetails = new CRAccountDetails(action);
 
 		search.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		search.searchByAccountNumber(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		dashboard.verifyDashBoard(accountNumber);
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 
 		accountDetails.navigate();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		accountDetails.createSubAccount();
-		action.getScreenShot(TestCase);
+		action.getScreenShot(testCase);
 		accountDetails.verifySuccessMessage();
-		action.getScreenShot(TestCase);
-
-		action.log("*****ENDING '" + TestCase + "' EXECUTION***** \n");
-	}
-	
-	@AfterMethod
-	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus()==ITestResult.SUCCESS?"PASSED":"FAILED";
-		
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		action.getScreenShot(testCase);
 	}
 }

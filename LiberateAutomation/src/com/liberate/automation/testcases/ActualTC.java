@@ -31,12 +31,12 @@ public class ActualTC {
 	 * should be assigned on every Test Case. Same variable should be used/passed as
 	 * the filename while taking screenshot and generate Word Report.
 	 */
-	static String TestCase;
+	static String testCase;
 
 	/***
 	 * The TestStatus variable is used to hold the test status (PASSED/FAILED)
 	 */
-	static String TestStatus;
+	static String testStatus;
 
 	/***
 	 * Map object is used to hold the test Data.
@@ -67,26 +67,27 @@ public class ActualTC {
 	 * The logTestResult method will be executed after execution of each
 	 * method/test. This method will log the test result in console and log file.
 	 * This method will also generate the report with the name from variable
-	 * TestCase.
-	 * The same method can be used on all Test classes
+	 * TestCase. The same method can be used on all Test classes
 	 * 
-	 * @param result Pass the same object as parameter.
+	 * @param result
+	 *            Pass the same object as parameter.
 	 */
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
 
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
 	}
-	
+
 	/***
-	 * The actual test method which hold the Test Steps. The return type of all @Test method should be void.
-	 * Also the value for TestCase should be assigned inside the testCase method. 
+	 * The actual test method which hold the Test Steps. The return type of
+	 * all @Test method should be void. Also the value for TestCase should be
+	 * assigned inside the testCase method.
 	 */
 	@Test
 	public static void testCase() {
-		TestCase = "Test Case";
+		testCase = "Test Case";
 	}
 }

@@ -2,10 +2,13 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertTrue;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.common.CommonData;
+import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.pom.AddMore;
@@ -21,14 +24,31 @@ import com.liberate.automation.pom.SalesSignOff;
  */
 public class ServiceProvisioningTC {
 	static TestActions action = CommonLogin.action;
-
+	static String testCase;
+	static String testStatus;
+	
 	static String arnServiceNumber = "";
-
+	
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private ServiceProvisioningTC() {
+	}
+	
 	@BeforeClass
 	public static void loadData() {
 		arnServiceNumber = TestData.arnServiceNumber;
 	}
+	
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
 
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+	}
+	
 	@Test
 	public static void newCustomerPEL() {
 		String TestCase = "ServiceProvisioningTC_newCustomerPEL";

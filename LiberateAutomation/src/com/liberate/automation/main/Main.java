@@ -1,6 +1,5 @@
 package com.liberate.automation.main;
 
-import com.liberate.automation.common.LeftLink.MaintainQuery;
 import com.liberate.automation.testcases.AlterServiceTC;
 import com.liberate.automation.testcases.CommonLogin;
 

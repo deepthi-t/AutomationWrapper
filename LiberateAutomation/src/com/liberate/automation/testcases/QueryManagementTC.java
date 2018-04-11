@@ -1,5 +1,7 @@
 package com.liberate.automation.testcases;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.ReportGenerator;
@@ -14,8 +16,25 @@ import com.liberate.automation.pom.CRMaintainQuery;
  */
 public class QueryManagementTC {
 	static TestActions action = CommonLogin.action;
-	
+	static String testCase;
+	static String testStatus;
+		
 	static String nonAccountQuery = "";
+	
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private QueryManagementTC() {
+	}
+	
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(testCase);
+		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + testStatus);
+		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+	}
 	
 	@Test(priority = 1)
 	public static void raiseQueryAccount() {
