@@ -106,7 +106,7 @@ public class ExistingCustomer {
 
 		passed = action.waitFor(AccountNumber_Value, 4, true);
 		this.AccountNumber = action.getTextFromPage(AccountNumber_Value);
-		action.log("Account Number created : " + this.AccountNumber);
+		TestActions.log("Account Number created : " + this.AccountNumber);
 
 		passed = !this.AccountNumber.trim().equals("");
 
@@ -125,7 +125,7 @@ public class ExistingCustomer {
 		passed = action.clickOn(CommonPanel.Search_Button);
 
 		passed = action.waitFor(AccountStatus_Value, 4, true);
-		action.log("Account Status : " + action.getTextFromPage(AccountStatus_Value));
+		TestActions.log("Account Status : " + action.getTextFromPage(AccountStatus_Value));
 
 		return passed;
 	}

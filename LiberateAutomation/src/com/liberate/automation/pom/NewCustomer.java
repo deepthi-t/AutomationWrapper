@@ -357,7 +357,7 @@ public class NewCustomer {
 
 		passed = action.waitFor(AccountNumber_Value, 4, true);
 		this.AccountNumber = action.getTextFromPage(AccountNumber_Value);
-		action.log("Account Number created : " + this.AccountNumber);
+		TestActions.log("Account Number created : " + this.AccountNumber);
 
 		passed = !this.AccountNumber.trim().equals("");
 

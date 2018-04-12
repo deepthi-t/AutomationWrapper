@@ -41,7 +41,7 @@ public class ServiceProductsTab {
 		passed = action.waitFor(Products_Row, 24, true);
 		for (int i = 0; i < action.countOf(Products_Row); i++) {
 			for (int j = 0; j < 4; j++) {
-				action.log(action.getTextFromPage(
+				TestActions.log(action.getTextFromPage(
 						By.xpath(action.getXpath(Products_Row) + "[" + (i + 1) + "]//descendant::td[" + (j + 1) + "]"))
 						+ " ");
 			}

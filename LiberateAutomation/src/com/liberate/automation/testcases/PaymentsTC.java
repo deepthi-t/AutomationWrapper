@@ -12,8 +12,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.core.ExcelDataDriver;
-import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
+import com.liberate.automation.core.TestResult;
 import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.DepositRequirement;
@@ -50,11 +50,7 @@ public class PaymentsTC {
 
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(testCase);
-		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
-
-		action.log("Test Status : " + testStatus);
-		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+		TestResult.processTestResult(testCase, result, action);
 	}
 
 	@Test(priority = 3)
@@ -311,8 +307,6 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 		pos.POSPayment();
 		action.getScreenShot(testCase);
-
-		action.log("*****ENDING '" + testCase + "' EXECUTION***** \n");
 	}
 
 	@Test

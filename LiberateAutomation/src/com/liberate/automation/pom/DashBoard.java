@@ -70,10 +70,10 @@ public class DashBoard {
 		else
 			passed = action.getTextFromPage(MarketingCategory_Value).trim().equals(MarketingCategory);
 		
-		action.log("Account Number : " + ACNumber);
-		action.log("Account Status : " + AccountStatus);
-		action.log("Customer Type : " + CustomerType);
-		action.log("Marketing Category: " + MarketingCategory);
+		TestActions.log("Account Number : " + ACNumber);
+		TestActions.log("Account Status : " + AccountStatus);
+		TestActions.log("Customer Type : " + CustomerType);
+		TestActions.log("Marketing Category: " + MarketingCategory);
 
 		return passed;
 	}

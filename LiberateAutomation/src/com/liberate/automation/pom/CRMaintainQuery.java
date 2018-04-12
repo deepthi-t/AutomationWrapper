@@ -216,9 +216,9 @@ public class CRMaintainQuery {
 
 		passed = action.getTextFromPage(QueryType_Value).substring(0, 4).equals(QueryCode);
 
-		action.log("Raised Query Code    : " + QueryCode);
+		TestActions.log("Raised Query Code    : " + QueryCode);
 
-		action.log("Query Code in Screen : " + action.getTextFromPage(QueryType_Value).substring(0, 4));
+		TestActions.log("Query Code in Screen : " + action.getTextFromPage(QueryType_Value).substring(0, 4));
 		
 		this.QueryNumber = action.getTextFromPage(QueryNumber_Value).trim();
 		this.QueryStatus = action.getTextFromPage(QueryStatus_Value).trim();
