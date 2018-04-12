@@ -30,7 +30,7 @@ public class QueryManagementTC {
 
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		TestResult.processTestResult(testCase, result, action);
+		TestResult.processTestResult(testCase, result);
 	}
 
 	@Test(priority = 1)
