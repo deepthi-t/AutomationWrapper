@@ -201,6 +201,8 @@ public class TestActions {
 			log("Selecting index '" + index + "' from '" + locator.toString() + "'");
 			select = new Select(driver.findElement(locator));
 			select.selectByIndex(index);
+			waitFor(1);
+			log("Selected value : " + this.getSelectedOption(locator)); 
 		} catch (Exception e) {
 			retry = handleException(e);
 			if (retry)
