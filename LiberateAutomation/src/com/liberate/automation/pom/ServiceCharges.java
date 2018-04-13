@@ -101,11 +101,11 @@ public class ServiceCharges {
 		String ConvertedDate = action.getTextFromPage(CommonPanel.LiberateHeader.LiberateDate).replace("/", "-")
 				.replace(",", "");
 
-		action.log("Selected Service Charge : " + this.SelectedServiceCharge);
-		action.log("Latest Service Charge : " + ServiceChargeType);
+		TestActions.log("Selected Service Charge : " + this.SelectedServiceCharge);
+		TestActions.log("Latest Service Charge : " + ServiceChargeType);
 
-		action.log("Liberate System Date : " + ConvertedDate);
-		action.log("Service Charge Raised on : " + ServiceChargeRaisedDate);
+		TestActions.log("Liberate System Date : " + ConvertedDate);
+		TestActions.log("Service Charge Raised on : " + ServiceChargeRaisedDate);
 
 		passed = this.SelectedServiceCharge.equals(ServiceChargeType);
 		passed = ServiceChargeRaisedDate.contains(ConvertedDate);
@@ -166,11 +166,11 @@ public class ServiceCharges {
 		passed = !SCDescription.trim().equals("");
 		passed = !SCAmount.trim().equals("");
 
-		action.log("Service Number : " + SNumber);
-		action.log("Raised Date : " + SCRaisedDate);
-		action.log("Service Charge Type : " + SCType);
-		action.log("Description : " + SCDescription);
-		action.log("Amount : " + SCAmount);
+		TestActions.log("Service Number : " + SNumber);
+		TestActions.log("Raised Date : " + SCRaisedDate);
+		TestActions.log("Service Charge Type : " + SCType);
+		TestActions.log("Description : " + SCDescription);
+		TestActions.log("Amount : " + SCAmount);
 
 		return passed;
 	}

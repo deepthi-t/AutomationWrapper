@@ -67,18 +67,18 @@ public class CRBills {
 		String PrevPeriodAd = action.getTextFromPage(By.xpath(action.getXpath(BillFirst_Row)+"//td[11]//span"));
 		String OutstandingBalance = action.getTextFromPage(By.xpath(action.getXpath(BillFirst_Row)+"//td[12]//span"));	
 			
-		action.log("BillRefNumber : " + BillRefNumber);
-		action.log("BillInvoiceNumber : " + BillInvoiceNumber);
-		action.log("BillDate : " + BillDate);
-		action.log("BillDueDate : " + BillDueDate);
-		action.log("DateCleared : " + DateCleared);
-		action.log("DOB : " + DOB);
-		action.log("BroughtForwardBalance : " + BroughtForwardBalance);
-		action.log("NewCharges : " + NewCharges);
-		action.log("BillQuery : " + BillQuery);
-		action.log("Payments : " + Payments);
-		action.log("PrevPeriodAd : " + PrevPeriodAd);
-		action.log("OutstandingBalance : " + OutstandingBalance);
+		TestActions.log("BillRefNumber : " + BillRefNumber);
+		TestActions.log("BillInvoiceNumber : " + BillInvoiceNumber);
+		TestActions.log("BillDate : " + BillDate);
+		TestActions.log("BillDueDate : " + BillDueDate);
+		TestActions.log("DateCleared : " + DateCleared);
+		TestActions.log("DOB : " + DOB);
+		TestActions.log("BroughtForwardBalance : " + BroughtForwardBalance);
+		TestActions.log("NewCharges : " + NewCharges);
+		TestActions.log("BillQuery : " + BillQuery);
+		TestActions.log("Payments : " + Payments);
+		TestActions.log("PrevPeriodAd : " + PrevPeriodAd);
+		TestActions.log("OutstandingBalance : " + OutstandingBalance);
 		
 		return passed;
 	}

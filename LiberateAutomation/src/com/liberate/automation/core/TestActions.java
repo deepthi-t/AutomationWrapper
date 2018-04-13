@@ -763,7 +763,7 @@ public class TestActions {
 	 * @param message
 	 *            String Message that needs to be logged.
 	 */
-	public void log(String message) {
+	public static void log(String message) {
 		Date date = new Date();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
@@ -781,7 +781,7 @@ public class TestActions {
 	 * @param FileName Name of the file
 	 * @param Log Message to be logged
 	 */
-	private void logToFile(String FileName, String Log) {
+	private static void logToFile(String FileName, String Log) {
 
 		BufferedWriter bw = null;
 

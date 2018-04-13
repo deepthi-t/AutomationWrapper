@@ -7,9 +7,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.liberate.automation.core.ReportGenerator;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
+import com.liberate.automation.core.TestResult;
 import com.liberate.automation.pom.ManageSwitchRequest;
 
 /***
@@ -42,11 +42,7 @@ public class SwitchRequestTC {
 
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(testCase);
-		testStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
-
-		action.log("Test Status : " + testStatus);
-		action.log("*****COMPLETED '" + testCase + "' EXECUTION***** \n");
+		TestResult.processTestResult(testCase, result);
 	}
 
 	@Test

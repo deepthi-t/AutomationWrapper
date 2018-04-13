@@ -163,7 +163,7 @@ public class BrowseServiceOrder {
 			passed = action.countOf(ServiceOrder)>0;
 			passed = action.countOf(ProcessingStatus)>0;
 
-			action.log("Service Order " + action.getTextFromPage(ServiceOrder) + " Processing Status : " + action.getTextFromPage(ProcessingStatus));
+			TestActions.log("Service Order " + action.getTextFromPage(ServiceOrder) + " Processing Status : " + action.getTextFromPage(ProcessingStatus));
 		}
 		
 		return passed;
