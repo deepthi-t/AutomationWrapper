@@ -77,6 +77,10 @@ public class ServiceOperations {
 	By TOSConfirmation_PopUp = By.xpath("//*[text()='TOS Confirmation']");
 	By RaisedServiceOrder_Value = By.xpath("//*[text()='Raised Service Order Number']//following::label[1]");
 
+	
+	//Clone service action button
+	By Cloneservice_ActionButton = By.xpath("//*[text()='Clone Service']");
+	
 	public ServiceOperations(TestActions action) {
 		this.action = action;
 	}
@@ -350,6 +354,21 @@ public class ServiceOperations {
 
 		this.ServiceStatus = action.getTextFromPage(ServiceStatus_Value).trim();
 
+		return passed;
+	}
+	
+	//method for clicking on clone service action button
+	public boolean cloneservice() {
+		boolean passed = false;
+		
+		action.waitFor(CopyMove_ActionButton, 5, true);
+		action.clickOn(CopyMove_ActionButton);
+		action.waitFor(1);
+		action.moveMouseAwayFromScreen();
+		action.waitFor(Cloneservice_ActionButton, 5, true);
+		action.clickOn(Cloneservice_ActionButton);
+		action.waitFor(1);
+		
 		return passed;
 	}
 }
