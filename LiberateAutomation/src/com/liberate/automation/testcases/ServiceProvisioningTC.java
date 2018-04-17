@@ -33,7 +33,7 @@ public class ServiceProvisioningTC {
 	/**
 	 * Private constructor to disable creation of object
 	 */
-	private ServiceProvisioningTC() {
+	ServiceProvisioningTC() {
 	}
 
 	@BeforeClass

@@ -29,6 +29,10 @@ public class ExistingCustomer {
 	By Department_Select = By.xpath("//*[text()='Department:']//following::select[1]");
 	By SiteDisabled_Select = By.xpath("//*[text()='Site:']//following::select[@disabled='disabled'][1]");
 	By Site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
+	By salesperson_search = By.xpath("//*[@id='sopackageSelection:salesPersonSearch']");
+	By salespersonmagnifier_select = By.xpath("//*[@id='sopackageSelection:searchMagnifier']");
+	By salesperson_select = By.xpath("//*[@id='sopackageSelection:salesPerson']");
+	By applicationsource_select = By.xpath("//*[@id='sopackageSelection:fixedApplicationSource']");
 
 	// Package Based Provisioning Panel
 	By ServiceType_Select = By.xpath("//*[text()='Service Type:']//following::select[1]");
@@ -139,6 +143,26 @@ public class ExistingCustomer {
 		passed = action.waitFor(SiteDisabled_Select, 4, false);
 		passed = action.selectByPartialText(Site_Select, Site);
 
+		if (action.countOf(salesperson_search) > 0) {
+			passed = action.waitFor(salesperson_search, 4, true);
+			passed = action.sendDataTo(salesperson_search, "99999");
+		}
+
+		if (action.countOf(salespersonmagnifier_select) > 0) {
+			action.waitFor(1);
+			passed = action.waitFor(salespersonmagnifier_select, 4, true);
+			passed = action.clickOn(salespersonmagnifier_select);
+		}
+
+		if (action.countOf(salesperson_select) > 0) {
+			passed = action.waitFor(salesperson_select, 4, true);
+			passed = action.selectBy(salesperson_select, 1);
+		}
+
+		if (action.countOf(applicationsource_select) > 0) {
+			passed = action.waitFor(applicationsource_select, 4, true);
+			passed = action.selectBy(applicationsource_select, 2);
+		}
 		return passed;
 	}
 
