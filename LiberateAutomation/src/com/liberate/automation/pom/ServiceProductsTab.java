@@ -1,6 +1,9 @@
 package com.liberate.automation.pom;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.core.TestActions;
@@ -19,6 +22,8 @@ public class ServiceProductsTab {
 	By FistProduct_CheckBox = By.xpath("//*[@id='provideCeaseForm:ceaseProductTable:0:select']");
 	By CeaseReason_Select = By.xpath("(//*[text()='Cease Reason']//following::select)[1]");
 	By CeaseComments_TestArea = By.xpath("(//*[text()='Comments:']//following::textarea)[1]");
+	By product_code = By.xpath(
+			"//div[@id='customerServicesForm:serviceEnquiryTabs:0:productsTab:custServProductsResultTable']/div[2]/table/tbody/tr/td[2]//span");
 
 	By OK_Button = By.xpath("//input[contains(@value,'OK')]");
 
@@ -47,6 +52,19 @@ public class ServiceProductsTab {
 			}
 		}
 
+		return passed;
+	}
+	
+	public boolean countofproducts() {
+		boolean passed = false;
+		passed = action.waitFor(product_code, 6, true);
+
+		List<WebElement> products = action.getElements(product_code);
+
+		for (int i = 0; i < action.countOf(product_code); i++) {
+			TestActions.log("Product " + i + " : " + action.getTextFromPage(products.get(i)));
+		}
+		
 		return passed;
 	}
 
