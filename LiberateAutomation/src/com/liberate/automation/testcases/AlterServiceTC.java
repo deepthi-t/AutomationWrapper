@@ -123,7 +123,7 @@ public class AlterServiceTC {
 		amendISP.clickOnAccept();
 		action.getScreenShot(testCase);
 		action.scrollDown();
-		amendISP.vlidate_output(ispUsername);
+		amendISP.validate_output(ispUsername);
 		action.getScreenShot(testCase);
 	}
 

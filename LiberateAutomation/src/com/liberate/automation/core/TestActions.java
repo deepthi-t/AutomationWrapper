@@ -707,6 +707,15 @@ public class TestActions {
 			e.printStackTrace();
 		}
 	}
+	
+	/***
+	 * Method to retrieve all elements located by the passed Locator as a list.
+	 * @param locator The locator of the elements that need to be returned.
+	 * @return All webElements as a list.
+	 */
+	public List<WebElement> getElements(By locator){
+		return driver.findElements(locator);
+	}
 
 	/***
 	 * Method that is called to process and exception and take appropriate action.
@@ -803,5 +812,17 @@ public class TestActions {
 				}
 		}
 
+	}
+
+	public String getTextFromPage(WebElement webElement) {
+		try {
+			return webElement.getText();
+		} catch (Exception e) {
+			retry = handleException(e);
+			if (retry)
+				return webElement.getText();
+			else
+				return "";
+		}
 	}
 }

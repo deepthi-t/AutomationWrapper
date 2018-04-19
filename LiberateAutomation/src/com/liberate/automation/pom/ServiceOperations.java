@@ -81,6 +81,9 @@ public class ServiceOperations {
 	//Clone service action button
 	By Cloneservice_ActionButton = By.xpath("//*[text()='Clone Service']");
 	
+	//Cease multiple services action button
+	By ceasemultipleservices_ActionButton = By.xpath("//*[text()='Cease Multiple Services']");
+	
 	public ServiceOperations(TestActions action) {
 		this.action = action;
 	}
@@ -235,6 +238,24 @@ public class ServiceOperations {
 
 		return passed;
 	}
+	
+	public boolean clickOnCeaseMultipleService() {
+		boolean passed = false;
+
+		passed = action.waitFor(Cease_ActionButton, 4, true);
+		if (!passed)
+			return passed;
+
+		action.moveMouseAwayFromScreen();
+
+		this.ServiceNumber = action.getTextFromPage(FirstServiceNumber_Value);
+
+		passed = action.clickOn(Cease_ActionButton);
+		passed = action.waitForClickable(CeaseService_ActionButton, 2);
+		passed = action.clickOn(CeaseService_ActionButton);
+
+		return passed;
+	}
 
 	public void clickOnProvideSetTopBox() {
 
@@ -367,6 +388,21 @@ public class ServiceOperations {
 		action.moveMouseAwayFromScreen();
 		action.waitFor(Cloneservice_ActionButton, 5, true);
 		action.clickOn(Cloneservice_ActionButton);
+		action.waitFor(1);
+		
+		return passed;
+	}
+	
+	//method to click on Cease multiple services action button
+	public boolean ceasemultipleservices() {
+		boolean passed = false;
+		
+		action.waitFor(Cease_ActionButton, 5, true);
+		action.clickOn(Cease_ActionButton);
+		action.waitFor(1);
+		action.moveMouseAwayFromScreen();
+		action.waitFor(ceasemultipleservices_ActionButton, 5, true);
+		action.clickOn(ceasemultipleservices_ActionButton);
 		action.waitFor(1);
 		
 		return passed;

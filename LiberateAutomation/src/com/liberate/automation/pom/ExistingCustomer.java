@@ -33,7 +33,14 @@ public class ExistingCustomer {
 	By salespersonmagnifier_select = By.xpath("//*[@id='sopackageSelection:searchMagnifier']");
 	By salesperson_select = By.xpath("//*[@id='sopackageSelection:salesPerson']");
 	By applicationsource_select = By.xpath("//*[@id='sopackageSelection:fixedApplicationSource']");
-
+	
+	//Service order panel cease multiple service sales person and application source
+	By ceasemultiplesalesperson_search = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:salesPersonSearch']");
+	By ceasemultiplesalespersonmagnifier_select = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:searchMagnifier']");
+	By ceasemultiplesalesperson_select = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:salesPerson']");
+	By ceasemultipleapplicationsource_select = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:fixedApplicationSource']");
+	By ceasemultipleproceed_button = By.xpath("//input[@value='Proceed >>']");
+	
 	// Package Based Provisioning Panel
 	By ServiceType_Select = By.xpath("//*[text()='Service Type:']//following::select[1]");
 	By ServicePackage_Select = By.xpath("//*[text()='Service Package:']//following::select[1]");
@@ -165,6 +172,37 @@ public class ExistingCustomer {
 		}
 		return passed;
 	}
+	
+	public boolean selectsalesperson_multicease() {
+		boolean passed = false;
+
+		if (action.countOf(ceasemultiplesalesperson_search) > 0) {
+			passed = action.waitFor(ceasemultiplesalesperson_search, 4, true);
+			passed = action.sendDataTo(ceasemultiplesalesperson_search, "99999");
+		}
+
+		if (action.countOf(ceasemultiplesalespersonmagnifier_select) > 0) {
+			action.waitFor(1);
+			passed = action.waitFor(ceasemultiplesalespersonmagnifier_select, 4, true);
+			passed = action.clickOn(ceasemultiplesalespersonmagnifier_select);
+		}
+
+		if (action.countOf(ceasemultiplesalesperson_select) > 0) {
+			passed = action.waitFor(ceasemultiplesalesperson_select, 4, true);
+			passed = action.selectBy(ceasemultiplesalesperson_select, 1);
+		}
+
+		if (action.countOf(ceasemultipleapplicationsource_select) > 0) {
+			passed = action.waitFor(ceasemultipleapplicationsource_select, 4, true);
+			passed = action.selectBy(ceasemultipleapplicationsource_select, 2);
+		}
+		
+		passed = action.waitFor(ceasemultipleproceed_button, 4, true);
+		passed = action.clickOn(ceasemultipleproceed_button);
+		
+		return passed;
+	}
+	
 
 	public boolean selectNonPackage(String NonPackage) {
 		By nonPackage_Radio = By.xpath("(//label[text()='Non Package Based Provisioning']//preceding::input)[last()]");
