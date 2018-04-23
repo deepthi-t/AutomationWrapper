@@ -28,6 +28,7 @@ public class SalesSignOff {
 	By SignOff_Button = By.xpath("//input[@value='Sign Off']");
 
 	By AddMore_Button = By.xpath("//input[@value='Add More']");
+	By ChangeSite_Button = By.xpath("//*[@value='Change Site']");
 
 	public SalesSignOff(TestActions action) {
 		this.action = action;
@@ -160,4 +161,29 @@ public class SalesSignOff {
 
 		return passed;
 	}
+	
+	public boolean click_ChangeSite() {
+		boolean passed = false;
+
+		passed = action.clickOn(ChangeSite_Button);
+
+		return passed;
+	}
+	
+	public boolean changeSiteSelection(String ChangeSite)
+	{
+		boolean passed = false;
+		By Site_DropDown = By.xpath("//*[text()='Site:']/following::select[1]");
+		By Accept_Button = By.xpath("//*[@value='Accept']");
+		
+		passed = action.waitFor(Site_DropDown, 4, true);
+		passed = action.selectBy(Site_DropDown, ChangeSite);
+		passed = action.waitFor(Accept_Button, 4, true);
+		passed = action.clickOn(Accept_Button);
+		
+		
+		return passed;
+	}
+	
+	
 }
