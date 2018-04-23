@@ -1,9 +1,6 @@
 package com.liberate.automation.pom;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import com.liberate.automation.core.TestActions;
 
