@@ -202,7 +202,7 @@ public class TestActions {
 			select = new Select(driver.findElement(locator));
 			select.selectByIndex(index);
 			waitFor(1);
-			log("Selected value : " + this.getSelectedOption(locator)); 
+			log("Selected value : " + this.getSelectedOption(locator));
 		} catch (Exception e) {
 			retry = handleException(e);
 			if (retry)
@@ -707,13 +707,15 @@ public class TestActions {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/***
 	 * Method to retrieve all elements located by the passed Locator as a list.
-	 * @param locator The locator of the elements that need to be returned.
+	 * 
+	 * @param locator
+	 *            The locator of the elements that need to be returned.
 	 * @return All webElements as a list.
 	 */
-	public List<WebElement> getElements(By locator){
+	public List<WebElement> getElements(By locator) {
 		return driver.findElements(locator);
 	}
 
@@ -763,7 +765,7 @@ public class TestActions {
 			log("ERROR");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -786,11 +788,14 @@ public class TestActions {
 		System.out.println(Log);
 		logToFile(d.split(" ")[0].replace("/", "_").trim(), Log);
 	}
-	
+
 	/***
 	 * Method to add the log to a file
-	 * @param FileName Name of the file
-	 * @param Log Message to be logged
+	 * 
+	 * @param FileName
+	 *            Name of the file
+	 * @param Log
+	 *            Message to be logged
 	 */
 	private static void logToFile(String FileName, String Log) {
 

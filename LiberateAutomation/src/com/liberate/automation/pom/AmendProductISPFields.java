@@ -10,7 +10,7 @@ public class AmendProductISPFields {
 
 	By product_Row = By.xpath(
 			"//div[@id='customerServicesForm:serviceEnquiryTabs:0:productsTab:custServProductsResultTable']/div[2]/table/tbody/tr");
-		By selectproduct_record = By.xpath(
+	By selectproduct_record = By.xpath(
 			"//tr[@id='customerServicesForm:serviceEnquiryTabs:0:productsTab:custServProductsResultTable_row_0']");
 	By AmendProductISPFields_ActionButton = By.xpath("//span[text()='Amend Product & ISP Fields']");
 	By ISPUsername_Textfield = By.xpath("//input[@id='amendProductsForm:userNameId']");

@@ -154,7 +154,7 @@ public class CRAccountDetails {
 		this.CreatedAccount = action.getTextFromPage(CreatedAccount_Value);
 		
 		TestActions.log("Created Account : " + this.CreatedAccount);
-		
+
 		passed = CommonPanel.popUp.clickOK(action);
 		
 		action.scrollUp();
