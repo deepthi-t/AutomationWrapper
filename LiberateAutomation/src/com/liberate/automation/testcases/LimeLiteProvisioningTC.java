@@ -2,11 +2,16 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertTrue;
 
+import java.util.Map;
+
+import org.apache.commons.collections4.map.HashedMap;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.liberate.automation.common.CommonData;
+import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestResult;
 import com.liberate.automation.pom.CustomerServiceOrder;
@@ -20,6 +25,38 @@ public class LimeLiteProvisioningTC {
 	
 	static TestActions action = CommonLogin.action;
 	static String testCase;
+	static String testStatus;
+
+	static Map<String, String> dataMap = new HashedMap<>();
+
+	static String SalesDepartment;
+	static String GeneralDepartment;
+	static String AccountsDepartment;
+	static String PEL_PDL_LimeLitePackage;
+	static String PDLServPackageLimelite;
+	static String Site;
+	static String PCLPostPaidServicePackage;
+	
+	/**
+	 * Private constructor to disable creation of object
+	 */
+	private LimeLiteProvisioningTC() {
+	}
+
+	@BeforeClass
+	public static void loadData() 
+	{
+		dataMap = ExcelDataDriver.loadData();
+
+		SalesDepartment = dataMap.get("SalesDepartment");
+		GeneralDepartment = dataMap.get("GeneralDepartment");
+		AccountsDepartment = dataMap.get("AccountsDepartment");
+		PEL_PDL_LimeLitePackage = dataMap.get("PEL_PDL_LimeLitePackage");
+		PDLServPackageLimelite = dataMap.get("PDLServPackageLimelite");
+		Site = dataMap.get("Site");
+		PCLPostPaidServicePackage = dataMap.get("PCLPostPaidServicePackage");
+		
+	}
 
 	
 	@AfterMethod
@@ -41,7 +78,7 @@ public class LimeLiteProvisioningTC {
 
 		cust.navigateLimeliteNewCustomer();
 		action.getScreenShot(testCase);
-		cust.serviceApplicationDetailspanel(CommonData.ApplicationForm.IndexFixedResidential, "PEL_PDL-LimeliteAutomation (PEL)");
+		cust.serviceApplicationDetailspanel(CommonData.ApplicationForm.IndexFixedResidential, PEL_PDL_LimeLitePackage);
 		action.getScreenShot(testCase);
 		cust.click_ProceedButton();
 		action.getScreenShot(testCase);
@@ -86,7 +123,7 @@ public class LimeLiteProvisioningTC {
 		ce.provideADSL();
 		action.getScreenShot(testCase);
 		// PDL Part
-		ce.selectPDLServicePackageLimelite("ADSL Test");
+		ce.selectPDLServicePackageLimelite(PDLServPackageLimelite);
 		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(testCase);
@@ -106,7 +143,7 @@ public class LimeLiteProvisioningTC {
 		action.getScreenShot(testCase);
 		sso.click_ChangeSite();
 		action.getScreenShot(testCase);
-		sso.changeSiteSelection("ANSQ-Anderson Square Store");
+		sso.changeSiteSelection(Site);
 		action.getScreenShot(testCase);
 		sso.signOff();
 		action.getScreenShot(testCase);
@@ -127,7 +164,7 @@ public class LimeLiteProvisioningTC {
 		
 		ce.navigateToLimeLiteExistingCustomerScreen();
 		ce.searchWithAccount("220002260000");
-		ce.selectServicePackageLimelite("LIME_PCL_N");
+		ce.selectServicePackageLimelite(PCLPostPaidServicePackage);
 		cust.applicationSourceSalesPerson_fill();
 //		ce.selectDepartmentSite("AQSAL", "ANSQ");
 		action.getScreenShot(testCase);
@@ -150,11 +187,11 @@ public class LimeLiteProvisioningTC {
 		action.getScreenShot(testCase);
 		ce.provideContractDetails();
 		action.getScreenShot(testCase);
-	assertTrue(sso.verifySalesSignOff());
+		assertTrue(sso.verifySalesSignOff());
 		action.getScreenShot(testCase);
 		sso.click_ChangeSite();
 		action.getScreenShot(testCase);
-		sso.changeSiteSelection("ANSQ-Anderson Square Store");
+		sso.changeSiteSelection(Site);
 		action.getScreenShot(testCase);
 		sso.signOff();
 		action.getScreenShot(testCase);
