@@ -23,19 +23,20 @@ public class CloneServiceTC {
 	static TestActions action = CommonLogin.action;
 	static String testCase;
 	static String testStatus;
-	
-	static String CloneServiceNumber;
+
+	static String cloneServiceNumber;
 	static String department;
 	static String site;
 	static String salesperson;
 	static String applicationsource;
-	
+
 	static Map<String, String> data = new HashedMap<>();
-	
+
 	@BeforeClass
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
-		CloneServiceNumber = data.get("CloneServiceNumber");
+
+		cloneServiceNumber = data.get("cloneServiceNumber");
 		department = data.get("SalesDepartment");
 		salesperson = data.get("salesperson");
 		applicationsource = data.get("applicationsource");
@@ -46,19 +47,20 @@ public class CloneServiceTC {
 	public static void logTestResult(ITestResult result) {
 		TestResult.processTestResult(testCase, result);
 	}
+
 	@Test
 	public static void cloneService() {
 		testCase = "Clone Service";
 
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		ServiceOperations CS = new ServiceOperations(action);
-		ExistingCustomer csprovisioning= new ExistingCustomer(action);
+		ExistingCustomer csprovisioning = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
 		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByServiceNumber(CloneServiceNumber);
+		search.searchByServiceNumber(cloneServiceNumber);
 		action.getScreenShot(testCase);
 
 		CS.navigate();
@@ -95,5 +97,4 @@ public class CloneServiceTC {
 		cso.getSOCommand();
 		action.getScreenShot(testCase);
 	}
-
 }
