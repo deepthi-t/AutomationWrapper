@@ -8,6 +8,7 @@ import java.util.Properties;
 
 /***
  * Class that has all the test data.
+ * 
  * @author Nikhil
  *
  */
@@ -72,7 +73,7 @@ public class TestData {
 		properties.setProperty("employeeUserName", employeeUserName);
 		properties.setProperty("newUserID", newUserID);
 		properties.setProperty("arnServiceNumber", arnServiceNumber);
-		
+
 		try {
 			properties.store(new FileOutputStream(FileName), null);
 		} catch (FileNotFoundException e) {
@@ -83,10 +84,12 @@ public class TestData {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/***
 	 * Method to retrieve Data
-	 * @param dataName Name of the data to be retrieved
+	 * 
+	 * @param dataName
+	 *            Name of the data to be retrieved
 	 * @return Data as string
 	 */
 	private static String getData(String dataName) {
@@ -101,7 +104,7 @@ public class TestData {
 
 		return data;
 	}
-	
+
 	/***
 	 * Method to load TestData
 	 */
