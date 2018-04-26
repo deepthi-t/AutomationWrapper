@@ -177,7 +177,7 @@ public class SalesSignOff {
 		By Accept_Button = By.xpath("//*[@value='Accept']");
 		
 		passed = action.waitFor(Site_DropDown, 4, true);
-		passed = action.selectBy(Site_DropDown, ChangeSite);
+		passed = action.selectBy(Site_DropDown, 1);
 		passed = action.waitFor(Accept_Button, 4, true);
 		passed = action.clickOn(Accept_Button);
 		

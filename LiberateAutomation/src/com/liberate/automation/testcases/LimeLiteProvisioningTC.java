@@ -153,6 +153,8 @@ public class LimeLiteProvisioningTC {
 		action.getScreenShot(testCase);
 	
 		}
+	
+	
 	public static void limeLiteExistingCustomerPCLPostpaid() 
 	{
 		LimeliteNewCustomer cust = new LimeliteNewCustomer(action);
@@ -200,10 +202,7 @@ public class LimeLiteProvisioningTC {
 		cso.getSOCommand();
 		action.getScreenShot(testCase);
 	
-	}
-
-
-		
+	}		
 		
 	}
 
