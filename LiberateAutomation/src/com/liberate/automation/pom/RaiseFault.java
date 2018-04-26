@@ -94,11 +94,11 @@ public class RaiseFault {
 
 	/* Enter service number to raise fault on Raise fault screen */
 
-	public boolean enterServiceNumber(String ServiceNumberValue) {
-		boolean passed = false;
+	public boolean enterServiceNumber(String servicenumber) {
+		boolean passed;
 
-		passed = action.waitFor(ServiceNumber_Input, 4, true);
-		passed = action.sendDataTo(ServiceNumber_Input, ServiceNumberValue);
+		passed = action.waitFor(ServiceNumber_Input, 5, true);
+		passed = action.sendDataTo(ServiceNumber_Input, servicenumber);
 
 		return passed;
 	}
