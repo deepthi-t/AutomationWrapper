@@ -27,6 +27,23 @@ public class AlterProductTC {
 	static Map<String, String> data = new HashedMap<>();
 	static String alterProductServiceNumber;
 
+	@BeforeClass
+	public void loadData() {
+		data = ExcelDataDriver.loadData();
+
+		// Just an example on how to get data
+		alterProductServiceNumber = data.get("alterProductServiceNumber");
+	}
+
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(TestCase);
+		TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+
+		action.log("Test Status : " + TestStatus);
+		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+	}
+
 	@Test
 	public static void alterProducts() {
 		TestCase = "alterProduct";
@@ -47,11 +64,11 @@ public class AlterProductTC {
 		action.getScreenShot(TestCase);
 		service.alterProduct();
 		action.getScreenShot(TestCase);
-		
-		alterProduct.selectDepartmentSite("AQSAL","ANSQ");
+
+		alterProduct.selectDepartmentSite("AQSAL", "ANSQ");
 		alterProduct.alterProductScreen();
 		alterProduct.alterProductScreen();
-		
+
 		sales.verifySalesSignOff();
 		action.getScreenShot(TestCase);
 		sales.signOff();
@@ -63,21 +80,5 @@ public class AlterProductTC {
 		action.getScreenShot(TestCase);
 
 	}
-	
-	@BeforeClass
-	public void loadData() {
-		data = ExcelDataDriver.loadData();
 
-		// Just an example on how to get data
-		alterProductServiceNumber = data.get("alterProductServiceNumber");
-	}
-
-	@AfterMethod
-	public static void logTestResult(ITestResult result) {
-		ReportGenerator.generateReport(TestCase);
-		TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
-
-		action.log("Test Status : " + TestStatus);
-		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
-	}
 }
