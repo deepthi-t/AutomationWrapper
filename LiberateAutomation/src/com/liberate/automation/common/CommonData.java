@@ -19,6 +19,15 @@ public class CommonData {
 		public final static String MobilepostpaidBusiness = "Mobile postpaid(Business)";
 		public final static String FixedResidential = "Fixed(Residential)";
 		public final static String FixedBusiness = "Fixed(Business)";
+		public final static int IndexMobileprepaidResidential = 1;
+		public final static int IndexMobileprepaidBusiness = 2;
+		public final static int IndexMobilepostpaidResidential = 3;
+		public final static int IndexMobilepostpaidBusiness = 4;
+		public final static int IndexFixedResidential = 5;
+		public final static int IndexFixedBusiness = 6;
+		
+		
+		
 	}
 	
 	/***

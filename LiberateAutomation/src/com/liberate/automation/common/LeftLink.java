@@ -24,6 +24,20 @@ public class LeftLink {
 	}
 	
 	/***
+	 * Contains All left links of Limelite
+	 * @author Nikhil
+	 *
+	 */
+	public static class Limelite {
+		public static final By NewCustomer = By.xpath("//*[text()='New Customer']");
+		public static final By ExistingCustomer = By.xpath("//*[text()='Existing Customer']");
+		public static final By AmendSOinSales = By.xpath("//*[text()='Amend Service Order In Sales']");
+		public static final By EquipmentSale = By.xpath("//*[text()='Equipment Sale']");
+		public static final By EquipmentReturn = By.xpath("//*[text()='Equipment Return']");
+		public static final By DealerPointsRedemptionReport = By.xpath("//*[text()='Dealer Points Redemption Report']");
+		public static final By PrepaidRegistration = By.xpath("//*[text()='Prepaid Registration']");
+	}
+	/***
 	 * Contains All left links of Reports
 	 * @author Nikhil
 	 *

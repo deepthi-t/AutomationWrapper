@@ -59,6 +59,8 @@ public class ManageServiceOrderTC {
 	static String RejectSO;
 	static String AccountSO;
 	static String GeneralSO;
+	static String CancelSO;
+	static String ReleaseSO;
 
 	/**
 	 * Private constructor to disable creation of object
@@ -85,6 +87,8 @@ public class ManageServiceOrderTC {
 		RejectSO = dataMap.get("RejectSO");
 		AccountSO = dataMap.get("AccountSO");
 		GeneralSO = dataMap.get("GeneralSO");
+		CancelSO = dataMap.get("CancelSO");
+		ReleaseSO = dataMap.get("ReleaseSO");
 	}
 
 	@AfterMethod
@@ -92,7 +96,7 @@ public class ManageServiceOrderTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test
+	@Test (priority = 0)
 	public static void soEnquiry() {
 		testCase = "ManageServiceOrder_soEnquiry";
 
@@ -106,7 +110,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test (priority = 1)
 	public static void addSpecialInstructions() {
 		testCase = "ManageServiceOrder_addSpecialInstructions";
 
@@ -135,7 +139,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test (priority = 2)
 	public static void addServiceCharge() {
 		testCase = "ManageServiceOrder_addServiceCharge";
 
@@ -153,7 +157,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test (priority = 3)
 	public static void removeServiceCharge() {
 		testCase = "ManageServiceOrder_removeServiceCharge";
 
@@ -171,7 +175,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test (priority = 4) 
 	public static void cancelServiceOrder() {
 		testCase = "ManageServiceOrder_cancelServiceOrder";
 
@@ -180,7 +184,7 @@ public class ManageServiceOrderTC {
 
 		msc.navigate();
 		action.getScreenShot(testCase);
-		msc.searchServiceOrder("", "");
+		msc.searchServiceOrder("RSNET", CancelSO);
 		action.getScreenShot(testCase);
 		msc.verifyServiceOrdeDetails(msc.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -199,7 +203,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test (priority = 5)
 	public static void generalSignOffServiceOrder() {
 		testCase = "ManageServiceOrder_generalSignOffServiceOrder";
 
@@ -207,7 +211,7 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder("BGINS", GeneralSO);
+		mss.searchServiceOrder(GeneralDepartment, GeneralSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -215,7 +219,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 6)
 	public static void accountSignOffServiceOrder() {
 		testCase = "ManageServiceOrder_accountSignOffServiceOrder";
 
@@ -231,7 +235,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 7)
 	public static void rejectServiceOrder() {
 		testCase = "ManageServiceOrder_rejectServiceOrder";
 
@@ -239,7 +243,7 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder(AccountsDepartment, RejectSO);
+		mss.searchServiceOrder("RSSOF", RejectSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -255,7 +259,7 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder(AccountsDepartment, WaitlistSO);
+		mss.searchServiceOrder(AccountsDepartment, ReleaseSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -263,7 +267,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 8)
 	public static void waitlistServiceOrder() {
 		testCase = "ManageServiceOrder_waitlistServiceOrder";
 
@@ -279,7 +283,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 9)
 	public static void manualWaitlistReleaseServiceOrder() {
 		testCase = "ManageServiceOrder_manualWaitlistReleaseServiceOrder";
 
@@ -295,7 +299,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 10)
 	public static void suspendSeviceOrder() {
 		testCase = "ManageServiceOrder_suspendSeviceOrder";
 
@@ -311,7 +315,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 12)
 	public static void splitServiceOrder() {
 		testCase = "ManageServiceOrder_splitServiceOrder";
 
@@ -327,7 +331,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 13)
 	public static void assignServiceOrder() {
 		testCase = "ManageServiceOrder_assignServiceOrder";
 
@@ -343,7 +347,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 14)
 	public static void browseSO() {
 		testCase = "ManageServiceOrder_browseSO";
 
@@ -357,7 +361,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 15)
 	public static void redirectSO() {
 		testCase = "ManageServiceOrder_redirectSO";
 
@@ -375,7 +379,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 16)
 	public static void allocateCopperRoute() {
 		testCase = "ManageServiceOrder_allocateCopperRoute";
 
@@ -391,7 +395,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void allocateFiberRoute() {
 		testCase = "ManageServiceOrder_allocateFiberRoute";
 
@@ -407,6 +411,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
+	@Test(enabled = false)
 	public static void signOffCompletely(String ServiceOrder) {
 		testCase = "ManageServiceOrder_signOffCompletely";
 
