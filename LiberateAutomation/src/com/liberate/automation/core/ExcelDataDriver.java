@@ -11,9 +11,11 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /***
- * Class to load data from Excel Data sheet present in in Resources directory with name "DataSheet.xlsx"<br>
- * Data should be available in 'sheet1' and first column will be the field name and 2nd column will be data value.
- *  
+ * Class to load data from Excel Data sheet present in in Resources directory
+ * with name "DataSheet.xlsx"<br>
+ * Data should be available in 'sheet1' and first column will be the field name
+ * and 2nd column will be data value.
+ * 
  * @author Nikhil
  *
  */
@@ -42,10 +44,13 @@ public class ExcelDataDriver {
 	private ExcelDataDriver() {
 		// Disabling constructor
 	}
-	
+
 	/***
-	 * Method to load data from Excel Data sheet present in in Resources directory with name "DataSheet.xlsx" as HashMap<br>
-	 * Data from 'sheet1' will be retrieved as a HashMap where first column will be the key and 2nd column will be value.
+	 * Method to load data from Excel Data sheet present in in Resources directory
+	 * with name "DataSheet.xlsx" as HashMap<br>
+	 * Data from 'sheet1' will be retrieved as a HashMap where first column will be
+	 * the key and 2nd column will be value.
+	 * 
 	 * @return a HashMap with variable data
 	 */
 	public static Map<String, String> loadData() {

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 /***
  * Class with list of Left Link elements.
+ * 
  * @author Nikhil
  *
  */
@@ -11,9 +12,10 @@ public class LeftLink {
 	private static By getLeftLink(String menuName) {
 		return (By.xpath("//td[@class='bodyleftcol']/descendant::*[text()='" + menuName + "']"));
 	}
-	
+
 	/***
 	 * Contains All left links of News
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -22,9 +24,10 @@ public class LeftLink {
 		public static final By ChangePassword = getLeftLink("Change Password");
 		public static final By RequestProductionOfReport = getLeftLink("Request Production Of Report");
 	}
-	
+
 	/***
 	 * Contains All left links of Limelite
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -37,8 +40,10 @@ public class LeftLink {
 		public static final By DealerPointsRedemptionReport = By.xpath("//*[text()='Dealer Points Redemption Report']");
 		public static final By PrepaidRegistration = By.xpath("//*[text()='Prepaid Registration']");
 	}
+
 	/***
 	 * Contains All left links of Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -49,6 +54,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Search
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -81,6 +87,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Service Provisioning
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -95,6 +102,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Maintain Query
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -104,6 +112,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Additional Customer Information
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -124,6 +133,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Customer Care Admin
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -140,6 +150,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Customer Care Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -168,6 +179,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Old Maintain Query
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -179,6 +191,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Browse SO
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -190,6 +203,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Manage Service Order
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -219,6 +233,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Waitlist Enquiry
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -232,6 +247,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Work Assignment Management
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -248,6 +264,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Service Order Approval
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -258,6 +275,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Switch Requests
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -272,6 +290,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Route Maintenance
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -290,6 +309,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Orders Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -307,6 +327,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Orders Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -343,6 +364,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Old Manage Service Order
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -375,6 +397,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of SIM Management
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -396,6 +419,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Manage MAC Inventory
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -408,6 +432,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Manage Smart Card Inventory
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -418,6 +443,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of SIM Ref Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -430,6 +456,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Inventory Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -441,6 +468,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Faults
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -459,6 +487,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Faults Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -474,6 +503,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Faults Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -492,6 +522,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Network Enquiries
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -507,6 +538,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Network Maintenance
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -535,6 +567,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Exchange Maintenance
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -554,6 +587,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Line Equipment Maintenance
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -571,6 +605,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Number Management
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -581,8 +616,10 @@ public class LeftLink {
 		public static final By MaintainNumbers = getLeftLink("Maintain Numbers");
 		public static final By MaintainNumberArea = getLeftLink("Maintain Number Area");
 	}
+
 	/***
 	 * Contains All left links of Network Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -597,9 +634,10 @@ public class LeftLink {
 		public static final By MaintainONTModel = getLeftLink("Maintain ONT Model");
 		public static final By MaintainInterconnectAgreement = getLeftLink("Maintain Interconnect Agreement");
 	}
-	
+
 	/***
 	 * Contains All left links of Network Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -634,9 +672,10 @@ public class LeftLink {
 		public static final By TerminalStatusReport = getLeftLink("Terminal Status Report");
 		public static final By PrintOutsideSurveyDocket = getLeftLink("Print Outside Survey Docket");
 	}
-	
+
 	/***
 	 * Contains All left links of Event Processing D176
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -647,9 +686,10 @@ public class LeftLink {
 		public static final By TransmitUnsentBatches = getLeftLink("Transmit Unsent Batches");
 		public static final By ValidateAnsSubmitIncomingBatches = getLeftLink("Validate & Submit Incoming Batches");
 	}
-	
+
 	/***
 	 * Contains All left links of Enter Bill Charges
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -658,9 +698,10 @@ public class LeftLink {
 		public static final By ManualMessageEntry = getLeftLink("Manual Message Entry");
 		public static final By TapeQueueEnquiry = getLeftLink("Tape Queue Enquiry");
 	}
-	
+
 	/***
 	 * Contains All left links of Billing
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -668,9 +709,10 @@ public class LeftLink {
 		public static final By AllocateDayofBilling = getLeftLink("Allocate Day of Billing");
 		public static final By ReprintBills = getLeftLink("Reprint Bills");
 	}
-	
+
 	/***
 	 * Contains All left links of Suspense Management
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -678,9 +720,10 @@ public class LeftLink {
 		public static final By SuspenseDeletion = getLeftLink("Suspense Deletion");
 		public static final By DeleteMTRRechargeSuspense = getLeftLink("Delete MTR/Recharge Suspense");
 	}
-	
+
 	/***
 	 * Contains All left links of Billing Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -692,9 +735,10 @@ public class LeftLink {
 		public static final By MaintainCardRange = getLeftLink("Maintain Card Range");
 		public static final By MaintainTaxAssignment = getLeftLink("Maintain Tax Assignment");
 	}
-	
+
 	/***
 	 * Contains All left links of Financial Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -709,9 +753,10 @@ public class LeftLink {
 		public static final By MaintainTaxPlan = getLeftLink("Maintain Tax Plan");
 		public static final By MaintainBillInfo = getLeftLink("Maintain Bill Info");
 	}
-	
+
 	/***
 	 * Contains All left links of Billing Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -728,6 +773,7 @@ public class LeftLink {
 
 	/***
 	 * Contains All left links of Payments
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -744,9 +790,10 @@ public class LeftLink {
 		public static final By TopUpEnquiry = getLeftLink("Top Up Enquiry");
 		public static final By BulkPayment = getLeftLink("Bulk Payment");
 	}
-	
+
 	/***
 	 * Contains All left links of POS
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -755,9 +802,10 @@ public class LeftLink {
 		public static final By NewTransaction = getLeftLink("New Transaction");
 		public static final By PrintDuplicateReceipt = getLeftLink("Print Duplicate Receipt");
 	}
-	
+
 	/***
 	 * Contains All left links of Payments Admin
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -776,9 +824,10 @@ public class LeftLink {
 		public static final By VoidPayment = getLeftLink("Void Payment");
 		public static final By BadChequeProcessing = getLeftLink("Bad Cheque Processing");
 	}
-	
+
 	/***
 	 * Contains All left links of Payment Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -797,9 +846,10 @@ public class LeftLink {
 		public static final By MaintainPaymentStampDuties = getLeftLink("Maintain Payment Stamp Duties");
 		public static final By MaintainPhoneCardThresholds = getLeftLink("Maintain Phone Card Thresholds");
 	}
-	
+
 	/***
 	 * Contains All left links of Payments Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -812,9 +862,10 @@ public class LeftLink {
 		public static final By PhonecardInventoryReport = getLeftLink("Phonecard Inventory Report");
 		public static final By ReportofBadChequePayers = getLeftLink("Report of Bad Cheque Payers");
 	}
-	
+
 	/***
 	 * Contains All left links of Credit Control
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -835,9 +886,10 @@ public class LeftLink {
 		public static final By CreatePaymentPlan = getLeftLink("Create Payment Plan");
 		public static final By EnquireCancelPaymentPlan = getLeftLink("Enquire/Cancel Payment Plan");
 	}
-	
+
 	/***
 	 * Contains All left links of Debt Collection
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -846,9 +898,10 @@ public class LeftLink {
 				"Assign Account to Debt Collection Agency");
 		public static final By MaintainDebtCollectionAgency = getLeftLink("Maintain Debt Collection Agency");
 	}
-	
+
 	/***
 	 * Contains All left links of Credit Control Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -864,9 +917,10 @@ public class LeftLink {
 		public static final By MaintainTOSExtension = getLeftLink("Maintain TOS Extension");
 		public static final By MaintainBadDebtProvisionRules = getLeftLink("Maintain Bad Debt Provision Rules");
 	}
-	
+
 	/***
 	 * Contains All left links of Deposit Maintenance
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -875,9 +929,10 @@ public class LeftLink {
 		public static final By MaintainDepositInterestRates = getLeftLink("Maintain Deposit Interest Rates");
 		public static final By MaintainDepositReason = getLeftLink("Maintain Deposit Reason");
 	}
-	
+
 	/***
 	 * Contains All left links of Credit Control Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -898,8 +953,10 @@ public class LeftLink {
 		public static final By WriteoffWarningsReport = getLeftLink("Write off Warnings Report");
 		public static final By RequestTOSBARLetter = getLeftLink("Request TOS/BAR Letter");
 	}
+
 	/***
 	 * Contains All left links of Directory Search
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -909,16 +966,20 @@ public class LeftLink {
 		public static final By Entries = getLeftLink("Entries");
 		public static final By Synonyms = getLeftLink("Synonyms");
 	}
+
 	/***
 	 * Contains All left links of Directory Maintenance
+	 * 
 	 * @author Nikhil
 	 *
 	 */
 	public static class DirectoryMaintenance {
 		public static final By AssignDirectorySequence = getLeftLink("Assign Directory Sequence");
 	}
+
 	/***
 	 * Contains All left links of Directory Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -929,8 +990,10 @@ public class LeftLink {
 		public static final By ReportDirectory = getLeftLink("Report Directory");
 		public static final By RequestCPCDirectoryListingReport = getLeftLink("Request CPC Directory Listing Report");
 	}
+
 	/***
 	 * Contains All left links of Products
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -944,8 +1007,10 @@ public class LeftLink {
 		public static final By MaintainProductFieldCharacteristics = getLeftLink(
 				"Maintain Product Field Characteristics");
 	}
+
 	/***
 	 * Contains All left links of Pricing Plans
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -963,8 +1028,10 @@ public class LeftLink {
 		public static final By PremiumCategory = getLeftLink("Premium Category");
 		public static final By SignoffPricingPlanApproval = getLeftLink("Signoff Pricing Plan Approval");
 	}
+
 	/***
 	 * Contains All left links of Prices
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -984,8 +1051,10 @@ public class LeftLink {
 		public static final By UploadPromotionFile = getLeftLink("Upload Promotion File");
 		public static final By MaintainPromotions = getLeftLink("Maintain Promotions");
 	}
+
 	/***
 	 * Contains All left links of Pricing Reference Data
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -999,8 +1068,10 @@ public class LeftLink {
 		public static final By MaintainSpendLevels = getLeftLink("Maintain Spend Levels");
 		public static final By MaintainCustomerGroups = getLeftLink("Maintain Customer Groups");
 	}
+
 	/***
 	 * Contains All left links of Event Rating
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1026,8 +1097,10 @@ public class LeftLink {
 		public static final By MaintainTariffPlans = getLeftLink("Maintain Tariff Plans");
 		public static final By MaintainTimeBandType = getLeftLink("Maintain Time Band Type");
 	}
+
 	/***
 	 * Contains All left links of Automatic Rate Update
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1053,8 +1126,10 @@ public class LeftLink {
 		public static final By MaintainTariffPlans = getLeftLink("Maintain Tariff Plans");
 		public static final By MaintainTimeBandType = getLeftLink("Maintain Time Band Type");
 	}
+
 	/***
 	 * Contains All left links of Comverse
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1067,8 +1142,10 @@ public class LeftLink {
 		public static final By MaintainComverseONEOffers = getLeftLink("Maintain Comverse ONE Offers");
 		public static final By MaintainComverseONEBalances = getLeftLink("Maintain ComverseONE Balances");
 	}
+
 	/***
 	 * Contains All left links of Meters
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1080,8 +1157,10 @@ public class LeftLink {
 		public static final By MaintainServiceRateType = getLeftLink("Maintain Service Rate Type");
 		public static final By MaintainFreeUnits = getLeftLink("Maintain Free Units");
 	}
+
 	/***
 	 * Contains All left links of IAA
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1100,8 +1179,10 @@ public class LeftLink {
 		public static final By MaintainCountry = getLeftLink("Maintain Country");
 		public static final By MaintainTestUnits = getLeftLink("Maintain Test Units");
 	}
+
 	/***
 	 * Contains All left links of Product And Pricing Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1113,8 +1194,10 @@ public class LeftLink {
 		public static final By ProductsProvidedByBUReport = getLeftLink("Products Provided By BU Report");
 		public static final By BulkMessageTariffChanges = getLeftLink("Bulk Message Tariff Changes");
 	}
+
 	/***
 	 * Contains All left links of IAA Reports
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1144,16 +1227,20 @@ public class LeftLink {
 				"Enter Accountable Traffic Report Details");
 		public static final By AgedDebtorCreditorAnalysisReport = getLeftLink("Aged Debtor/Creditor Analysis Report");
 	}
+
 	/***
 	 * Contains All left links of Ericsson
+	 * 
 	 * @author Nikhil
 	 *
 	 */
 	public static class Ericsson {
 		public static final By MaintainEricssonPackages = getLeftLink("Maintain Ericsson Packages");
 	}
+
 	/***
 	 * Contains All left links of Employee Administration
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1172,8 +1259,10 @@ public class LeftLink {
 		public static final By RequestEmail = getLeftLink("Request Email");
 		public static final By MaintainLocation = getLeftLink("Maintain Location");
 	}
+
 	/***
 	 * Contains All left links of BU SetUp
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1192,8 +1281,10 @@ public class LeftLink {
 		public static final By MaintainSiteDerivation = getLeftLink("Maintain Site Derivation");
 		public static final By MaintainSiteProfile = getLeftLink("Maintain Site Profile");
 	}
+
 	/***
 	 * Contains All left links of Other data setup
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1215,8 +1306,10 @@ public class LeftLink {
 		public static final By MaintainReportGroupandCategoryData = getLeftLink(
 				"Maintain Report Group and Category Data");
 	}
+
 	/***
 	 * Contains All left links of Support Functions
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -1225,8 +1318,10 @@ public class LeftLink {
 		public static final By SpeedTest = getLeftLink("Speed Test");
 		public static final By Telnet = getLeftLink("Telnet");
 	}
+
 	/***
 	 * Contains All left links of Withdrawn Items
+	 * 
 	 * @author Nikhil
 	 *
 	 */

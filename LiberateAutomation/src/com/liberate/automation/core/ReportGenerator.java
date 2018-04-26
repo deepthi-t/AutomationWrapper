@@ -14,15 +14,18 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /***
  * Class that handles report generation
+ * 
  * @author Nikhil
  *
  */
 public class ReportGenerator {
-	
+
 	/***
 	 * Method to create screenshot document.
-	 * @param FileName The Filename with which the doc should be saved without extension.
-	 * The screenshots with same Filename will be added to the document
+	 * 
+	 * @param FileName
+	 *            The Filename with which the doc should be saved without extension.
+	 *            The screenshots with same Filename will be added to the document
 	 */
 	public static void generateReport(String FileName) {
 		XWPFDocument doc = new XWPFDocument();
@@ -39,8 +42,8 @@ public class ReportGenerator {
 
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if (listOfFiles[i].isFile()) {
-					if(listOfFiles[i].getName().contains(FileName))
-					ScreenShotFiles.add("Screenshots//" + listOfFiles[i].getName());
+					if (listOfFiles[i].getName().contains(FileName))
+						ScreenShotFiles.add("Screenshots//" + listOfFiles[i].getName());
 				}
 			}
 
@@ -51,16 +54,16 @@ public class ReportGenerator {
 				run.addBreak();
 				is.close();
 			}
-			
+
 			FileOutputStream fos = new FileOutputStream("Screenshots//" + FileName + ".docx");
 			doc.write(fos);
 			fos.close();
 			doc.close();
-			
+
 			for (int i = 0; i < ScreenShotFiles.size(); i++) {
 				Files.deleteIfExists(Paths.get(ScreenShotFiles.get(i)));
 			}
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

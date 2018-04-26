@@ -2,13 +2,15 @@ package com.liberate.automation.common;
 
 /***
  * Common Data class to hold Common Data used in Liberate.
+ * 
  * @author Nikhil
  *
  */
 public class CommonData {
 	/***
-	 * Common Data class witch holds Data for Application Form Types
-	 * Applicable for Application Form Drop Down in New Customer Screen.
+	 * Common Data class witch holds Data for Application Form Types Applicable for
+	 * Application Form Drop Down in New Customer Screen.
+	 * 
 	 * @author Nikhil Das
 	 *
 	 */
@@ -25,13 +27,12 @@ public class CommonData {
 		public final static int IndexMobilepostpaidBusiness = 4;
 		public final static int IndexFixedResidential = 5;
 		public final static int IndexFixedBusiness = 6;
-		
-		
-		
+
 	}
-	
+
 	/***
 	 * Common Data class which hold data for Customer Type.
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -39,9 +40,10 @@ public class CommonData {
 		public final static String Business = "B - Business";
 		public final static String Residential = "R - Residential";
 	}
-	
+
 	/***
 	 * Common Data class which hold data for Address Type.
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -56,6 +58,7 @@ public class CommonData {
 
 	/***
 	 * Common Data class which hold data for Plant Item Type.
+	 * 
 	 * @author Nikhil
 	 *
 	 */
@@ -66,6 +69,7 @@ public class CommonData {
 
 	/***
 	 * Common Data class which hold Credit Control Service Status Types.
+	 * 
 	 * @author Nikhil
 	 *
 	 */

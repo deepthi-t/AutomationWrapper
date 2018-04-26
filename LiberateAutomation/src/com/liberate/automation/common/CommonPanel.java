@@ -16,10 +16,10 @@ public class CommonPanel {
 	public static By Apply_Button = By.xpath("//*[@value = 'Apply']");
 	public static By Search_Button = By.xpath("//*[@value = 'Search']");
 
-	
 	static private By Department_Select = By.xpath("//*[text()='Department:']/following::select[1]");
 	static private By SiteDisabled_Select = By.xpath("//*[text()='Site:']//following::select[@disabled='disabled'][1]");
 	static private By Site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
+
 	/***
 	 * Class which holds information about Liberate Header
 	 * 
@@ -96,10 +96,10 @@ public class CommonPanel {
 		static By ChangeDepartment_Button = By.xpath("//input[@value='Change']");
 		static By ServiceOrder_Input = By.xpath("//*[text()='Service Order:']/following::input[1]");
 		static By Search_Button = By.xpath("//input[@value='Search']");
-		
+
 		static By SiteDisabled_Select = By.xpath("//*[text()='Site:']//following::select[@disabled='disabled'][1]");
 		static By Site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
-		
+
 		/***
 		 * XPath for Service Order List Header.
 		 */
@@ -142,9 +142,9 @@ public class CommonPanel {
 		 */
 		public static boolean Search(TestActions action, String department, String ServiceOrderNumber) {
 			boolean passed = false;
-			
+
 			passed = action.waitFor(ServiceOrder_Input, 5, true);
-			
+
 			passed = selectDepartment(action, department);
 
 			passed = action.sendDataTo(ServiceOrder_Input, ServiceOrderNumber);
@@ -181,12 +181,16 @@ public class CommonPanel {
 
 			return passed;
 		}
-		
+
 		/***
 		 * Method to select Department and Site
-		 * @param action Action class which operates the Browser
-		 * @param Department Department that needs to be selected.
-		 * @param Site Site that needs to be selected.
+		 * 
+		 * @param action
+		 *            Action class which operates the Browser
+		 * @param Department
+		 *            Department that needs to be selected.
+		 * @param Site
+		 *            Site that needs to be selected.
 		 * @return True if selected successfully, else False.
 		 */
 		public static boolean selectDepartmentSite(TestActions action, String Department, String Site) {
@@ -201,12 +205,16 @@ public class CommonPanel {
 			return passed;
 		}
 	}
-	
+
 	/***
 	 * Method to select Department and Site
-	 * @param action Action class which operates the Browser
-	 * @param Department Department that needs to be selected.
-	 * @param Site Site that needs to be selected.
+	 * 
+	 * @param action
+	 *            Action class which operates the Browser
+	 * @param Department
+	 *            Department that needs to be selected.
+	 * @param Site
+	 *            Site that needs to be selected.
 	 * @return True if selected successfully, else False.
 	 */
 	public static boolean selectDepartmentSite(TestActions action, String Department, String Site) {
