@@ -32,7 +32,6 @@ public class FaultManagementTC {
 
 	static String raiseFaultServiceNumber;
 	static String faultNumber;
-	static String signOffFaultNumber;
 	/**
 	 * Private constructor to disable creation of object
 	 */
@@ -44,9 +43,8 @@ public class FaultManagementTC {
 	public static void loadTestData() {
 		dataMap = ExcelDataDriver.loadData();
 		
-		dataMap.get(raiseFaultServiceNumber);
-		dataMap.get(faultNumber);
-		dataMap.get(signOffFaultNumber);
+		raiseFaultServiceNumber = dataMap.get("raiseFaultServiceNumber");
+		faultNumber = dataMap.get("faultNumber");
 	}
 
 	@AfterMethod
@@ -62,6 +60,7 @@ public class FaultManagementTC {
 
 		assertEquals(rf.navigate(), true);
 		action.getScreenShot(testCase);
+		action.waitFor(5);
 
 		assertEquals(rf.enterServiceNumber(raiseFaultServiceNumber), true);
 		action.getScreenShot(testCase);
@@ -108,7 +107,7 @@ public class FaultManagementTC {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(testCase);
 
-		assertEquals(mf.enterFaultNumber(""), true);
+		assertEquals(mf.enterFaultNumber(faultNumber), true);
 		action.getScreenShot(testCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(testCase);
@@ -121,7 +120,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=20)
+	@Test(priority=7)
 	public static void signoffFault() {
 		testCase = "FaultManagement_signoffFault";
 
@@ -130,7 +129,7 @@ public class FaultManagementTC {
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(testCase);
 
-		assertEquals(mf.enterFaultNumber(signOffFaultNumber), true);
+		assertEquals(mf.enterFaultNumber(faultNumber), true);
 		action.getScreenShot(testCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(testCase);
@@ -145,8 +144,8 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=10)
-	public static void suspendRelease() {
+	@Test(priority=4)
+	public static void suspend() {
 		testCase = "FaultManagement_suspendRelease";
 
 		ManageFault mf = new ManageFault(action);
@@ -166,8 +165,28 @@ public class FaultManagementTC {
 		assertEquals(mf.clickonSuspendbutton(), true);
 		action.getScreenShot(testCase);
 	}
+	
+	@Test(priority=5)
+	public static void release() {
+		testCase = "FaultManagement_suspendRelease";
 
-	@Test(priority=4)
+		ManageFault mf = new ManageFault(action);
+
+		assertEquals(mf.navigate(), true);
+		action.getScreenShot(testCase);
+
+		assertEquals(mf.enterFaultNumber(faultNumber), true);
+		action.getScreenShot(testCase);
+		assertEquals(mf.clickonSearchbutton(), true);
+		action.getScreenShot(testCase);
+		
+		assertEquals(mf.clickonSuspendReleaseactionbutton(), true);
+		action.getScreenShot(testCase);
+		assertEquals(mf.clickonReleasebutton(), true);
+		action.getScreenShot(testCase);
+	}
+
+	@Test(priority=6)
 	public static void upgradeFaultPriority() {
 		testCase = "FaultManagement_upgradeFaultPriority";
 
@@ -189,7 +208,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=5)
+	@Test(enabled=false)
 	public static void recordFaultTest() {
 		testCase = "FaultManagement_recordFaultTest";
 
@@ -211,7 +230,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=6)
+	@Test(enabled=false)
 	public static void printFaultDocket() {
 		testCase = "FaultManagement_printFaultDocket";
 
@@ -231,7 +250,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=7)
+	@Test(enabled=false)
 	public static void recordFaultActivity() {
 		testCase = "FaultManagement_recordFaultActivity";
 

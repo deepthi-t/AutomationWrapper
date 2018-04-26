@@ -85,7 +85,7 @@ public class ManageFault {
 	// Upgrade fault priority
 	By UpgradeFaultPriority_PanelHeader = By.xpath("//*[text()='Upgrade Fault Priority ']");
 	By UgradeFaultPriorityNewPriority_DropDown = By
-			.xpath("(//*[text()[contains(.,'Suspension Reason')]]/following::select)[1]");
+			.xpath("(//*[text()[contains(.,'New Priority:')]]/following::select)[1]");
 	By UgradeFaultPriorityAccept_Button = By.xpath("//input[@value='Accept']");
 	By UpgradeFaultPriorityCancel_Button = By.xpath("//input[@value='Cancel']");
 
@@ -382,7 +382,7 @@ public class ManageFault {
 	public boolean clickonSuspendReleaseactionbutton() {
 		boolean passed = false;
 
-		passed = action.waitFor(SuspendRelease_ActionButton, 4, true);
+		passed = action.waitFor(SuspendRelease_ActionButton, 10, true);
 		passed = action.clickOn(SuspendRelease_ActionButton);
 
 		return passed;
@@ -393,7 +393,7 @@ public class ManageFault {
 		boolean passed = false;
 
 		passed = action.waitFor(SuspendReleaseSuspensionReason_DropDown, 4, true);
-		passed = action.selectBy(SuspendReleaseSuspensionReason_DropDown, "01-No Access");
+		passed = action.selectBy(SuspendReleaseSuspensionReason_DropDown, 02);
 
 		return passed;
 	}
@@ -455,7 +455,7 @@ public class ManageFault {
 		boolean passed = false;
 
 		passed = action.waitFor(UgradeFaultPriorityNewPriority_DropDown, 4, true);
-		passed = action.selectBy(UgradeFaultPriorityNewPriority_DropDown, "5-RESIDENTIAL");
+		passed = action.selectBy(UgradeFaultPriorityNewPriority_DropDown, 2);
 
 		return passed;
 	}
