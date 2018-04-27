@@ -61,6 +61,11 @@ public class ManageServiceOrderTC {
 	static String GeneralSO;
 	static String CancelSO;
 	static String ReleaseSO;
+	
+	static String plantDP;
+	static String plantCAB;
+	static String plantMDF;
+	static String terminal;
 
 	/**
 	 * Private constructor to disable creation of object
@@ -89,6 +94,11 @@ public class ManageServiceOrderTC {
 		GeneralSO = dataMap.get("GeneralSO");
 		CancelSO = dataMap.get("CancelSO");
 		ReleaseSO = dataMap.get("ReleaseSO");
+		
+		plantDP = dataMap.get("plantDP");
+		plantCAB = dataMap.get("plantCAB");
+		plantMDF = dataMap.get("plantMDF");
+		terminal = dataMap.get("terminal");
 	}
 
 	@AfterMethod
@@ -392,6 +402,22 @@ public class ManageServiceOrderTC {
 		arso.allocateAuto(CommonData.PlantItemType.CopperDP, "DP100");
 		action.getScreenShot(testCase);
 		arso.verifyAutoAllocateRoute();
+		action.getScreenShot(testCase);
+	}
+	
+	@Test(priority = 17)
+	public static void allocateCopperRouteManual() {
+		testCase = "ManageServiceOrder_allocateCopperRoute";
+
+		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
+
+		arso.navigate();
+		action.getScreenShot(testCase);
+		arso.searchServiceOrder("BGNET", "A00528F");
+		action.getScreenShot(testCase);
+		arso.allocateManual(plantDP, plantCAB, plantMDF, terminal);
+		action.getScreenShot(testCase);
+		arso.verifyManualAllocateRoute();
 		action.getScreenShot(testCase);
 	}
 
