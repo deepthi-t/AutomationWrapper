@@ -6,7 +6,7 @@ import com.liberate.automation.core.TestActions;
 
 
 
-public class AlterLineProductTC {
+public class AlterLineProduct {
 	
 	TestActions action = null;
 	By department_Select = By.xpath("//*[text()='Department:']//following::select[1]");
@@ -18,7 +18,7 @@ public class AlterLineProductTC {
     By product_Select = By.xpath("//*[text()='Product:']//following::select[5]");
     By accept_button = By.xpath("//*[@value='Accept']");
     
-    public AlterLineProductTC(TestActions action) {
+    public AlterLineProduct(TestActions action) {
         this.action = action;
  }
     
