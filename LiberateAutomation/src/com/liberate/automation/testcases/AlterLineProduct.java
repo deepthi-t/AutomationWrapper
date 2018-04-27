@@ -1,6 +1,5 @@
 package com.liberate.automation.testcases;
 
-
 import java.util.Map;
 
 import org.apache.commons.collections4.map.HashedMap;
@@ -27,61 +26,55 @@ public class AlterLineProduct {
 
 	static Map<String, String> data = new HashedMap<>();
 	static String alterlineproductServiceNumber;
-	
-	
-    @Test
-    public static void alterProducts() {
-           TestCase = "alterProduct";
-           CRCustomerSearch search = new CRCustomerSearch(action);
-           ServiceOperations service = new ServiceOperations(action);
-           AlterLineProductTC alterlineproduct = new AlterLineProductTC(action);
-           SalesSignOff sales = new SalesSignOff(action);
-           CustomerServiceOrder order = new CustomerServiceOrder(action);
 
+	@BeforeClass
+	public static void loadData() {
+		data = ExcelDataDriver.loadData();
 
-           search.navigate();
-           action.getScreenShot(TestCase);
-           search.searchByServiceNumber("");
-           action.getScreenShot(TestCase);
+		alterlineproductServiceNumber = data.get("alterProductServiceNumber");
+	}
 
-           service.navigate();
-           action.getScreenShot(TestCase);
-           service.verifyServicesScreen();
-           action.getScreenShot(TestCase);
-           service.alterProduct();
-           action.getScreenShot(TestCase);
+	@AfterMethod
+	public static void logTestResult(ITestResult result) {
+		ReportGenerator.generateReport(TestCase);
+		TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
 
-           alterlineproduct.selectDepartmentSite("AQSAL","ANSQ");
-           
-           sales.verifySalesSignOff();
-           action.getScreenShot(TestCase);
-           sales.signOff();
-           action.getScreenShot(TestCase);
+		action.log("Test Status : " + TestStatus);
+		action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+	}
 
-           order.getSONumber();
-           action.getScreenShot(TestCase);
-           order.getSOCommand();
-           action.getScreenShot(TestCase);
-           
-    }   
-           @BeforeClass
-           public void loadData() {
-                  data = ExcelDataDriver.loadData();
+	@Test
+	public static void alterProducts() {
+		TestCase = "alterProduct";
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		ServiceOperations service = new ServiceOperations(action);
+		AlterLineProductTC alterlineproduct = new AlterLineProductTC(action);
+		SalesSignOff sales = new SalesSignOff(action);
+		CustomerServiceOrder order = new CustomerServiceOrder(action);
 
-                  // Just an example on how to get data
-                  alterlineproductServiceNumber = data.get("alterProductServiceNumber");
-           }
+		search.navigate();
+		action.getScreenShot(TestCase);
+		search.searchByServiceNumber(alterlineproductServiceNumber);
+		action.getScreenShot(TestCase);
 
-           @AfterMethod
-           public static void logTestResult(ITestResult result) {
-                  ReportGenerator.generateReport(TestCase);
-                  TestStatus = result.getStatus() == ITestResult.SUCCESS ? "PASSED" : "FAILED";
+		service.navigate();
+		action.getScreenShot(TestCase);
+		service.verifyServicesScreen();
+		action.getScreenShot(TestCase);
+		service.alterProduct();
+		action.getScreenShot(TestCase);
 
-                  action.log("Test Status : " + TestStatus);
-                  action.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
+		alterlineproduct.selectDepartmentSite("AQSAL", "ANSQ");
 
+		sales.verifySalesSignOff();
+		action.getScreenShot(TestCase);
+		sales.signOff();
+		action.getScreenShot(TestCase);
 
-	
-	
-}
+		order.getSONumber();
+		action.getScreenShot(TestCase);
+		order.getSOCommand();
+		action.getScreenShot(TestCase);
+
+	}
 }

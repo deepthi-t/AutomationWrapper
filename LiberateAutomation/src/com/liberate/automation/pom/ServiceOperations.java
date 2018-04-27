@@ -35,6 +35,7 @@ public class ServiceOperations {
 	By Products_ActionButton = By
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Products')]]");
 	
+	
 	By Alter_Products_ActionButton = By.xpath("//*[text()='Alter products']");
 	By Cease_ActionButton = By
 			.xpath("//span[contains(@class,'actionButtonHeadingSpaceLabel')][text()[contains(.,'Cease')]]");
@@ -54,8 +55,14 @@ public class ServiceOperations {
 	By CeaseService_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Cease Service')]]");
 	
+	By TranferProduct_ActionButton = By.xpath(
+			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Transfer Product')]]");
 	By AlterSIMCard_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Change SIM Card')]]");
+	
+	By ChangeLineproduct_ActionButton = By.xpath(
+			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Change Line Product')]]");
+	
 	
 	
 	By Summary_Tab = By.xpath("//*[text()='Summary']");
@@ -150,6 +157,29 @@ public class ServiceOperations {
 		action.clickOn(Alter_Products_ActionButton);
 		action.waitFor(5);
 	}	
+	
+	public void transferProduct() {
+		action.moveMouseAwayFromScreen();
+		action.waitFor(CopyMove_ActionButton, 5, true);
+		action.clickOn(CopyMove_ActionButton);
+		action.waitFor(1);
+		
+		action.waitFor(TranferProduct_ActionButton, 5, true);
+		action.clickOn(TranferProduct_ActionButton);
+		action.waitFor(5);
+	}
+	
+	public void alterlineProduct() {
+		action.moveMouseAwayFromScreen();
+		action.waitFor(Products_ActionButton, 5, true);
+		action.clickOn(Products_ActionButton);
+		action.waitFor(1);
+		
+		action.waitFor(ChangeLineproduct_ActionButton, 5, true);
+		action.clickOn(ChangeLineproduct_ActionButton);
+		action.waitFor(5);
+	}	
+	
 	
 	public boolean transferService(String TargetAccount) {
 		boolean passed = false;

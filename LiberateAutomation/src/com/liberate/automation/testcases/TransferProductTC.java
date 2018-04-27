@@ -16,7 +16,7 @@ public class TransferProductTC {
 
 	static TestActions action = CommonLogin.action;
 
-	static String TestCase;
+	static String TestCase;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 	static String TestStatus;
 
 	static Map<String, String> data = new HashedMap<>();
@@ -56,7 +56,7 @@ public class TransferProductTC {
 		
 		
 		
-		
+		                                            
 		
 		
 		

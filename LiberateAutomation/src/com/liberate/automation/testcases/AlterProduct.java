@@ -25,7 +25,7 @@ public class AlterProduct {
 	static String TestStatus;
 
 	static Map<String, String> data = new HashedMap<>();
-	static String alterProductServiceNumber;
+	static String alterProductServiceNumber;        
 
 	@Test
 	public static void alterProducts() {
