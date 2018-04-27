@@ -54,8 +54,13 @@ public class ServiceOperations {
 	By CeaseService_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Cease Service')]]");
 
+	By TranferProduct_ActionButton = By.xpath(
+			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Transfer Product')]]");
 	By AlterSIMCard_ActionButton = By.xpath(
 			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Change SIM Card')]]");
+
+	By ChangeLineproduct_ActionButton = By.xpath(
+			"//span[contains(@class,'actionButtonHeadingSpaceLabel')]/preceding::span[contains(@class,'actionButton')][text()[contains(.,'Change Line Product')]]");
 
 	By Summary_Tab = By.xpath("//*[text()='Summary']");
 
@@ -77,13 +82,12 @@ public class ServiceOperations {
 	By TOSConfirmation_PopUp = By.xpath("//*[text()='TOS Confirmation']");
 	By RaisedServiceOrder_Value = By.xpath("//*[text()='Raised Service Order Number']//following::label[1]");
 
-	
-	//Clone service action button
+	// Clone service action button
 	By Cloneservice_ActionButton = By.xpath("//*[text()='Clone Service']");
-	
-	//Cease multiple services action button
+
+	// Cease multiple services action button
 	By ceasemultipleservices_ActionButton = By.xpath("//*[text()='Cease Multiple Services']");
-	
+
 	public ServiceOperations(TestActions action) {
 		this.action = action;
 	}
@@ -154,6 +158,28 @@ public class ServiceOperations {
 
 		action.waitFor(Alter_Products_ActionButton, 5, true);
 		action.clickOn(Alter_Products_ActionButton);
+		action.waitFor(5);
+	}
+
+	public void transferProduct() {
+		action.moveMouseAwayFromScreen();
+		action.waitFor(CopyMove_ActionButton, 5, true);
+		action.clickOn(CopyMove_ActionButton);
+		action.waitFor(1);
+
+		action.waitFor(TranferProduct_ActionButton, 5, true);
+		action.clickOn(TranferProduct_ActionButton);
+		action.waitFor(5);
+	}
+
+	public void alterlineProduct() {
+		action.moveMouseAwayFromScreen();
+		action.waitFor(Products_ActionButton, 5, true);
+		action.clickOn(Products_ActionButton);
+		action.waitFor(1);
+
+		action.waitFor(ChangeLineproduct_ActionButton, 5, true);
+		action.clickOn(ChangeLineproduct_ActionButton);
 		action.waitFor(5);
 	}
 
@@ -238,7 +264,7 @@ public class ServiceOperations {
 
 		return passed;
 	}
-	
+
 	public boolean clickOnCeaseMultipleService() {
 		boolean passed = false;
 
@@ -377,11 +403,11 @@ public class ServiceOperations {
 
 		return passed;
 	}
-	
-	//method for clicking on clone service action button
+
+	// method for clicking on clone service action button
 	public boolean cloneservice() {
 		boolean passed = false;
-		
+
 		action.waitFor(CopyMove_ActionButton, 5, true);
 		action.clickOn(CopyMove_ActionButton);
 		action.waitFor(1);
@@ -389,14 +415,14 @@ public class ServiceOperations {
 		action.waitFor(Cloneservice_ActionButton, 5, true);
 		action.clickOn(Cloneservice_ActionButton);
 		action.waitFor(1);
-		
+
 		return passed;
 	}
-	
-	//method to click on Cease multiple services action button
+
+	// method to click on Cease multiple services action button
 	public boolean ceasemultipleservices() {
 		boolean passed = false;
-		
+
 		action.waitFor(Cease_ActionButton, 5, true);
 		action.clickOn(Cease_ActionButton);
 		action.waitFor(1);
@@ -404,7 +430,7 @@ public class ServiceOperations {
 		action.waitFor(ceasemultipleservices_ActionButton, 5, true);
 		action.clickOn(ceasemultipleservices_ActionButton);
 		action.waitFor(1);
-		
+
 		return passed;
 	}
 }
