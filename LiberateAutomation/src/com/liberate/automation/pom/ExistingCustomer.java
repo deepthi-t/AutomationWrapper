@@ -24,11 +24,10 @@ public class ExistingCustomer {
 	By AccountNumber_Value = By.xpath("//*[text()='Account Number:']//following::span[1]");
 	By AccountNumber_Input = By.xpath("//*[text()='Account No:']//following::input[1]");
 	By AccountStatus_Value = By.xpath("//*[text()='Status:']//following::span[1]");
-	
-	
+
 	// Limelite Existing customer screen
 	By ProvisionType_RadioButton = By.xpath("//*[text()='Provision Type:']/following::input[1]");
-	
+
 	By ShorCutPopupOK_Button = By.xpath("//input[@value='OK']");
 
 	// By Service Order Panel
@@ -39,14 +38,16 @@ public class ExistingCustomer {
 	By salespersonmagnifier_select = By.xpath("//*[@id='sopackageSelection:searchMagnifier']");
 	By salesperson_select = By.xpath("//*[@id='sopackageSelection:salesPerson']");
 	By applicationsource_select = By.xpath("//*[@id='sopackageSelection:fixedApplicationSource']");
-	
-	//Service order panel cease multiple service sales person and application source
+
+	// Service order panel cease multiple service sales person and application
+	// source
 	By ceasemultiplesalesperson_search = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:salesPersonSearch']");
 	By ceasemultiplesalespersonmagnifier_select = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:searchMagnifier']");
 	By ceasemultiplesalesperson_select = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:salesPerson']");
-	By ceasemultipleapplicationsource_select = By.xpath("//*[@id='ceaseMultipleServiceOrderForm:fixedApplicationSource']");
+	By ceasemultipleapplicationsource_select = By
+			.xpath("//*[@id='ceaseMultipleServiceOrderForm:fixedApplicationSource']");
 	By ceasemultipleproceed_button = By.xpath("//input[@value='Proceed >>']");
-	
+
 	// Package Based Provisioning Panel
 	By ServiceType_Select = By.xpath("//*[text()='Service Type:']//following::select[1]");
 	By ServicePackage_Select = By.xpath("//*[text()='Service Package:']//following::select[1]");
@@ -181,7 +182,7 @@ public class ExistingCustomer {
 		}
 		return passed;
 	}
-	
+
 	public boolean selectsalesperson_multicease() {
 		boolean passed = false;
 
@@ -205,13 +206,12 @@ public class ExistingCustomer {
 			passed = action.waitFor(ceasemultipleapplicationsource_select, 4, true);
 			passed = action.selectBy(ceasemultipleapplicationsource_select, 2);
 		}
-		
+
 		passed = action.waitFor(ceasemultipleproceed_button, 4, true);
 		passed = action.clickOn(ceasemultipleproceed_button);
-		
+
 		return passed;
 	}
-	
 
 	public boolean selectNonPackage(String NonPackage) {
 		By nonPackage_Radio = By.xpath("(//label[text()='Non Package Based Provisioning']//preceding::input)[last()]");
@@ -242,30 +242,27 @@ public class ExistingCustomer {
 
 		return passed;
 	}
-	
-	public boolean selectPDLServicePackageLimelite(String ServicePackage)
-	{
+
+	public boolean selectPDLServicePackageLimelite(String ServicePackage) {
 		boolean passed;
-		
+
 		passed = action.waitFor(ServicePackage_PanelHeader, 4, true);
-		if(action.getSelectedOption(ServicePackage_Select).contains("Select"))
-		{
+		if (action.getSelectedOption(ServicePackage_Select).contains("Select")) {
 			passed = action.selectByPartialText(ServicePackage_Select, ServicePackage);
 		}
 		return passed;
 	}
 
-	public boolean selectServicePackageLimelite(String ServicePackage)
-	{
+	public boolean selectServicePackageLimelite(String ServicePackage) {
 		boolean passed;
-		
+
 		passed = action.waitFor(ServicePackage_Select, 4, true);
-		if(action.getSelectedOption(ServicePackage_Select).contains("Select"))
-		{
+		if (action.getSelectedOption(ServicePackage_Select).contains("Select")) {
 			passed = action.selectByPartialText(ServicePackage_Select, ServicePackage);
 		}
 		return passed;
 	}
+
 	public boolean processPricingPlanScreen() {
 		boolean passed = false;
 
@@ -431,9 +428,8 @@ public class ExistingCustomer {
 
 		return passed;
 	}
-	
-	public boolean processServiceDetailsScreenLimelite(String Exchange, String NumberArea)
-	{
+
+	public boolean processServiceDetailsScreenLimelite(String Exchange, String NumberArea) {
 		boolean passed = false;
 		By SIM_Select = By.xpath("//*[text()='SIM:']//following::select[1]");
 		By LookUp_Button = By.xpath("//input[@value='Look Up']");
@@ -442,13 +438,12 @@ public class ExistingCustomer {
 		By PIN_Input = By.xpath("(//*[text()='PIN:']//following::input)[1]");
 		By proceedFromExistingCust_Button = By.xpath("//*[@value='Proceed']");
 
-		
 		passed = action.waitFor(ServiceDetails_PanelHeader, 4, true);
-		
+
 		action.waitFor(1);
 		if (action.countOf(SameAccountAddress_CheckBox) > 0)
-		passed = action.clickOn(SameAccountAddress_CheckBox);
-		
+			passed = action.clickOn(SameAccountAddress_CheckBox);
+
 		passed = action.waitFor(AddressType_Label, 4, false);
 
 		action.waitFor(1);
@@ -457,8 +452,7 @@ public class ExistingCustomer {
 
 		action.waitFor(1);
 
-		if (action.countOf(Deallocate_Button) == 0) 
-		{
+		if (action.countOf(Deallocate_Button) == 0) {
 			passed = action.selectByPartialText(Exchange_Select, Exchange);
 			passed = action.waitFor(NumberAreaDisabled_Select, 4, false);
 			action.waitFor(1);
@@ -481,35 +475,29 @@ public class ExistingCustomer {
 			action.waitFor(2);
 		}
 
-
-		if (action.countOf(UserName_Input) == 1) 
-		{
+		if (action.countOf(UserName_Input) == 1) {
 			passed = action.sendDataTo(UserName_Input, random.nextString().substring(0, 8).toUpperCase());
 		}
-		if (action.countOf(PIN_Input) == 1) 
-		{
+		if (action.countOf(PIN_Input) == 1) {
 			action.clickOn(PIN_Input);
 			action.waitFor(2);
 			passed = action.sendDataTo(PIN_Input, "4545");
 		}
-		if (action.countOf(ServiceUsage_Select) == 1) 
-		{
+		if (action.countOf(ServiceUsage_Select) == 1) {
 			passed = action.selectByPartialText(ServiceUsage_Select, "V-");
 		}
-		if (action.countOf(ChargeOption_Select) == 1) 
-		{
+		if (action.countOf(ChargeOption_Select) == 1) {
 			passed = action.selectBy(ChargeOption_Select, 2);
 		}
 
 		action.waitFor(1);
-		
+
 		action.waitFor(proceedFromExistingCust_Button, 4, true);
-		
-		if (action.countOf(proceedFromExistingCust_Button) > 0)
-		{
+
+		if (action.countOf(proceedFromExistingCust_Button) > 0) {
 			action.clickOn(proceedFromExistingCust_Button);
 		}
-		
+
 		return passed;
 	}
 
@@ -528,39 +516,47 @@ public class ExistingCustomer {
 		if (action.countOf(CreditLimit_Input) == 1) {
 			action.sendDataTo(CreditLimit_Input, "100");
 		}
+		action.waitFor(1);
 		if (action.countOf(CallLimit_Input) == 1) {
 			action.sendDataTo(CallLimit_Input, "100");
 		}
+		action.waitFor(1);
+
 		if (action.countOf(CustomerSelectedLimit_Radio) == 1) {
 			action.clickOn(CustomerSelectedLimit_Radio);
 		}
+		action.waitFor(1);
+
 		if (action.countOf(CustomerSelectedCreditLimit_Input) == 1) {
 			action.sendDataTo(CustomerSelectedCreditLimit_Input, "90");
 		}
+		action.waitFor(1);
+
 		if (action.countOf(CustomerSelectedUpdateType_Select) == 1) {
 			action.selectByPartialText(CustomerSelectedUpdateType_Select, "Phone");
 		}
+		action.waitFor(1);
+
 		if (action.countOf(CustomerSelectedBarType_Select) == 1) {
 			action.selectByPartialText(CustomerSelectedBarType_Select, "All");
 		}
+		action.waitFor(1);
+
 	}
 
-	public boolean provideContractDetails()
-	{
+	public boolean provideContractDetails() {
 		boolean passed = false;
 
 		passed = action.waitFor(ContractDetails_PanelHeader, 4, true);
-		
-		if(action.countOf(ContractDetails_PanelHeader) > 0)
-		{
+
+		if (action.countOf(ContractDetails_PanelHeader) > 0) {
 			passed = action.sendDataTo(ContractNumber_Input, "22663");
 			passed = action.sendDataTo(ContractDescription_Input, "Test Automation Contract");
 			passed = action.selectBy(ContractDuration_Select, 2);
 		}
-		
-		if(action.countOf(Submit_Button) > 0)
+
+		if (action.countOf(Submit_Button) > 0)
 			passed = action.clickOn(Submit_Button);
-		
 
 		return passed;
 	}
@@ -586,23 +582,21 @@ public class ExistingCustomer {
 
 		return passed;
 	}
-	
-	public boolean skipLinkedServices()
-	{
-		By ProvideLinkedService_PopUpMsg = By.xpath("//*[text()[contains(.,'Do you want to provide')]]/following::input[@value='No']");
-		
+
+	public boolean skipLinkedServices() {
+		By ProvideLinkedService_PopUpMsg = By
+				.xpath("//*[text()[contains(.,'Do you want to provide')]]/following::input[@value='No']");
+
 		boolean passed = false;
-		
-		if (action.countOf(ProvideLinkedService_PopUpMsg) > 0)
-		{
+
+		if (action.countOf(ProvideLinkedService_PopUpMsg) > 0) {
 			action.clickOn(ProvideLinkedService_PopUpMsg);
 		}
-		
+
 		return passed;
 	}
-	
-	public boolean navigateToLimeLiteExistingCustomerScreen()
-	{
+
+	public boolean navigateToLimeLiteExistingCustomerScreen() {
 		boolean passed = false;
 		action.scrollUp();
 		action.waitFor(1);
@@ -620,22 +614,22 @@ public class ExistingCustomer {
 
 		return passed;
 	}
-	
-	public boolean limeLiteExistingCustomerInitialScreen()
-	{
+
+	public boolean limeLiteExistingCustomerInitialScreen() {
 		boolean passed = false;
-		By selectAccountRecord = By.xpath("(//*[contains(@id, 'creditValidationExistingLIME:accountsListTable:0:j')])[1]");
+		By selectAccountRecord = By
+				.xpath("(//*[contains(@id, 'creditValidationExistingLIME:accountsListTable:0:j')])[1]");
 		By provideServiceOnAccount_Button = By.xpath("//*[@value='Provide service on account']");
-		
+
 		passed = action.waitFor(selectAccountRecord, 4, true);
-//		if (action.countOf(selectAccountRecord) > 0)
-//		{
-			
-			passed = action.clickOn(selectAccountRecord);
-			passed = action.waitFor(provideServiceOnAccount_Button, 4, true);
-			passed = action.clickOn(provideServiceOnAccount_Button);
-//		}
+		// if (action.countOf(selectAccountRecord) > 0)
+		// {
+
+		passed = action.clickOn(selectAccountRecord);
+		passed = action.waitFor(provideServiceOnAccount_Button, 4, true);
+		passed = action.clickOn(provideServiceOnAccount_Button);
+		// }
 		return passed;
 	}
-	
+
 }
