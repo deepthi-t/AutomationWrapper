@@ -83,10 +83,10 @@ public class CRMaintainQuery {
 		this.action = action;
 	}
 
-	public boolean navigate() { 
+	public boolean navigate() {
 		action.scrollUp();
 		action.waitFor(1);
-		
+
 		boolean passed = false;
 
 		passed = action.waitFor(LiberateCommon.LevelOne.CustomerCare, 4, true);
@@ -128,9 +128,11 @@ public class CRMaintainQuery {
 
 		passed = action.clickOn(Search_Button);
 
-		passed = action.waitFor(Query_Row, 4, true);
-		passed = action.clickOn(Query_Row);
-
+		action.waitFor(4);
+		if (action.countOf(Query_Row) > 1) {
+			passed = action.clickOn(Query_Row);
+		}
+		
 		return passed;
 	}
 
@@ -219,7 +221,7 @@ public class CRMaintainQuery {
 		TestActions.log("Raised Query Code    : " + QueryCode);
 
 		TestActions.log("Query Code in Screen : " + action.getTextFromPage(QueryType_Value).substring(0, 4));
-		
+
 		this.QueryNumber = action.getTextFromPage(QueryNumber_Value).trim();
 		this.QueryStatus = action.getTextFromPage(QueryStatus_Value).trim();
 
