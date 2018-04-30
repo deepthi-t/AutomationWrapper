@@ -371,7 +371,23 @@ public class ServiceOperations {
 
 		return passed;
 	}
-
+	
+	public boolean gotoComverseTab() {
+		boolean passed = false;
+		
+		By Comverse_Tab = By.xpath(
+				"//td[contains(@id,'customerServicesForm:serviceEnquiryTabs:')]//descendant::td[text()='Comverse']");
+		
+		action.waitFor(3);
+		if(action.countOf(Comverse_Tab)==0)
+			return false;
+		
+		passed = action.waitFor(Comverse_Tab, 4, true);
+		passed = action.clickOn(Comverse_Tab);
+		
+		return passed;
+	}
+	
 	public boolean verifyAudit() {
 		By Audit_Tab = By.xpath(
 				"//td[contains(@id,'customerServicesForm:serviceEnquiryTabs:')]//descendant::td[text()='Audit']");
