@@ -13,7 +13,7 @@ public class AlterProduct {
 	By site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
 	By AplicationSource_Select = By.xpath("//*[text()='Application Source:']//following::select[1]");
 	By Proceed_button = By.xpath("//*[@value=\"Proceed >>\"]");
-	By SelectProduct_Panel = By.xpath("//td[text() = 'Product Description']//following::span[2]");
+	By SelectProduct_Panel = By.xpath("//*[@id=\"alterProductsDetailsForm:plantItemList:0:productDescription\"]");
 	By Product_dropdown = By.xpath("//select[@id = \"alterProductsDetailsForm:changedProduct\"]");
 	By Accept_button = By.xpath("//*[@value=\"Accept\"]");
 
