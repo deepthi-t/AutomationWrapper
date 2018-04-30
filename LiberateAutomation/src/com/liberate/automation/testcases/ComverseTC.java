@@ -12,6 +12,7 @@ import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestResult;
 import com.liberate.automation.pom.CRCustomerSearch;
+import com.liberate.automation.pom.ComverseTab;
 import com.liberate.automation.pom.DashBoard;
 import com.liberate.automation.pom.ServiceOperations;
 
@@ -40,11 +41,13 @@ public class ComverseTC {
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		DashBoard dashboard = new DashBoard(action);
 		ServiceOperations service = new ServiceOperations(action);
+		ComverseTab comverse = new ComverseTab(action);
 		
 		search.navigate();
 		search.searchByServiceNumber(comverseServiceNumber);
 		dashboard.verifyDashBoard("");
 		service.navigate();
 		service.gotoComverseTab();
+		comverse.verifyComverseEnquiry();
 	}
 }
