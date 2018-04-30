@@ -10,22 +10,23 @@ import com.liberate.automation.core.TestActions;
 public class PYPOSPayment {
 	TestActions action = null;
 	
-	By NewTransaction_Tab = By.xpath("//*[text()='New Transaction']");
-	By ServiceNumber_Input = By.xpath("//*[text()='Service Number:']/following::input[1]");
-	By AccountNumber_Input = By.xpath("//*[text()='Account Number:']/following::input[1]");
-	By BillInvoiceNumber_Input = By.xpath("//*[text()='Bill Invoice No.:']/following::input[1]");
+	By newTransaction_Tab = By.xpath("//*[text()='New Transaction']");
+	By serviceNumber_Input = By.xpath("//*[text()='Service Number:']/following::input[1]");
+	By accountNumber_Input = By.xpath("//*[text()='Account Number:']/following::input[1]");
+	By billInvoiceNumber_Input = By.xpath("//*[text()='Bill Invoice No.:']/following::input[1]");
 	
-	By AllocateAmountDisabled_Input = By.xpath("//*[text()='Allocate Amount:']//following::td[1]//child::input[@disabled='true']");
-	By AllocateAmount_Input = By.xpath("//*[text()='Allocate Amount:']//following::td[1]//child::input[1]");
+	By allocateAmountDisabled_Input = By.xpath("//*[text()='Allocate Amount:']//following::td[1]//child::input[@disabled='true']");
+	By allocateAmount_Input = By.xpath("//*[text()='Allocate Amount:']//following::td[1]//child::input[1]");
 	
-	By ManualAllocate_Button = By.xpath("//input[@value='Manual Allocate']");
+	By manualAllocate_Button = By.xpath("//input[@value='Manual Allocate']");
+	By autoAllocate_Button = By.xpath("//input[@value='Manual Allocate']");
+
+	By payment_Row = By.xpath("//tr[@id='newTransactionForm:statictab:0:dynamictabs:1:billsTable:0']");
 	
-	By Payment_Row = By.xpath("//tr[@id='newTransactionForm:statictab:0:dynamictabs:1:billsTable:0']");
+	By paymentMethod_Select = By.xpath("//*[text()='Select Payment Method:']//following::select[1]");
 	
-	By PaymentMethod_Select = By.xpath("//*[text()='Select Payment Method:']//following::select[1]");
-	
-	By Close_Button = By.xpath("//input[@value='Close']");
-	By OK_Button = By.xpath("//input[@value='OK']");
+	By close_Button = By.xpath("//input[@value='Close']");
+	By oK_Button = By.xpath("//input[@value='OK']");
 
 	public PYPOSPayment(TestActions action) {
 		this.action = action;
@@ -55,12 +56,12 @@ public class PYPOSPayment {
 		action.waitFor(4);
 		action.switchToNewWindow();
 		
-		passed = action.waitFor(NewTransaction_Tab, 4, true);
+		passed = action.waitFor(newTransaction_Tab, 4, true);
 		
-		if(action.countOf(Close_Button)>0)
+		if(action.countOf(close_Button)>0)
 		{
-			action.clickOn(Close_Button);
-			passed = action.waitFor(Close_Button, 4, false);
+			action.clickOn(close_Button);
+			passed = action.waitFor(close_Button, 4, false);
 		}
 
 		return passed;
@@ -69,14 +70,39 @@ public class PYPOSPayment {
 	public boolean searchWithAccountNumber(String AccountNumber) {
 		boolean passed = false;
 		
-		passed = action.waitFor(NewTransaction_Tab, 4, true);
-		passed = action.clickOn(NewTransaction_Tab);
+		passed = action.waitFor(newTransaction_Tab, 4, true);
+		passed = action.clickOn(newTransaction_Tab);
 		
-		passed = action.waitFor(AccountNumber_Input, 4, true);
-		passed = action.sendDataTo(AccountNumber_Input, AccountNumber);
+		passed = action.waitFor(accountNumber_Input, 4, true);
+		passed = action.sendDataTo(accountNumber_Input, AccountNumber);
 		
 		passed = action.clickOn(CommonPanel.Search_Button);
-		passed = action.waitFor(AllocateAmountDisabled_Input, 4, false);
+		passed = action.waitFor(allocateAmountDisabled_Input, 4, false);
+		
+		return passed;
+	}
+	
+	public boolean searchWithServiceNumber(String AccountNumber) {
+		boolean passed = false;
+		
+		passed = action.waitFor(newTransaction_Tab, 4, true);
+		passed = action.clickOn(newTransaction_Tab);
+		
+		passed = action.waitFor(serviceNumber_Input, 4, true);
+		passed = action.sendDataTo(serviceNumber_Input, AccountNumber);
+		
+		passed = action.clickOn(CommonPanel.Search_Button);
+		passed = action.waitFor(allocateAmountDisabled_Input, 4, false);
+		
+		return passed;
+	}
+	
+	public boolean autoAllocate()
+	{
+		boolean passed = false;
+		
+		passed = action.clickOn(autoAllocate_Button);
+
 		
 		return passed;
 	}
@@ -84,24 +110,24 @@ public class PYPOSPayment {
 	public boolean POSPayment() {
 		boolean passed = false;
 		
-		passed = action.waitFor(AllocateAmountDisabled_Input, 4, false);
+		passed = action.waitFor(allocateAmountDisabled_Input, 4, false);
 		action.waitFor(1);
-		passed = action.sendDataTo(AllocateAmount_Input, "10.00");
+		passed = action.sendDataTo(allocateAmount_Input, "10.00");
 		
-		passed = action.clickOn(ManualAllocate_Button);
+		passed = action.clickOn(manualAllocate_Button);
 		
-		passed = action.waitFor(Payment_Row, 4, false);
+		passed = action.waitFor(payment_Row, 4, false);
 		passed = action.clickOn(CommonPanel.Accept_Button);
 		
-		passed = action.waitFor(PaymentMethod_Select, 4, true);
+		passed = action.waitFor(paymentMethod_Select, 4, true);
 		
-		if(action.countOf(OK_Button)>0)
+		if(action.countOf(oK_Button)>0)
 		{
-			action.clickOn(OK_Button);
-			passed = action.waitFor(OK_Button, 4, false);
+			action.clickOn(oK_Button);
+			passed = action.waitFor(oK_Button, 4, false);
 		}
 		
-		passed = action.selectByPartialText(PaymentMethod_Select, "C ");
+		passed = action.selectByPartialText(paymentMethod_Select, "C ");
 		
 		
 		return passed;
