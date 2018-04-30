@@ -28,7 +28,7 @@ public class AlterProductTC {
 	static String alterProductServiceNumber;
 
 	@BeforeClass
-	public void loadData() {
+	public static void loadData() {
 		data = ExcelDataDriver.loadData();
 
 		// Just an example on how to get data
@@ -55,7 +55,7 @@ public class AlterProductTC {
 
 		search.navigate();
 		action.getScreenShot(TestCase);
-		search.searchByServiceNumber("");
+		search.searchByServiceNumber(alterProductServiceNumber);
 		action.getScreenShot(TestCase);
 
 		service.navigate();
@@ -68,6 +68,7 @@ public class AlterProductTC {
 		alterProduct.selectDepartmentSite("AQSAL", "ANSQ");
 		alterProduct.alterProductScreen();
 		alterProduct.alterProductScreen();
+		alterProduct.altertTOProduct();
 
 		sales.verifySalesSignOff();
 		action.getScreenShot(TestCase);
