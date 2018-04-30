@@ -7,6 +7,7 @@ public class ActualPOM {
 	 * All Test Page Object Repository class must have an object assigned to the
 	 * local action variable. The value should be assigned via the Constructor of the
 	 * class.
+	 * 
 	 */
 	TestActions action = null;
 
