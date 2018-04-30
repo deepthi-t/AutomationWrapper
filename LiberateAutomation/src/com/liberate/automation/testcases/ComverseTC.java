@@ -21,28 +21,27 @@ public class ComverseTC {
 	static String testCase;
 	static String testStatus;
 	static Map<String, String> data = new HashedMap<>();
-	
+
 	static String comverseServiceNumber = "9371147";
-	
+
 	@BeforeClass
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
-		//comverseServiceNumber = data.get("comverseServiceNumber");
+		// comverseServiceNumber = data.get("comverseServiceNumber");
 	}
 
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
 		TestResult.processTestResult(testCase, result);
 	}
-	
+
 	@Test
-	public static void getComverseServiceDetails()
-	{
+	public static void getComverseServiceDetails() {
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		DashBoard dashboard = new DashBoard(action);
 		ServiceOperations service = new ServiceOperations(action);
 		ComverseTab comverse = new ComverseTab(action);
-		
+
 		search.navigate();
 		search.searchByServiceNumber(comverseServiceNumber);
 		dashboard.verifyDashBoard("");
