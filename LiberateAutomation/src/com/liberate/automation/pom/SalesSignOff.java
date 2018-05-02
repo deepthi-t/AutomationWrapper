@@ -1,12 +1,20 @@
 package com.liberate.automation.pom;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.core.TestActions;
 
 public class SalesSignOff {
 	TestActions action = null;
+	WebDriver driver = null;
+
+	Actions act = new Actions(driver);
 
 	public String AccountNumber = "";
 	public String ServiceOrderNumber = "";
@@ -85,27 +93,12 @@ public class SalesSignOff {
 	public boolean signOff() {
 		boolean passed = false;
 
-		By PymentItem_CheckBox = By
-				.xpath("//*[text()='Payment Summary']//following::tbody[2]//descendant::input[checked='checked']");
-		By ConfirmPayment_Button = By.xpath("//input[@value='Confirm Payment Amounts']");
-
 		By AccountEbilling_input = By.xpath("//*[text()='Account eBilling Email Address Entry']//following::input[1]");
 
 		By MacAddressConfirmation_Message = By
 				.xpath("//*[text()='Do you wish to allocate MAC Addresses and Smart Card references?']");
 
 		By SignOffSuccess_Message = By.xpath("//*[text()='Service order signed off successfully.']");
-
-		if (action.countOf(PymentItem_CheckBox) > 0) {
-			for (int i = 0; i < action.countOf(PymentItem_CheckBox); i++) {
-				action.clickOn(By.xpath("(" + action.getXpath(PymentItem_CheckBox) + ")[" + (i + 1) + "]"));
-				action.waitFor(1);
-			}
-			action.clickOn(ConfirmPayment_Button);
-
-			action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, true);
-			CommonPanel.popUp.clickOK(action);
-		}
 
 		if (action.countOf(MunicipalityCode_Select) == 1) {
 			action.selectBy(MunicipalityCode_Select, 1);
@@ -117,6 +110,7 @@ public class SalesSignOff {
 			action.sendDataTo(ContactNumber_Input, "22663");
 		}
 
+		passed = action.waitFor(SubmitOrder_Button, 4, true);
 		passed = action.clickOn(SubmitOrder_Button);
 
 		while (true) {
@@ -154,6 +148,27 @@ public class SalesSignOff {
 		return passed;
 	}
 
+	public boolean confirmPaymentItems() {
+		boolean passed = false;
+		
+		By PaymentItem_CheckBox = By
+				.xpath("//*[text()='Payment Summary']//following::tbody[2]//descendant::input[@checked='checked']");
+		By ConfirmPayment_Button = By.xpath("//input[@value='Confirm Payment Amounts']");
+		if (action.countOf(PaymentItem_CheckBox) > 0) {
+			for (int i = 0; i < action.countOf(PaymentItem_CheckBox); i++) {
+				action.clickOn(By.xpath("(" + action.getXpath(PaymentItem_CheckBox) + ")[" + (i + 1) + "]"));
+				action.waitFor(2);
+			}
+			action.waitFor(3);
+			action.clickOn(ConfirmPayment_Button);
+
+			action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, true);
+			CommonPanel.popUp.clickOK(action);
+		}
+
+		return passed;
+	}
+
 	public boolean addMore() {
 		boolean passed = false;
 
@@ -161,7 +176,7 @@ public class SalesSignOff {
 
 		return passed;
 	}
-	
+
 	public boolean click_ChangeSite() {
 		boolean passed = false;
 
@@ -169,21 +184,18 @@ public class SalesSignOff {
 
 		return passed;
 	}
-	
-	public boolean changeSiteSelection(String ChangeSite)
-	{
+
+	public boolean changeSiteSelection(String ChangeSite) {
 		boolean passed = false;
 		By Site_DropDown = By.xpath("//*[text()='Site:']/following::select[1]");
 		By Accept_Button = By.xpath("//*[@value='Accept']");
-		
+
 		passed = action.waitFor(Site_DropDown, 4, true);
 		passed = action.selectBy(Site_DropDown, 1);
 		passed = action.waitFor(Accept_Button, 4, true);
 		passed = action.clickOn(Accept_Button);
-		
-		
+
 		return passed;
 	}
-	
-	
+
 }

@@ -166,7 +166,7 @@ public class LimeLiteProvisioningTC {
 		
 		ce.navigateToLimeLiteExistingCustomerScreen();
 		ce.searchWithAccount("220002260000");
-		ce.selectServicePackageLimelite(PCLPostPaidServicePackage);
+		ce.selectServicePackageLimelite("LIME_PCL_N");
 		cust.applicationSourceSalesPerson_fill();
 //		ce.selectDepartmentSite("AQSAL", "ANSQ");
 		action.getScreenShot(testCase);
@@ -195,13 +195,15 @@ public class LimeLiteProvisioningTC {
 		action.getScreenShot(testCase);
 		sso.changeSiteSelection(Site);
 		action.getScreenShot(testCase);
-		sso.signOff();
+		sso.confirmPaymentItems();
+		action.getScreenShot(testCase);
+/*		sso.signOff();
 		action.getScreenShot(testCase);
 		cso.getSONumber();
 		action.getScreenShot(testCase);
 		cso.getSOCommand();
 		action.getScreenShot(testCase);
-	
+	*/
 	}		
 		
 	}
