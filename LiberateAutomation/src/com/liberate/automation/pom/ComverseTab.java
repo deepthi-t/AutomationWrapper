@@ -8,6 +8,9 @@ import com.liberate.automation.core.TestActions;
 public class ComverseTab {
 	TestActions action = null;
 	
+	String currentBalance;
+	int currentBalanceInt;
+	
 	public ComverseTab(TestActions action) {
 		this.action = action;
 	}
@@ -40,6 +43,47 @@ public class ComverseTab {
 		passed = action.clickOn(CommonPanel.Search_Button);
 		action.waitFor(4);
 		
+		return passed;
+	}
+	
+	public boolean changeBalance() {
+		By balances_Tab = By.xpath("//td[text()='Comverse Details']/following::td[text()='Balances']");
+//		By balanceDetails_Tab = By.xpath("//td[text()='Balance Details']");
+		
+		By balance_Row = By.xpath("//tr[@id='customerServicesForm:serviceEnquiryTabs:0:comverseOneTab:comverseTabs:0:balancesComverseOne:balancesSumaryList:0']");
+		By balance_Cell = By.xpath("//tr[@id='customerServicesForm:serviceEnquiryTabs:0:comverseOneTab:comverseTabs:0:balancesComverseOne:balancesSumaryList:0']/descendant::td[2]");
+		
+		By adjustBalance_ActionButton = By.xpath("//span[text()='Adjust Balance']");
+		
+		boolean passed = false;
+		
+		passed = action.waitFor(balances_Tab, 5, true);
+		passed = action.clickOn(balances_Tab);
+				
+		passed = action.waitFor(balance_Row, 10, true);
+		passed = action.clickOn(balance_Row);
+		
+		passed = action.waitFor(adjustBalance_ActionButton, 5, true);
+		
+		currentBalance = action.getTextFromPage(balance_Cell);
+		TestActions.log("Balance : " + currentBalance);
+
+		currentBalance = currentBalance.split("\\.")[0];		
+		TestActions.log("Balance for processing :" + currentBalance);
+		
+		currentBalanceInt = Integer.parseInt(currentBalance);
+		TestActions.log("Balance in Integer :" + currentBalanceInt);
+
+		return passed;
+	}
+	
+	public boolean setBalance() {
+		boolean passed = false;
+		return passed;
+	}
+	
+	public boolean adjustBalance() {
+		boolean passed = false;
 		return passed;
 	}
 }

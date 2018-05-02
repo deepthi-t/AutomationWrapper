@@ -65,4 +65,19 @@ public class ComverseTC {
 		comverse.verifyComverseEnquiry();
 		comverse.getHistoricalData();
 	}
+	
+	public static void adjustBalance() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		DashBoard dashboard = new DashBoard(action);
+		ServiceOperations service = new ServiceOperations(action);
+		ComverseTab comverse = new ComverseTab(action);
+		
+		search.navigate();
+		search.searchByServiceNumber(comverseServiceNumber);
+		dashboard.verifyDashBoard("");
+		service.navigate();
+		service.gotoComverseTab();
+		comverse.verifyComverseEnquiry();
+		comverse.changeBalance();
+	}
 }
