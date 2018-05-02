@@ -2,6 +2,7 @@ package com.liberate.automation.pom;
 
 import org.openqa.selenium.By;
 
+import com.liberate.automation.common.CommonPanel;
 import com.liberate.automation.core.TestActions;
 
 public class ComverseTab {
@@ -23,5 +24,22 @@ public class ComverseTab {
 		TestActions.log("Subscriber ID : "+action.getTextFromPage(subscriberID));
 		TestActions.log("Current State : "+action.getTextFromPage(currentState));
 		TestActions.log("Previous State : "+action.getTextFromPage(previousState));
+	}
+
+	public boolean getHistoricalData() {
+		By audits_Tab = By.xpath("//td[text()='Comverse Details']/following::td[text()='Audits']");
+		By balanceAudit_Tab = By.xpath("//td[text()='Balance Audit']");
+		
+		boolean passed = false;
+		
+		passed = action.waitFor(audits_Tab, 5, true);
+		passed = action.clickOn(audits_Tab);
+		
+		passed = action.waitFor(balanceAudit_Tab, 5, true);
+		passed = action.waitFor(CommonPanel.Search_Button, 10, true);
+		passed = action.clickOn(CommonPanel.Search_Button);
+		action.waitFor(4);
+		
+		return passed;
 	}
 }

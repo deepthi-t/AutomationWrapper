@@ -49,4 +49,20 @@ public class ComverseTC {
 		service.gotoComverseTab();
 		comverse.verifyComverseEnquiry();
 	}
+	
+	@Test
+	public static void getHistoricalData() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		DashBoard dashboard = new DashBoard(action);
+		ServiceOperations service = new ServiceOperations(action);
+		ComverseTab comverse = new ComverseTab(action);
+		
+		search.navigate();
+		search.searchByServiceNumber(comverseServiceNumber);
+		dashboard.verifyDashBoard("");
+		service.navigate();
+		service.gotoComverseTab();
+		comverse.verifyComverseEnquiry();
+		comverse.getHistoricalData();
+	}
 }
