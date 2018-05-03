@@ -10,7 +10,11 @@ public class ComverseTab {
 	
 	String currentBalance;
 	int currentBalanceInt;
+	String newBalance;
 	
+	By adjustBalance_ActionButton = By.xpath("//span[text()='Adjust Balance']");
+	By balance_Cell = By.xpath("//tr[@id='customerServicesForm:serviceEnquiryTabs:0:comverseOneTab:comverseTabs:0:balancesComverseOne:balancesSumaryList:0']/descendant::td[2]");
+
 	public ComverseTab(TestActions action) {
 		this.action = action;
 	}
@@ -48,13 +52,9 @@ public class ComverseTab {
 	
 	public boolean changeBalance() {
 		By balances_Tab = By.xpath("//td[text()='Comverse Details']/following::td[text()='Balances']");
-//		By balanceDetails_Tab = By.xpath("//td[text()='Balance Details']");
 		
 		By balance_Row = By.xpath("//tr[@id='customerServicesForm:serviceEnquiryTabs:0:comverseOneTab:comverseTabs:0:balancesComverseOne:balancesSumaryList:0']");
-		By balance_Cell = By.xpath("//tr[@id='customerServicesForm:serviceEnquiryTabs:0:comverseOneTab:comverseTabs:0:balancesComverseOne:balancesSumaryList:0']/descendant::td[2]");
-		
-		By adjustBalance_ActionButton = By.xpath("//span[text()='Adjust Balance']");
-		
+				
 		boolean passed = false;
 		
 		passed = action.waitFor(balances_Tab, 5, true);
@@ -78,12 +78,77 @@ public class ComverseTab {
 	}
 	
 	public boolean setBalance() {
+		By setBalance_RadioButton = By.xpath("//label[text()='Set Balance?']");
+		By amountSet_TextBox = By.xpath("//label[text()='New Balance:']/following::input[contains(@name, 'newBalanceAmount')]");
+		By confirm_Button = By.xpath("//input[@value='Confirm']");
+
 		boolean passed = false;
+		
+		passed = action.waitFor(adjustBalance_ActionButton, 5, true);
+		passed = action.clickOn(adjustBalance_ActionButton);
+		
+		passed = action.waitFor(setBalance_RadioButton, 10, true);
+		passed = action.clickOn(setBalance_RadioButton);
+		
+		passed = action.waitFor(amountSet_TextBox, 10, true);
+		action.waitFor(2);
+		passed = action.sendDataTo(amountSet_TextBox, Integer.toString(currentBalanceInt + 1));
+		action.waitFor(2);
+		
+		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 10, true);
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+		
+		passed = action.waitFor(confirm_Button, 10, true);
+		passed = action.clickOn(confirm_Button);
+
+		passed = action.waitFor(confirm_Button, 10, false);
+		action.waitFor(2);
+		passed = CommonPanel.popUp.clickOK(action);
+		action.waitFor(2);
+
+		newBalance = action.getTextFromPage(balance_Cell).split("//.")[0];
+		TestActions.log("New Balance:" + newBalance);
+		
+		passed = currentBalance.equals(Integer.toString(currentBalanceInt+1));
+		
 		return passed;
 	}
 	
 	public boolean adjustBalance() {
+		By adjustBalance_RadioButton = By.xpath("//label[text()='Adjust Balance?']");
+		By amountAdjusted_TextBox = By.xpath("//label[text()='Amount Adjusted:']/following::input[contains(@name, 'adjustmentAmount')]");
+		
+		By confirm_Button = By.xpath("//input[@value='Confirm']");
+		
 		boolean passed = false;
+		
+		passed = action.waitFor(adjustBalance_ActionButton, 5, true);
+		passed = action.clickOn(adjustBalance_ActionButton);
+		
+		passed = action.waitFor(adjustBalance_RadioButton, 10, true);
+		passed = action.clickOn(adjustBalance_RadioButton);
+		
+		passed = action.waitFor(amountAdjusted_TextBox, 10, true);
+		action.waitFor(2);
+		passed = action.sendDataTo(amountAdjusted_TextBox, "1.00");
+		action.waitFor(2);
+		
+		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 10, true);
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+		
+		passed = action.waitFor(confirm_Button, 10, true);
+		passed = action.clickOn(confirm_Button);
+
+		passed = action.waitFor(confirm_Button, 10, false);
+		action.waitFor(2);
+		passed = CommonPanel.popUp.clickOK(action);
+		action.waitFor(2);
+		
+		newBalance = action.getTextFromPage(balance_Cell).split("//.")[0];
+		TestActions.log("New Balance:" + newBalance);
+		
+		passed = currentBalance.equals(Integer.toString(currentBalanceInt+1));
+
 		return passed;
 	}
 }

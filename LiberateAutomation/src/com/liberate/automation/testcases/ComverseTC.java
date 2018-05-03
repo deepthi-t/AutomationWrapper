@@ -66,6 +66,23 @@ public class ComverseTC {
 		comverse.getHistoricalData();
 	}
 	
+	@Test
+	public static void verifyBalanceBalance() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		DashBoard dashboard = new DashBoard(action);
+		ServiceOperations service = new ServiceOperations(action);
+		ComverseTab comverse = new ComverseTab(action);
+		
+		search.navigate();
+		search.searchByServiceNumber(comverseServiceNumber);
+		dashboard.verifyDashBoard("");
+		service.navigate();
+		service.gotoComverseTab();
+		comverse.verifyComverseEnquiry();
+		comverse.changeBalance();
+	}
+	
+	@Test
 	public static void adjustBalance() {
 		CRCustomerSearch search = new CRCustomerSearch(action);
 		DashBoard dashboard = new DashBoard(action);
@@ -79,5 +96,24 @@ public class ComverseTC {
 		service.gotoComverseTab();
 		comverse.verifyComverseEnquiry();
 		comverse.changeBalance();
+		comverse.adjustBalance();
+		
+	}
+	
+	@Test
+	public static void setBalance() {
+		CRCustomerSearch search = new CRCustomerSearch(action);
+		DashBoard dashboard = new DashBoard(action);
+		ServiceOperations service = new ServiceOperations(action);
+		ComverseTab comverse = new ComverseTab(action);
+		
+		search.navigate();
+		search.searchByServiceNumber(comverseServiceNumber);
+		dashboard.verifyDashBoard("");
+		service.navigate();
+		service.gotoComverseTab();
+		comverse.verifyComverseEnquiry();
+		comverse.changeBalance();
+		comverse.setBalance();
 	}
 }
