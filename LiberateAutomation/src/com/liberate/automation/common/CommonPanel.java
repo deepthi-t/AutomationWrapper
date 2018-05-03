@@ -72,7 +72,8 @@ public class CommonPanel {
 		 */
 		public static boolean clickOK(TestActions action) {
 			boolean passed = false;
-
+			By popUpOK_Button = By.xpath("(//input[@value='OK'])[last()]");
+			
 			if (action.countOf(popUpOK_Button) > 0) {
 				passed = action.clickOn(popUpOK_Button);
 				passed = action.waitFor(popUpOK_Button, 4, false);
