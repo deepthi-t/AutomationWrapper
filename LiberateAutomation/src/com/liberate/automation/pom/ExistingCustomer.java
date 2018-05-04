@@ -305,9 +305,32 @@ public class ExistingCustomer {
 	public boolean processServiceProductsScreen() {
 		boolean passed = false;
 
+		By comverseProducts_PanelHeader = By.xpath("//*[text()='Comverse Products']");
+//		By bundels_Select = By.xpath("//*[text()='Bundles:']//following::select[1]");
+		By primaryOffers_Select = By.xpath("//*[text()='Primary Offers:']//following::select[1]");
+		By details_offer = By.xpath("//*[text()='Balance Details']");
+		By select_button = By.xpath("//*[@value='Select']");
+		
+		
 		passed = action.waitFor(ServiceProduct_PanelHeader, 4, true);
+		
 		action.scrollUp();
 		action.getTextFromPage(Panel_Header);
+		action.waitFor(4);
+		
+		if (action.countOf(comverseProducts_PanelHeader) > 0)
+		{
+			if(action.countOf(primaryOffers_Select) > 0)
+			{
+				passed = action.waitFor(4);
+				passed = action.selectBy(primaryOffers_Select, 1);
+				passed = action.waitFor(select_button, 5, true);
+				passed = action.waitFor(details_offer, 4, true);
+				passed = action.clickOn(select_button);
+				passed = action.waitFor(4);
+			}
+		}
+		
 		action.clickOn(Proceed_Button);
 
 		return passed;

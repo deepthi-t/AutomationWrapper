@@ -33,7 +33,7 @@ public class QueryManagementTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(priority = 1)
+	@Test(enabled = false)
 	public static void raiseQueryAccount() {
 		testCase = "QueryManagement_raiseQueryAccount";
 
@@ -49,7 +49,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 2)
+	@Test(enabled = false)
 	public static void amendQuery() {
 		testCase = "QueryManagement_amendQuery";
 
@@ -67,7 +67,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 3)
+	@Test(enabled = false)
 	public static void addNoteQuery() {
 		testCase = "QueryManagement_addNoteQuery";
 
@@ -85,7 +85,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 4)
+	@Test(enabled = false)
 	public static void progressQuery() {
 		testCase = "QueryManagement_progressQuery";
 
@@ -103,7 +103,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void signOffQuery() {
 		testCase = "QueryManagement_signOffQuery";
 
@@ -129,7 +129,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void raiseAndAuthoriseAdjustment() {
 		testCase = "QueryManagement_raiseAndAuthoriseAdjustment";
 
@@ -180,7 +180,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 5)
+	@Test
 	public static void raiseQueryNonAccount() {
 		testCase = "QueryManagement_raiseQueryNonAccount";
 
@@ -195,7 +195,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 10)
+	@Test(enabled = false)
 	public static void amendQueryNonAccount() {
 		testCase = "QueryManagement_amendQuery";
 
@@ -213,7 +213,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 11)
+	@Test
 	public static void signOffQueryNonAccount() {
 		testCase = "QueryManagement_signOffQuery";
 
@@ -223,10 +223,10 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 		mq.searchByQueryNumber(nonAccountQuery);
 		action.getScreenShot(testCase);
-		mq.raiseAccountQuery();
-		action.getScreenShot(testCase);
-		mq.verifyQuery();
-		action.getScreenShot(testCase);
+		//mq.raiseAccountQuery();
+		//action.getScreenShot(testCase);
+		//mq.verifyQuery();
+		//action.getScreenShot(testCase);
 
 		mq.progressQuery("RE");
 		action.getScreenShot(testCase);
