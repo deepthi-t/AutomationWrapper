@@ -160,7 +160,7 @@ public class LimeLiteProvisioningTC {
 		LimeliteNewCustomer cust = new LimeliteNewCustomer(action);
 		ExistingCustomer ce = new ExistingCustomer(action);
 		SalesSignOff sso = new SalesSignOff(action);
-		CustomerServiceOrder cso = new CustomerServiceOrder(action);
+//		CustomerServiceOrder cso = new CustomerServiceOrder(action);
 
 		testCase = "limeLiteExistingCustomerPCLPostpaid";
 		
