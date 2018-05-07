@@ -151,4 +151,67 @@ public class ComverseTab {
 
 		return passed;
 	}
+	
+	public boolean newSupplementaryOffer() {
+		By supplementaryOffer_ActionButton = By.xpath("//spam[text()='Provide/Cease Supplementary Offers']");
+		By next_Button = By.xpath("//input[@value='Next']");
+		
+		boolean passed = false;
+		
+		passed = action.waitFor(supplementaryOffer_ActionButton, 10, true);
+		passed = action.clickOn(supplementaryOffer_ActionButton);
+		
+		passed = CommonPanel.selectDepartmentSite(action, "AQSAL", "ANSQ");
+		passed = action.clickOn(next_Button);
+
+		return passed;
+	}
+	
+	public boolean provideSupplementaryOffer() {
+		//TODO There is a miss match between Comverse and liberate products.
+		boolean passed = false;
+		return passed;
+	}
+	
+	public boolean transferBalance(String transferTo) {
+		By transferBalance_ActionButton = By.xpath("//spam[text()='Transfer Balance']");
+		By transferTo_TextBox = By.xpath("//label[text()='Transfer To:']/following::input[1]");
+		By transferAmount_TextBox = By.xpath("//label[text()='Transfer Amount:']/following::input[1]");
+		By transferBalanceType_Select = By.xpath("//label[text()='Target Balance:']/following::select[1]");
+
+		By transferTo_SearchButton = By.xpath("//label[text()='Transfer To:']//following::input[@type='image']");
+		
+		By success_Message = By.xpath("//span[text()='The Balance has been transfered successfully.']");
+		
+		boolean passed = false;
+		
+		passed = action.waitFor(transferBalance_ActionButton, 10, true);
+		passed = action.clickOn(transferBalance_ActionButton);
+		
+		passed = action.waitFor(transferTo_TextBox, 10, true);
+		action.waitFor(2);
+		passed = action.sendDataTo(transferTo_TextBox, transferTo);
+		action.waitFor(2);
+		
+		passed = action.clickOn(transferTo_SearchButton);
+		action.waitFor(5);
+		
+		passed = action.selectByPartialText(transferBalanceType_Select, "Core");
+		action.waitFor(2);
+
+		passed = action.sendDataTo(transferAmount_TextBox, "1.00");
+		action.waitFor(2);
+		
+		passed = CommonPanel.popUp.clickOK(action);
+		
+		passed = action.waitFor(success_Message, 26, true);
+		passed = CommonPanel.popUp.clickOK(action);
+
+		newBalance = action.getTextFromPage(balance_Cell).split("//.")[0];
+		TestActions.log("New Balance:" + newBalance);
+		
+		passed = newBalance.equals(Integer.toString(currentBalanceInt-1));
+		
+		return passed;
+	}
 }
