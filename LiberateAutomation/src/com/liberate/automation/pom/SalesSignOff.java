@@ -96,7 +96,9 @@ public class SalesSignOff {
 				.xpath("//*[text()='Do you wish to allocate MAC Addresses and Smart Card references?']");
 
 		By SignOffSuccess_Message = By.xpath("//*[text()='Service order signed off successfully.']");
-
+		
+		confirmPaymentItems();
+		
 		if (action.countOf(MunicipalityCode_Select) == 1) {
 			action.selectBy(MunicipalityCode_Select, 1);
 		}
