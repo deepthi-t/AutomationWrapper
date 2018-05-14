@@ -40,6 +40,7 @@ public class TestData {
 	public static String employeeUserName = "";
 	public static String newUserID = "";
 	public static String arnServiceNumber = "";
+	public static String exchangeDepartment="";
 
 	static String FileName = "TestData.properties";
 
@@ -135,5 +136,6 @@ public class TestData {
 		employeeUserName = getData("employeeUserName");
 		newUserID = getData("newUserID");
 		arnServiceNumber = getData("arnServiceNumber");
+	    exchangeDepartment = getData("exchangeDepartment");
 	}
 }

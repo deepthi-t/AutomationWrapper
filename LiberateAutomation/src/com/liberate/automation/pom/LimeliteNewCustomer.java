@@ -133,7 +133,7 @@ public class LimeliteNewCustomer {
 		passed = action.selectBy(applicationForm_DropDown, ApplicationForm);
 		passed = action.waitFor(servicePackage_DropDown, 4, true);
 		passed = action.waitFor(5);
-		passed = action.selectBy(servicePackage_DropDown, ServicePackage);
+		passed = action.selectByPartialText(servicePackage_DropDown, ServicePackage);
 		passed = action.waitFor(5);
 
 		return passed;

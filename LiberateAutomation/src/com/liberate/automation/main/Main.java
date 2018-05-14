@@ -2,14 +2,19 @@ package com.liberate.automation.main;
 
 import com.liberate.automation.testcases.AlterProductTC;
 import com.liberate.automation.testcases.CommonLogin;
+import com.liberate.automation.testcases.ExchangeSignoffTC;
+import com.liberate.automation.testcases.LimeLiteProvisioningTC;
 
 public class Main {
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) throws InterruptedException {		
 		CommonLogin.login();
-		AlterProductTC.loadData();
 		
-		AlterProductTC.alterProducts();
+		//ExchangeSignoffTC.exchangesignoff();
+		LimeLiteProvisioningTC.limeLiteExistingCustomerPCLPostpaid() ;
+		
+		
+		
 	}
 	
 	public void test()

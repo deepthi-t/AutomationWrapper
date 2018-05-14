@@ -78,7 +78,7 @@ public class LimeLiteProvisioningTC {
 
 		cust.navigateLimeliteNewCustomer();
 		action.getScreenShot(testCase);
-		cust.serviceApplicationDetailspanel(CommonData.ApplicationForm.IndexFixedResidential, PEL_PDL_LimeLitePackage);
+		cust.serviceApplicationDetailspanel(CommonData.ApplicationForm.IndexFixedResidential, "Auto_PEL-PEL_WithoutRoutes");
 		action.getScreenShot(testCase);
 		cust.click_ProceedButton();
 		action.getScreenShot(testCase);
@@ -155,7 +155,7 @@ public class LimeLiteProvisioningTC {
 		}
 	
 	
-	public static void limeLiteExistingCustomerPCLPostpaid() 
+	public static void limeLiteExistingCustomerPCLPostpaid() throws InterruptedException 
 	{
 		LimeliteNewCustomer cust = new LimeliteNewCustomer(action);
 		ExistingCustomer ce = new ExistingCustomer(action);
@@ -193,17 +193,25 @@ public class LimeLiteProvisioningTC {
 		action.getScreenShot(testCase);
 		sso.click_ChangeSite();
 		action.getScreenShot(testCase);
+		
+		
+		
+		
 		sso.changeSiteSelection(Site);
 		action.getScreenShot(testCase);
-		sso.confirmPaymentItems();
+		
+		Thread.sleep(3000);
+		sso.cpbutton();
+		
+		
 		action.getScreenShot(testCase);
-/*		sso.signOff();
+	sso.signOff();
 		action.getScreenShot(testCase);
-		cso.getSONumber();
-		action.getScreenShot(testCase);
-		cso.getSOCommand();
-		action.getScreenShot(testCase);
-	*/
+		//cso.getSONumber();
+		//action.getScreenShot(testCase);
+		//cso.getSOCommand();
+		//action.getScreenShot(testCase);
+	
 	}		
 		
 	}
