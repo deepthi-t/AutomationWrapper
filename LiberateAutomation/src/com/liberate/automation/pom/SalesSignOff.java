@@ -11,7 +11,7 @@ public class SalesSignOff {
 	TestActions action = null;
 	WebDriver driver = null;
 
-	Actions act = new Actions(driver);
+	
 
 	public String AccountNumber = "";
 	public String ServiceOrderNumber = "";
@@ -166,6 +166,23 @@ public class SalesSignOff {
 		}
 
 		return passed;
+	}
+	
+	
+	public boolean cpbutton() throws InterruptedException
+	{
+		boolean passed = false;
+		
+		By first_Button = By.xpath("//*[@id=\"signoffServiceOrderForm:firstMthlyRentalPayNow\"]");
+		By second_Button = By.xpath("//*[@id=\"signoffServiceOrderForm:installationChgPayNow\"]");
+		By ConfirmPayment_Button = By.xpath("//input[@value='Confirm Payment Amounts']");
+		
+		 action.clickOn(first_Button);
+		 Thread.sleep(3000);
+		 action.clickOn(second_Button);
+		 Thread.sleep(3000);
+		 action.clickOn(ConfirmPayment_Button);
+		 return passed;
 	}
 
 	public boolean addMore() {
