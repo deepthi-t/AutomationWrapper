@@ -1,9 +1,14 @@
 package com.liberate.automation.testcases;
 
+import java.util.Map;
+
+import org.apache.commons.collections4.map.HashedMap;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.core.TestResult;
@@ -20,20 +25,38 @@ public class QueryManagementTC {
 	static String testCase;
 	static String testStatus;
 
-	static String nonAccountQuery = "";
+	
+	//TestData
+		static Map<String, String> dataMap = new HashedMap<>();
 
+		static String queryAccountNumber;
+		static String manageQueryNumber;
+		static String nonAccountQuery;
+		
+
+	
 	/**
 	 * Private constructor to disable creation of object
 	 */
 	private QueryManagementTC() {
 	}
 
+	@BeforeClass
+	public static void loadTestData() {
+		dataMap = ExcelDataDriver.loadData();
+		
+		queryAccountNumber = dataMap.get("queryAccountNumber");
+		manageQueryNumber = dataMap.get("manageQueryNumber");
+		nonAccountQuery = dataMap.get("nonAccountQuery");
+	}
+
+	
 	@AfterMethod
 	public static void logTestResult(ITestResult result) {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 0)
 	public static void raiseQueryAccount() {
 		testCase = "QueryManagement_raiseQueryAccount";
 
@@ -41,7 +64,7 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByAccount("260002260000");
+		mq.searchByAccount(queryAccountNumber);
 		action.getScreenShot(testCase);
 		mq.raiseAccountQuery();
 		action.getScreenShot(testCase);
@@ -49,7 +72,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 1)
 	public static void amendQuery() {
 		testCase = "QueryManagement_amendQuery";
 
@@ -57,9 +80,9 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByQueryNumber(TestData.queryNumber);
+		mq.searchByQueryNumber("B00028E");
 		action.getScreenShot(testCase);
-		mq.verifyQuery();
+		//mq.verifyQuery();
 		action.getScreenShot(testCase);
 		mq.amendQuery();
 		action.getScreenShot(testCase);
@@ -67,7 +90,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 2)
 	public static void addNoteQuery() {
 		testCase = "QueryManagement_addNoteQuery";
 
@@ -75,9 +98,9 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByQueryNumber(TestData.queryNumber);
+		mq.searchByQueryNumber("B00028E");
 		action.getScreenShot(testCase);
-		mq.verifyQuery();
+//		mq.verifyQuery();
 		action.getScreenShot(testCase);
 		mq.addNote("Additional Note");
 		action.getScreenShot(testCase);
@@ -85,7 +108,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 3)
 	public static void progressQuery() {
 		testCase = "QueryManagement_progressQuery";
 
@@ -93,9 +116,9 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByQueryNumber(TestData.queryNumber);
+		mq.searchByQueryNumber(manageQueryNumber);
 		action.getScreenShot(testCase);
-		mq.verifyQuery();
+//		mq.verifyQuery();
 		action.getScreenShot(testCase);
 		mq.progressQuery("RE");
 		action.getScreenShot(testCase);
@@ -103,7 +126,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 4)
 	public static void signOffQuery() {
 		testCase = "QueryManagement_signOffQuery";
 
@@ -111,7 +134,7 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByAccount("260002260000");
+		mq.searchByAccount(queryAccountNumber);
 		action.getScreenShot(testCase);
 		mq.raiseAccountQuery();
 		action.getScreenShot(testCase);
@@ -129,7 +152,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 5)
 	public static void raiseAndAuthoriseAdjustment() {
 		testCase = "QueryManagement_raiseAndAuthoriseAdjustment";
 
@@ -137,7 +160,7 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByAccount("260002260000");
+		mq.searchByAccount(queryAccountNumber);
 		action.getScreenShot(testCase);
 		mq.raiseAccountQuery();
 		action.getScreenShot(testCase);
@@ -160,7 +183,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 6)
 	public static void verifyBills() {
 		testCase = "QueryManagement_verifyBills";
 
@@ -170,7 +193,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 		mq.searchByQueryNumber("ZK00015");
 		action.getScreenShot(testCase);
-		mq.verifyQuery();
+//		mq.verifyQuery();
 		action.getScreenShot(testCase);
 		mq.verifyBills();
 		action.getScreenShot(testCase);
@@ -180,7 +203,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 7)
 	public static void raiseQueryNonAccount() {
 		testCase = "QueryManagement_raiseQueryNonAccount";
 
@@ -195,7 +218,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 8)
 	public static void amendQueryNonAccount() {
 		testCase = "QueryManagement_amendQuery";
 
@@ -205,7 +228,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 		mq.searchByQueryNumber(nonAccountQuery);
 		action.getScreenShot(testCase);
-		mq.verifyQuery();
+//		mq.verifyQuery();
 		action.getScreenShot(testCase);
 		mq.amendQuery();
 		action.getScreenShot(testCase);
@@ -213,7 +236,7 @@ public class QueryManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 9)
 	public static void signOffQueryNonAccount() {
 		testCase = "QueryManagement_signOffQuery";
 

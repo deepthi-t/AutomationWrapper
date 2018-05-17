@@ -233,20 +233,47 @@ public class CRMaintainQuery {
 
 		boolean passed = false;
 
-		passed = action.waitFor(Amend_ActionButton, 4, true);
-		action.waitFor(1);
-		passed = action.clickOn(Amend_ActionButton);
-
-		passed = action.waitFor(QueryType1_Select, 2, true);
-		passed = action.selectBy(QueryType1_Select, 4);
-		action.waitFor(3);
-		passed = action.selectBy(QueryType2_Select, 1);
-
-		this.QueryCode = action.getSelectedOption(QueryType1_Select).substring(0, 2)
-				+ action.getSelectedOption(QueryType2_Select).substring(0, 2);
-
-		action.waitFor(3);
-		passed = action.clickOn(Accept_Button);
+		if(action.countOf(Amend_ActionButton) > 0)
+		{
+			
+			passed = action.waitFor(Amend_ActionButton, 4, true);
+			action.waitFor(1);
+			passed = action.clickOn(Amend_ActionButton);
+	
+			passed = action.waitFor(QueryType1_Select, 2, true);
+			passed = action.selectBy(QueryType1_Select, 4);
+			action.waitFor(3);
+			passed = action.selectBy(QueryType2_Select, 1);
+	
+			this.QueryCode = action.getSelectedOption(QueryType1_Select).substring(0, 2)
+					+ action.getSelectedOption(QueryType2_Select).substring(0, 2);
+	
+			action.waitFor(3);
+			passed = action.clickOn(Accept_Button);
+		}
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			passed = action.waitFor(Amend_ActionButton, 4, true);
+			action.waitFor(1);
+			passed = action.clickOn(Amend_ActionButton);
+	
+			passed = action.waitFor(QueryType1_Select, 2, true);
+			passed = action.selectBy(QueryType1_Select, 4);
+			action.waitFor(3);
+			passed = action.selectBy(QueryType2_Select, 1);
+	
+			this.QueryCode = action.getSelectedOption(QueryType1_Select).substring(0, 2)
+					+ action.getSelectedOption(QueryType2_Select).substring(0, 2);
+	
+			action.waitFor(3);
+			passed = action.clickOn(Accept_Button);
+			
+		}
 
 		return passed;
 	}
@@ -255,17 +282,43 @@ public class CRMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 
-		action.waitFor(1);
-		passed = action.clickOn(Notes_ActionButton);
-
-		passed = action.waitFor(QueryNotes_Input, 4, true);
-		passed = action.sendDataTo(QueryNotes_Input, Note);
-
-		passed = action.clickOn(Add_Button);
-
-		passed = action.waitFor(By.xpath("//*[text()='" + Note + "']"), 4, true);
-
-		passed = action.clickOn(Back_Button);
+		if(action.countOf(Notes_ActionButton) > 0)
+		{
+		
+			action.waitFor(1);
+			passed = action.clickOn(Notes_ActionButton);
+	
+			passed = action.waitFor(QueryNotes_Input, 4, true);
+			passed = action.sendDataTo(QueryNotes_Input, Note);
+	
+			passed = action.clickOn(Add_Button);
+	
+			passed = action.waitFor(By.xpath("//*[text()='" + Note + "']"), 4, true);
+	
+			passed = action.clickOn(Back_Button);
+			
+		}
+		
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			action.waitFor(1);
+			passed = action.clickOn(Notes_ActionButton);
+	
+			passed = action.waitFor(QueryNotes_Input, 4, true);
+			passed = action.sendDataTo(QueryNotes_Input, Note);
+	
+			passed = action.clickOn(Add_Button);
+	
+			passed = action.waitFor(By.xpath("//*[text()='" + Note + "']"), 4, true);
+	
+			passed = action.clickOn(Back_Button);
+						
+		}
 
 		return passed;
 	}
@@ -274,7 +327,10 @@ public class CRMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 
-		action.waitFor(1);
+		if(action.countOf(Progress_ActionButton) > 0)
+		{
+		
+		action.waitFor(4);
 		passed = action.clickOn(Progress_ActionButton);
 
 		passed = action.waitFor(ProgressStatus_PanelHeader, 4, true);
@@ -288,6 +344,31 @@ public class CRMaintainQuery {
 		action.waitFor(2);
 
 		passed = action.clickOn(Accept_Button);
+		}
+
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			action.waitFor(4);
+			passed = action.clickOn(Progress_ActionButton);
+
+			passed = action.waitFor(ProgressStatus_PanelHeader, 4, true);
+
+			action.scrollDown();
+
+			passed = action.selectByPartialText(ProgressStatus_Select, Status);
+
+			this.SelectedQueryStatus = action.getSelectedOption(ProgressStatus_Select);
+
+			action.waitFor(2);
+
+			passed = action.clickOn(Accept_Button);
+			
+		}	
 
 		return passed;
 	}
@@ -296,6 +377,9 @@ public class CRMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 
+		if(action.countOf(RaiseAdjustment_ActionButton) > 0)
+		{
+		
 		passed = action.waitFor(RaiseAdjustment_ActionButton, 4, true);
 		passed = action.clickOn(RaiseAdjustment_ActionButton);
 
@@ -311,6 +395,31 @@ public class CRMaintainQuery {
 		passed = action.clickOn(Add_Button);
 		passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
 		passed = action.clickOn(CommonPanel.Accept_Button);
+		}
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			action.waitFor(1);	
+			passed = action.waitFor(RaiseAdjustment_ActionButton, 4, true);
+			passed = action.clickOn(RaiseAdjustment_ActionButton);
+
+			passed = action.waitFor(AdjustmentType_Select, 4, true);
+			passed = action.selectBy(AdjustmentType_Select, 1);
+
+			action.waitFor(4);
+
+			passed = action.sendDataTo(AdjustmentAmount_Input, "1.00");
+
+			action.waitFor(1);
+
+			passed = action.clickOn(Add_Button);
+			passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
+			passed = action.clickOn(CommonPanel.Accept_Button);
+		}
 
 		return passed;
 	}
@@ -319,16 +428,37 @@ public class CRMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 
-		passed = action.waitFor(AuthoriseAdjustment_ActionButton, 4, true);
-		passed = action.clickOn(AuthoriseAdjustment_ActionButton);
-
-		passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
-		passed = action.clickOn(CommonPanel.Accept_Button);
-
-		passed = action.waitFor(CommonPanel.popUp.popUpYes_Button, 4, true);
-		passed = action.clickOn(CommonPanel.popUp.popUpYes_Button);
-
+		if(action.countOf(RaiseAdjustment_ActionButton) > 0)
+		{
+		
+			passed = action.waitFor(AuthoriseAdjustment_ActionButton, 4, true);
+			passed = action.clickOn(AuthoriseAdjustment_ActionButton);
+	
+			passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
+			passed = action.clickOn(CommonPanel.Accept_Button);
+	
+			passed = action.waitFor(CommonPanel.popUp.popUpYes_Button, 4, true);
+			passed = action.clickOn(CommonPanel.popUp.popUpYes_Button);
+		}
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			action.waitFor(1);	
+			passed = action.waitFor(AuthoriseAdjustment_ActionButton, 4, true);
+			passed = action.clickOn(AuthoriseAdjustment_ActionButton);
+	
+			passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
+			passed = action.clickOn(CommonPanel.Accept_Button);
+	
+			passed = action.waitFor(CommonPanel.popUp.popUpYes_Button, 4, true);
+			passed = action.clickOn(CommonPanel.popUp.popUpYes_Button);
+		}
 		return passed;
+		
 	}
 
 	public boolean signOffQuery() {
@@ -345,7 +475,10 @@ public class CRMaintainQuery {
 		}
 
 		action.waitFor(2);
-
+		
+		if(action.countOf(SignOff_ActionButton) > 0)
+		{
+		
 		passed = action.waitFor(SignOff_ActionButton, 4, true);
 		passed = action.clickOn(SignOff_ActionButton);
 
@@ -356,6 +489,26 @@ public class CRMaintainQuery {
 
 		passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
 		passed = action.clickOn(CommonPanel.Accept_Button);
+		}
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			passed = action.waitFor(SignOff_ActionButton, 4, true);
+			passed = action.clickOn(SignOff_ActionButton);
+
+			passed = action.waitFor(CommonPanel.Accept_Button, 6, true);
+			passed = action.selectBy(Resolution_Select, 1);
+
+			action.waitFor(2);
+
+			passed = action.waitFor(CommonPanel.Accept_Button, 4, true);
+			passed = action.clickOn(CommonPanel.Accept_Button);
+		}	
+		
 
 		return passed;
 	}
@@ -364,14 +517,34 @@ public class CRMaintainQuery {
 		action.scrollUp();
 		boolean passed = false;
 
-		passed = action.clickOn(Bills_ActionButton);
-		passed = action.waitFor(ListOfBills_PanelHeader, 4, true);
-
-		passed = action.waitFor(Bills_Row, 2, true);
-		passed = action.clickOn(Bills_Row);
-
-		passed = action.waitFor(BillView_Panel, 20, true);
-
+		if(action.countOf(Bills_ActionButton) > 0)
+		{
+		
+			passed = action.clickOn(Bills_ActionButton);
+			passed = action.waitFor(ListOfBills_PanelHeader, 4, true);
+	
+			passed = action.waitFor(Bills_Row, 2, true);
+			passed = action.clickOn(Bills_Row);
+	
+			passed = action.waitFor(BillView_Panel, 20, true);
+		}
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			passed = action.clickOn(queryList);
+			passed = action.waitFor(Bills_ActionButton, 4, true);
+			passed = action.clickOn(Bills_ActionButton);
+			passed = action.waitFor(ListOfBills_PanelHeader, 4, true);
+	
+			passed = action.waitFor(Bills_Row, 2, true);
+			passed = action.clickOn(Bills_Row);
+	
+			passed = action.waitFor(BillView_Panel, 20, true);
+		}
+		
 		return passed;
 	}
 
