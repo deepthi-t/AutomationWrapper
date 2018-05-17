@@ -29,8 +29,19 @@ public class AddMore {
 	{
 		 boolean passed = false;
 		 
-		 passed = action.waitFor(ADSL_ActionButton, 5, true);
-		 passed = action.clickOn(ADSL_ActionButton);
+		 if(action.countOf(ADSL_ActionButton) > 0)
+		 {	
+			 action.waitFor(4);
+			 passed = action.waitFor(ADSL_ActionButton, 5, true);
+			 passed = action.clickOn(ADSL_ActionButton);
+		 }
+		 else
+		 {
+			 action.waitFor(4);
+			 passed = action.waitFor(ServicePackage_ActionButton, 5, true);
+			 passed = action.clickOn(ServicePackage_ActionButton);
+			 action.waitFor(4);
+		 }
 		 
 		 return passed;
 	}

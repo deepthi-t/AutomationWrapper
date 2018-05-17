@@ -234,7 +234,8 @@ public class ExistingCustomer {
 
 		if (action.getSelectedOption(ServicePackage_Select).contains("Select")) {
 			passed = action.selectByPartialText(ServiceType_Select, ServiceType);
-			action.waitFor(2);
+			action.waitFor(4);
+			passed = action.waitFor(ServicePackage_Select, 4, true);
 			passed = action.selectByPartialText(ServicePackage_Select, ServicePackage);
 		}
 
