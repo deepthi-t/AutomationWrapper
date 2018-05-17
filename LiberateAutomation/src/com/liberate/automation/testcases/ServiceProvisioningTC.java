@@ -46,7 +46,7 @@ public class ServiceProvisioningTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void newCustomerPEL() {
 		testCase = "ServiceProvisioningTC_newCustomerPEL";
 
@@ -105,7 +105,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void existingCustomerPEL() {
 		testCase = "ServiceProvisioningTC_existingCustomerPEL";
 
@@ -147,7 +147,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void existingCustomerPCLPostpaid() {
 		testCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
 
@@ -188,7 +188,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void newCustomerPCLPostpaid() {
 		testCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
 
@@ -245,7 +245,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void newCustomerPCLCreditLimit() {
 		testCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
 
@@ -300,7 +300,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void existingCustomerPDL() {
 		testCase = "ServiceProvisioningTC_existingCustomerPDL";
 
@@ -336,7 +336,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void existingCustomerPTV() {
 		testCase = "ServiceProvisioningTC_existingCustomerPTV";
 
@@ -374,7 +374,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void existingCustomerIPTV() {
 		testCase = "ServiceProvisioningTC_existingCustomerIPTV";
 
@@ -449,7 +449,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void newCustomerPELandPDL() {
 		testCase = "ServiceProvisioningTC_newCustomerPELandPDL";
 
@@ -521,7 +521,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public static void addMorePELandPDL() {
 		testCase = "ServiceProvisioningTC_addMorePELandPDL";
 

@@ -139,8 +139,9 @@ public class ExistingCustomer {
 
 		passed = action.waitFor(AccountNumber_Input, 4, true);
 		passed = action.clearField(AccountNumber_Input);
-		passed = action.waitFor(AccountNumber_Input, 2, true);
+		passed = action.waitFor(AccountNumber_Input, 4, true);
 		passed = action.sendDataTo(AccountNumber_Input, AccountNumber);
+		passed = action.waitFor(4);
 		this.AccountNumber = AccountNumber;
 
 		passed = action.clickOn(CommonPanel.Search_Button);
