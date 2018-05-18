@@ -80,6 +80,7 @@ public class ExistingCustomer {
 
 	By Deallocate_Button = By.xpath("//input[@value='Deallocate' and @class='iceCmdBtn cmdBtn']");
 	By Find_Button = By.xpath("//input[@value='Find']");
+	By Allocate_Button = By.xpath("//input[@value='Allocate']");
 
 	By ServiceUsage_Select = By.xpath("//*[text()='Service Usage:']//following::select[1]");
 	By ChargeOption_Select = By.xpath("//*[text()='Charge Option:']//following::select[1]");
@@ -140,6 +141,7 @@ public class ExistingCustomer {
 		passed = action.waitFor(AccountNumber_Input, 4, true);
 		passed = action.clearField(AccountNumber_Input);
 		passed = action.waitFor(AccountNumber_Input, 4, true);
+		passed = action.waitFor(4);
 		passed = action.sendDataTo(AccountNumber_Input, AccountNumber);
 		passed = action.waitFor(4);
 		this.AccountNumber = AccountNumber;
@@ -401,7 +403,8 @@ public class ExistingCustomer {
 
 		passed = action.waitFor(ServiceDetails_PanelHeader, 4, true);
 
-		if (action.countOf(Deallocate_Button) == 0) {
+		if (action.countOf(Deallocate_Button) == 0) 
+		{
 			passed = action.selectByPartialText(Exchange_Select, Exchange);
 			passed = action.waitFor(NumberAreaDisabled_Select, 4, false);
 			action.waitFor(1);
@@ -409,11 +412,13 @@ public class ExistingCustomer {
 
 			if (!action.getSelectedOption(ServiceNumberAllocation_Select).contains("Auto")) {
 				passed = action.selectByPartialText(ServiceNumberAllocation_Select, "Auto");
-			} else {
+			} 
+			else 
+			{
+				passed = action.waitFor(4);
 				passed = action.clickOn(Find_Button);
 			}
 		}
-
 		passed = action.waitFor(Deallocate_Button, 4, true);
 
 		if (action.countOf(LookUp_Button) == 1) {
@@ -454,6 +459,91 @@ public class ExistingCustomer {
 		return passed;
 	}
 
+//	public boolean serviceDetailsScreenPDLExistingCust(String Exchange, String NumberArea) {
+//		boolean passed = false;
+//
+//		By SIM_Select = By.xpath("//*[text()='SIM:']//following::select[1]");
+//		By LookUp_Button = By.xpath("//input[@value='Look Up']");
+//		By SIMSearch_Message = By.xpath("//*[text()='More Numbers exist matching the details entered']");
+//		By UserName_Input = By.xpath("(//*[text()='User Name:']//following::input)[1]");
+//		By PIN_Input = By.xpath("(//*[text()='PIN:']//following::input)[1]");
+//
+//		passed = action.waitFor(ServiceDetails_PanelHeader, 4, true);
+//
+//		if (action.countOf(Deallocate_Button) == 0) {
+//			passed = action.selectByPartialText(Exchange_Select, Exchange);
+//			passed = action.waitFor(NumberAreaDisabled_Select, 4, false);
+//			action.waitFor(1);
+//			passed = action.selectByPartialText(NumberArea_Select, NumberArea);
+//
+//			if (!action.getSelectedOption(ServiceNumberAllocation_Select).contains("Auto")) {
+//				passed = action.selectByPartialText(ServiceNumberAllocation_Select, "Auto");
+//			} 
+//			else 
+//			{
+//				passed = action.waitFor(4);
+//				passed = action.clickOn(Find_Button);
+//				
+//			}
+//		}
+//		passed = action.waitFor(Deallocate_Button, 4, true);
+//
+//		if (action.countOf(LookUp_Button) == 1) {
+//			action.clickOn(LookUp_Button);
+//			action.waitFor(SIMSearch_Message, 4, true);
+//			action.waitFor(1);
+//			action.selectBy(SIM_Select, 8);
+//			action.waitFor(2);
+//		}
+//
+//		if (action.countOf(UserName_Input) == 1) {
+//			passed = action.sendDataTo(UserName_Input, random.nextString().substring(0, 8).toUpperCase());
+//		}
+//		if (action.countOf(PIN_Input) == 1) {
+//			action.clickOn(PIN_Input);
+//			action.waitFor(2);
+//			passed = action.sendDataTo(PIN_Input, "4545");
+//		}
+//		if (action.countOf(ServiceUsage_Select) == 1) {
+//			passed = action.selectByPartialText(ServiceUsage_Select, "V-");
+//		}
+//		if (action.countOf(ChargeOption_Select) == 1) {
+//			passed = action.selectBy(ChargeOption_Select, 2);
+//		}
+//
+//		action.waitFor(1);
+//
+//		passed = action.clickOn(SameAccountAddress_CheckBox);
+//		passed = action.waitFor(AddressType_Label, 4, false);
+//
+//		action.waitFor(1);
+//
+//		addCreditLimit();
+//
+//		action.waitFor(1);
+//
+//		return passed;
+//	}
+//	
+//	public boolean serviceForPDLExistingCust()
+//	{
+//		boolean passed = false;
+//		
+//		By ServiceNumber_Select = By.xpath("//*[text() = 'Service Number:']//following::select[1]");
+//		
+//		passed = action.waitFor(4);
+//		passed = action.clickOn(Find_Button);
+//		passed = action.waitFor(ServiceNumber_Select, 4, true);
+//		passed = action.selectBy(ServiceNumber_Select, 2);
+//		passed = action.waitFor(Allocate_Button, 4, true);
+//		passed = action.clickOn(Allocate_Button);
+//		
+//		action.waitFor(1);
+//		action.clickOn(Proceed_Button);
+//		
+//		return passed;
+//	}
+//	
 	public boolean processServiceDetailsScreenLimelite(String Exchange, String NumberArea) {
 		boolean passed = false;
 		By SIM_Select = By.xpath("//*[text()='SIM:']//following::select[1]");
@@ -613,7 +703,8 @@ public class ExistingCustomer {
 				.xpath("//*[text()[contains(.,'Do you want to provide')]]/following::input[@value='No']");
 
 		boolean passed = false;
-
+		
+		passed = action.waitFor(4);
 		if (action.countOf(ProvideLinkedService_PopUpMsg) > 0) {
 			action.clickOn(ProvideLinkedService_PopUpMsg);
 		}
