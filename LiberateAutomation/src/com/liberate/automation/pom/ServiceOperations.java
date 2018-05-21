@@ -87,6 +87,9 @@ public class ServiceOperations {
 
 	// Cease multiple services action button
 	By ceasemultipleservices_ActionButton = By.xpath("//*[text()='Cease Multiple Services']");
+	
+	//Change Handset action button
+		By chnageHandset_ActionButton = By.xpath("//*[text()='Change Handset']");
 
 	public ServiceOperations(TestActions action) {
 		this.action = action;
@@ -449,4 +452,19 @@ public class ServiceOperations {
 
 		return passed;
 	}
+	
+	//method to click on Change Handset action button
+		public boolean clickonchangehandset() {
+			boolean passed = false;
+			
+			action.waitFor(Change_ActionButton, 5, true);
+			action.clickOn(Change_ActionButton);
+			action.waitFor(1);
+			action.moveMouseAwayFromScreen();
+			action.waitFor(chnageHandset_ActionButton, 5, true);
+			action.clickOn(chnageHandset_ActionButton);
+			action.waitFor(1);
+			
+			return passed;
+		}
 }
