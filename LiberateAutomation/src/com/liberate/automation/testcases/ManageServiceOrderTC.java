@@ -106,7 +106,7 @@ public class ManageServiceOrderTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test (priority = 0)
+	@Test(priority = 0)
 	public static void soEnquiry() {
 		testCase = "ManageServiceOrder_soEnquiry";
 
@@ -120,7 +120,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test (priority = 1)
+	@Test(priority = 1)
 	public static void addSpecialInstructions() {
 		testCase = "ManageServiceOrder_addSpecialInstructions";
 
@@ -149,7 +149,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test (priority = 2)
+	@Test(priority = 2)
 	public static void addServiceCharge() {
 		testCase = "ManageServiceOrder_addServiceCharge";
 
@@ -167,7 +167,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test (priority = 3)
+	@Test(priority = 3)
 	public static void removeServiceCharge() {
 		testCase = "ManageServiceOrder_removeServiceCharge";
 
@@ -185,7 +185,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test (priority = 4) 
+	@Test(priority = 4) 
 	public static void cancelServiceOrder() {
 		testCase = "ManageServiceOrder_cancelServiceOrder";
 
@@ -213,7 +213,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test (priority = 5)
+	@Test(priority = 5)
 	public static void generalSignOffServiceOrder() {
 		testCase = "ManageServiceOrder_generalSignOffServiceOrder";
 
@@ -253,7 +253,7 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder("RSSOF", RejectSO);
+		mss.searchServiceOrder("AQSOF", RejectSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -261,7 +261,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 11)
+	@Test(priority = 9)
 	public static void releaseServiceOrder() {
 		testCase = "ManageServiceOrder_releaseServiceOrder";
 
@@ -277,7 +277,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 10)
 	public static void waitlistServiceOrder() {
 		testCase = "ManageServiceOrder_waitlistServiceOrder";
 
@@ -293,7 +293,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 11)
 	public static void manualWaitlistReleaseServiceOrder() {
 		testCase = "ManageServiceOrder_manualWaitlistReleaseServiceOrder";
 
@@ -301,7 +301,7 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder(GeneralDepartment, ManualWaitlistSO);
+		mss.searchServiceOrder(AccountsDepartment, ManualWaitlistSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -309,7 +309,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 8)
 	public static void suspendSeviceOrder() {
 		testCase = "ManageServiceOrder_suspendSeviceOrder";
 
@@ -349,7 +349,7 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder(GeneralDepartment, AssignSO);
+		mss.searchServiceOrder(AccountsDepartment, AssignSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
@@ -397,9 +397,9 @@ public class ManageServiceOrderTC {
 
 		arso.navigate();
 		action.getScreenShot(testCase);
-		arso.searchServiceOrder("BGNET", RouteSO);
+		arso.searchServiceOrder("RSNET", RouteSO);
 		action.getScreenShot(testCase);
-		arso.allocateAuto(CommonData.PlantItemType.CopperDP, "DP100");
+		arso.allocateAuto(CommonData.PlantItemType.CopperDP, "DP900");
 		action.getScreenShot(testCase);
 		arso.verifyAutoAllocateRoute();
 		action.getScreenShot(testCase);
@@ -413,7 +413,7 @@ public class ManageServiceOrderTC {
 
 		arso.navigate();
 		action.getScreenShot(testCase);
-		arso.searchServiceOrder("BGNET", "A00528F");
+		arso.searchServiceOrder("RSNET", "WK00226");
 		action.getScreenShot(testCase);
 		arso.allocateManual(plantDP, plantCAB, plantMDF, terminal);
 		action.getScreenShot(testCase);
