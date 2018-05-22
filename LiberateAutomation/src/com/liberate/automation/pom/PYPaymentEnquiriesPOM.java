@@ -117,12 +117,22 @@ public class PYPaymentEnquiriesPOM
 	*/
 	public boolean paymentEnquiryWithServiceOrderNo(String ServiceOrderNumber) 
 	{
+		By paymentrecordSelection = By.xpath("(//*[@class='iceOutTxt'])[3]");
+		By DetailButton_enabled = By.xpath("//*[@value='Details']");
+		
 		boolean passed = false;
 
 			passed = action.waitFor(SearchButton, 4, true);
 			passed = action.sendDataTo(SearchServiceOrderNumber_InputField, ServiceOrderNumber);
 			passed = action.waitFor(SearchButton, 4, true);
 			passed = action.clickOn(SearchButton);
+			passed = action.waitFor(4);
+			passed = action.waitFor(paymentrecordSelection, 4, true);
+			passed = action.clickOn(paymentrecordSelection);
+			passed = action.waitFor(4);
+			passed = action.waitFor(DetailButton_enabled, 5, true);
+			passed = action.clickOn(DetailButton_enabled);
+			passed = action.waitFor(4);			
 
 		return passed;
 	}

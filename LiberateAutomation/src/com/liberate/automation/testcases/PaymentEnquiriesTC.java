@@ -54,4 +54,25 @@ public class PaymentEnquiriesTC {
 			System.out.println("Test failed");
 		}
 	}
+	
+	@Test
+	public static void searchWithserviceOrderNumber() {
+		testCase = "PaymentEnquiries_searchWithAccountNumber";
+
+		PYPaymentEnquiriesPOM pe = new PYPaymentEnquiriesPOM(action);
+
+		action.getScreenShot(testCase);
+		assertEquals(pe.navigate(), true);
+		action.getScreenShot(testCase);
+		assertEquals(pe.paymentEnquiryWithServiceOrderNo("UC00790"), true);
+		action.getScreenShot(testCase);
+		String servOrderNum = action.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]/span"));
+		action.getScreenShot(testCase);
+		System.out.println("Searched Service order number is" + " " + servOrderNum);
+		if (servOrderNum.equals("9268522")) {
+			System.out.println("Test passed");
+		} else {
+			System.out.println("Test failed");
+		}
+	}
 }
