@@ -40,7 +40,7 @@ public class SanityTestCases
 	@BeforeClass
 	public static void loadData() {
 		dataMap = ExcelDataDriver.loadData();
-		
+	}
 	/**
 	 * Private constructor to disable creation of object
 	 */
@@ -195,7 +195,7 @@ public class SanityTestCases
 		service.clickOnAlterServiceNumber();
 		action.getScreenShot(testCase);
 
-		asn.selectDepartmentSite(salesDepartment, site);
+		asn.selectDepartmentSite("salesDepartment", "site");
 		action.getScreenShot(testCase);
 		asn.alterServiceNumber(false);
 		action.getScreenShot(testCase);
