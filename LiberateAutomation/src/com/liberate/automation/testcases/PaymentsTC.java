@@ -53,7 +53,7 @@ public class PaymentsTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 0)
 	public static void batchPayment() {
 		testCase = "PaymentsTC_batchPayment";
 
@@ -77,7 +77,7 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 5)
 	public static void verifyCashDrawer() {
 		testCase = "PaymentsTC_verifyCashDrawer";
 
@@ -95,7 +95,7 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 1)
 	public static void singlePaymentAccountNumber() {
 		testCase = "PaymentsTC_singlePaymentAccountNumber";
 
@@ -131,7 +131,7 @@ public class PaymentsTC {
 
 		sp.navigate();
 		action.getScreenShot(testCase);
-		sp.searchWithAccountNumber("260002230000");
+		sp.searchWithAccountNumber("260002260000");
 		action.getScreenShot(testCase);
 		sp.doDepositPayment("10.00");
 		action.getScreenShot(testCase);
@@ -153,7 +153,7 @@ public class PaymentsTC {
 
 		sp.navigate();
 		action.getScreenShot(testCase);
-		sp.searchWithServiceNumber("4747623");
+		sp.searchWithServiceNumber("2050587");
 		action.getScreenShot(testCase);
 		sp.doSinglePayment("10.00");
 		action.getScreenShot(testCase);
@@ -175,7 +175,7 @@ public class PaymentsTC {
 
 		sp.navigate();
 		action.getScreenShot(testCase);
-		sp.searchWithServiceNumber("556166");
+		sp.searchWithServiceNumber("2050587");
 		action.getScreenShot(testCase);
 		sp.doDepositPayment("10.00");
 		action.getScreenShot(testCase);
@@ -183,7 +183,7 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 4)
+	@Test(enabled = false)
 	public static void payAndRefundDeposit() {
 		testCase = "PaymentsTC_payAndRefundDeposit";
 
@@ -194,7 +194,7 @@ public class PaymentsTC {
 
 		cr.navigate();
 		action.getScreenShot(testCase);
-		cr.searchByAccountNumber("260002280000");
+		cr.searchByAccountNumber("260002260000");
 		action.getScreenShot(testCase);
 
 		cd.navigate();
@@ -213,7 +213,7 @@ public class PaymentsTC {
 
 		sp.navigate();
 		action.getScreenShot(testCase);
-		sp.searchWithAccountNumber("260002280000");
+		sp.searchWithAccountNumber("260002260000");
 		action.getScreenShot(testCase);
 		sp.doDepositPayment("10.00");
 		action.getScreenShot(testCase);
@@ -222,7 +222,7 @@ public class PaymentsTC {
 
 		cr.navigate();
 		action.getScreenShot(testCase);
-		cr.searchByAccountNumber("260002280000");
+		cr.searchByAccountNumber("260002260000");
 		action.getScreenShot(testCase);
 
 		cd.navigate();
@@ -233,7 +233,7 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 2)
 	public static void voidPayment() {
 		testCase = "VoidPayments_voidPayment";
 
@@ -241,7 +241,7 @@ public class PaymentsTC {
 
 		assertEquals(vp.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(vp.PaymentNumber("9320148"), true);
+		assertEquals(vp.PaymentNumber("3136581"), true);
 		action.getScreenShot(testCase);
 		assertEquals(vp.Search(), true);
 		action.getScreenShot(testCase);
@@ -261,7 +261,7 @@ public class PaymentsTC {
 
 		cr.navigate();
 		action.getScreenShot(testCase);
-		cr.searchByAccountNumber("260002280000");
+		cr.searchByAccountNumber("260002260000");
 		action.getScreenShot(testCase);
 
 		cd.navigate();
@@ -309,7 +309,7 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 4)
 	public static void badCheckProcessing() {
 		testCase = "BadChequeProcessing_badCheckProcessing";
 
@@ -317,7 +317,7 @@ public class PaymentsTC {
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(bcp.SearchWithPaymentNumber(badChequePaymentNumber), true);
+		assertEquals(bcp.SearchWithPaymentNumber("9322886"), true);
 		action.getScreenShot(testCase);
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot(testCase);

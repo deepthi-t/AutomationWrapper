@@ -5,7 +5,7 @@
 	<test name="Regression">
 		<classes>
 			<class name="com.liberate.automation.testcases.CommonLogin" />
-			<class name="com.liberate.automation.testcases.ExchangeSignoffTC" />
+			<class name="com.liberate.automation.testcases.PaymentsTC" />
 		</classes>
 	</test>
 </suite>
