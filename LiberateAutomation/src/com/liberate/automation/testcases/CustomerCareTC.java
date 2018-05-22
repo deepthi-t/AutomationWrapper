@@ -2,11 +2,15 @@ package com.liberate.automation.testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.Map;
+
+import org.apache.commons.collections4.map.HashedMap;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestData;
 import com.liberate.automation.core.TestResult;
@@ -33,31 +37,44 @@ public class CustomerCareTC {
 	static String testCase;
 	static String testStatus;
 
-	static String accountNumber = "";
-	static String salesDepartment = "";
-	static String site = "";
-	static String transferToAccount = "";
-	static String transferFromAccount = "";
-	static String suspendedService = "";
-	static String serviceASNCease = "";
-	static String serviceCease = "";
+	static Map<String, String> dataMap = new HashedMap<>();
 
+	static String accountNumber;
+	static String salesDepartment;
+	static String site;
+	static String transferToAccount;
+	static String transferFromAccount;
+	static String suspendedService;
+	static String serviceASNCease;
+	static String serviceCease;
+	static String ceaseServiceWithCharge;
+	static String verifyProductsAccountNumber;
+	static String CloneCustaccountNumber;
+	
 	/**
 	 * Private constructor to disable creation of object
 	 */
 	private CustomerCareTC() {
 	}
 
+	
 	@BeforeClass
 	public static void loadData() {
-		accountNumber = TestData.accountNumber;
-		salesDepartment = TestData.salesDepartment;
-		site = TestData.site;
-		transferToAccount = TestData.transferToAccount;
-		transferFromAccount = TestData.transferFromAccount;
-		suspendedService = TestData.suspendedService;
-		serviceASNCease = TestData.serviceASNCease;
-		serviceCease = TestData.serviceCease;
+		dataMap = ExcelDataDriver.loadData();
+		accountNumber = dataMap.get("accountNumber");
+		salesDepartment = dataMap.get("salesDepartment");
+		site = dataMap.get("Site");
+		transferToAccount = dataMap.get("transferToAccount");
+		transferFromAccount = dataMap.get("transferFromAccount");
+		suspendedService = dataMap.get("suspendedService");
+		serviceASNCease = dataMap.get("serviceASNCease");
+		serviceCease = dataMap.get("serviceCease");
+		ceaseServiceWithCharge = dataMap.get("ceaseServiceWithCharge");
+		verifyProductsAccountNumber = dataMap.get("verifyProductsAccountNumber");
+		CloneCustaccountNumber = dataMap.get("CloneCustaccountNumber");
+		
+		
+		
 	}
 
 	@AfterMethod
@@ -65,7 +82,7 @@ public class CustomerCareTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test
+	@Test(priority = 0)
 	public static void generateInterimBill() {
 		testCase = "CustomerCareTC_generateInterimBill";
 
@@ -79,7 +96,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 1)
 	public static void transferService() {
 		testCase = "CustomerCareTC_transferService";
 
@@ -102,7 +119,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public static void suspendService() {
 		testCase = "CustomerCareTC_suspendService";
 
@@ -138,7 +155,7 @@ public class CustomerCareTC {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public static void restoreService() {
 		testCase = "CustomerCareTC_restoreService";
 
@@ -173,7 +190,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public static void alterServiceNumberPCL() {
 		testCase = "CustomerCareTC_alterServiceNumberPCL";
 
@@ -208,7 +225,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public static void alterServiceNumberPCLServiceCharge() {
 		testCase = "CustomerCareTC_alterServiceNumberPCLServiceCharge";
 
@@ -244,7 +261,7 @@ public class CustomerCareTC {
 		ManageServiceOrderTC.signOffCompletely(serviceOrder.getSONumber());
 	}
 
-	// @Test(priority = 5)
+	@Test(priority = 6)
 	public static void ceaseServiceNumberPCL() {
 		testCase = "CustomerCareTC_ceaseServiceNumberPCL";
 
@@ -256,7 +273,7 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByServiceNumber(serviceASNCease);
+		search.searchByServiceNumber(serviceCease);
 		action.getScreenShot(testCase);
 
 		service.navigate();
@@ -278,7 +295,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	// @Test(priority = 0)
+	@Test(priority = 7)
 	public static void ceaseServiceNumberPCLServiceCharge() {
 		testCase = "CustomerCareTC_ceaseServiceNumberPCLServiceCharge";
 
@@ -289,7 +306,7 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByServiceNumber(serviceCease);
+		search.searchByServiceNumber(ceaseServiceWithCharge);
 		action.getScreenShot(testCase);
 
 		service.navigate();
@@ -318,7 +335,7 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByAccountNumber(transferToAccount);
+		search.searchByAccountNumber(verifyProductsAccountNumber);
 		action.getScreenShot(testCase);
 
 		service.navigate();
@@ -330,7 +347,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 9)
 	public static void provideProduct() {
 		testCase = "CustomerCareTC_provideProduct";
 
@@ -365,7 +382,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 10)
 	public static void ceaseProduct() {
 		testCase = "CustomerCareTC_ceaseProduct";
 
@@ -397,6 +414,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
+	@Test(priority = 11)
 	public static void cloneCustomer() {
 		testCase = "CustomerCareTC_cloneCustomer";
 
@@ -406,10 +424,10 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByAccountNumber(accountNumber);
+		search.searchByAccountNumber(CloneCustaccountNumber);
 		action.getScreenShot(testCase);
 
-		dashboard.verifyDashBoard(accountNumber);
+		dashboard.verifyDashBoard(CloneCustaccountNumber);
 		action.getScreenShot(testCase);
 
 		accountDetails.navigate();
@@ -420,7 +438,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 12)
 	public static void cloneAccount() {
 		testCase = "CustomerCareTC_cloneAccount";
 
@@ -430,10 +448,10 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByAccountNumber(accountNumber);
+		search.searchByAccountNumber(CloneCustaccountNumber);
 		action.getScreenShot(testCase);
 
-		dashboard.verifyDashBoard(accountNumber);
+		dashboard.verifyDashBoard(CloneCustaccountNumber);
 		action.getScreenShot(testCase);
 
 		accountDetails.navigate();
@@ -444,7 +462,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 13)
 	public static void createSubAccount() {
 		testCase = "CustomerCareTC_createSubAccount";
 
@@ -454,10 +472,10 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByAccountNumber(accountNumber);
+		search.searchByAccountNumber(CloneCustaccountNumber);
 		action.getScreenShot(testCase);
 
-		dashboard.verifyDashBoard(accountNumber);
+		dashboard.verifyDashBoard(CloneCustaccountNumber);
 		action.getScreenShot(testCase);
 
 		accountDetails.navigate();
