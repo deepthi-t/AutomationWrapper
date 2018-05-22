@@ -36,6 +36,7 @@ public class PaymentsTC {
 
 	static Map<String, String> data = new HashedMap<>();
 	static String badChequePaymentNumber = "";
+	static String AccountNumberWithBills;
 
 	/**
 	 * Private constructor to disable creation of object
@@ -46,6 +47,7 @@ public class PaymentsTC {
 	@BeforeClass
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
+		AccountNumberWithBills = data.get("AccountNumberWithBills");
 	}
 
 	@AfterMethod
@@ -110,6 +112,28 @@ public class PaymentsTC {
 		sp.navigate();
 		action.getScreenShot(testCase);
 		sp.searchWithAccountNumber("260002230000");
+		action.getScreenShot(testCase);
+		sp.doSinglePayment("10.00");
+		action.getScreenShot(testCase);
+		sp.verifySuccessMessage();
+		action.getScreenShot(testCase);
+	}
+	
+	@Test
+	public static void payingBillAgainstPaymentAccount() {
+		testCase = "PaymentsTC_payingBillAgainstPaymentAccount";
+
+		PYSinglePayment sp = new PYSinglePayment(action);
+		BrowseServiceOrder bso = new BrowseServiceOrder(action);
+
+		bso.navigate();
+		action.getScreenShot(testCase);
+		bso.selectDepartment("CASH4");
+		action.getScreenShot(testCase);
+
+		sp.navigate();
+		action.getScreenShot(testCase);
+		sp.searchWithAccountNumber(AccountNumberWithBills);
 		action.getScreenShot(testCase);
 		sp.doSinglePayment("10.00");
 		action.getScreenShot(testCase);
