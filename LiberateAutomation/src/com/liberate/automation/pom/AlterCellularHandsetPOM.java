@@ -30,16 +30,16 @@ public class AlterCellularHandsetPOM {
 		String productcodeselected=action.getTextFromPage(productcodeselected_text);
 		String productcode= productcodeselected.split("-")[0];
 		
-		if(handsetnumber.equals(productcode)) {
+		/*if(handsetnumber.equals(productcode)) {
 		passed = action.selectBy(productcode_select, 2);
 		passed = action.waitFor(accept_button,4,true);
 		passed = action.clickOn(accept_button);
 		}
 		
-		else {
+		else {*/
 		passed = action.waitFor(accept_button,4,true);
 		passed = action.clickOn(accept_button);
-		}
+		//}
 		
 		passed = action.waitFor(success_message,20,true);
 		return passed;

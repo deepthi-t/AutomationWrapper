@@ -34,21 +34,21 @@ public class PaymentEnquiriesTC {
 	}
 
 	@Test
-	public static void searchWithAccountNumber() {
-		testCase = "PaymentEnquiries_searchWithAccountNumber";
+	public static void searchWithPaymentNumber() {
+		testCase = "PaymentEnquiries_searchWithPaymentNumber";
 
 		PYPaymentEnquiriesPOM pe = new PYPaymentEnquiriesPOM(action);
 
 		action.getScreenShot(testCase);
 		assertEquals(pe.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(pe.paymentEnquiryWithAccountNumber("260002280000"), true);
+		assertEquals(pe.paymentEnquiryWithPaymentNo("3398182"), true);
 		action.getScreenShot(testCase);
 		String acctnum = action
 				.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]"));
 		action.getScreenShot(testCase);
 		System.out.println("Searched Account number is" + " " + acctnum);
-		if (acctnum.equals("260002280000")) {
+		if (acctnum.equals("3398182")) {
 			System.out.println("Test passed");
 		} else {
 			System.out.println("Test failed");

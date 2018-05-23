@@ -317,7 +317,7 @@ public class PaymentsTC {
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(bcp.SearchWithPaymentNumber(badChequePaymentNumber), true);
+		assertEquals(bcp.SearchWithPaymentNumber("9322886"), true);
 		action.getScreenShot(testCase);
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot(testCase);
