@@ -116,15 +116,88 @@ public class PYBadCheckProcessing {
 
 		return passed;
 	}
+	
+	
+	public boolean provideBadCheckDetails()
+	{
+		boolean passed = false;
+		
+		By Amount = By.xpath("(//*[text()='Amount:']//following::span)[1]");
+		By ApportionAmount_input = By.xpath("//*[text()='Apportion']//following::input[1]");
+		
+		
+		passed = action.waitFor(4);
+		String amount = action.getTextFromPage(Amount);
+		
+		passed = action.waitFor(Reason_DropDowmn, 2, true);
+
+		if (action.countOf(ChequeCardDisabled_Input) == 0) {
+			passed = action.sendDataTo(ChequeCard_Input, "3123342242124124");
+		}
+
+		passed = action.selectBy(Reason_DropDowmn, 1);
+		action.waitFor(1);
+		passed = action.clearField(ApportionAmount_input);
+		passed = action.waitFor(2);
+		passed = action.sendDataTo(ApportionAmount_input, amount);
+		
+		passed = action.waitFor(4);
+		passed = action.clickOn(Accept_Button);
+
+		return passed;		
+		
+		
+	}
 
 	public boolean acceptBadChequeProcessing() {
 		boolean passed = false;
 
 		passed = action.waitFor(ReasonDisabled_DropDown, 3, true);
 		action.waitFor(2);
+		
+		if (action.countOf(Accept_Button) > 0)
 		passed = action.clickOn(Accept_Button);
 
 		return passed;
 	}
+	
+	public boolean acceptTwoBadChequeProcessing() {
+		boolean passed = false;
+		By Accept2_Button = By.xpath("(//input[@value = 'Accept'])[2]");
+		passed = action.waitFor(ReasonDisabled_DropDown, 3, true);
+		action.waitFor(4);
+		
+		if (action.countOf(Accept2_Button) > 0)
+		passed = action.clickOn(Accept2_Button);
+
+		return passed;
+	}
+	public boolean successMsgBadCheckProcess()
+	{
+		boolean passed = false;
+		String SuccessMsg = "Cheque Returned Successfully";
+		String ActualMsg = "";
+		passed = action.waitFor(4);
+		ActualMsg = action.getTextFromPage(By.xpath("//*[@class='iceMsgError']"));
+		passed = action.waitFor(2);
+		
+		passed = ActualMsg.contains(SuccessMsg);
+		System.out.println("Cheque Returned Successfully");
+		
+		
+		return passed;
+		
+	}
+	public boolean badCheckProcessFinal()
+	{
+		boolean passed = false;
+		By Ok_button = By.xpath("//*[@value='OK']");
+		passed = action.clickOn(Ok_button);
+		passed = action.waitFor(2);
+				
+		
+		return passed;
+	}
+	
 
 }

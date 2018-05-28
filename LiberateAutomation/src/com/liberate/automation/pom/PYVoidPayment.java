@@ -141,6 +141,18 @@ public class PYVoidPayment {
 
 		return passed;
 	}
+	
+	public boolean voidProcessFinal()
+	{
+		boolean passed = false;
+		By Ok_button = By.xpath("//*[text()='OK']");
+		passed = action.waitFor(4);
+		passed = action.clickOn(Ok_button);
+		passed = action.waitFor(2);
+				
+		
+		return passed;
+	}
 
 	/***
 	 * The method to Cancel the void reason in void payment screen
