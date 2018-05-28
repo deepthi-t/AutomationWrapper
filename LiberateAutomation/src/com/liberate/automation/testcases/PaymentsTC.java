@@ -265,12 +265,14 @@ public class PaymentsTC {
 
 		assertEquals(vp.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(vp.PaymentNumber("3136581"), true);
+		assertEquals(vp.PaymentNumber("9323132"), true);
 		action.getScreenShot(testCase);
 		assertEquals(vp.Search(), true);
 		action.getScreenShot(testCase);
 		assertEquals(vp.EnterVoidReason("3"), true);
 		assertEquals(vp.Accept(), true);
+		action.getScreenShot(testCase);
+		assertEquals(vp.voidProcessFinal(), true);
 		action.getScreenShot(testCase);
 	}
 
@@ -341,13 +343,22 @@ public class PaymentsTC {
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(bcp.SearchWithPaymentNumber("9322886"), true);
+		assertEquals(bcp.SearchWithPaymentNumber("9318224"), true);
 		action.getScreenShot(testCase);
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot(testCase);
-		assertEquals(bcp.provideChequeCardDetails(), true);
+		assertEquals(bcp.provideBadCheckDetails(), true);
 		action.getScreenShot(testCase);
 		assertEquals(bcp.acceptBadChequeProcessing(), true);
 		action.getScreenShot(testCase);
+		assertEquals(bcp.acceptTwoBadChequeProcessing(), true);
+		action.getScreenShot(testCase);
+		assertEquals(bcp.acceptBadChequeProcessing(), true);
+		action.getScreenShot(testCase);
+		assertEquals(bcp.successMsgBadCheckProcess(), true);
+		action.getScreenShot(testCase);
+		assertEquals(bcp.badCheckProcessFinal(), true);
+		action.getScreenShot(testCase);
+		
 	}
 }
