@@ -21,6 +21,7 @@ import com.liberate.automation.pom.AlterServiceNumber;
 import com.liberate.automation.pom.BrowseServiceOrder;
 import com.liberate.automation.pom.CRCustomerSearch;
 import com.liberate.automation.pom.CRMaintainQuery;
+import com.liberate.automation.pom.CUG_POM;
 import com.liberate.automation.pom.CeaseService;
 import com.liberate.automation.pom.CustomerServiceOrder;
 import com.liberate.automation.pom.ExistingCustomer;
@@ -48,6 +49,7 @@ public class SanityTestCases
 	static String Sanity_serviceCease;
 	static String Sanity_queryAccountNumber;
 	static String Sanity_manageQueryNumber;
+	static String sanity_CUGPCLWorkingServiceNum;
 	
 	
 	
@@ -62,6 +64,7 @@ public class SanityTestCases
 		Sanity_serviceCease = dataMap.get("Sanity_serviceCease");
 		Sanity_queryAccountNumber = dataMap.get("Sanity_queryAccountNumber");
 		Sanity_manageQueryNumber = dataMap.get("Sanity_manageQueryNumber");
+		sanity_CUGPCLWorkingServiceNum = dataMap.get("sanity_CUGPCLWorkingServiceNum");
 	}
 	/**
 	 * Private constructor to disable creation of object
@@ -500,5 +503,37 @@ public class SanityTestCases
 		sp.verifySuccessMessage();
 		action.getScreenShot(testCase);
 	}
+	
+	@Test
+	public static void sanityCUG_Test() 
+	{
+		testCase = "CUGTesting_Sanity";
+
+		CUG_POM cug = new CUG_POM(action);
+		RandomData random = new RandomData();
+		
+		cug.navigation_CUG();
+		action.getScreenShot(testCase);
+		cug.newCUG_Click();
+		action.getScreenShot(testCase);
+		String x = random.nextString().substring(4);
+		assertEquals(cug.provideCUGDetails(x), true);
+		action.getScreenShot(testCase);
+		cug.CUGNewSuccessMsg();
+		action.getScreenShot(testCase);
+		cug.searchCreatedCUG(x);
+		action.getScreenShot(testCase);
+		cug.clickServiceTab();
+		action.getScreenShot(testCase);		
+		cug.provideServiceForCreatedCUG(sanity_CUGPCLWorkingServiceNum);
+		action.getScreenShot(testCase);
+		cug.clickOkButton();
+		action.getScreenShot(testCase);
+		cug.verifyService(sanity_CUGPCLWorkingServiceNum);
+				
+	}
+	
+	
+	
 	
 }
