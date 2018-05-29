@@ -50,6 +50,7 @@ public class CustomerCareTC {
 	static String ceaseServiceWithCharge;
 	static String verifyProductsAccountNumber;
 	static String CloneCustaccountNumber;
+	static String serviceASNCeaseServCharge;
 	
 	/**
 	 * Private constructor to disable creation of object
@@ -72,6 +73,7 @@ public class CustomerCareTC {
 		ceaseServiceWithCharge = dataMap.get("ceaseServiceWithCharge");
 		verifyProductsAccountNumber = dataMap.get("verifyProductsAccountNumber");
 		CloneCustaccountNumber = dataMap.get("CloneCustaccountNumber");
+		serviceASNCeaseServCharge = dataMap.get("serviceASNCeaseServCharge");
 		
 		
 		
@@ -236,7 +238,7 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByServiceNumber(serviceASNCease);
+		search.searchByServiceNumber(serviceASNCeaseServCharge);
 		action.getScreenShot(testCase);
 
 		service.navigate();

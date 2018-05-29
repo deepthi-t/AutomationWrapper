@@ -33,7 +33,7 @@ public class PaymentEnquiriesTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test
+	@Test(enabled = false)
 	public static void searchWithPaymentNumber() {
 		testCase = "PaymentEnquiries_searchWithPaymentNumber";
 
@@ -57,7 +57,7 @@ public class PaymentEnquiriesTC {
 	
 	@Test
 	public static void searchWithserviceOrderNumber() {
-		testCase = "PaymentEnquiries_searchWithAccountNumber";
+		testCase = "PaymentEnquiries_searchWithServiceOrderNumber";
 
 		PYPaymentEnquiriesPOM pe = new PYPaymentEnquiriesPOM(action);
 
