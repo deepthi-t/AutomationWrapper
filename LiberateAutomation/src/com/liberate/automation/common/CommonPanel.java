@@ -223,7 +223,8 @@ public class CommonPanel {
 
 		passed = action.waitFor(Department_Select, 180, true);
 		passed = action.selectByPartialText(Department_Select, Department);
-
+		
+		passed = action.waitFor(4);
 		passed = action.waitFor(SiteDisabled_Select, 4, false);
 		passed = action.selectByPartialText(Site_Select, Site);
 

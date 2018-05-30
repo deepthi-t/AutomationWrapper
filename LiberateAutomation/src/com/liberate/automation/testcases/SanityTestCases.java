@@ -77,7 +77,7 @@ public class SanityTestCases
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test
+	@Test(priority = 1)
 	public static void newCustomerPCLPostpaid() {
 		testCase = "Sanity_NewCustomerPCLPostpaid";
 
@@ -132,6 +132,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 	
+	@Test(priority = 16)
 	public static void newCustomerPELandPDL() {
 		testCase = "Sanity_PELandPDL";
 
@@ -201,6 +202,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 	
+	@Test(priority = 2)
 	public static void alterServiceNumberPCL() {
 		testCase = "CustomerCareTC_alterServiceNumberPCL";
 
@@ -237,7 +239,7 @@ public class SanityTestCases
 	
 	
 	
-	@Test
+	@Test(priority = 3)
 	public static void createNewDepositReason() {
 		testCase = "DepositReason_createNewDepositReason";
 
@@ -260,7 +262,7 @@ public class SanityTestCases
 		System.out.println(x);
 	}
 	
-	@Test
+	@Test(priority = 4)
 	public static void raiseFault() {
 		testCase = "FaultManagement_raiseFault";
 
@@ -282,7 +284,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 5)
 	public static void manageFaultAddNotes() {
 		testCase = "FaultManagement_manageFaultAddNotes";
 
@@ -306,7 +308,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=3)
+	@Test(priority=6)
 	public static void assignFault() {
 		testCase = "FaultManagement_assignFault";
 
@@ -328,7 +330,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 7)
 	public static void signoffFault() {
 		testCase = "FaultManagement_signoffFault";
 
@@ -352,7 +354,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 	
-	@Test
+	@Test(priority = 8)
 	public static void ceaseServiceNumberPCL() {
 		testCase = "CustomerCareTC_ceaseServiceNumberPCL";
 
@@ -386,7 +388,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 9)
 	public static void raiseQueryAccount() {
 		testCase = "QueryManagement_raiseQueryAccount";
 
@@ -402,7 +404,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 10)
 	public static void amendQuery() {
 		testCase = "QueryManagement_amendQuery";
 
@@ -420,7 +422,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 11)
 	public static void addNoteQuery() {
 		testCase = "QueryManagement_addNoteQuery";
 
@@ -438,7 +440,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 12)
 	public static void progressQuery() {
 		testCase = "QueryManagement_progressQuery";
 
@@ -456,7 +458,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(priority = 13)
 	public static void signOffQuery() {
 		testCase = "QueryManagement_signOffQuery";
 
@@ -482,7 +484,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 	
-	@Test
+	@Test(priority = 14)
 	public static void singlePaymentAccountNumber() {
 		testCase = "PaymentsTC_singlePaymentAccountNumber";
 
@@ -504,7 +506,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 	}
 	
-	@Test
+	@Test(priority = 15)
 	public static void sanityCUG_Test() 
 	{
 		testCase = "CUGTesting_Sanity";
@@ -516,7 +518,7 @@ public class SanityTestCases
 		action.getScreenShot(testCase);
 		cug.newCUG_Click();
 		action.getScreenShot(testCase);
-		String x = random.nextString().substring(4);
+		String x = random.nextString().substring(1);
 		assertEquals(cug.provideCUGDetails(x), true);
 		action.getScreenShot(testCase);
 		cug.CUGNewSuccessMsg();
@@ -526,6 +528,7 @@ public class SanityTestCases
 		cug.clickServiceTab();
 		action.getScreenShot(testCase);		
 		cug.provideServiceForCreatedCUG(sanity_CUGPCLWorkingServiceNum);
+//		cug.provideServiceForCreatedCUG("9290789");
 		action.getScreenShot(testCase);
 		cug.clickOkButton();
 		action.getScreenShot(testCase);
