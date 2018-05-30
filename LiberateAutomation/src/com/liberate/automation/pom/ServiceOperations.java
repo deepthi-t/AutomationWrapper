@@ -413,10 +413,10 @@ public class ServiceOperations {
 
 		boolean passed = false;
 
-		passed = action.waitFor(TOSHistory_Tab, 140, true);
+		passed = action.waitFor(TOSHistory_Tab, 200, true);
 		passed = action.clickOn(TOSHistory_Tab);
 
-		passed = action.waitFor(TOSHistory_Table, 30, true);
+		passed = action.waitFor(TOSHistory_Table, 100, true);
 
 		this.ServiceStatus = action.getTextFromPage(ServiceStatus_Value).trim();
 
