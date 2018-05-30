@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import com.liberate.automation.common.CommonData;
 import com.liberate.automation.core.ExcelDataDriver;
 import com.liberate.automation.core.RandomData;
+import com.liberate.automation.core.RandomDataCUG;
 import com.liberate.automation.core.TestActions;
 import com.liberate.automation.core.TestResult;
 import com.liberate.automation.pom.AlterServiceNumber;
@@ -117,6 +118,8 @@ public class SanityTestCases
 		ce.processISPFieldsScreen();
 		action.getScreenShot(testCase);
 		ce.provideServiceDetailsScreen("MSCA", "SMPO");
+		action.getScreenShot(testCase);
+		ce.clickProceedButton();
 		action.getScreenShot(testCase);
 		ce.provideContractDetails();
 		action.getScreenShot(testCase);
@@ -317,7 +320,8 @@ public class SanityTestCases
 		assertEquals(mf.navigate(), true);
 		action.getScreenShot(testCase);
 
-		assertEquals(mf.enterFaultNumber(Sanity_faultNumber), true);
+//		assertEquals(mf.enterFaultNumber(Sanity_faultNumber), true);
+		assertEquals(mf.enterFaultNumber("C00009E"), true);
 		action.getScreenShot(testCase);
 		assertEquals(mf.clickonSearchbutton(), true);
 		action.getScreenShot(testCase);
@@ -366,7 +370,8 @@ public class SanityTestCases
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByServiceNumber(Sanity_serviceCease);
+//		search.searchByServiceNumber(Sanity_serviceCease);
+		search.searchByServiceNumber("9292108");
 		action.getScreenShot(testCase);
 
 		service.navigate();
@@ -374,7 +379,8 @@ public class SanityTestCases
 		service.clickOnCeaseService();
 		action.getScreenShot(testCase);
 
-		cease.selectDepartmentSite(Sanity_salesDepartment, Sanity_site);
+//		cease.selectDepartmentSite(Sanity_salesDepartment, Sanity_site);
+		cease.selectDepartmentSite("AQSAL", "ANSQ");
 		action.getScreenShot(testCase);
 		cease.ceaseService();
 		action.getScreenShot(testCase);
@@ -512,7 +518,7 @@ public class SanityTestCases
 		testCase = "CUGTesting_Sanity";
 
 		CUG_POM cug = new CUG_POM(action);
-		RandomData random = new RandomData();
+		RandomDataCUG random = new RandomDataCUG();
 		
 		cug.navigation_CUG();
 		action.getScreenShot(testCase);

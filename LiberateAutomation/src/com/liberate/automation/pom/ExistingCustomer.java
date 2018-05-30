@@ -305,6 +305,18 @@ public class ExistingCustomer {
 
 		return passed;
 	}
+	
+	public boolean clickProceedButton() {
+		boolean passed = false;
+
+		passed = action.waitFor(4);
+		
+		if(action.countOf(Proceed_Button) > 0)
+		passed = action.clickOn(Proceed_Button);
+
+		return passed;
+	}
+	
 
 	public boolean processServiceProductsScreen() {
 		boolean passed = false;
@@ -425,7 +437,7 @@ public class ExistingCustomer {
 			action.clickOn(LookUp_Button);
 			action.waitFor(SIMSearch_Message, 4, true);
 			action.waitFor(1);
-			action.selectBy(SIM_Select, 8);
+			action.selectBy(SIM_Select, 10);
 			action.waitFor(2);
 		}
 
