@@ -128,7 +128,7 @@ public class CreditControlService {
 
 		boolean passed = false;
 
-		passed = action.waitFor(Accept_Button, 4, false);
+		passed = action.waitFor(Accept_Button, 20, false);
 
 		if (RecentAction.equals(CommonData.CreditControlServiceStatusValues.ROS)) {
 			passed = action.getTextFromPage(ServiceStatus_Value).trim().equals("W") ? true : false;
