@@ -5,13 +5,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 
-/***
- * Class to create Random Data for Test.
- * 
- * @author Nikhil
- *
- */
-public class RandomData {
+public class RandomDataCUG {
+
 	public static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String digits = "0123456789";
 	public static final String lower = upper.toLowerCase(Locale.ROOT);
@@ -29,7 +24,7 @@ public class RandomData {
 		return new String(buf);
 	}
 
-	private RandomData(int length, Random random, String symbols) {
+	private RandomDataCUG(int length, Random random, String symbols) {
 		if (length < 1)
 			throw new IllegalArgumentException();
 		if (symbols.length() < 2)
@@ -42,22 +37,21 @@ public class RandomData {
 	/**
 	 * Create an alphanumeric string generator.
 	 */
-	private RandomData(int length, Random random) {
+	private RandomDataCUG(int length, Random random) {
 		this(length, random, alphanum);
 	}
 
 	/**
 	 * Create an alphanumeric strings from a secure generator.
 	 */
-	private RandomData(int length) {
+	private RandomDataCUG(int length) {
 		this(length, new SecureRandom());
 	}
 
 	/**
 	 * Create session identifiers.
 	 */
-	public RandomData() {
-		this(25);
+	public RandomDataCUG() {
+		this(10);
 	}
-
 }

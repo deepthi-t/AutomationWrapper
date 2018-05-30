@@ -96,8 +96,8 @@ public class ServiceOperations {
 	}
 
 	public boolean navigate() {
-		action.scrollUp();
-		action.waitFor(1);
+	
+		action.waitFor(2);
 
 		boolean passed = false;
 

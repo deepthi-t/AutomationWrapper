@@ -110,11 +110,12 @@ public class CRCustomerSearch {
 		By FirstResult_Row = By
 				.xpath("//tr[@id='customerSearchForm:customerSearchFBTabSet:0:customerSearchResults_row_0']");
 
-		action.waitFor(3);
+		action.waitFor(4);
 
 		if (action.countOf(QuickSearch_PanelHeader) > 0) {
 			if (action.countOf(FirstResult_Row) == 1)
 				action.clickOn(FirstResult_Row);
 		}
+		action.waitFor(2);
 	}
 }
