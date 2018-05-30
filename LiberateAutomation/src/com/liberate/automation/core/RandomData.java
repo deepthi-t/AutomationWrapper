@@ -57,7 +57,7 @@ public class RandomData {
 	 * Create session identifiers.
 	 */
 	public RandomData() {
-		this(21);
+		this(10);
 	}
 
 }

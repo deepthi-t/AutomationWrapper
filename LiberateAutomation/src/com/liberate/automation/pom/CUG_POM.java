@@ -26,12 +26,12 @@ public class CUG_POM
 	By SuccessMsg_test = By.xpath("//*[@class='icePnlGrp']/div[1]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/div[2]/span[1]");
 	By CUG_Search = By.xpath("//*[text()='CUG Search']");
 	By CUGStartingWith_radio = By.xpath("(//*[text()='CUG Search']/following::input[@type='radio'])[2]");
-	By CUGStartingWith_inputBox = By.xpath("(//*[text()='CUGs Starting with']/following::input[1]");
+	By CUGStartingWith_inputBox = By.xpath("(//*[text()='CUGs Starting with']/following::input)[1]");
 	
 	By Search_Button = By.xpath("//*[@value='Search']");
 	By Service_tab = By.xpath("(//*[text()='Service'])[1]");
 	
-	By ServiceNumber_Input =By.xpath("(//*[text()='Service No:'])[2]/following::input[1]");
+	By ServiceNumber_Input =By.xpath("//*[text()='Service No:']/following::input[1]");
 	By ValidateCUGNum_Button = By.xpath("//*[@value='Validate CUG No.']");
 	
 	By Ok_Button = By.xpath("//*[@value='OK']");
@@ -98,7 +98,7 @@ public class CUG_POM
 		passed = action.waitFor(ChargeGroup_dropdown, 4, true);
 		passed = action.selectBy(ChargeGroup_dropdown, 2);
 		passed = action.waitFor(CUGType_SelectServiceType, 4, true);
-		passed = action.selectByPartialText(CUGType_SelectServiceType, "CE");
+		passed = action.selectByPartialText(ServCallType_Dropdown, "CE");
 		passed = action.waitFor(3);
 		passed = action.waitFor(Accept_Button, 4, true);
 		passed = action.clickOn(Accept_Button);
@@ -164,7 +164,10 @@ public class CUG_POM
 			action.waitFor(4);
 			passed = action.waitFor(CUG_ColumnSelect, 4, true);
 			passed = action.clickOn(CUG_ColumnSelect);
+			if(action.countOf(CUG_ColumnSelect) > 0)
+				action.clickOn(CUG_ColumnSelect);
 		}
+		passed = action.waitFor(4);
 		passed = action.waitFor(Service_tab, 4, true);
 		passed = action.clickOn(Service_tab);
 		
@@ -174,7 +177,7 @@ public class CUG_POM
 	
 	public boolean provideServiceForCreatedCUG(String PCLWorkingService)
 	{
-		action.scrollUp();
+		
 		action.waitFor(2);
 		boolean passed = false;
 		
