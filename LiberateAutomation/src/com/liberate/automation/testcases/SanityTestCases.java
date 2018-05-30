@@ -31,6 +31,7 @@ import com.liberate.automation.pom.ManageFault;
 import com.liberate.automation.pom.NewCustomer;
 import com.liberate.automation.pom.PYSinglePayment;
 import com.liberate.automation.pom.RaiseFault;
+import com.liberate.automation.pom.Reports_POM;
 import com.liberate.automation.pom.SalesSignOff;
 import com.liberate.automation.pom.ServiceOperations;
 
@@ -51,6 +52,7 @@ public class SanityTestCases
 	static String Sanity_queryAccountNumber;
 	static String Sanity_manageQueryNumber;
 	static String sanity_CUGPCLWorkingServiceNum;
+	static String LiberateCurrentDate;
 	
 	
 	
@@ -66,6 +68,7 @@ public class SanityTestCases
 		Sanity_queryAccountNumber = dataMap.get("Sanity_queryAccountNumber");
 		Sanity_manageQueryNumber = dataMap.get("Sanity_manageQueryNumber");
 		sanity_CUGPCLWorkingServiceNum = dataMap.get("sanity_CUGPCLWorkingServiceNum");
+		LiberateCurrentDate = dataMap.get("LiberateCurrentDate");
 	}
 	/**
 	 * Private constructor to disable creation of object
@@ -542,7 +545,32 @@ public class SanityTestCases
 				
 	}
 	
-	
+	@Test(priority = 15)
+	public static void sanityReports_Test() 
+	{
+		testCase = "CUGTesting_Sanity";
+
+		Reports_POM reports = new Reports_POM(action);
+		
+		reports.navigateToGenerateReport();
+		action.getScreenShot(testCase);
+		reports.provideDetails();
+		action.getScreenShot(testCase);
+		reports.clickonAcceptButton();
+		action.getScreenShot(testCase);
+		reports.navigateBrowseReports();
+		action.getScreenShot(testCase);
+		reports.provideReportIdToSearch();
+		action.getScreenShot(testCase);
+		reports.clickingOnSearch();
+		action.getScreenShot(testCase);
+		reports.selectGenaratedReport();
+		action.getScreenShot(testCase);
+		reports.reportDateValidation(LiberateCurrentDate); // need to provide current liberate date in excel
+//		reports.reportDateValidation("30-05-2018");
+		action.getScreenShot(testCase);
+		
+	}
 	
 	
 }

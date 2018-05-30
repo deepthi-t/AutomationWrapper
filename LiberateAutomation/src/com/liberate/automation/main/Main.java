@@ -10,9 +10,7 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 		CommonLogin.login();
-		SanityTestCases.newCustomerPCLPostpaid();
-		SanityTestCases.assignFault();
-		SanityTestCases.ceaseServiceNumberPCL();
+		SanityTestCases.sanityReports_Test();
 
 	}
 
