@@ -25,7 +25,7 @@ public class AlterProductTC {
 	static String TestStatus;
 
 	static Map<String, String> data = new HashedMap<>();
-	static String alterProductServiceNumber;
+	static String alterProductServiceNumber = "78902150";
 
 	@BeforeClass
 	public static void loadData() {
@@ -67,7 +67,7 @@ public class AlterProductTC {
 
 		alterProduct.selectDepartmentSite("AQSAL", "ANSQ");
 		alterProduct.alterProductScreen();
-		alterProduct.alterProductScreen();
+		
 		alterProduct.altertTOProduct();
 
 		sales.verifySalesSignOff();

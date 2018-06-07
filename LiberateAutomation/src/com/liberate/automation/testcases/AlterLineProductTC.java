@@ -25,7 +25,7 @@ public class AlterLineProductTC {
 	static String TestStatus;
 
 	static Map<String, String> data = new HashedMap<>();
-	static String alterlineproductServiceNumber;
+	static String alterlineproductServiceNumber="78902150";
 
 	@BeforeClass
 	public static void loadData() {
@@ -61,7 +61,7 @@ public class AlterLineProductTC {
 		action.getScreenShot(TestCase);
 		service.verifyServicesScreen();
 		action.getScreenShot(TestCase);
-		service.alterProduct();
+		service.alterlineProduct();
 		action.getScreenShot(TestCase);
 
 		alterlineproduct.selectDepartmentSite("AQSAL", "ANSQ");

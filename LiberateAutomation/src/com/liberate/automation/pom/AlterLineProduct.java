@@ -18,6 +18,7 @@ public class AlterLineProduct {
     By product_Select = By.xpath("//*[text()='Product:']//following::select[5]");
     By accept_button = By.xpath("//*[@value='Accept']");
     
+    
     public AlterLineProduct(TestActions action) {
         this.action = action;
  }
@@ -38,7 +39,7 @@ public class AlterLineProduct {
         
         
         passed = action.waitFor(product_Select, 4, false);
-        passed = action.selectBy(product_Select, 1);
+        passed = action.selectBy(product_Select, 3);
         
         action.clickOn(accept_button);
         

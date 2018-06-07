@@ -13,7 +13,7 @@ public class AlterProduct {
 	By site_Select = By.xpath("//*[text()='Site:']//following::select[1]");
 	By AplicationSource_Select = By.xpath("//*[text()='Application Source:']//following::select[1]");
 	By Proceed_button = By.xpath("//*[@value=\"Proceed >>\"]");
-	By SelectProduct_Panel = By.xpath("//*[@id=\"alterProductsDetailsForm:plantItemList:0:productDescription\"]");
+	By SelectProduct_Panel = By.xpath("//*[@id='alterProductsDetailsForm:plantItemList:0:productCode']");
 	By Product_dropdown = By.xpath("//select[@id = \"alterProductsDetailsForm:changedProduct\"]");
 	By Accept_button = By.xpath("//*[@value=\"Accept\"]");
 
@@ -40,7 +40,11 @@ public class AlterProduct {
 	
 	
 	public boolean alterProductScreen() {
-		return action.clickOn(SelectProduct_Panel);
+		boolean passed = false;
+		passed = action.waitFor(SelectProduct_Panel, 4, true);
+		 action.clickOn(SelectProduct_Panel);
+		 return passed;
+		
 				
 	}
 	
