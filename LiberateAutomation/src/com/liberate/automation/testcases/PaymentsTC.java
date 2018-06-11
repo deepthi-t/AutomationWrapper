@@ -343,7 +343,7 @@ public class PaymentsTC {
 
 		assertEquals(bcp.navigate(), true);
 		action.getScreenShot(testCase);
-		assertEquals(bcp.SearchWithPaymentNumber("9318224"), true);
+		assertEquals(bcp.SearchWithPaymentNumber("1192952"), true);
 		action.getScreenShot(testCase);
 		assertEquals(bcp.openChequeDetails(), true);
 		action.getScreenShot(testCase);
@@ -353,7 +353,7 @@ public class PaymentsTC {
 		action.getScreenShot(testCase);
 		assertEquals(bcp.acceptTwoBadChequeProcessing(), true);
 		action.getScreenShot(testCase);
-		assertEquals(bcp.acceptBadChequeProcessing(), true);
+//		assertEquals(bcp.acceptBadChequeProcessing(), true);
 		action.getScreenShot(testCase);
 		assertEquals(bcp.successMsgBadCheckProcess(), true);
 		action.getScreenShot(testCase);
