@@ -177,7 +177,7 @@ public class PYBadCheckProcessing {
 		boolean passed = false;
 		String SuccessMsg = "Cheque Returned Successfully";
 		String ActualMsg = "";
-		passed = action.waitFor(4);
+		passed = action.waitFor(20);
 		ActualMsg = action.getTextFromPage(By.xpath("//*[@class='iceMsgError']"));
 		passed = action.waitFor(2);
 		
