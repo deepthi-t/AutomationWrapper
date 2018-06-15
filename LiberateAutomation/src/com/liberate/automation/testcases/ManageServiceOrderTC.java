@@ -30,6 +30,7 @@ import com.liberate.automation.pom.MSOSignoff;
 import com.liberate.automation.pom.MSOSplit;
 import com.liberate.automation.pom.MSOSuspend;
 import com.liberate.automation.pom.MSOWaitlist;
+import com.liberate.automation.pom.PEP_RouteAllocationPOM;
 
 /***
  * Class with Manage Service Order Test Case
@@ -419,6 +420,29 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		arso.verifyManualAllocateRoute();
 		action.getScreenShot(testCase);
+	}
+	
+	public static void allocatePEPRouteAuto() {
+		testCase = "ManageServiceOrder_AutoAllocateRoutePEP";
+
+		AllocateRouteServiceOrder arso = new AllocateRouteServiceOrder(action);
+		PEP_RouteAllocationPOM pep = new PEP_RouteAllocationPOM(action);
+		
+		arso.navigate();
+		action.getScreenShot(testCase);
+		arso.searchServiceOrder("RSNET", "B00583A");
+		action.getScreenShot(testCase);
+		pep.allocateRoutePEPLEG1("DP-DISTRIBUTION POINT", "DP950");
+		action.getScreenShot(testCase);
+		pep.clickingOnValidateButton();
+		action.getScreenShot(testCase);
+		pep.allocateRoutePEPLEG2("DP-DISTRIBUTION POINT", "370");
+		action.getScreenShot(testCase);
+		pep.clickingOnFinalAcceptButton();
+		action.getScreenShot(testCase);
+		pep.verifyAutoAllocateRoute();
+		action.getScreenShot(testCase);
+		
 	}
 
 	@Test(enabled = false)
