@@ -98,6 +98,8 @@ public class ExistingCustomer {
 	By ServiceNo_Input = By.xpath("//*[text() = 'Current Service No.:']//following::input[1]");
 
 	By Submit_Button = By.xpath("//input[@value='Submit']");
+	By PEL_PDL_Servicenumberinuse_text = By.xpath("//*[text()[contains(.,'In use')]]");
+	By PEL_PDL_Servicenumberinuse_button = By.xpath("//input[@value='Ok']");
 
 	public ExistingCustomer(TestActions action) {
 		this.action = action;
@@ -250,6 +252,10 @@ public class ExistingCustomer {
 	public boolean selectPDLServicePackageLimelite(String ServicePackage) {
 		boolean passed;
 
+		passed = action.waitFor(PEL_PDL_Servicenumberinuse_text,20, true);
+		if (action.getTextFromPage(PEL_PDL_Servicenumberinuse_text).contains("in use")) {
+		    passed = action.clickOn(PEL_PDL_Servicenumberinuse_button);
+		}
 		passed = action.waitFor(ServicePackage_PanelHeader, 4, true);
 		if (action.getSelectedOption(ServicePackage_Select).contains("Select")) {
 			passed = action.selectByPartialText(ServicePackage_Select, ServicePackage);
@@ -693,7 +699,7 @@ public class ExistingCustomer {
 
 		boolean passed = false;
 
-		passed = action.waitFor(ProvideADSL_Message, 4, true);
+		passed = action.waitFor(ProvideADSL_Message, 10, true);
 		passed = action.clickOn(CommonPanel.popUp.popUpYes_Button);
 
 		return passed;
