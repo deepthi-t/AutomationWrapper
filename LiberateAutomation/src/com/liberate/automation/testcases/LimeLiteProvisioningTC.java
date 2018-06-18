@@ -123,7 +123,7 @@ public class LimeLiteProvisioningTC {
 		ce.provideADSL();
 		action.getScreenShot(testCase);
 		// PDL Part
-		ce.selectPDLServicePackageLimelite(PDLServPackageLimelite);
+		ce.selectPDLServicePackageLimelite("PDL-wirelessat&t (PDL)");
 		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(testCase);

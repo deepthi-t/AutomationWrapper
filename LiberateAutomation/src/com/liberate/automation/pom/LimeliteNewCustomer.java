@@ -351,7 +351,7 @@ public class LimeliteNewCustomer {
 	{
 		boolean passed = false;
 		
-		action.waitFor(proceedFromExistingCust_Button, 4, true);
+		action.waitFor(proceedFromExistingCust_Button, 10, true);
 		action.clickOn(proceedFromExistingCust_Button);
 		return passed;
 	}
