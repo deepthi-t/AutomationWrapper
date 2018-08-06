@@ -38,6 +38,7 @@ public class CRAccountDetails {
 
 	By AccountCreated_Message = By.xpath("//*[text()[contains(.,'Account created successfully.')]]");
 	By CreatedAccount_Value = By.xpath("//*[text()[contains(.,'Account created successfully.')]]//following::span[1]");
+
 	public CRAccountDetails(TestActions action) {
 		this.action = action;
 	}
@@ -45,7 +46,7 @@ public class CRAccountDetails {
 	public boolean navigate() {
 		action.scrollUp();
 		action.waitFor(1);
-		
+
 		boolean passed = false;
 
 		passed = action.waitFor(AccountDetails_Tab, 4, true);
@@ -57,46 +58,71 @@ public class CRAccountDetails {
 	}
 
 	public boolean cloneAccount() {
+
+		
 		boolean passed = false;
+		action.waitFor(3);
 
 		passed = action.clickOn(CloneAccount_ActionButton);
-		
+		action.waitFor(3);
+		//action.selectBy(Location_Select, 1);
+		action.waitFor(2);
+
 		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
-		
+
 		return passed;
 	}
 
 	public boolean cloneCustomer() {
+		By Startingwith_Select = By.xpath("//*[text() = 'Starting With']//following::select[1]");
+		By town_Input = By.xpath("//*[text() = 'test codes one']//following::input[2]");
+		
 		boolean passed = false;
-
+		action.waitFor(3);
 		passed = action.waitFor(CloneCustomer_ActionButton, 8, true);
 		passed = action.clickOn(CloneCustomer_ActionButton);
 
 		passed = action.waitFor(CustomerType_Select, 4, true);
+		
+		 
+		  if (action.getSelectedOption(CustomerType_Select).contains("Select"))
+		  action.selectByPartialText(CustomerType_Select, "R - ");
+		 
+		  
+		  if (action.getSelectedOption(MarketingCategory_Select).contains("Select"))
+		 action.selectByPartialText(MarketingCategory_Select, "99000");
+		 
+		  if (action.getSelectedOption(Company_Select).contains("Select"))
+		 action.selectByPartialText(Company_Select, "CYN");
+		 
+		  
+		  if (action.getSelectedOption(AccountType_Select).contains("TP"))
+		 action.selectByPartialText(CustomerType_Select, "R - ");
+		  
+		 if (action.getSelectedOption(CustomerType_Select).contains("Select"))
+		  action.selectByPartialText(CustomerType_Select, "R - ");
+		  
+		  if (action.getSelectedOption(RentalPeriod_Select).contains("Select"))
+		  action.selectBy(RentalPeriod_Select, 1);
+		  
+		  if (action.getSelectedOption(PrimaryDayOfBilling_Select).contains("Select"))
+		  action.selectBy(PrimaryDayOfBilling_Select, 1);
+		 
 
-		if (action.getSelectedOption(CustomerType_Select).contains("Select"))
-			action.selectByPartialText(CustomerType_Select, "R - ");
-
-		if (action.getSelectedOption(MarketingCategory_Select).contains("Select"))
-			action.selectByPartialText(MarketingCategory_Select, "99000");
-
-		if (action.getSelectedOption(Company_Select).contains("Select"))
-			action.selectByPartialText(Company_Select, "CYN");
-
-		if (action.getSelectedOption(AccountType_Select).contains("TP"))
-			action.selectByPartialText(CustomerType_Select, "R - ");
-
-		if (action.getSelectedOption(CustomerType_Select).contains("Select"))
-			action.selectByPartialText(CustomerType_Select, "R - ");
-
-		if (action.getSelectedOption(RentalPeriod_Select).contains("Select"))
-			action.selectBy(RentalPeriod_Select, 1);
-
-		if (action.getSelectedOption(PrimaryDayOfBilling_Select).contains("Select"))
-			action.selectBy(PrimaryDayOfBilling_Select, 1);
+		
 
 		passed = action.clickOn(CommonPanel.Accept_Button);
 		passed = action.waitFor(CommonPanel.Accept_Button, 4, false);
+		
+		action.selectBy(BillStatusArea_Select, "BOT-BOT - Bodden Town");
+		action.waitFor(3);
+		action.selectBy(Startingwith_Select, 2);
+		action.waitFor(3);
+		action.sendDataTo(town_Input, "Hyderabad");
+		action.waitFor(2);
+		action.clickOn(Submit_Button);
+		
+		
 
 		passed = fillCustomerDetails();
 
@@ -104,29 +130,40 @@ public class CRAccountDetails {
 	}
 
 	public boolean createSubAccount() {
-		By SurName_Input = By.xpath("(//*[text()[contains(.,'Surname')]]//following::input)[1]");
-		By Location_Select = By.xpath("(//*[text()[contains(.,'Location')]]//following::select)[1]");
+		By SurName_Input = By.xpath("//*[text() = 'Surname:']//following::input[1]");
+		By Location_Select = By.xpath("//*[text() = 'Location:']//following::select[1]");
+		By CustomerType_Select = By.xpath("//*[text() = 'Customer Type:']//following::select[1]");
+		By CompanyName_Input = By.xpath("//*[text() = 'Company Name:']//following::input[1]");
+		By TOSCategory_Select = By.xpath("//*[text() = 'TOS Category:']//following::select[1]");
+
 		By IDValue_Input = By.xpath("//*[text()[contains(.,'ID Value')]]//following::input[1]");
-		
+
 		RandomData random = new RandomData();
-		
+
 		boolean passed = false;
 
+		action.waitFor(3);
+
 		action.clickOn(CreateSubAccount_ActionButton);
-		
+
 		action.waitFor(SurName_Input, 6, true);
-		
+
 		action.clickOn(SurName_Input);
 		action.waitFor(2);
 		action.clickOn(SurName_Input);
 		action.sendDataTo(SurName_Input, random.nextString());
-		
+
 		action.selectBy(Location_Select, 1);
 		action.waitFor(2);
 		action.sendDataTo(IDValue_Input, random.nextString().substring(0, 10));
-		
+		action.waitFor(2);
+		action.selectBy(CustomerType_Select, 1);
+		action.waitFor(2);
+		action.sendDataTo(CompanyName_Input, random.nextString());
+		action.waitFor(2);
+		action.selectBy(TOSCategory_Select, 1);
 		action.clickOn(CommonPanel.popUp.popUpOK_Button);
-		
+
 		return passed;
 	}
 
@@ -134,12 +171,12 @@ public class CRAccountDetails {
 		boolean passed = false;
 
 		NewCustomer address = new NewCustomer(action);
-		
+
 		if (action.getSelectedOption(BillStatusArea_Select).contains("Select"))
 			action.selectByPartialText(BillStatusArea_Select, "BOT");
 		if (action.getSelectedOption(SortCode_Select).contains("Select"))
 			action.selectBy(SortCode_Select, 1);
-		
+
 		passed = address.fillStandardAddress();
 
 		action.clickOn(Submit_Button);
@@ -149,16 +186,16 @@ public class CRAccountDetails {
 
 	public boolean verifySuccessMessage() {
 		boolean passed = false;
-		
+
 		passed = action.waitFor(AccountCreated_Message, 4, true);
 		this.CreatedAccount = action.getTextFromPage(CreatedAccount_Value);
-		
+
 		TestActions.log("Created Account : " + this.CreatedAccount);
 
 		passed = CommonPanel.popUp.clickOK(action);
-		
+
 		action.scrollUp();
-		
+
 		return passed;
 	}
 }

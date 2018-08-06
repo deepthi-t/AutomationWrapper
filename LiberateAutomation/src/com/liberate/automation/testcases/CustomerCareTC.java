@@ -49,7 +49,7 @@ public class CustomerCareTC {
 	static String serviceCease;
 	static String ceaseServiceWithCharge;
 	static String verifyProductsAccountNumber;
-	static String CloneCustaccountNumber;
+	static String CloneCustaccountNumber = "240003280100";
 	static String serviceASNCeaseServCharge;
 	
 	/**
@@ -474,7 +474,7 @@ public class CustomerCareTC {
 
 		search.navigate();
 		action.getScreenShot(testCase);
-		search.searchByAccountNumber(CloneCustaccountNumber);
+		search.searchByAccountNumber(CloneCustaccountNumber); 
 		action.getScreenShot(testCase);
 
 		dashboard.verifyDashBoard(CloneCustaccountNumber);
