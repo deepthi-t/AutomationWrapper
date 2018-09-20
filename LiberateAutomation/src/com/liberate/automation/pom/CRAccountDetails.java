@@ -59,61 +59,54 @@ public class CRAccountDetails {
 
 	public boolean cloneAccount() {
 
-		
 		boolean passed = false;
 		action.waitFor(3);
-
+		action.getScreenShot("CustomerCareTC_cloneAccount");
 		passed = action.clickOn(CloneAccount_ActionButton);
 		action.waitFor(3);
-		//action.selectBy(Location_Select, 1);
+		// action.selectBy(Location_Select, 1);
 		action.waitFor(2);
-
+		action.getScreenShot("CustomerCareTC_cloneAccount");
 		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
-
+		action.getScreenShot("CustomerCareTC_cloneAccount");
 		return passed;
 	}
 
 	public boolean cloneCustomer() {
 		By Startingwith_Select = By.xpath("//*[text() = 'Starting With']//following::select[1]");
 		By town_Input = By.xpath("//*[text() = 'test codes one']//following::input[2]");
-		
+
 		boolean passed = false;
 		action.waitFor(3);
 		passed = action.waitFor(CloneCustomer_ActionButton, 8, true);
 		passed = action.clickOn(CloneCustomer_ActionButton);
 
 		passed = action.waitFor(CustomerType_Select, 4, true);
-		
-		 
-		  if (action.getSelectedOption(CustomerType_Select).contains("Select"))
-		  action.selectByPartialText(CustomerType_Select, "R - ");
-		 
-		  
-		  if (action.getSelectedOption(MarketingCategory_Select).contains("Select"))
-		 action.selectByPartialText(MarketingCategory_Select, "99000");
-		 
-		  if (action.getSelectedOption(Company_Select).contains("Select"))
-		 action.selectByPartialText(Company_Select, "CYN");
-		 
-		  
-		  if (action.getSelectedOption(AccountType_Select).contains("TP"))
-		 action.selectByPartialText(CustomerType_Select, "R - ");
-		  
-		 if (action.getSelectedOption(CustomerType_Select).contains("Select"))
-		  action.selectByPartialText(CustomerType_Select, "R - ");
-		  
-		  if (action.getSelectedOption(RentalPeriod_Select).contains("Select"))
-		  action.selectBy(RentalPeriod_Select, 1);
-		  
-		  if (action.getSelectedOption(PrimaryDayOfBilling_Select).contains("Select"))
-		  action.selectBy(PrimaryDayOfBilling_Select, 1);
-		 
 
-		
+		if (action.getSelectedOption(CustomerType_Select).contains("Select"))
+			action.selectByPartialText(CustomerType_Select, "R - ");
+
+		if (action.getSelectedOption(MarketingCategory_Select).contains("Select"))
+			action.selectByPartialText(MarketingCategory_Select, "99000");
+
+		if (action.getSelectedOption(Company_Select).contains("Select"))
+			action.selectByPartialText(Company_Select, "CYN");
+
+		if (action.getSelectedOption(AccountType_Select).contains("TP"))
+			action.selectByPartialText(CustomerType_Select, "R - ");
+
+		if (action.getSelectedOption(CustomerType_Select).contains("Select"))
+			action.selectByPartialText(CustomerType_Select, "R - ");
+
+		if (action.getSelectedOption(RentalPeriod_Select).contains("Select"))
+			action.selectBy(RentalPeriod_Select, 1);
+
+		if (action.getSelectedOption(PrimaryDayOfBilling_Select).contains("Select"))
+			action.selectBy(PrimaryDayOfBilling_Select, 1);
 
 		passed = action.clickOn(CommonPanel.Accept_Button);
 		passed = action.waitFor(CommonPanel.Accept_Button, 4, false);
-		
+
 		action.selectBy(BillStatusArea_Select, "BOT-BOT - Bodden Town");
 		action.waitFor(3);
 		action.selectBy(Startingwith_Select, 2);
@@ -121,8 +114,6 @@ public class CRAccountDetails {
 		action.sendDataTo(town_Input, "Hyderabad");
 		action.waitFor(2);
 		action.clickOn(Submit_Button);
-		
-		
 
 		passed = fillCustomerDetails();
 
@@ -143,9 +134,9 @@ public class CRAccountDetails {
 		boolean passed = false;
 
 		action.waitFor(3);
-
+		action.getScreenShot("CustomerCareTC_createSubAccount");
 		action.clickOn(CreateSubAccount_ActionButton);
-
+		action.getScreenShot("CustomerCareTC_createSubAccount");
 		action.waitFor(SurName_Input, 6, true);
 
 		action.clickOn(SurName_Input);
@@ -162,7 +153,9 @@ public class CRAccountDetails {
 		action.sendDataTo(CompanyName_Input, random.nextString());
 		action.waitFor(2);
 		action.selectBy(TOSCategory_Select, 1);
+		action.getScreenShot("CustomerCareTC_createSubAccount");
 		action.clickOn(CommonPanel.popUp.popUpOK_Button);
+		action.getScreenShot("CustomerCareTC_createSubAccount");
 
 		return passed;
 	}
@@ -191,11 +184,30 @@ public class CRAccountDetails {
 		this.CreatedAccount = action.getTextFromPage(CreatedAccount_Value);
 
 		TestActions.log("Created Account : " + this.CreatedAccount);
-
+		action.getScreenShot("CustomerCareTC_cloneAccount");
 		passed = CommonPanel.popUp.clickOK(action);
+		action.getScreenShot("CustomerCareTC_cloneAccount");
 
 		action.scrollUp();
 
 		return passed;
 	}
+
+
+
+public boolean verifySuccessMessage1() {
+	boolean passed = false;
+
+	passed = action.waitFor(AccountCreated_Message, 4, true);
+	this.CreatedAccount = action.getTextFromPage(CreatedAccount_Value);
+
+	TestActions.log("Created Account : " + this.CreatedAccount);
+	action.getScreenShot("CustomerCareTC_createSubAccount");
+	passed = CommonPanel.popUp.clickOK(action);
+	action.getScreenShot("CustomerCareTC_createSubAccount");
+
+	action.scrollUp();
+
+	return passed;
+}
 }

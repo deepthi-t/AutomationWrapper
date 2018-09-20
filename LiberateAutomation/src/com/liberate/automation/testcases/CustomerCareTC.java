@@ -484,7 +484,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 		accountDetails.createSubAccount();
 		action.getScreenShot(testCase);
-		accountDetails.verifySuccessMessage();
+		accountDetails.verifySuccessMessage1();
 		action.getScreenShot(testCase);
 	}
 }

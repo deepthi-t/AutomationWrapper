@@ -27,21 +27,27 @@ public class AlterLineProduct {
         boolean passed = false;
         passed = action.waitFor(department_Select, 4, true);
         passed = action.selectByPartialText(department_Select, department);
-
+action.getScreenShot("alterProduct");
         passed = action.waitFor(siteDisabled_Select, 4, false);
         passed = action.selectByPartialText(site_Select, site);
+        action.getScreenShot("alterProduct");
         
         passed = action.waitFor(salesPerson_Select, 4, false);
         passed = action.selectBy(salesPerson_Select, 1);
 
         passed = action.waitFor(AplicationSource_Select, 4, false);
         passed = action.selectBy(AplicationSource_Select, 1);
+        action.getScreenShot("alterProduct");
         
         
         passed = action.waitFor(product_Select, 4, false);
-        passed = action.selectBy(product_Select, 3);
-        
+        passed = action.selectBy(product_Select, 4);
+        action.getScreenShot("alterProduct");
         action.clickOn(accept_button);
+        action.getScreenShot("alterProduct");
+        action.waitFor(5);
+        action.clickOn(accept_button);
+        action.getScreenShot("alterProduct");
         
         return passed;
  }

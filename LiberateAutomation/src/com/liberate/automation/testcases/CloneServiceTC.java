@@ -24,7 +24,7 @@ public class CloneServiceTC {
 	static String testCase;
 	static String testStatus;
 
-	static String cloneServiceNumber;
+	static String cloneServiceNumber = "9291700";
 	static String department;
 	static String site;
 	static String salesperson;

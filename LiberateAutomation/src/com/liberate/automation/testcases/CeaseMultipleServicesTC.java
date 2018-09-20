@@ -25,10 +25,10 @@ public class CeaseMultipleServicesTC {
 	static String testCase;
 	static String testStatus;
 	
-	static String ceasemultipleserviceaccount;
+	static String ceasemultipleserviceaccount= "280007620000";
 	
-	static String department;
-	static String site;
+	static String department = "AQSAL";
+	static String site = "ANSQ";
 	static String salesperson;
 	static String applicationsource;
 	

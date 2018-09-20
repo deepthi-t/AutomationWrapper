@@ -212,7 +212,7 @@ public class ServiceProvisioningTC {
 		cp.navigate();
 		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
-				"PCL", "LIME_POST");
+				"PCL", "PCL_Automa");
 		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();
@@ -269,7 +269,7 @@ public class ServiceProvisioningTC {
 		cp.navigate();
 		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
-				"PCL", "LIME_POST");
+				"PCL", "PCL_Automa");
 		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();

@@ -432,6 +432,7 @@ public class ServiceOperations {
 		action.waitFor(1);
 		action.moveMouseAwayFromScreen();
 		action.waitFor(Cloneservice_ActionButton, 5, true);
+		action.getScreenShot("CloneService");
 		action.clickOn(Cloneservice_ActionButton);
 		action.waitFor(1);
 

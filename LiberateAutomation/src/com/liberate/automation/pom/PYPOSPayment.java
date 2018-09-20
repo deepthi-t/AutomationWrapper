@@ -27,6 +27,9 @@ public class PYPOSPayment {
 	
 	By close_Button = By.xpath("//input[@value='Close']");
 	By oK_Button = By.xpath("//input[@value='OK']");
+	By Accept_Button = By.xpath("//input[@value = 'Accept']");
+	
+	By Submit_Button = By.xpath("//input[@value = 'Submit']");
 
 	public PYPOSPayment(TestActions action) {
 		this.action = action;
@@ -108,18 +111,27 @@ public class PYPOSPayment {
 	}
 	
 	public boolean POSPayment() {
+		action.getScreenShot("POSPAYMENT");
 		boolean passed = false;
-		
+		action.getScreenShot("POSPAYMENT");
 		passed = action.waitFor(allocateAmountDisabled_Input, 4, false);
 		action.waitFor(1);
+		action.getScreenShot("POSPAYMENT");
 		passed = action.sendDataTo(allocateAmount_Input, "10.00");
+		action.getScreenShot("POSPAYMENT");
 		
 		passed = action.clickOn(manualAllocate_Button);
+		action.getScreenShot("POSPAYMENT");
 		
 		passed = action.waitFor(payment_Row, 4, false);
+		action.getScreenShot("POSPAYMENT");
 		passed = action.clickOn(CommonPanel.Accept_Button);
+		action.getScreenShot("POSPAYMENT");
 		
 		passed = action.waitFor(paymentMethod_Select, 4, true);
+		action.getScreenShot("POSPAYMENT");
+		action.waitFor(5);
+		
 		
 		if(action.countOf(oK_Button)>0)
 		{
@@ -132,19 +144,42 @@ public class PYPOSPayment {
 		
 		return passed;
 	}
+	
+	
 
 	public boolean closePOSWindow() {
 		boolean passed = false;
 
 		action.waitFor(2);
 		action.closeTab();
-
+		action.getScreenShot("POSPAYMENT");
 		action.switchToNewWindow();
-
+		action.getScreenShot("POSPAYMENT");
 		action.waitFor(2);
+		action.getScreenShot("POSPAYMENT");
 		passed = action.waitFor(LiberateCommon.LevelOne.Payments, 4, true);
+		action.getScreenShot("POSPAYMENT");
 		passed = action.clickOn(LiberateCommon.LevelOne.Payments);
+		action.getScreenShot("POSPAYMENT");
 
+		return passed;
+	}
+
+	public boolean POSAccept() {
+		// TODO Auto-generated method stub
+		boolean passed = false;
+		passed = action.clickOn(Accept_Button);
+		action.getScreenShot("POSPAYMENT");
+		
+		return passed;
+	}
+	
+	public boolean POSSubmit() {
+		// TODO Auto-generated method stub
+		boolean passed = false;
+		passed = action.clickOn(Submit_Button);
+		action.getScreenShot("POSPAYMENT");
+		
 		return passed;
 	}
 }

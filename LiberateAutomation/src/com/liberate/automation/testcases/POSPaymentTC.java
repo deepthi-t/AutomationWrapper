@@ -20,7 +20,7 @@ public class POSPaymentTC {
 
 	static String TestCase;
 	static String TestStatus;
-	
+
 	@BeforeClass
 	public static void loadData() {
 		data = ExcelDataDriver.loadData();
@@ -34,16 +34,23 @@ public class POSPaymentTC {
 		TestActions.log("Test Status : " + TestStatus);
 		TestActions.log("*****COMPLETED '" + TestCase + "' EXECUTION***** \n");
 	}
-	
+
 	@Test
-	public static void posPayment()
-	{
+	public static void posPayment() {
+		TestCase = "POSPAYMENT";
 		PYPOSPayment pos = new PYPOSPayment(action);
-		
+		action.getScreenShot(TestCase);
 		pos.navigate();
+		action.getScreenShot(TestCase);
 		pos.navigateToPOS();
-		pos.searchWithAccountNumber("260002260000");
+		action.getScreenShot(TestCase);
+		pos.searchWithAccountNumber("28000713-0000");
+		action.getScreenShot(TestCase);
 		pos.POSPayment();
-		pos.closePOSWindow();
+		action.getScreenShot(TestCase);
+		pos.POSAccept();
+		action.getScreenShot(TestCase);
+		pos.POSSubmit();
+		action.getScreenShot(TestCase);
 	}
 }

@@ -44,7 +44,7 @@ public class PaymentEnquiriesTC {
 		action.getScreenShot(testCase);
 		assertEquals(pe.paymentEnquiryWithPaymentNo("3398182"), true);
 		action.getScreenShot(testCase);
-		String acctnum = action
+				String acctnum = action
 				.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]"));
 		action.getScreenShot(testCase);
 		System.out.println("Searched Account number is" + " " + acctnum);
@@ -74,5 +74,27 @@ public class PaymentEnquiriesTC {
 		} else {
 			System.out.println("Test failed");
 		}
+	}
+	
+	
+	@Test
+	public static void searchAccountNumber() {
+		testCase = "PaymentEnquiries_searchWithAccountNumber";
+
+		PYPaymentEnquiriesPOM pe = new PYPaymentEnquiriesPOM(action);
+
+		action.getScreenShot(testCase);
+		assertEquals(pe.navigate(), true);
+		action.getScreenShot(testCase);
+		assertEquals(pe.paymentEnquiryWithAccountNumber("240003280400"), true);
+		action.getScreenShot(testCase);
+		String servOrderNum = action.getTextFromPage(By.xpath("//*[@class='icePnlGrp']/div[2]/div[2]/table/tbody/tr[2]/td[2]/span"));
+		action.getScreenShot(testCase);
+		/*System.out.println("Searched Service order number is" + " " + servOrderNum);
+		if (servOrderNum.equals("9268522")) {
+			System.out.println("Test passed");
+		} else {
+			System.out.println("Test failed");
+		}*/
 	}
 }

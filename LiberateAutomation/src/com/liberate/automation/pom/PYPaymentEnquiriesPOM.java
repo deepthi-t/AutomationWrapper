@@ -80,13 +80,19 @@ public class PYPaymentEnquiriesPOM
 	* @return Returns true if able to navigate, else will return false.
 	*/
 	public boolean paymentEnquiryWithAccountNumber(String AccountNumber) 
-	{
+	{action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 		boolean passed = false;
-
+		action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 			passed = action.waitFor(SearchButton, 4, true);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 			passed = action.sendDataTo(SearchAccountNumber_InputField, AccountNumber);
 			passed = action.waitFor(SearchButton, 4, true);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 			passed = action.clickOn(SearchButton);
+			action.waitFor(100);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
+			passed = action.clickOn(CancelButton);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 
 		return passed;
 	}		 
@@ -103,8 +109,15 @@ public class PYPaymentEnquiriesPOM
 
 			passed = action.waitFor(SearchButton, 4, true);
 			passed = action.sendDataTo(SearchPaymentNo_InputField, PaymentNumber);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 			passed = action.waitFor(SearchButton, 4, true);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
 			passed = action.clickOn(SearchButton);
+			action.waitFor(100);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
+			passed = action.clickOn(CancelButton);
+			action.getScreenShot("PaymentEnquiries_searchWithPaymentNumber");
+			
 
 		return passed;
 	}

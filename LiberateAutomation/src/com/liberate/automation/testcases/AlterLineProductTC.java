@@ -25,7 +25,7 @@ public class AlterLineProductTC {
 	static String TestStatus;
 
 	static Map<String, String> data = new HashedMap<>();
-	static String alterlineproductServiceNumber="78902150";
+	static String alterlineproductServiceNumber="34564717";
 
 	@BeforeClass
 	public static void loadData() {
