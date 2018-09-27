@@ -58,7 +58,7 @@ public class ServiceProvisioningTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 1)
 	public static void newCustomerPEL() {
 		testCase = "ServiceProvisioningTC_newCustomerPEL";
 
@@ -70,7 +70,7 @@ public class ServiceProvisioningTC {
 		cp.navigate();
 		action.getScreenShot(testCase);
 		cp.fillApplicationDetails(CommonData.ApplicationForm.FixedResidential, CommonData.CustomerType.Residential,
-				"PEL", "ETFT");
+				"PEL", "PEL_TEST");
 		action.getScreenShot(testCase);
 
 		cp.fillResidentialCustomerDetails();
@@ -89,7 +89,7 @@ public class ServiceProvisioningTC {
 
 		ce.selectDepartmentSite("BGSAL", "BUSG");
 		action.getScreenShot(testCase);
-		ce.selectServicePackage("PEL", "ETFT");
+		ce.selectServicePackage("PEL", "PEL_TEST");
 		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(testCase);
@@ -117,7 +117,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=false,priority = 2)
 	public static void existingCustomerPEL() {
 		testCase = "ServiceProvisioningTC_existingCustomerPEL";
 
@@ -159,7 +159,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 3)
 	public static void existingCustomerPCLPostpaid() {
 		testCase = "ServiceProvisioningTC_existingCustomerPCLPostpaid";
 
@@ -200,7 +200,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 4)
 	public static void newCustomerPCLPostpaid() {
 		testCase = "ServiceProvisioningTC_newCustomerPCLPostpaid";
 
@@ -257,7 +257,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 5)
 	public static void newCustomerPCLCreditLimit() {
 		testCase = "ServiceProvisioningTC_newCustomerPCLCreditLimit";
 
@@ -312,7 +312,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 6)
 	public static void existingCustomerPDL() {
 		testCase = "ServiceProvisioningTC_existingCustomerPDL";
 
@@ -352,7 +352,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 8)
 	public static void existingCustomerPTV() {
 		testCase = "ServiceProvisioningTC_existingCustomerPTV";
 
@@ -390,7 +390,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 9)
 	public static void existingCustomerIPTV() {
 		testCase = "ServiceProvisioningTC_existingCustomerIPTV";
 
@@ -428,7 +428,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled=true,priority = 10)
 	public static void existingCustomerARN() {
 		testCase = "ServiceProvisioningTC_existingCustomerARN";
 
@@ -465,7 +465,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 11)
 	public static void newCustomerPELandPDL() {
 		testCase = "ServiceProvisioningTC_newCustomerPELandPDL";
 
@@ -537,7 +537,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true,priority = 12)
 	public static void addMorePELandPDL() {
 		testCase = "ServiceProvisioningTC_addMorePELandPDL";
 
@@ -552,7 +552,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 		ce.selectDepartmentSite("BGSAL", "BUSG");
 		action.getScreenShot(testCase);
-		ce.selectServicePackage("PEL", "ETFT");
+		ce.selectServicePackage("PEL", "TESTPEL");
 		action.getScreenShot(testCase);
 		ce.processPricingPlanScreen();
 		action.getScreenShot(testCase);
@@ -600,7 +600,7 @@ public class ServiceProvisioningTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test
+	@Test(enabled = true, priority = 13)
 	public static void addMorePELandPCL() {
 		testCase = "ServiceProvisioningTC_addMorePELandPCL";
 
