@@ -126,7 +126,8 @@ public class ServiceOperations {
 
 	public boolean verifyServicesScreen() {
 		boolean passed = true;
-
+		
+		action.waitFor(20);
 		return passed;
 	}
 
@@ -397,7 +398,7 @@ public class ServiceOperations {
 
 		boolean passed = false;
 
-		passed = action.waitFor(Audit_Tab, 4, true);
+		passed = action.waitFor(Audit_Tab, 60, true);
 		passed = action.clickOn(Audit_Tab);
 
 		return passed;

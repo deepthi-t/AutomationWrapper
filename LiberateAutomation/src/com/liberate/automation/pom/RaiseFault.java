@@ -66,6 +66,8 @@ public class RaiseFault {
 	By Addnotes_Input = By.xpath("(//*[text()='Add Notes:']/following::textarea)[1]");
 	By Accept_Button = By.xpath("//input[@value='Accept']");
 	By Cancel_Button = By.xpath("//input[@value='Cancel']");
+	By CloneAccountLocation_Dropdown = By.xpath("(//*[text()='Location:']/following::select)[1]");
+	By BillSortCodeStartingwith_dropdown = By.xpath("(//*[text()='Starting With:']/following::select)[1]");
 
 	// Identifying the Fault number
 	By RaisedFault_Number = By.xpath("//*[text()='Fault Number:']/following::span[1]");

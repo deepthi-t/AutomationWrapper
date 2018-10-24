@@ -110,6 +110,8 @@ public class ManageFault {
 	By RecordFaultActivitiesActivityAccept_Button = By.xpath("//input[@value='Accept']");
 	By RecordFaultActivitiesActivityCancel_Button = By
 			.xpath("//input[@value='Accept']/following::input[@value='Cancel']");
+	
+	By Notesdetails_textvalidation = By.xpath("//*[text()[contains(.,'Notes Details')]]");
 
 	public ManageFault(TestActions action) {
 		this.action = action;
@@ -129,7 +131,7 @@ public class ManageFault {
 		passed = action.clickOn(LiberateCommon.Faults.Faults);
 		passed = action.waitFor(LeftLink.Faults.ManageFault, 4, true);
 		passed = action.clickOn(LeftLink.Faults.ManageFault);
-
+		passed = action.waitFor(5);
 		return passed;
 	}
 
@@ -137,7 +139,7 @@ public class ManageFault {
 	public boolean enterFaultNumber(String FaultNumberValue) {
 		boolean passed = false;
 
-		passed = action.waitFor(FaultNumber_Input, 4, true);
+		passed = action.waitFor(FaultNumber_Input, 30, true);
 		passed = action.sendDataTo(FaultNumber_Input, FaultNumberValue);
 
 		return passed;
@@ -211,8 +213,14 @@ public class ManageFault {
 
 		passed = action.waitFor(AddNotesApply_Button, 4, true);
 		passed = action.clickOn(AddNotesApply_Button);
-
+		
 		return passed;
+	}
+	public void ValidationScroll()
+	{
+		action.waitFor(20);
+		action.scrollDown();
+		action.waitFor(10);
 	}
 
 	// Click on Add notes -Clear button of Fault notes panel
@@ -272,7 +280,7 @@ public class ManageFault {
 
 		passed = action.waitFor(AssignFaultAssign_Button, 4, true);
 		passed = action.clickOn(AssignFaultAssign_Button);
-
+		
 		return passed;
 	}
 

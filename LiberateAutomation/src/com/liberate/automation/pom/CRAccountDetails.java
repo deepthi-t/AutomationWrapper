@@ -38,6 +38,10 @@ public class CRAccountDetails {
 
 	By AccountCreated_Message = By.xpath("//*[text()[contains(.,'Account created successfully.')]]");
 	By CreatedAccount_Value = By.xpath("//*[text()[contains(.,'Account created successfully.')]]//following::span[1]");
+	
+	By CloneAccountLocation_Dropdown = By.xpath("(//*[text()='Location:']/following::select)[1]");
+	By BillSortCodeStartingwith_dropdown = By.xpath("(//*[text()='Starting With:']/following::select)[1]");
+
 
 	public CRAccountDetails(TestActions action) {
 		this.action = action;
@@ -65,6 +69,9 @@ public class CRAccountDetails {
 		passed = action.clickOn(CloneAccount_ActionButton);
 		action.waitFor(3);
 		// action.selectBy(Location_Select, 1);
+		action.selectBy(CloneAccountLocation_Dropdown, 2);
+		action.waitFor(2);
+		action.selectBy(BillSortCodeStartingwith_dropdown, 2);
 		action.waitFor(2);
 		action.getScreenShot("CustomerCareTC_cloneAccount");
 		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
@@ -114,7 +121,7 @@ public class CRAccountDetails {
 		action.sendDataTo(town_Input, "Hyderabad");
 		action.waitFor(2);
 		action.clickOn(Submit_Button);
-
+		action.waitFor(5);
 		passed = fillCustomerDetails();
 
 		return passed;

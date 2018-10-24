@@ -45,7 +45,7 @@ public class CreditControlTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(priority = 0)
+	@Test(enabled = false)
 	public static void serviceBAR() {
 		testCase = "CreditControlTC_serviceBAR";
 
@@ -93,7 +93,7 @@ public class CreditControlTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 11)
+	@Test(priority = 1)
 	public static void serviceTOSVerifyAudit() {
 		testCase = "CreditControlTC_serviceTOSVerifyAudit";
 
@@ -129,7 +129,7 @@ public class CreditControlTC {
 		assertEquals(services.ServiceStatus, "T");
 	}
 
-	@Test(priority = 12)
+	@Test(enabled = false)
 	public static void serviceROSVerifyAudit() {
 		testCase = "CreditControlTC_serviceROSVerifyAudit";
 

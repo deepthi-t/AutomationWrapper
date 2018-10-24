@@ -52,7 +52,7 @@ public class FaultManagementTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(priority=1)
+	@Test(enabled=false)
 	public static void raiseFault() {
 		testCase = "FaultManagement_raiseFault";
 
@@ -74,7 +74,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=2)
+	@Test(enabled=false)
 	public static void manageFaultAddNotes() {
 		testCase = "FaultManagement_manageFaultAddNotes";
 
@@ -96,9 +96,14 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 		assertEquals(mf.clickonAddNotesApplybutton(), true);
 		action.getScreenShot(testCase);
+		assertEquals(mf.navigate(), true);
+		assertEquals(mf.enterFaultNumber(faultNumber), true);
+		assertEquals(mf.clickonSearchbutton(), true);
+		mf.ValidationScroll();
+		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=3)
+	@Test(enabled=false)
 	public static void assignFault() {
 		testCase = "FaultManagement_assignFault";
 
@@ -118,9 +123,14 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 		assertEquals(mf.clickonAssignFaultAssignbutton(), true);
 		action.getScreenShot(testCase);
+		assertEquals(mf.navigate(), true);
+		assertEquals(mf.enterFaultNumber(faultNumber), true);
+		assertEquals(mf.clickonSearchbutton(), true);
+		mf.ValidationScroll();
+		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=7)
+	@Test(enabled=false)
 	public static void signoffFault() {
 		testCase = "FaultManagement_signoffFault";
 
@@ -144,7 +154,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=4)
+	@Test(enabled=false)
 	public static void suspend() {
 		testCase = "FaultManagement_suspendRelease";
 
@@ -166,7 +176,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 	
-	@Test(priority=5)
+	@Test(enabled=false)
 	public static void release() {
 		testCase = "FaultManagement_suspendRelease";
 
@@ -186,7 +196,7 @@ public class FaultManagementTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority=6)
+	@Test(priority=1)
 	public static void upgradeFaultPriority() {
 		testCase = "FaultManagement_upgradeFaultPriority";
 
@@ -205,6 +215,11 @@ public class FaultManagementTC {
 		assertEquals(mf.selectNewPriorityDropdown(), true);
 		action.getScreenShot(testCase);
 		assertEquals(mf.clickonFaultPriorityAcceptbutton(), true);
+		action.getScreenShot(testCase);
+		assertEquals(mf.navigate(), true);
+		assertEquals(mf.enterFaultNumber(faultNumber), true);
+		assertEquals(mf.clickonSearchbutton(), true);
+		mf.ValidationScroll();
 		action.getScreenShot(testCase);
 	}
 

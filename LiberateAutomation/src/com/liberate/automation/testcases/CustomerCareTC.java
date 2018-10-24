@@ -84,7 +84,7 @@ public class CustomerCareTC {
 		TestResult.processTestResult(testCase, result);
 	}
 
-	@Test(priority = 0)
+	@Test(enabled = false)
 	public static void generateInterimBill() {
 		testCase = "CustomerCareTC_generateInterimBill";
 
@@ -98,7 +98,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 1)
+	@Test(enabled = false)
 	public static void transferService() {
 		testCase = "CustomerCareTC_transferService";
 
@@ -121,7 +121,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 2)
+	@Test(enabled = false)
 	public static void suspendService() {
 		testCase = "CustomerCareTC_suspendService";
 
@@ -157,7 +157,7 @@ public class CustomerCareTC {
 
 	}
 
-	@Test(priority = 3)
+	@Test(enabled = false)
 	public static void restoreService() {
 		testCase = "CustomerCareTC_restoreService";
 
@@ -192,7 +192,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 4)
+	@Test(enabled = false)
 	public static void alterServiceNumberPCL() {
 		testCase = "CustomerCareTC_alterServiceNumberPCL";
 
@@ -227,7 +227,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 5)
+	@Test(enabled = false)
 	public static void alterServiceNumberPCLServiceCharge() {
 		testCase = "CustomerCareTC_alterServiceNumberPCLServiceCharge";
 
@@ -263,7 +263,7 @@ public class CustomerCareTC {
 		ManageServiceOrderTC.signOffCompletely(serviceOrder.getSONumber());
 	}
 
-	@Test(priority = 6)
+	@Test(enabled = false)
 	public static void ceaseServiceNumberPCL() {
 		testCase = "CustomerCareTC_ceaseServiceNumberPCL";
 
@@ -297,7 +297,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 7)
+	@Test(enabled = false)
 	public static void ceaseServiceNumberPCLServiceCharge() {
 		testCase = "CustomerCareTC_ceaseServiceNumberPCLServiceCharge";
 
@@ -327,7 +327,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 8)
+	@Test(enabled = false)
 	public static void verifyServiceProducts() {
 		testCase = "CustomerCareTC_verifyServiceProducts";
 
@@ -349,7 +349,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 9)
+	@Test(enabled = false)
 	public static void provideProduct() {
 		testCase = "CustomerCareTC_provideProduct";
 
@@ -384,7 +384,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 10)
+	@Test(enabled = false)
 	public static void ceaseProduct() {
 		testCase = "CustomerCareTC_ceaseProduct";
 
@@ -416,7 +416,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 11)
+	@Test(priority = 1)
 	public static void cloneCustomer() {
 		testCase = "CustomerCareTC_cloneCustomer";
 
@@ -440,7 +440,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 12)
+	@Test(enabled = false)
 	public static void cloneAccount() {
 		testCase = "CustomerCareTC_cloneAccount";
 
@@ -464,7 +464,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 	}
 
-	@Test(priority = 13)
+	@Test(enabled = false)
 	public static void createSubAccount() {
 		testCase = "CustomerCareTC_createSubAccount";
 
