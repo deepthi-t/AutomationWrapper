@@ -63,7 +63,9 @@ public class SalesSignOff {
 	public boolean addServiceCharge() {
 		By AddServiceCharge_Radio = By
 				.xpath("//*[text()[contains(.,'Service Charge Required:')]]//following::input[1]");
-		By New_Button = By.xpath("//input[@value='New']");
+		
+				
+				By New_Button = By.xpath("//input[@value='New']");
 		By ServiceCharge_Select = By.xpath("//*[text()='ServiceChargeType:']//following::select[1]");
 
 		boolean passed = false;

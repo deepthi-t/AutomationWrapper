@@ -29,7 +29,7 @@ public class QueryManagementTC {
 	//TestData
 		static Map<String, String> dataMap = new HashedMap<>();
 
-		static String queryAccountNumber;
+		static String queryAccountNumber = "280006890000";
 		static String manageQueryNumber;
 		static String nonAccountQuery;
 		
@@ -98,11 +98,11 @@ public class QueryManagementTC {
 
 		mq.navigate();
 		action.getScreenShot(testCase);
-		mq.searchByQueryNumber("B00028E");
+		mq.searchByQueryNumber("B00013J");
 		action.getScreenShot(testCase);
 //		mq.verifyQuery();
 		action.getScreenShot(testCase);
-		mq.addNote("Additional Note");
+		mq.addNote1("Additional Note");
 		action.getScreenShot(testCase);
 		mq.verifyQuery();
 		action.getScreenShot(testCase);

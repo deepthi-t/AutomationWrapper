@@ -64,6 +64,33 @@ public class MSOAssign {
 		return passed;
 	}
 	
+	//ManageServiceOrder_assignServiceOrder
+	
+	public boolean searchServiceOrder1(String department, String ServiceOrderNumber) {
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+
+		action.scrollUp();
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		if (!department.trim().equals("") && !ServiceOrderNumber.trim().equals("")) {
+			this.ServiceOrderNumber = ServiceOrderNumber;
+			passed = CommonPanel.ServiceOrder.Search(action, department, ServiceOrderNumber);
+		}
+		
+		else {
+			passed = action.clickOn(CommonPanel.ServiceOrder.serviceOrderList_Header);
+			action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+			passed = action.waitFor(CommonPanel.ServiceOrder.ServiceOrderList_Row("[1]"), 4, true);
+			this.ServiceOrderNumber = action
+					.getTextFromPage(CommonPanel.ServiceOrder.ServiceOrderList_Row("[1]/descendant::td[1]"));
+			action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+			passed = action.clickOn(CommonPanel.ServiceOrder.ServiceOrderList_Row("[1]"));
+			action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		}
+		return passed;
+	}
+	
 	public boolean verifyServiceOrdeDetails(String ServiceOrderNumber) {
 		boolean passed = false;
 
@@ -96,6 +123,45 @@ public class MSOAssign {
 		passed = action.clickOn(submit_Button);
 		passed = action.waitFor(2);
 		passed = action.clickOn(accept_Button);
+		
+		return passed;
+	}
+	
+	//assign service order    action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+	
+	public boolean assignServiceOrder1()
+	{action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		action.scrollDown();
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		passed = action.waitFor(selectDepartmentBySite, 3, true);
+		passed = action.clickOn(selectDepartmentBySite);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		
+		passed = action.waitFor(site_DropDown, 5, true);
+		passed = action.selectByPartialText(site_DropDown, "ANSQ-");
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		
+		passed = action.waitFor(department_Row, 5, true);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		action.scrollDown();
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		passed = action.clickOn(department_Row);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		
+		passed = action.waitFor(departmentSeq_Input, 3, true);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		action.scrollDown();
+		passed = action.sendDataTo(departmentSeq_Input, "50");
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		
+		passed = action.clickOn(submit_Button);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		passed = action.waitFor(2);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
+		passed = action.clickOn(accept_Button);
+		action.getScreenShot("ManageServiceOrder_assignServiceOrder");
 		
 		return passed;
 	}

@@ -110,4 +110,62 @@ public class DashBoard {
 
 		return passed;
 	}
+
+
+
+
+public boolean amendAccount1() {
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	boolean passed = false;
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.clickOn(AccountDetails_Tab);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.waitFor(Amend_ActionButton, 4, true);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.clickOn(Amend_ActionButton);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.waitFor(Amend_ActionButton, 4, false);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.waitFor(Location_Select, 4, true);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.selectBy(Location_Select, 1);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	int index = action.getIndexOfSelect(MarketingCategory_Select, MarketingCategory);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+
+	passed = action.selectBy(MarketingCategory_Select, index + 1);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+
+	MarketingCategory = action.getSelectedOption(MarketingCategory_Select);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+
+	passed = action.clickOn(CommonPanel.Accept_Button);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+
+	passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, true);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.isTextAvailable("Account details updated successfully.");
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+
+	passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 4, false);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+
+	action.scrollUp();
+	action.scrollUp();
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	passed = action.clickOn(LeftLink.Search.Dashboard);
+	action.getScreenShot("CustomerEnquiryTC_amendAccountDetails");
+	return passed;
 }
+}
+
+
+
+
+
+
+
+
+

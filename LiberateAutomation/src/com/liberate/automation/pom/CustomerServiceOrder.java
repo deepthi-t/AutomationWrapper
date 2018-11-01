@@ -46,11 +46,13 @@ public class CustomerServiceOrder {
 
 		if (action.countOf(ExcludeCeaseClosed_CheckBox) > 0) {
 			action.waitFor(ExcludeCeaseClosed_CheckBox, 4, false);
+			action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
 		}
 
 		if (!(action.countOf(ServiceOrderList_PanelHeader) > 0))
 			passed = action.waitFor(LeftLink.Search.ServiceOrders, 4, true);
 		passed = action.clickOn(LeftLink.Search.ServiceOrders);
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
 
 		return passed;
 	}

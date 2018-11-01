@@ -132,7 +132,7 @@ public class ComverseTC {
 		action.getScreenShot(testCase);
 		comverse.verifyComverseEnquiry();
 		action.getScreenShot(testCase);
-		comverse.changeBalance();
+		comverse.changeBalance1();
 		action.getScreenShot(testCase);
 		comverse.adjustBalance();
 		action.getScreenShot(testCase);
@@ -184,11 +184,11 @@ public class ComverseTC {
 		action.getScreenShot(testCase);
 		service.gotoComverseTab();
 		action.getScreenShot(testCase);
-		comverse.verifyComverseEnquiry();
+		comverse.verifyComverseEnquiry1();
 		action.getScreenShot(testCase);
-		comverse.changeBalance();
+		comverse.changeBalance2();
 		action.getScreenShot(testCase);
-		comverse.transferBalance(comverseServiceNumberTo);
+		comverse.transferBalance1(comverseServiceNumberTo);
 	}
 
 	@Test
@@ -207,7 +207,7 @@ public class ComverseTC {
 		action.getScreenShot(testCase);
 		accountOffer.navigate();
 		action.getScreenShot(testCase);
-		accountOffer.addNewAccountOffer();
+		accountOffer.addNewAccountOffer1();
 		action.getScreenShot(testCase);
 	}
 }

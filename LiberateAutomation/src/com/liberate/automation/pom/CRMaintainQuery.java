@@ -323,6 +323,56 @@ public class CRMaintainQuery {
 		return passed;
 	}
 
+	
+	public boolean addNote1(String Note) {
+		action.scrollUp();
+		action.getScreenShot("QueryManagement_addNoteQuery");
+		boolean passed = false;
+		action.getScreenShot("QueryManagement_addNoteQuery");
+		if(action.countOf(Notes_ActionButton) > 0)
+		{
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			action.waitFor(1);
+			passed = action.clickOn(Notes_ActionButton);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.waitFor(QueryNotes_Input, 4, true);
+			passed = action.sendDataTo(QueryNotes_Input, Note);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.clickOn(Add_Button);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.waitFor(By.xpath("//*[text()='" + Note + "']"), 4, true);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.clickOn(Back_Button);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+		}
+		
+		else
+		{
+			By queryList = By.xpath("(//*[contains(@id, 'manageQueryForm:querySearchResults')])[89]");
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			action.waitFor(2);
+			passed = action.waitFor(queryList, 4, true);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.clickOn(queryList);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			action.waitFor(1);
+			passed = action.clickOn(Notes_ActionButton);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+	
+			passed = action.waitFor(QueryNotes_Input, 4, true);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.sendDataTo(QueryNotes_Input, Note);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.clickOn(Add_Button);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.waitFor(By.xpath("//*[text()='" + Note + "']"), 4, true);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+			passed = action.clickOn(Back_Button);
+			action.getScreenShot("QueryManagement_addNoteQuery");
+		}
+
+		return passed;
+	}
 	public boolean progressQuery(String Status) {
 		action.scrollUp();
 		boolean passed = false;

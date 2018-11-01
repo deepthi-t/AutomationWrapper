@@ -112,9 +112,11 @@ public class PYPOSPayment {
 	
 	public boolean POSPayment() {
 		action.getScreenShot("POSPAYMENT");
+		action.getScreenShot("POSPAYMENT");
 		boolean passed = false;
 		action.getScreenShot("POSPAYMENT");
 		passed = action.waitFor(allocateAmountDisabled_Input, 4, false);
+		action.getScreenShot("POSPAYMENT");
 		action.waitFor(1);
 		action.getScreenShot("POSPAYMENT");
 		passed = action.sendDataTo(allocateAmount_Input, "10.00");
@@ -168,16 +170,26 @@ public class PYPOSPayment {
 	public boolean POSAccept() {
 		// TODO Auto-generated method stub
 		boolean passed = false;
+		action.getScreenShot("POSPAYMENT");
 		passed = action.clickOn(Accept_Button);
 		action.getScreenShot("POSPAYMENT");
 		
 		return passed;
 	}
 	
+	/*public boolean POSPAYMENTMETHOD(){
+		boolean passed = false;
+		By Select_PaymentMethod = By.xpath("//select");
+		action.selectByValue(Select_PaymentMethod, )
+		return passed;
+	}*/
+	
 	public boolean POSSubmit() {
 		// TODO Auto-generated method stub
 		boolean passed = false;
+		action.getScreenShot("POSPAYMENT");
 		passed = action.clickOn(Submit_Button);
+		action.waitFor(2);
 		action.getScreenShot("POSPAYMENT");
 		
 		return passed;

@@ -112,6 +112,42 @@ public class PEP_RouteAllocationPOM
 		return passed;
 	}
 	
+	//ManageServiceOrder_AutoAllocateRoutePEP
+	
+	public boolean allocateRoutePEPLEG11(String LEG1PlantItemType, String LEG1PlantItemNumber) {
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(selected_Row, 4, true);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		if (!action.getTextFromPage(routeAllocatedState_Value).trim().equals("N")) {
+			releaseRoute();
+			verifyRelease();
+		}
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		action.scrollUp();
+		action.waitFor(4);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+
+		passed = action.clickOn(allocateAuto_ActionButton);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(validate_Button, 4, true);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.selectByPartialText(exchangeAreaLEG1_Select, "BOT");
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(2);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.selectByPartialText(plantItemTypeLEG1_Select, LEG1PlantItemType);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(3);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.sendDataTo(plantItemNoLEG1_Input, LEG1PlantItemNumber);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		
+		return passed;
+	}
+	
 	
 	
 	public boolean clickingOnValidateButton()
@@ -124,6 +160,18 @@ public class PEP_RouteAllocationPOM
 		return passed;
 	}
 	
+	
+	public boolean clickingOnValidateButton1()
+	{action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(3);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.clickOn(validate_Button);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		
+		return passed;
+	}
 	public boolean allocateRoutePEPLEG2(String LEG2PlantItemType, String LEG2PlantItemNumber) 
 	{
 		boolean passed = false;
@@ -140,6 +188,30 @@ public class PEP_RouteAllocationPOM
 		return passed;
 	}
 	
+	
+	public boolean allocateRoutePEPLEG21(String LEG2PlantItemType, String LEG2PlantItemNumber) 
+	{action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(4);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.selectByPartialText(exchangeAreaLEG2_Select, "BOT");
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(2);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.selectByPartialText(plantItemTypeLEG2_Select, LEG2PlantItemType);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(2);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.sendDataTo(plantItemNoLEG2_Input, LEG2PlantItemNumber);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(2);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.clickOn(accept_Button);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		
+		return passed;
+	}
 	public boolean clickingOnFinalAcceptButton()
 	{
 		boolean passed = false;
@@ -150,6 +222,18 @@ public class PEP_RouteAllocationPOM
 		return passed;
 	}
 	
+	
+	public boolean clickingOnFinalAcceptButton1()
+	{action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(3);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.clickOn(accept_Button);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		
+		return passed;
+	}
 	public boolean verifyAutoAllocateRoute() {
 		boolean passed = false;
 
@@ -159,5 +243,16 @@ public class PEP_RouteAllocationPOM
 
 		return passed;
 	}
-	
+	public boolean verifyAutoAllocateRoute1() {
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.waitFor(CommonPanel.popUp.popUpWindow, 4, true);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = (action.getTextFromPage(CommonPanel.popUp.popUpMessage_Value).trim().contains(expectedSuccessMsg) ? true : false);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+		action.getScreenShot("ManageServiceOrder_AutoAllocateRoutePEP");
+		return passed;
+	}
 }

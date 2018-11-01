@@ -44,7 +44,7 @@ public class POSPaymentTC {
 		action.getScreenShot(TestCase);
 		pos.navigateToPOS();
 		action.getScreenShot(TestCase);
-		pos.searchWithAccountNumber("28000713-0000");
+		pos.searchWithAccountNumber("280017170000");
 		action.getScreenShot(TestCase);
 		pos.POSPayment();
 		action.getScreenShot(TestCase);

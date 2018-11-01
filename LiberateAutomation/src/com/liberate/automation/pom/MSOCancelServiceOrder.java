@@ -66,19 +66,36 @@ public class MSOCancelServiceOrder {
 
 	public boolean cancelServiceOrder() {
 		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
 
 		passed = action.waitFor(cancelReason_Select, 3, true);
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
 		passed = action.selectBy(cancelReason_Select, 1);
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
 		passed = action.waitFor(1);
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
 		passed = action.clickOn(accept_Button);
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
 
 		return passed;
 	}
 
 	public boolean clickOnOKButton() {
 		boolean passed = false;
+		
 
 		passed = CommonPanel.popUp.clickOK(action);
+
+		return passed;
+	}
+	
+	public boolean clickOnOKButton1() {
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
+		boolean passed = false;
+		
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
+		passed = CommonPanel.popUp.clickOK(action);
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
 
 		return passed;
 	}

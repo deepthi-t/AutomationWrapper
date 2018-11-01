@@ -17,6 +17,7 @@ import com.liberate.automation.core.TestResult;
 import com.liberate.automation.pom.AlterServiceNumber;
 import com.liberate.automation.pom.CRAccountDetails;
 import com.liberate.automation.pom.CRCustomerSearch;
+import com.liberate.automation.pom.CeaseMultipleServices;
 import com.liberate.automation.pom.CeaseService;
 import com.liberate.automation.pom.CustomerServiceOrder;
 import com.liberate.automation.pom.DashBoard;
@@ -40,17 +41,18 @@ public class CustomerCareTC {
 	static Map<String, String> dataMap = new HashedMap<>();
 
 	static String accountNumber;
-	static String salesDepartment;
-	static String site;
-	static String transferToAccount;
-	static String transferFromAccount;
+	static String salesDepartment = "AQSAL";
+	static String site = "ANSQ";
+	static String transferToAccount = "280007710000";
+	static String transferFromAccount = "280008670000";
 	static String suspendedService;
 	static String serviceASNCease;
 	static String serviceCease;
-	static String ceaseServiceWithCharge;
+	static String ceaseServiceWithCharge = "1116509";
 	static String verifyProductsAccountNumber;
 	static String CloneCustaccountNumber = "240003280100";
-	static String serviceASNCeaseServCharge;
+	static String serviceASNCeaseServCharge = "78902197";
+	
 	
 	/**
 	 * Private constructor to disable creation of object
@@ -74,6 +76,7 @@ public class CustomerCareTC {
 		verifyProductsAccountNumber = dataMap.get("verifyProductsAccountNumber");
 		CloneCustaccountNumber = dataMap.get("CloneCustaccountNumber");
 		serviceASNCeaseServCharge = dataMap.get("serviceASNCeaseServCharge");
+		
 		
 		
 		
@@ -114,7 +117,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 		service.verifyServicesScreen();
 		action.getScreenShot(testCase);
-		service.transferService(transferToAccount);
+		service.transferService1(transferToAccount);
 		action.getScreenShot(testCase);
 
 		service.verifyTransferService(transferToAccount);
@@ -248,7 +251,9 @@ public class CustomerCareTC {
 
 		asn.selectDepartmentSite(salesDepartment, site);
 		action.getScreenShot(testCase);
-		asn.alterServiceNumber(false);
+		asn.alterServiceNumber(true);
+		action.getScreenShot(testCase);
+		service.clickServiceChargebutton();
 		action.getScreenShot(testCase);
 
 		service.raiseServiceCharge();
@@ -259,8 +264,8 @@ public class CustomerCareTC {
 		assertEquals(serviceOrder.getSOCommand(), "ASN");
 		action.getScreenShot(testCase);
 		serviceASNCease = serviceOrder.getServiceONumber();
-
-		ManageServiceOrderTC.signOffCompletely(serviceOrder.getSONumber());
+		action.getScreenShot(testCase);
+		ManageServiceOrderTC.signOffCompletely1(serviceOrder.getSONumber());
 	}
 
 	@Test(enabled = false)
@@ -305,6 +310,8 @@ public class CustomerCareTC {
 		ServiceOperations service = new ServiceOperations(action);
 		SalesSignOff sales = new SalesSignOff(action);
 		CustomerServiceOrder serviceOrder = new CustomerServiceOrder(action);
+		AlterServiceNumber asn = new AlterServiceNumber(action);
+		CeaseMultipleServices CMS = new CeaseMultipleServices(action);
 
 		search.navigate();
 		action.getScreenShot(testCase);
@@ -315,7 +322,13 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 		service.clickOnCeaseService();
 		action.getScreenShot(testCase);
-
+		asn.selectDepartmentSite(salesDepartment, site);
+		action.getScreenShot(testCase);
+		service.Proceedbuttonclick();
+		action.getScreenShot(testCase);
+		CMS.selectservicesandaccept();
+		action.getScreenShot(testCase);
+		
 		sales.verifySalesSignOff();
 		action.getScreenShot(testCase);
 		sales.addServiceCharge();
@@ -487,4 +500,13 @@ public class CustomerCareTC {
 		accountDetails.verifySuccessMessage1();
 		action.getScreenShot(testCase);
 	}
+	
+	
+	
+
+
 }
+
+
+
+

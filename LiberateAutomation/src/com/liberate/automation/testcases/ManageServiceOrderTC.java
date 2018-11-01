@@ -45,7 +45,7 @@ public class ManageServiceOrderTC {
 
 	static Map<String, String> dataMap = new HashedMap<>();
 
-	static String SOEnquire;
+	static String SOEnquire = "WC00983";
 	static String SalesDepartment;
 	static String GeneralDepartment;
 	static String AccountsDepartment;
@@ -146,7 +146,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		mse.verifyServiceOrderDetails(SOEnquire);
 		action.getScreenShot(testCase);
-		mse.verifySepcialInstructions(mso.SpecialInstruction);
+		mse.verifySepcialInstructions1(mso.SpecialInstruction);
 		action.getScreenShot(testCase);
 	}
 
@@ -162,7 +162,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		msr.verifyServiceOrderDetails();
 		action.getScreenShot(testCase);
-		msr.addServiceCharge();
+		msr.addServiceCharge1();
 		action.getScreenShot(testCase);
 		msr.verifyServiceCharge(msr.ServiceCharge, true);
 		action.getScreenShot(testCase);
@@ -180,7 +180,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		msr.verifyServiceOrderDetails();
 		action.getScreenShot(testCase);
-		msr.deleteServiceCharge();
+		msr.deleteServiceCharge1();
 		action.getScreenShot(testCase);
 		msr.verifyServiceCharge(msr.ServiceCharge, false);
 		action.getScreenShot(testCase);
@@ -201,7 +201,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		msc.cancelServiceOrder();
 		action.getScreenShot(testCase);
-		msc.clickOnOKButton();
+		msc.clickOnOKButton1();
 		action.getScreenShot(testCase);
 
 		mse.navigate();
@@ -210,7 +210,7 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		mse.verifyDepartmentCirculation();
 		action.getScreenShot(testCase);
-		mse.getCurrentServiceOrderStatus();
+		mse.getCurrentServiceOrderStatus1();
 		action.getScreenShot(testCase);
 	}
 
@@ -350,11 +350,11 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder(AccountsDepartment, AssignSO);
+		mss.searchServiceOrder1(AccountsDepartment, AssignSO);
 		action.getScreenShot(testCase);
 		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
-		mss.assignServiceOrder();
+		mss.assignServiceOrder1();
 		action.getScreenShot(testCase);
 	}
 
@@ -366,9 +366,9 @@ public class ManageServiceOrderTC {
 
 		mss.navigate();
 		action.getScreenShot(testCase);
-		mss.searchServiceOrder(GeneralDepartment, BrowseSO);
+		mss.searchServiceOrder1(GeneralDepartment, BrowseSO);
 		action.getScreenShot(testCase);
-		mss.verifyServiceOrdeDetails(mss.ServiceOrderNumber);
+		mss.verifyServiceOrdeDetails1(mss.ServiceOrderNumber);
 		action.getScreenShot(testCase);
 	}
 
@@ -432,15 +432,15 @@ public class ManageServiceOrderTC {
 		action.getScreenShot(testCase);
 		arso.searchServiceOrder("RSNET", "B00583A");
 		action.getScreenShot(testCase);
-		pep.allocateRoutePEPLEG1("DP-DISTRIBUTION POINT", "DP950");
+		pep.allocateRoutePEPLEG11("DP-DISTRIBUTION POINT", "DP950");
 		action.getScreenShot(testCase);
 		pep.clickingOnValidateButton();
 		action.getScreenShot(testCase);
-		pep.allocateRoutePEPLEG2("DP-DISTRIBUTION POINT", "370");
+		pep.allocateRoutePEPLEG21("DP-DISTRIBUTION POINT", "370");
 		action.getScreenShot(testCase);
-		pep.clickingOnFinalAcceptButton();
+		pep.clickingOnFinalAcceptButton1();
 		action.getScreenShot(testCase);
-		pep.verifyAutoAllocateRoute();
+		pep.verifyAutoAllocateRoute1();
 		action.getScreenShot(testCase);
 		
 	}
@@ -479,6 +479,37 @@ public class ManageServiceOrderTC {
 		for (int i = 0; i < Department.size(); i++) {
 			CommonPanel.ServiceOrder.Search(action, Department.get(i), ServiceOrder);
 			signoff.accountSignOff();
+		}
+	}
+	
+	//test method used in alterServiceNumberPCLServiceCharge()
+	@Test(enabled = false)
+	public static void signOffCompletely1(String ServiceOrder) {
+		testCase = "ManageServiceOrder_signOffCompletely";
+
+		List<String> Department = new ArrayList<String>();
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		MSOEnquiry enquiry = new MSOEnquiry(action);
+		MSOSignoff signoff = new MSOSignoff(action);
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		enquiry.navigate();
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		enquiry.searchServiceOrder(ServiceOrder);
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		enquiry.verifyDepartmentCirculation();
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		Department = enquiry.getCurrentDepartments();
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		signoff.navigate();
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		for (int i = 0; i < Department.size(); i++) {
+			action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+			CommonPanel.ServiceOrder.Search(action, Department.get(i), ServiceOrder);
+			action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+			action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+			action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+			signoff.accountSignOff();
+			action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
 		}
 	}
 }

@@ -191,6 +191,14 @@ public class MSOEnquiry {
 		return (action.getTextFromPage(By.xpath((action.getXpath(Circulation_Row) + "[1]" + "/descendant::td[4]")))
 				.trim());
 	}
+	
+	public String getCurrentServiceOrderStatus1() {
+		action.getScreenShot("ManageServiceOrder_cancelServiceOrder");
+		return (action.getTextFromPage(By.xpath((action.getXpath(Circulation_Row) + "[1]" + "/descendant::td[4]")))
+				.trim());
+	
+	
+	}
 
 	public boolean verifySepcialInstructions(String SpecialInstruction) {
 		boolean passed = false;
@@ -204,4 +212,18 @@ public class MSOEnquiry {
 		return passed;
 	}
 
+	//Testmethod
+	public boolean verifySepcialInstructions1(String SpecialInstruction) {
+		action.getScreenShot("ManageServiceOrder_addSpecialInstructions");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_addSpecialInstructions");
+
+		passed = action.clickOn(SpecialInstructions_Tab);
+		action.getScreenShot("ManageServiceOrder_addSpecialInstructions");
+		passed = action.waitFor(SpecialInstructions_PanelHeader, 4, true);
+		action.getScreenShot("ManageServiceOrder_addSpecialInstructions");
+		passed = action.countOf(By.xpath("//*[text()='" + SpecialInstruction + "']")) > 0;
+		action.getScreenShot("ManageServiceOrder_addSpecialInstructions");
+		return passed;
+	}
 }

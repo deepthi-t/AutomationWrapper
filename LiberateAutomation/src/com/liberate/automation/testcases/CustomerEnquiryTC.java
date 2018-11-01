@@ -27,9 +27,9 @@ public class CustomerEnquiryTC {
 	static String testCase;
 	static String testStatus;
 
-	public static String accountNumber;
+	public static String accountNumber = "280006890000";
 	public static String surName;
-	public static String pricingPlanAccount;
+	public static String pricingPlanAccount = "280006890000";
 
 	/**
 	 * Private constructor to disable creation of object
@@ -116,7 +116,7 @@ public class CustomerEnquiryTC {
 		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(testCase);
 
-		cd.amendAccount();
+		cd.amendAccount1();
 		action.getScreenShot(testCase);
 		cd.verifyDashBoard(accountNumber);
 		action.getScreenShot(testCase);
@@ -290,6 +290,7 @@ public class CustomerEnquiryTC {
 
 		cr.navigate();
 		action.getScreenShot(testCase);
+		//cr.searchByAccountNumber(pricingPlanAccount);
 		cr.searchByAccountNumber(pricingPlanAccount);
 		action.getScreenShot(testCase);
 

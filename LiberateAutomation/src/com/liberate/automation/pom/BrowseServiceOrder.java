@@ -84,6 +84,24 @@ public class BrowseServiceOrder {
 
 		return passed;
 	}
+	
+	//Test method
+	public boolean searchServiceOrder1(String department, String ServiceOrderNumber) {
+
+		action.scrollUp();
+		action.getScreenShot("ManageServiceOrder_browseSO");
+
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_browseSO");
+
+		this.ServiceOrderNumber = ServiceOrderNumber;
+		action.getScreenShot("ManageServiceOrder_browseSO");
+
+		passed = CommonPanel.ServiceOrder.Search(action, department, ServiceOrderNumber);
+		action.getScreenShot("ManageServiceOrder_browseSO");
+
+		return passed;
+	}
 
 	public boolean verifyServiceOrdeDetails(String ServiceOrderNumber) {
 		boolean passed = false;
@@ -93,6 +111,22 @@ public class BrowseServiceOrder {
 
 		return passed;
 	}
+	
+	
+	//Test method
+	public boolean verifyServiceOrdeDetails1(String ServiceOrderNumber) {
+		action.getScreenShot("ManageServiceOrder_browseSO");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_browseSO");
+		passed = action.waitFor(ServiceOrder_Value, 3, true);
+		action.getScreenShot("ManageServiceOrder_browseSO");
+		passed = action.getTextFromPage(ServiceOrder_Value).trim().equals(ServiceOrderNumber) ? true : false;
+		action.getScreenShot("ManageServiceOrder_browseSO");
+
+		return passed;
+	}
+	
+	
 	
 	public boolean selectDepartment(String Department)
 	{

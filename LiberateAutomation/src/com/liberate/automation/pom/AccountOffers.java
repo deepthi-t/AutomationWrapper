@@ -45,4 +45,17 @@ public class AccountOffers {
 		
 		//TODO Complete after Account offers are available.
 	}
+	
+	public void addNewAccountOffer1() {
+		By accoutOffer_Select = By.xpath("//span[text()='Account Offers']//following::select[1]");
+		action.getScreenShot("ComverseTC_addNewAccountOffer");
+		action.waitFor(addNewAccountOffer_ActionButton, 5, true);
+		action.getScreenShot("ComverseTC_addNewAccountOffer");
+		action.clickOn(addNewAccountOffer_ActionButton);
+		action.getScreenShot("ComverseTC_addNewAccountOffer");
+		action.waitFor(addNewAccountOffer_ActionButton, 20, true);
+		action.selectBy(accoutOffer_Select, 1);
+		action.getScreenShot("ComverseTC_addNewAccountOffer");
+		//TODO Complete after Account offers are available.
+	}
 }

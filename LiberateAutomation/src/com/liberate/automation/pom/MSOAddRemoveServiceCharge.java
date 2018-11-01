@@ -171,6 +171,42 @@ public class MSOAddRemoveServiceCharge {
 
 		return passed;
 	}
+	
+	//Method used in service charge in manage orders
+	public boolean addServiceCharge1() {
+		boolean passed = false;
+
+		this.initialSCcount = action.countOf(ServiceCharge_Row);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+
+		action.scrollUp();
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.waitFor(New_ActionButton, 4, true);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.clickOn(New_ActionButton);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.waitFor(ServiceCharge_Select, 4, true);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.selectBy(ServiceCharge_Select, 1);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+
+		passed = action.waitFor(2);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+
+		this.ServiceCharge = action.getSelectedOption(ServiceCharge_Select).replace("-", "");
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+
+		passed = action.clickOn(Accept_Button);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.waitFor(ServiceChargeCreateSuccessMessage, 4, true);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.clickOn(MessageOK_Button);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+		passed = action.waitFor(MessageOK_Button, 3, false);
+		action.getScreenShot("ManageServiceOrder_addServiceCharge");
+
+		return passed;
+	}
 
 	/***
 	 * Method to delete selected service charge.
@@ -193,6 +229,36 @@ public class MSOAddRemoveServiceCharge {
 		passed = action.waitFor(DeleteSuccessMessage, 4, true);
 		passed = action.clickOn(MessageOK_Button);
 		passed = action.waitFor(MessageOK_Button, 3, false);
+
+		return passed;
+	}
+	
+	//ManageServiceOrder_removeServiceCharge
+	
+	
+	public boolean deleteServiceCharge1() {
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		boolean passed = false;
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		this.initialSCcount = action.countOf(ServiceCharge_Row);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		action.scrollUp();
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		passed = action.waitFor(Delete_ActionButton, 4, true);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		passed = action.clickOn(Delete_ActionButton);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		passed = action.waitFor(DeleteYes_Button, 4, true);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		passed = action.clickOn(DeleteYes_Button);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+
+		passed = action.waitFor(DeleteSuccessMessage, 4, true);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		passed = action.clickOn(MessageOK_Button);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
+		passed = action.waitFor(MessageOK_Button, 3, false);
+		action.getScreenShot("ManageServiceOrder_removeServiceCharge");
 
 		return passed;
 	}

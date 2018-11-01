@@ -37,6 +37,8 @@ public class AlterServiceNumber {
 		if (!raiseServiceCharge) {
 			if (action.countOf(SalesSignOff_CheckBox) == 1)
 				action.clickOn(SalesSignOff_CheckBox);
+			action.waitFor(3);
+			action.clickOn(RaiseServiceCharge_CheckBox);
 		} else {
 			if (action.countOf(RaiseServiceCharge_CheckBox) == 1)
 				action.clickOn(RaiseServiceCharge_CheckBox);

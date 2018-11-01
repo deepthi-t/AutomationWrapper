@@ -187,6 +187,8 @@ public class ServiceOperations {
 		action.waitFor(5);
 	}
 
+	
+	
 	public boolean transferService(String TargetAccount) {
 		boolean passed = false;
 
@@ -219,6 +221,53 @@ public class ServiceOperations {
 
 		return passed;
 	}
+	
+	//CustomerCareTC_transferService
+	
+	
+	//Testing
+	public boolean transferService1(String TargetAccount) {
+		boolean passed = false;
+
+		passed = action.waitFor(CopyMove_ActionButton, 4, true);
+		if (!passed)
+			return passed;
+
+		action.moveMouseAwayFromScreen();
+
+		this.ServiceNumber = action.getTextFromPage(FirstServiceNumber_Value);
+
+		passed = action.clickOn(CopyMove_ActionButton);
+		action.getScreenShot("CustomerCareTC_transferService");
+		passed = action.waitForClickable(TransferService_ActionButton, 2);
+		action.getScreenShot("CustomerCareTC_transferService");
+		passed = action.clickOn(TransferService_ActionButton);
+		action.getScreenShot("CustomerCareTC_transferService");
+
+		passed = action.waitFor(TargetAccountNumber_input, 4, true);
+		action.getScreenShot("CustomerCareTC_transferService");
+
+		passed = action.sendDataTo(TargetAccountNumber_input, TargetAccount);
+		action.getScreenShot("CustomerCareTC_transferService");
+		action.waitFor(1);
+		action.getScreenShot("CustomerCareTC_transferService");
+		passed = action.clickOn(Validate_Button);
+		action.getScreenShot("CustomerCareTC_transferService");
+
+		passed = action.waitFor(CommonPanel.AcceptDisable_Button, 4, false);
+		passed = action.clickOn(CommonPanel.Accept_Button);
+		action.getScreenShot("CustomerCareTC_transferService");
+		passed = action.waitFor(TransferServiceConfirmation_Message, 4, true);
+		passed = action.clickOn(CommonPanel.popUp.popUpYes_Button);
+		action.getScreenShot("CustomerCareTC_transferService");
+
+		passed = action.waitFor(TrasnferCompletoin_Message, 4, true);
+		action.getScreenShot("CustomerCareTC_transferService");
+		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+		action.getScreenShot("CustomerCareTC_transferService");
+
+		return passed;
+	}
 
 	public boolean verifyTransferService(String TargetAccount) {
 		boolean passed = false;
@@ -231,6 +280,21 @@ public class ServiceOperations {
 		this.ServiceNumber = "";
 
 		return passed;
+	}
+	
+	
+	public boolean Proceedbuttonclick()
+	{boolean passed = false;
+	
+	By proceedbutton = By.xpath("//input[@value =\"Proceed >>\"]");
+	action.clickOn(proceedbutton);
+	action.waitFor(2);
+	By CeaseAllcheckbox = By.xpath("(//*[text()='Cease All']//following::input[1])[1]");
+	action.clickOn(CeaseAllcheckbox);
+	
+	
+	
+	return passed;	
 	}
 
 	public boolean clickOnAlterServiceNumber() {
@@ -268,6 +332,8 @@ public class ServiceOperations {
 
 		return passed;
 	}
+	
+	
 
 	public boolean clickOnCeaseMultipleService() {
 		boolean passed = false;
@@ -299,6 +365,9 @@ public class ServiceOperations {
 		action.clickOn(ProvideSetTopBox_ActionButton);
 		action.waitFor(5);
 	}
+	
+	
+	
 
 	public boolean raiseServiceCharge() {
 		boolean passed = false;
@@ -313,7 +382,23 @@ public class ServiceOperations {
 
 		passed = action.waitFor(CommonPanel.popUp.popUpOK_Button, 2, true);
 		passed = action.clickOn(CommonPanel.popUp.popUpOK_Button);
+		action.getScreenShot("CustomerCareTC_alterServiceNumberPCLServiceCharge");
+		
+		
+		
 
+		return passed;
+	}
+	
+	// This is test method
+	public boolean clickServiceChargebutton()
+	{
+		boolean passed = false;
+		
+		By ServiceChargeClick = By.xpath("//*[text()='Raise Service Charge:']//following::input[1]");
+		action.waitFor(3);
+		action.clickOn(ServiceChargeClick);
+		
 		return passed;
 	}
 
