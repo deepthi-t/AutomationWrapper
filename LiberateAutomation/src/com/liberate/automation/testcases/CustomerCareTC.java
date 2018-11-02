@@ -333,7 +333,7 @@ public class CustomerCareTC {
 		action.getScreenShot(testCase);
 		sales.addServiceCharge();
 		action.getScreenShot(testCase);
-		sales.signOff();
+		sales.signOff2();
 		action.getScreenShot(testCase);
 
 		assertEquals(serviceOrder.getSOCommand().substring(0, 3).trim(), "CCL");

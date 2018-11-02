@@ -147,6 +147,75 @@ public class SalesSignOff {
 
 		return passed;
 	}
+	
+	
+	
+	public boolean signOff2() {
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		boolean passed = false;
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		By AccountEbilling_input = By.xpath("//*[text()='Account eBilling Email Address Entry']//following::input[1]");
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		By MacAddressConfirmation_Message = By
+				.xpath("//*[text()='Do you wish to allocate MAC Addresses and Smart Card references?']");
+
+		By SignOffSuccess_Message = By.xpath("//*[text()='Service order signed off successfully.']");
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		confirmPaymentItems();
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		if (action.countOf(MunicipalityCode_Select) == 1) {
+			action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");	action.selectBy(MunicipalityCode_Select, 1);
+		}
+		if (action.countOf(ContactName_Input) == 1) {
+			action.sendDataTo(ContactName_Input, "Test Name");
+			action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		}
+		if (action.countOf(ContactNumber_Input) == 1) {
+			action.sendDataTo(ContactNumber_Input, "22663");
+		}
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		passed = action.waitFor(SubmitOrder_Button, 4, true);
+		passed = action.clickOn(SubmitOrder_Button);
+		action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		while (true) {
+			action.waitFor(4);
+			if (action.countOf(SignOffSuccess_Message) > 0) {
+				CommonPanel.popUp.clickOK(action);
+				action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+				break;
+			} else if (action.countOf(AccountEbilling_input) > 0) {
+				action.sendDataTo(AccountEbilling_input, "automation@cwc.com");
+				action.clickOn(CommonPanel.Accept_Button);
+				action.waitFor(CommonPanel.Accept_Button, 4, false);
+				action.waitFor(1);
+				passed = action.clickOn(SubmitOrder_Button);
+				action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+				action.waitFor(2);
+			} else if (action.countOf(SignOff_Button) > 0) {
+				passed = action.clickOn(SignOff_Button);
+				action.waitFor(SignOff_Button, 4, false);
+				action.waitFor(2);
+			} else if (action.countOf(CommonPanel.Accept_Button) > 0) {
+				passed = action.clickOn(CommonPanel.Accept_Button);
+				action.waitFor(CommonPanel.Accept_Button, 4, false);
+				action.waitFor(2);
+			} else if (action.countOf(CommonPanel.popUp.popUpOK_Button) > 0) {
+				CommonPanel.popUp.clickOK(action);
+				action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+			} else {
+				return false;
+			}
+		}
+		if (action.countOf(MacAddressConfirmation_Message) > 0) {
+			action.waitFor(2);
+			action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+			passed = action.clickOn(CommonPanel.popUp.popUpNo_Button);
+			action.waitFor(2);
+			action.getScreenShot("CustomerCareTC_ceaseServiceNumberPCLServiceCharge");
+		}
+
+		return passed;
+	}
 
 	public boolean confirmPaymentItems() {
 		boolean passed = false;
