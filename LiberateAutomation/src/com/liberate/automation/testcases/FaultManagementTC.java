@@ -30,8 +30,8 @@ public class FaultManagementTC {
 	//TestData
 	static Map<String, String> dataMap = new HashedMap<>();
 
-	static String raiseFaultServiceNumber;
-	static String faultNumber;
+	static String raiseFaultServiceNumber = "1116731";
+	static String faultNumber = "D00058A";
 	/**
 	 * Private constructor to disable creation of object
 	 */

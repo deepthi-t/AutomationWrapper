@@ -55,6 +55,7 @@ public class RaiseFault {
 	By Priority_Dropdown = By.xpath("(//*[text()='Priority:']/following::select)[1]");
 	By Time_Input = By.xpath("//*[text()='Time:']/following::input[1]");
 	By Symptom_DropDown = By.xpath("(//*[text()='Symptom:']/following::select)[1]");
+	By FaultType_DropDown = By.xpath("(//*[text() = \"Fault Type:\"]/following::select)[1]");
 	By Diagnosis_DropDown = By.xpath("(//*[text()='Diagnosis:']/following::select)[1]");
 	By DatePicker_Input = By.xpath("(//*[text()='Date:'])[2]/following::input[1]");
 	By Site_Dropdown = By.xpath("(//*[text()='Site:']/following::select)[1]");
@@ -128,6 +129,10 @@ public class RaiseFault {
 	// Enter data in fields for raising a new fault on new fault panel
 	public boolean enterDataInFieldsToRaiseFault() {
 		boolean passed = false;
+		
+		passed = action.waitFor(FaultType_DropDown, 4, true);
+		action.waitFor(1);
+		passed = action.selectBy(FaultType_DropDown, 2);
 
 		passed = action.waitFor(Symptom_DropDown, 4, true);
 		// passed = action.selectBy(Symptom_DropDown, "01-TP No Dial Tone");
